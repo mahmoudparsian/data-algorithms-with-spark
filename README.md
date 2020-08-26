@@ -8,3 +8,14 @@
 * The goal is to use Spark-3.0.0 (GA Edition)
 * This GitHub repository will host all source code and scripts for Data Algorithms with Spark
 * Estimated Publication date: July 2021
+
+
+# Data Algorithms with Spark
+
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="https://learning.oreilly.com/library/cover/9781492082378/250w"
+        width="550"
+        height="700"
+>
