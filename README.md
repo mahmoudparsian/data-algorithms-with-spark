@@ -4,7 +4,7 @@
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
         alt="Data Algorithms with Spark"
-        src="https://learning.oreilly.com/library/cover/9781492082378/250w"
+        src="images/data_algorithms_with_spark.jpg"
 
 >
 
