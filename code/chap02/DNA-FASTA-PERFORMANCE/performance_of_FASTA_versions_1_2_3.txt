@@ -1,0 +1,77 @@
+#------------------------------------------------------
+# NOTE: define your input path
+# Before running your PySpark program,
+# Download *.fa from this location:
+# http://hgdownload.cse.ucsc.edu/goldenpath/hg19/snp137Mask/
+#------------------------------------------------------
+
+$ ./run_dna_base_count_ver_1_1GB.sh
+
+inputPath :  file:///book/chap02/data/*.fa
+recordsRDD.count() :  18776472
+frequenciesAsList :  [
+('b', 227537),
+('a', 260388085),
+('h', 231581),
+('v', 225995),
+('g', 177910206),
+('n', 176658064),
+('m', 1922947),
+('t', 260988437),
+('s', 1934512),
+('z', 5),
+('y', 7502676),
+('k', 1926435),
+('r', 7494043),
+('d', 231856),
+('c', 177562850),
+('w', 1591425)]
+
+4 minutes and 18 seconds elapsed.
+
+$ ./run_dna_base_count_ver_2_1GB.sh
+
+inputPath :  file:///book/chap02/data/*.fa
+frequenciesAsList :
+[(u'b', 227537),
+ (u'a', 260388085),
+ (u'h', 231581),
+ (u'v', 225995),
+ (u'g', 177910206),
+ (u'n', 176658064),
+ (u'm', 1922947),
+ (u't', 260988437),
+ (u's', 1934512),
+ ('z', 5),
+ (u'y', 7502676),
+ (u'k', 1926435),
+ (u'r', 7494043),
+ (u'd', 231856),
+ (u'c', 177562850),
+ (u'w', 1591425)]
+
+1 minutes and 19 seconds elapsed.
+
+$ ./run_dna_base_count_ver_3_1GB.sh
+
+inputPath :  file:///book/chap02/data/*.fa
+
+frequenciesAsList :
+[(u'b', 227537),
+ (u'a', 260388085),
+ (u'h', 231581),
+ (u'v', 225995),
+ (u'g', 177910206),
+ (u'n', 176658064),
+ (u'm', 1922947),
+ (u't', 260988437),
+ (u's', 1934512),
+ ('z', 5),
+ (u'y', 7502676),
+ (u'k', 1926435),
+ (u'r', 7494043),
+ (u'd', 231856),
+ (u'c', 177562850),
+ (u'w', 1591425)]
+
+0 minutes and 57 seconds elapsed.
