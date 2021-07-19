@@ -9,7 +9,7 @@
 >
 -->
 
-<!-- <embed src="images/data_algorithms_with_spark.pdf" width="800px" height="2100px" /> -->
+<embed src="images/data_algorithms_with_spark.pdf" /> 
 
 <object data="images/data_algorithms_with_spark.pdf" type="application/pdf">
     <embed src="images/data_algorithms_with_spark.pdf">
