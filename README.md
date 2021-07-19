@@ -1,6 +1,7 @@
 # Data Algorithms with Spark
 
-* Author: Mahmoud Parsian (mahmoud.parsian@yahoo.com)
+* Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
+* Email: mahmoud.parsian@yahoo.com
 * This new book (to be published by O'Reilly) is the 2nd Edition of 
   [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
   (published by [O'Reilly](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/))
