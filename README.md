@@ -9,10 +9,10 @@
 >
 -->
 
-<embed src="images/data_algorithms_with_spark.pdf" /> 
+<embed src="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.pdf" /> 
 
-<object data="images/data_algorithms_with_spark.pdf" type="application/pdf">
-    <embed src="images/data_algorithms_with_spark.pdf">
+<object data="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.pdf" type="application/pdf">
+    <embed src="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.pdf">
     </embed>
 </object>
 
