@@ -1,20 +1,12 @@
 # Data Algorithms with Spark
 
-<!--
+
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
         alt="Data Algorithms with Spark"
-        src="images/data_algorithms_with_spark.pdf"
+        src="images/data_algorithms_with_spark.jpg"
 
 >
--->
-
-<embed src="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.pdf" /> 
-
-<object data="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.pdf" type="application/pdf">
-    <embed src="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.pdf">
-    </embed>
-</object>
 
 
 * Author: Mahmoud Parsian (mahmoud.parsian@yahoo.com)
