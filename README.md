@@ -8,7 +8,7 @@
 * The first edition used Java for Spark, but for the new book, I will use PySpark (much simpler and readable)
 * The goal is to use the latest version of [Spark (Spark-3.0.0)](http://spark.apache.org)
 * This GitHub repository will host all source code and scripts for Data Algorithms with Spark
-* Estimated Publication date: July 2021
+* Estimated Publication date: December 2021
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
