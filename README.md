@@ -10,7 +10,12 @@
 -->
 
 <!-- <embed src="images/data_algorithms_with_spark.pdf" width="800px" height="2100px" /> -->
-<embed src="images/data_algorithms_with_spark.pdf" /> 
+
+<object data="images/data_algorithms_with_spark.pdf" type="application/pdf">
+    <embed src="images/data_algorithms_with_spark.pdf">
+    </embed>
+</object>
+
 
 * Author: Mahmoud Parsian (mahmoud.parsian@yahoo.com)
 * This new book (to be published by O'Reilly) is the 2nd Edition of 
