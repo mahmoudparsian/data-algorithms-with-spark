@@ -5,7 +5,7 @@
     <img
         alt="Data Algorithms with Spark"
         src="images/data_algorithms_with_spark.jpg"
-        height="1000"
+        height="900"
         width="500"
 >
 
