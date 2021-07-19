@@ -1,8 +1,11 @@
 #------------------------------------------------------
 # NOTE: define your input path
 # Before running your PySpark program,
-# Download *.fa from this location:
-# http://hgdownload.cse.ucsc.edu/goldenpath/hg19/snp137Mask/
+# Download *.fa from this location and place it under
+# the following directory: /book/chap02/data/ 
+# 
+# Download URL: 
+#   http://hgdownload.cse.ucsc.edu/goldenpath/hg19/snp137Mask/
 #------------------------------------------------------
 
 $ ./run_dna_base_count_ver_1_1GB.sh
