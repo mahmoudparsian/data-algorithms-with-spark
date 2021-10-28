@@ -1,0 +1,62 @@
+export SPARK_HOME="/home/book/spark-3.2.0"
+export SPARK_PROG="/home/book/code/chap06/label_propagation_algorithm_example.py"
+export GRAPH_FRAMES="graphframes:graphframes:0.8.2-spark3.2-s_2.12"
+#
+# run the PySpark program:
+$SPARK_HOME/bin/spark-submit --packages $GRAPH_FRAMES $SPARK_PROG 
+...
+
+
++---+-------+---+
+| id|   name|age|
++---+-------+---+
+|  a|  Alice| 30|
+|  b|    Bob| 31|
+|  c|Charlie| 32|
+|  d|  David| 23|
+|  e|   Emma| 24|
+|  f|  Frank| 26|
+|  g| George| 27|
++---+-------+---+
+
++---+---+------------+
+|src|dst|relationship|
++---+---+------------+
+|  a|  b|      follow|
+|  b|  c|      follow|
+|  d|  e|      follow|
+|  e|  f|      follow|
+|  f|  g|      follow|
+|  g|  d|      follow|
++---+---+------------+
+
+graph= GraphFrame(
+  v:[id: string, name: string ... 1 more field], 
+  e:[src: string, dst: string ... 1 more field]
+)
+
++---+-------+---+-------------+
+|id |name   |age|label        |
++---+-------+---+-------------+
+|g  |George |27 |412316860416 |
+|e  |Emma   |24 |412316860416 |
+|b  |Bob    |31 |1047972020224|
+|f  |Frank  |26 |146028888064 |
+|d  |David  |23 |146028888064 |
+|a  |Alice  |30 |1382979469312|
+|c  |Charlie|32 |1382979469312|
++---+-------+---+-------------+
+
+
++---+-------------+
+|id |label        |
++---+-------------+
+|g  |412316860416 |
+|e  |412316860416 |
+|b  |1047972020224|
+|f  |146028888064 |
+|d  |146028888064 |
+|a  |1382979469312|
+|c  |1382979469312|
++---+-------------+
+

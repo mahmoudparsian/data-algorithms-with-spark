@@ -1,0 +1,63 @@
+export SPARK_HOME="/home/book/spark-3.2.0"
+export SPARK_PROG="/home/book/code/chap06/shortest_path_finder.py"
+export GRAPH_FRAMES="graphframes:graphframes:0.8.2-spark3.2-s_2.12"
+#
+# run the PySpark program:
+$SPARK_HOME/bin/spark-submit --packages $GRAPH_FRAMES $SPARK_PROG 
+...
+
++---+-------+---+
+| id|   name|age|
++---+-------+---+
+|  a|  Alice| 30|
+|  b|    Bob| 31|
+|  c|Charlie| 32|
+|  d|  David| 23|
+|  e|   Emma| 24|
+|  f|  Frank| 26|
++---+-------+---+
+
++---+---+------------+
+|src|dst|relationship|
++---+---+------------+
+|  a|  b|      follow|
+|  b|  c|      follow|
+|  c|  d|      follow|
+|  d|  e|      follow|
+|  b|  e|      follow|
+|  c|  e|      follow|
+|  e|  f|      follow|
++---+---+------------+
+
+graph= GraphFrame(
+ v:[id: string, name: string ... 1 more field], 
+ e:[src: string, dst: string ... 1 more field]
+)
+
+results= DataFrame[
+ id: string, name: string, age: bigint, distances: map<string,int>
+]
+
+results.show()=
++---+-------+---+----------------+
+|id |name   |age|distances       |
++---+-------+---+----------------+
+|b  |Bob    |31 |[f -> 2]        |
+|e  |Emma   |24 |[f -> 1]        |
+|a  |Alice  |30 |[a -> 0, f -> 3]|
+|f  |Frank  |26 |[f -> 0]        |
+|d  |David  |23 |[f -> 2]        |
+|c  |Charlie|32 |[f -> 2]        |
++---+-------+---+----------------+
+
+results.select("id", "distances").show()=
++---+----------------+
+| id|       distances|
++---+----------------+
+|  b|        [f -> 2]|
+|  e|        [f -> 1]|
+|  a|[a -> 0, f -> 3]|
+|  f|        [f -> 0]|
+|  d|        [f -> 2]|
+|  c|        [f -> 2]|
++---+----------------+

@@ -1,0 +1,35 @@
+export SPARK_HOME="/home/book/spark-3.2.0"
+export SPARK_PROG="/home/book/code/chap06/pagerank_example.py"
+export GRAPH_FRAMES="graphframes:graphframes:0.8.2-spark3.2-s_2.12"
+#
+# run the PySpark program:
+$SPARK_HOME/bin/spark-submit --packages $GRAPH_FRAMES $SPARK_PROG 
+
++---+-------+---+
+| id|   name|age|
++---+-------+---+
+|  a|  Alice| 34|
+|  b|    Bob| 36|
+|  c|Charlie| 30|
++---+-------+---+
+
++---+---+------------+
+|src|dst|relationship|
++---+---+------------+
+|  a|  b|      friend|
+|  b|  c|      follow|
+|  c|  b|      follow|
++---+---+------------+
+
+graph= GraphFrame(
+   v:[id: string, name: string ... 1 more field], 
+   e:[src: string, dst: string ... 1 more field]
+)
+
++---+------------------+
+| id|          pagerank|
++---+------------------+
+|  b|1.0905890109440908|
+|  a|              0.01|
+|  c|1.8994109890559092|
++---+------------------+

@@ -1,0 +1,114 @@
+export SPARK_HOME="/home/book/spark-3.2.0"
+export SPARK_PROG="/home/book/code/chap06/unique_triangles_finder.py"
+export GRAPH_FRAMES="graphframes:graphframes:0.8.2-spark3.2-s_2.12"
+#
+${SPARK_HOME}/bin/spark-submit --packages ${GRAPH_FRAMES}  ${SPARK_PROG}  sample_graph_vertices.txt sample_graph_edges.txt
+...
+
+vertices_path= sample_graph_vertices.txt
+edges_path= sample_graph_edges.txt
++---+
+| id|
++---+
+|  0|
+|  1|
+|  2|
+|  3|
+|  4|
+|  5|
+|  6|
+|  7|
+|  8|
+|  9|
+| 10|
+| 11|
+| 12|
+| 13|
+| 14|
+| 15|
+| 16|
+| 17|
+| 18|
+| 19|
++---+
+only showing top 20 rows
+
++---+---+
+|src|dst|
++---+---+
+|  5| 15|
+| 18|  8|
+|  6|  1|
+|  0| 10|
+|  2|  4|
+| 19|  7|
+|  9|  7|
+| 11|  9|
+| 14|  9|
+| 16| 11|
+| 17|  8|
+|  3|  4|
+| 12| 15|
+| 13|  2|
+| 21|  0|
+| 22|  4|
+| 22|  8|
+| 24|  4|
+| 28|  7|
+| 28| 13|
++---+---+
+only showing top 20 rows
+
+graph= GraphFrame(v:[id: string], e:[src: string, dst: string])
+motifs= 
+DataFrame[
+ a: struct<id:string>, 
+ b: struct<id:string>, 
+ c: struct<id:string>
+]
+
++----+----+----+
+|a   |b   |c   |
++----+----+----+
+|[5] |[15]|[31]|
+|[18]|[8] |[22]|
+|[17]|[8] |[22]|
+|[22]|[8] |[17]|
+|[22]|[8] |[18]|
+|[28]|[7] |[39]|
+|[31]|[15]|[5] |
+|[32]|[30]|[42]|
+|[39]|[7] |[28]|
+|[39]|[28]|[7] |
+|[42]|[32]|[30]|
+|[5] |[31]|[15]|
+|[30]|[42]|[32]|
+|[17]|[22]|[8] |
+|[18]|[22]|[8] |
+|[50]|[51]|[52]|
+|[51]|[52]|[50]|
+|[50]|[52]|[51]|
+|[71]|[72]|[73]|
+|[71]|[73]|[72]|
++----+----+----+
+only showing top 20 rows
+
+unique_triangles= 
+DataFrame[
+ a: struct<id:string>, 
+ b: struct<id:string>, 
+ c: struct<id:string>
+]
+
++----+----+----+
+|a   |b   |c   |
++----+----+----+
+|[42]|[32]|[30]|
+|[5] |[31]|[15]|
+|[8] |[22]|[18]|
+|[8] |[22]|[17]|
+|[7] |[39]|[28]|
+|[52]|[51]|[50]|
+|[73]|[72]|[71]|
++----+----+----+
+
