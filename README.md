@@ -18,3 +18,32 @@
         src="images/data_algorithms_with_spark.jpg"
 >
 
+-----
+
+# Table of Contents
+
+1. Introduction to Data Algorithms
+
+2. Transformations in Action
+
+3. Mapper Transformations
+
+4. Reductions in Spark
+
+5. Partitioning Data
+
+6. Graph Algorithms
+
+7. Interacting with External Data Sources
+
+8. Ranking Algorithms
+
+9. Fundamental Data Design Patterns
+
+10. Common Data Design Patterns
+
+11. Join Design Patterns
+
+12. Feature Engineering in PySpark
+
+
