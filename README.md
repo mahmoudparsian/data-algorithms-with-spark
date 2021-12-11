@@ -18,7 +18,9 @@
         src="images/data_algorithms_with_spark.jpg"
 >
 
+
 -----
+
 
 # Table of Contents
 
@@ -28,19 +30,19 @@
 
 3. Mapper Transformations
 
-4. [Reductions in Spark](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/chap04)
+4. [Reductions in Spark](./code/chap04/)
 
 5. Partitioning Data
 
-6. [Graph Algorithms](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/chap06)
+6. [Graph Algorithms](./code/chap06/)
 
 7. Interacting with External Data Sources
 
-8. [Ranking Algorithms](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/chap08)
+8. [Ranking Algorithms](./code/chap08/)
 
 9. Fundamental Data Design Patterns
 
-10. [Common Data Design Patterns](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/chap10)
+10. [Common Data Design Patterns](./code/chap10)
 
 11. Join Design Patterns
 
