@@ -1,7 +1,6 @@
 # [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-### The goal of this book is to enable 
-### writing simpler code for data algorithms
+### The goal of this book is to enable writing simpler code for data algorithms
 
 * Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 * Email: mahmoud.parsian@yahoo.com
