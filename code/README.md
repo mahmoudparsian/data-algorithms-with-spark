@@ -1,4 +1,4 @@
-This directory contains all of the chapter codes for Data Algorithms with Spark.
+This directory contains all of the chapter codes for "Data Algorithms with Spark".
 
 * Chapter 02: Transformations in Action
 * Chapter 04: Reductions in Spark

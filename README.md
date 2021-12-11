@@ -24,28 +24,30 @@
 
 # Table of Contents
 
-1. Introduction to Data Algorithms
+1. [Introduction to Data Algorithms](./code/)
 
 2. [Transformations in Action](./code/chap02/)
 
-3. Mapper Transformations
+3. [Mapper Transformations](./code/)
 
 4. [Reductions in Spark](./code/chap04/)
 
-5. Partitioning Data
+5. [Partitioning Data](./code/)
 
 6. [Graph Algorithms](./code/chap06/)
 
-7. Interacting with External Data Sources
+7. [Interacting with External Data Sources](./code/chap07/)
 
 8. [Ranking Algorithms](./code/chap08/)
 
-9. Fundamental Data Design Patterns
+9. [Fundamental Data Design Patterns](./code/)
 
-10. [Common Data Design Patterns](./code/chap10)
+10. [Common Data Design Patterns](./code/chap10/)
 
-11. Join Design Patterns
+11. [Join Design Patterns](./code/)
 
-12. Feature Engineering in PySpark
+12. [Feature Engineering in PySpark](./code/)
 
+
+-----
 
