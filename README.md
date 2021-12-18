@@ -26,7 +26,7 @@
 
 # Table of Contents
 
-1. [Introduction to Data Algorithms](./code/)
+1. [Introduction to Data Algorithms](./code/chap01/)
 
 2. [Transformations in Action](./code/chap02/)
 
