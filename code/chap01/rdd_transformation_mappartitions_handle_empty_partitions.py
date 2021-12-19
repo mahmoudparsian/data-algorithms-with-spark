@@ -1,4 +1,7 @@
-#!/usr/bin/python
+from __future__ import print_function 
+import sys 
+from pyspark.sql import SparkSession 
+
 #-----------------------------------------------------
 # Apply a mapPartitions() transformation to an RDD
 # Input: NONE
@@ -37,13 +40,10 @@ Empty Partitions:
 =================
         This example shows how to handle Empty Partitions.
         An empty partition is a partition, which has no 
-        elements in it. Empty partions should be handled 
-        gracefully.
+        elements in it. Empty partions should be handled gracefully.
 """
 
-from __future__ import print_function 
-import sys 
-from pyspark.sql import SparkSession 
+
 
 
 #=========================================
@@ -79,42 +79,33 @@ def min_max_count(iterator):
     except StopIteration: 
         # WHERE min > max to filter it out later       
         return [(1, -1, 0)] 
-#
+    #
     numbers = first_record.split(",")
     # convert strings to integers
     numbers = map(int, numbers)
     local_min = min(numbers)
     local_max = max(numbers)
     local_count = len(numbers)
-#
+    #
     for record in iterator:
         numbers = record.split(",")  
         min2 = min(numbers)
         max2 = max(numbers)
         local_count += len(numbers)
-#
-        if max2 > local_max:
-            local_max = max2
-        if min2 < local_min:
-            local_min = min2
-#   end-for
+        #
+        local_max = max(max2, local_max)
+        local_min = min(min2, local_min)
+
+    #end-for
     return [(local_min, local_max, local_count)]
 #end-def
 #==========================================
 
 if __name__ == '__main__':
 
-    #if len(sys.argv) != 2:  
-    #    print("Usage: rdd_transformation_mappartitions.py <file>", file=sys.stderr)
-    #    exit(-1)
-
     # create an instance of SparkSession
-    spark = SparkSession\
-        .builder\
-        .appName("rdd_transformation_mappartitions")\
-        .getOrCreate()
-    #
-    print("spark=",  spark)
+    spark = SparkSession.builder.getOrCreate()
+
 
     #========================================
     # mapPartitions() transformation
@@ -176,29 +167,28 @@ if __name__ == '__main__':
     #==============================
     # final final (min, max, count)
     #==============================
-    # min
-    # max
-    # count
-    first_time = 1
+    first_time = True
     for t3 in  min_max_count_filtered_list:
-        if (first_time == 1):
-            min = t3[0];
-            max = t3[1];
-            count = t3[2]
-            first_time = 0
+        if (first_time):
+            final_min = t3[0];
+            final_max = t3[1];
+            final_count = t3[2]
+            first_time = False
         else:
-            count += t3[2]
-            if t3[1] > max:
-                max = t3[1]
-            if t3[0] < min:
-                min = t3[0]
+            final_count += t3[2]
+            final_max = max(final_max, t3[1])
+            final_min = min(final_min, t3[0])
         #end-if
     #end-for   
           
-    print("final min = ", min)
-    print("final max = ", max)
-    print("final count = ", count)
+    print("final_min = ", final_min)
+    print("final_max = ", final_max)
+    print("final_count = ", final_count)
     
     # done!
     spark.stop()
+#end-def
+#==========================================
 
+if __name__ == '__main__':
+    main()
