@@ -47,9 +47,9 @@ for a set of given  documents.
 
 | Program Name                       | Description                             |
 |------------------------------------|-----------------------------------------|
-| ````anagrams_by_combinebykey.py````|  Solution using combineByKey() reducer  |
-| ````anagrams_by_reducebykey.py```` |  Solution using reduceByKey() reducer   |
-| ````anagrams_by_groupbykey.py````  |  Solution using groupByKey() reducer    |
+| `anagrams_by_combinebykey.py`|  Solution using `combineByKey()` reducer  |
+| `anagrams_by_reducebykey.py` |  Solution using `reduceByKey()` reducer   |
+| `anagrams_by_groupbykey.py`  |  Solution using `groupByKey()` reducer    |
 
 
 We will ignore words if their length is less than N (we read N as a parameter).
@@ -63,10 +63,5 @@ References
 
 
 [![Data Algorithms with Spark](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.jpg)](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
-
-````
-best regards
-Mahmoud Parsian
-````
 
 
