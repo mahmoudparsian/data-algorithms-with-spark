@@ -1,0 +1,26 @@
+$SPARK_HOME/bin/spark-submit anagrams_by_combinebykey.py sample_document.txt 2          
+
+input_path= sample_document.txt
+
+records= ['fox jumped bowel bowel bowel elbow below bare bear', 'fox jumped bore bore bore boer robe bears', 'bears baser saber fox jumped and jumped over bear', 'fox is silent and listen listen mars rams mars bears', 'Mary and Elvis lives in Detroit army Easter Listen', 'silent eaters Death Hated elvis Mary easter Silent', 'Artist Elvis are in army Listen Silent detroit', 'artist is here and strait and traits hated']
+
+rdd= ['fox', 'jumped', 'bowel', 'bowel', 'bowel', 'elbow', 'below', 'bare', 'bear', 'fox', 'jumped', 'bore', 'bore', 'bore', 'boer', 'robe', 'bears', 'bears', 'baser', 'saber', 'fox', 'jumped', 'and', 'jumped', 'over', 'bear', 'fox', 'is', 'silent', 'and', 'listen', 'listen', 'mars', 'rams', 'mars', 'bears', 'mary', 'and', 'elvis', 'lives', 'in', 'detroit', 'army', 'easter', 'listen', 'silent', 'eaters', 'death', 'hated', 'elvis', 'mary', 'easter', 'silent', 'artist', 'elvis', 'are', 'in', 'army', 'listen', 'silent', 'detroit', 'artist', 'is', 'here', 'and', 'strait', 'and', 'traits', 'hated']
+
+anagrams_list= [('below', ['bowel', 'elbow', 'below']), ('aber', ['bare', 'bear']), ('beor', ['bore', 'boer', 'robe']), ('adn', ['and']), ('is', ['is']), ('eilnst', ['silent', 'listen']), ('eilsv', ['elvis', 'lives']), ('in', ['in']), ('deiortt', ['detroit']), ('aeerst', ['easter', 'eaters']), ('aer', ['are']), ('eehr', ['here']), ('fox', ['fox']), ('dejmpu', ['jumped']), ('abers', ['bears', 'baser', 'saber']), ('eorv', ['over']), ('amrs', ['mars', 'rams']), ('amry', ['mary', 'army']), ('adeht', ['death', 'hated']), ('airstt', ['artist', 'strait', 'traits'])]
+
+anagrams= [('below', Counter({'bowel': 3, 'elbow': 1, 'below': 1})), ('aber', Counter({'bear': 2, 'bare': 1})), ('beor', Counter({'bore': 3, 'boer': 1, 'robe': 1})), ('adn', Counter({'and': 5})), ('is', Counter({'is': 2})), ('eilnst', Counter({'silent': 4, 'listen': 4})), ('eilsv', Counter({'elvis': 3, 'lives': 1})), ('in', Counter({'in': 2})), ('deiortt', Counter({'detroit': 2})), ('aeerst', Counter({'easter': 2, 'eaters': 1})), ('aer', Counter({'are': 1})), ('eehr', Counter({'here': 1})), ('fox', Counter({'fox': 4})), ('dejmpu', Counter({'jumped': 4})), ('abers', Counter({'bears': 3, 'baser': 1, 'saber': 1})), ('eorv', Counter({'over': 1})), ('amrs', Counter({'mars': 2, 'rams': 1})), ('amry', Counter({'mary': 2, 'army': 2})), ('adeht', Counter({'hated': 2, 'death': 1})), ('airstt', Counter({'artist': 2, 'strait': 1, 'traits': 1}))]
+
+filtered_anagrams= 
+[
+('below', Counter({'bowel': 3, 'elbow': 1, 'below': 1})),
+('aber', Counter({'bear': 2, 'bare': 1})), 
+('beor', Counter({'bore': 3, 'boer': 1, 'robe': 1})), 
+('eilnst', Counter({'silent': 4, 'listen': 4})), 
+('eilsv', Counter({'elvis': 3, 'lives': 1})), 
+('aeerst', Counter({'easter': 2, 'eaters': 1})), 
+('abers', Counter({'bears': 3, 'baser': 1, 'saber': 1})), 
+('amrs', Counter({'mars': 2, 'rams': 1})), 
+('amry', Counter({'mary': 2, 'army': 2})), 
+('adeht', Counter({'hated': 2, 'death': 1})), 
+('airstt', Counter({'artist': 2, 'strait': 1, 'traits': 1}))
+]

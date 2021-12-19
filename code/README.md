@@ -15,5 +15,5 @@ This directory contains all of the chapter codes for "Data Algorithms with Spark
 The following directories are bonus chapters:
 
 * wordcount: provided multiple solutions for word count problem using `reduceByKey()` and `groupByKey()`
-
+* anagrams: find words, which are anagrams
 ----
