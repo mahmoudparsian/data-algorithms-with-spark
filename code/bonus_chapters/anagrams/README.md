@@ -1,4 +1,4 @@
-![Anagram](https://github.com/mahmoudparsian/data-algorithms-with-spark/images/anagram.png)
+![Anagram](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/anagram.png)
 
 ----
 
@@ -33,7 +33,7 @@ Write a Spark code to find anagrams in a text file
 
 -------
 
-Sampe Dataset
+Sample Dataset
 =============
 The file is located at /book/code/anagrams/sample_document.txt
 
@@ -62,7 +62,7 @@ References
 * http://www.merriam-webster.com/dictionary/anagram
 
 
-[![Data Algorithms with Spark](https://github.com/mahmoudparsian/data-algorithms-with-spark/images/data_algorithms_with_spark.jpg)](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
+[![Data Algorithms with Spark](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/images/data_algorithms_with_spark.jpg)](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
 
 ````
 best regards
