@@ -1,4 +1,4 @@
-![Anagram](~/images/anagram.png)
+![Anagram](https://github.com/mahmoudparsian/data-algorithms-with-spark/images/anagram.png)
 
 ----
 
@@ -62,7 +62,7 @@ References
 * http://www.merriam-webster.com/dictionary/anagram
 
 
-[![Data Algorithms Book](https://github.com/mahmoudparsian/data-algorithms-book/blob/master/misc/data_algorithms_image.jpg)](http://shop.oreilly.com/product/0636920033950.do) 
+[![Data Algorithms with Spark](https://github.com/mahmoudparsian/data-algorithms-with-spark/images/data_algorithms_with_spark.jpg)](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
 
 ````
 best regards
