@@ -1,3 +1,5 @@
+----
+
 This directory contains all of the chapter codes for "Data Algorithms with Spark".
 
 * Chapter 01: Introduction to Data Algorithms
@@ -7,3 +9,11 @@ This directory contains all of the chapter codes for "Data Algorithms with Spark
 * Chapter 07: Interacting with External Data Sources
 * Chapter 08: Ranking Algorithms
 * Chapter 10: Common Data Design Patterns
+
+----
+
+The following directories are bonus chapters:
+
+* wordcount: provided multiple solutions for word count problem using `reduceByKey()` and `groupByKey()`
+
+----
