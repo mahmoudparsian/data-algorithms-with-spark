@@ -45,8 +45,8 @@ Programs
 The purpose of these PySpark programs are to find anagrams 
 for a set of given  documents.
 
-| Program Name                       | Description                             |
-|------------------------------------|-----------------------------------------|
+| Program Name                 | Description                               | 
+|------------------------------|-------------------------------------------|
 | `anagrams_by_combinebykey.py`|  Solution using `combineByKey()` reducer  |
 | `anagrams_by_reducebykey.py` |  Solution using `reduceByKey()` reducer   |
 | `anagrams_by_groupbykey.py`  |  Solution using `groupByKey()` reducer    |
