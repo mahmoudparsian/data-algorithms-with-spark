@@ -26,7 +26,7 @@
 
 # Table of Contents
 
-0. [Bonus Chapters...](./code/bonus_chapters_/)
+0. [Bonus Chapters...](./code/bonus_chapters/)
 
 1. [Chapter 1: Introduction to Data Algorithms](./code/chap01/)
 
