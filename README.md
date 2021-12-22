@@ -26,29 +26,31 @@
 
 # Table of Contents
 
-1. [Introduction to Data Algorithms](./code/chap01/)
+0. [Bonus Chapters...](./code/bonus_chapters_/)
 
-2. [Transformations in Action](./code/chap02/)
+1. [Chapter 1: Introduction to Data Algorithms](./code/chap01/)
 
-3. [Mapper Transformations](./code/)
+2. [Chapter 2: Transformations in Action](./code/chap02/)
 
-4. [Reductions in Spark](./code/chap04/)
+3. [Chapter 3: Mapper Transformations](./code/)
 
-5. [Partitioning Data](./code/)
+4. [Chapter 4: Reductions in Spark](./code/chap04/)
 
-6. [Graph Algorithms](./code/chap06/)
+5. [Chapter 5: Partitioning Data](./code/)
 
-7. [Interacting with External Data Sources](./code/chap07/)
+6. [Chapter 6: Graph Algorithms](./code/chap06/)
 
-8. [Ranking Algorithms](./code/chap08/)
+7. [Chapter 7: Interacting with External Data Sources](./code/chap07/)
 
-9. [Fundamental Data Design Patterns](./code/)
+8. [Chapter 8: Ranking Algorithms](./code/chap08/)
 
-10. [Common Data Design Patterns](./code/chap10/)
+9. [Chapter 9: Fundamental Data Design Patterns](./code/)
 
-11. [Join Design Patterns](./code/)
+10. [Chapter 10: Common Data Design Patterns](./code/chap10/)
 
-12. [Feature Engineering in PySpark](./code/)
+11. [Chapter 11: Join Design Patterns](./code/)
+
+12. [Chapter 12: Feature Engineering in PySpark](./code/)
 
 
 -----
