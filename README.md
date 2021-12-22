@@ -26,6 +26,8 @@
 
 # Table of Contents
 
+### PySpark and Scala solutions are provided...
+
 0. [Bonus Chapters...](./code/bonus_chapters/)
 
 1. [Chapter 1: Introduction to Data Algorithms](./code/chap01/)
