@@ -32,7 +32,7 @@
 
 2. [Chapter 2: Transformations in Action](./code/chap02/)
 
-3. [Chapter 3: Mapper Transformations](./code/)
+3. [Chapter 3: Mapper Transformations](./code/chap03/)
 
 4. [Chapter 4: Reductions in Spark](./code/chap04/)
 
