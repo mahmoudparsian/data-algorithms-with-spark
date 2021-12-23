@@ -13,6 +13,7 @@
 	* [Python 3.7.2](https://www.python.org/downloads/)
 * This GitHub repository will host all source code and scripts for Data Algorithms with Spark
 * Estimated Publication date: April 2022
+* Chapter solutions are provided in [PySpark and Scala](./code/)
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
@@ -26,8 +27,6 @@
 
 # Table of Contents
 
-### PySpark and Scala solutions are provided...
-
 0. [Bonus Chapters...](./code/bonus_chapters/)
 
 1. [Chapter 1: Introduction to Data Algorithms](./code/chap01/)
@@ -38,7 +37,7 @@
 
 4. [Chapter 4: Reductions in Spark](./code/chap04/)
 
-5. [Chapter 5: Partitioning Data](./code/)
+5. [Chapter 5: Partitioning Data](./code/chap05/)
 
 6. [Chapter 6: Graph Algorithms](./code/chap06/)
 
@@ -46,13 +45,13 @@
 
 8. [Chapter 8: Ranking Algorithms](./code/chap08/)
 
-9. [Chapter 9: Fundamental Data Design Patterns](./code/)
+9. [Chapter 9: Fundamental Data Design Patterns](./code/chap09/)
 
 10. [Chapter 10: Common Data Design Patterns](./code/chap10/)
 
-11. [Chapter 11: Join Design Patterns](./code/)
+11. [Chapter 11: Join Design Patterns](./code/chap11/)
 
-12. [Chapter 12: Feature Engineering in PySpark](./code/)
+12. [Chapter 12: Feature Engineering in PySpark](./code/chap12/)
 
 
 -----
