@@ -12,7 +12,7 @@
 	* [Spark 3.2.0](http://spark.apache.org/downloads.html)
 	* [Python 3.7.2](https://www.python.org/downloads/)
 * This GitHub repository will host all source code and scripts for Data Algorithms with Spark
-* Estimated Publication date: April 2022
+* Estimated [Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 * Chapter solutions are provided in [PySpark and Scala](./code/)
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
