@@ -1,0 +1,21 @@
+apply plugin: 'scala'
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+ext.scalaClassifier = '2.13'
+ext.scalaVersion = '2.13.7'
+
+group 'com.spark.algos.data'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile group: "org.scala-lang", name: "scala-library", version: "2.13.7"
+    compile group: "org.apache.spark", name: "spark-core_2.13", version: "3.2.0"
+    compile group: "org.apache.spark", name: "spark-sql_2.13", version: "3.2.0"
+}
