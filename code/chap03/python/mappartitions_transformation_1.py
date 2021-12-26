@@ -142,6 +142,7 @@ elements= ['0', '-8', '-9', '0', '0', '6', '7', '8', '9', '0', '-1']
 NZP_rdd =  PythonRDD[4] at RDD at PythonRDD.scala:53
 NZP_rdd.count() =  3
 NZP_rdd.collect() =  [(2, 0, 8), (2, 1, 8), (3, 4, 4)]
+
 final_NPZ =  (7, 5, 20)
 
 
