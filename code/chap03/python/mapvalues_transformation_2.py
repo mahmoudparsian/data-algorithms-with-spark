@@ -10,7 +10,7 @@ from pyspark.sql import SparkSession
 # Note that mapValues() can be accomplished by map().
 #
 # Let rdd = RDD[(K, V)]
-# then the following RDDs (rrd2, rdd3) are equivalent:
+# then the following RDDs (rdd2, rdd3) are equivalent:
 #
 #    rdd2 = rdd.mapValues(f)
 #
