@@ -154,6 +154,8 @@ object AggregateByKey extends App {
   averages.collect().foreach(println(_))
   println("averages.count() = ", averages.count())
   println("averages.collect() = ", averages.collect())
+  //Close the underlying SparkContext.
+  spark.close()
 }
 
 

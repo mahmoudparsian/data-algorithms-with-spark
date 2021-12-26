@@ -95,4 +95,6 @@ object CombineByKey extends App{
   //(alex,(25,1))
   val sumCount = rdd2.combineByKey[(Int,Int)](v=>(v,1),(C,v)=>(C._1+v,C._2+1),(C1,C2)=> (C1._1+C2._1,C1._2+C2._2))
   sumCount.collect.foreach(println(_))
+  //Close the underlying SparkContext.
+  spark.close()
 }
