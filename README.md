@@ -17,6 +17,8 @@
 * Estimated [Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
 * Chapter solutions are provided in [PySpark and Scala](./code/)
+	* PySpark solutions are provided by [Mahmoud Parsian](https://github.com/mahmoud.parsian/)
+	* Scala solutions are provided by [Deepak Kumar](https://github.com/deepakmca05/)
 
 -----
 
