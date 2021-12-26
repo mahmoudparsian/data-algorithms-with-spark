@@ -3,7 +3,12 @@ package org.data.algorithms.spark.ch01
 import org.apache.spark.sql.SparkSession
 
 /**
- * Apply a foldByKey() transformation to an RDD[key, value] to find average per key.
+ *-----------------------------------------------------
+ * Apply a foldByKey() transformation to an
+ * RDD[key, value] to find average per key.
+ *-------------------------------------------------------
+ * @author Biman Mandal
+ *-------------------------------------------------------
  */
 object AverageByKeyUseFoldByKey {
 
@@ -23,17 +28,21 @@ object AverageByKeyUseFoldByKey {
     val spark = SparkSession.builder().master("local[*]").getOrCreate();
 
     /**
+     * ----------------------------------------------------
      * foldByKey() transformation:
-     *    foldByKey(zeroValue)(func)
-     * (Merge the values for each key using an associative
+     *
+     * foldByKey(zeroValue)(func)
+     *
+     * Merge the values for each key using an associative
      * function “func” and a neutral "zeroValue" which may
      * be added to the result an arbitrary number of times,
      * and must not change the result (e.g., 0 for addition,
      * or 1 for multiplication.).
+     *
      * source_rdd.foldByKey() --> target_rdd
-     */
-
-    /**
+     *
+     * ----------------------------------------------------
+     *
      * Create a list of tuples.
      * Each tuple contains name, city, and age.
      * Create a RDD from the list above.
