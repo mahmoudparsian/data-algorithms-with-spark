@@ -63,7 +63,7 @@ object RDDTransformationMap {
     val rdd = spark.sparkContext.parallelize(listOfTuples)
     println("rdd = " +  rdd)
     println("rdd.count() = " + rdd.count())
-    print("rdd.collect() = " + rdd.collect().mkString("Array(", ", ", ")"))
+    println("rdd.collect() = " + rdd.collect().mkString("Array(", ", ", ")"))
 
     /**
      * ----------------------------------------------
