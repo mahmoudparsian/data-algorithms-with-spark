@@ -27,7 +27,8 @@ from collections import Counter
 # @author Mahmoud Parsian
 #-------------------------------------------------------
 #
-# version 1
+# Count DNA bases
+# version 1: simple version with default dictionary
 #
 def count_DNA_bases_1(dna_seq):
     counter = defaultdict(int)
@@ -38,7 +39,8 @@ def count_DNA_bases_1(dna_seq):
 #end-def
 #-------------------------------------------------------
 #
-# version 2: simplified function
+# Count DNA bases
+# version 2: simplified function by using Counter
 #
 def count_DNA_bases(dna_seq):
     return Counter(dna_seq)
