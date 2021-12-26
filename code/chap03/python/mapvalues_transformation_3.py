@@ -26,8 +26,10 @@ from collections import Counter
 #-------------------------------------------------------
 # @author Mahmoud Parsian
 #-------------------------------------------------------
-
-def DNA_count_1(dna_seq):
+#
+# version 1
+#
+def count_DNA_bases_1(dna_seq):
     counter = defaultdict(int)
     for letter in dna_seq:
         counter[letter] += 1
@@ -35,13 +37,13 @@ def DNA_count_1(dna_seq):
     return counter
 #end-def
 #-------------------------------------------------------
-# simplified function
-def DNA_count(dna_seq):
+#
+# version 2: simplified function
+#
+def count_DNA_bases(dna_seq):
     return Counter(dna_seq)
 #end-def
-
 #-------------------------------------------------------
-
 
 def main():
 
@@ -69,7 +71,7 @@ def main():
     # rdd_mapped : RDD[(String, dictionary)]
     #  where dictionary is a hash table with keys {A, T, C, G}
     #
-    dna_base_count = rdd.mapValues(DNA_count)
+    dna_base_count = rdd.mapValues(count_DNA_bases)
     print("dna_base_count = ", dna_base_count)
     print("dna_base_count.count() = ", dna_base_count.count())
     print("dna_base_count.collect() = ", dna_base_count.collect())
