@@ -18,12 +18,6 @@
 
 * Chapter solutions are provided in [PySpark and Scala](./code/)
 
-<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
-    <img
-        alt="Data Algorithms with Spark"
-        src="images/data_algorithms_with_spark.jpg"
->
-
 -----
 
 # Software:
@@ -33,7 +27,6 @@
 * [Java 8](https://www.oracle.com/java/technologies/downloads/#java8)
 	
 -----
-
 
 # Table of Contents
 
@@ -66,3 +59,8 @@
 
 -----
 
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="images/data_algorithms_with_spark.jpg"
+>
