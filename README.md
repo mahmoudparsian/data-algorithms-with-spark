@@ -1,4 +1,4 @@
-# [O'Reilly book: <span style="color:blue">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
+# [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
 ### The goal of this book is to enable writing efficient & simpler code for data algorithms
 
