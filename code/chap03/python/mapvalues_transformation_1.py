@@ -7,6 +7,15 @@ from pyspark.sql import SparkSession
 # a map function without changing the keys; this also 
 # retains the original RDD’s partitioning.
 #
+# Note that mapValues() can be accomplished by map().
+#
+# Let rdd = RDD[(K, V)]
+# then the following RDDs (rrd2, rdd3) are equivalent:
+#
+#    rdd2 = rdd.mapValues(f)
+#
+#    rdd3 = rdd.map(lambda x: (x[0], f(x[1])))
+#
 # print() is used for educational purposes.
 #------------------------------------------------------
 # Input Parameters:
