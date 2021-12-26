@@ -1,4 +1,4 @@
-package com.spark.algos.data.ch1
+package org.data.algorithms.spark.ch01
 
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
 import org.apache.spark.sql.SparkSession
