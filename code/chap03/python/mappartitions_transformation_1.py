@@ -31,17 +31,40 @@ can work very well: find the top-10 (or bottom-10) per partition,
 then find the top-10 (or bottom-10) for all partitions: this way 
 you are limiting emitting too many intermediate (K,V) pairs.
 
-========
-EXAMPLE:
-========
+----------------------------
+1. Syntax of mapPartitions()
+----------------------------
+Following is the syntax of PySpark mapPartitions(). 
+It calls custom function f with argument as partition 
+elements and performs the function and returns all 
+elements of the partition. It also takes another optional 
+argument preservesPartitioning to preserve the partition.
+
+    RDD.mapPartitions(f, preservesPartitioning=False)
+
+---------------------------
+2. Usage of mapPartitions()
+---------------------------
+def f(single_partition):
+  #perform heavy initializations like Databse connections
+  for element in single_partition:
+    # perform operations for element in a partition
+  #end-for
+  # return updated data
+#end-def
+
+target_rdd = source_rdd.mapPartitions(f)
+
+
+====================
+==== EXAMPLE: ======
+====================
 In this example, we find (N, Z, P) for all given numbers, where
   N : count of all negative numbers
   Z : count of all zero numbers
   P : count of all positive numbers
 
 """
-
-
 
 #=========================================
 # for testing and debugging only
