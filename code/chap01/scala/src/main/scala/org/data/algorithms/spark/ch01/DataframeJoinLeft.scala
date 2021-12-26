@@ -5,13 +5,13 @@ import org.apache.spark.sql.SparkSession
 /**
  *-------------------------------------------------------
  * Apply a join()
- * source_df.join(other_df, "inner")
+ * source_df.join(other_df, "left")
  *-------------------------------------------------------
  *
  * @author Biman Mandal
  *-------------------------------------------------------
  */
-object DataframeJoinInner {
+object DataframeJoinLeft {
   def main(args: Array[String]): Unit = {
 
     // create an instance of SparkSession
@@ -75,7 +75,7 @@ object DataframeJoinInner {
      * df.join(df2)
      *-----------------------------------------
      */
-    val joined = df.join(df2, df.col("name") === df2.col("name"), "inner")
+    val joined = df.join(df2, df.col("name") === df2.col("name"), "left")
     joined.show()
     joined.printSchema()
 
