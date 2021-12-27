@@ -1,30 +1,23 @@
 package org.data.algorithms.spark.ch01
 
 import org.apache.spark.sql.SparkSession
-import org.data.algorithms.spark.ch01.AverageByKeyUseFoldByKey.createPair
 
 /**
  *-------------------------------------------------------
- * Apply a map() transformation to an RDD
+ * Apply a groupByKey() transformation to an RDD
  *-------------------------------------------------------
  *
  * @author Biman Mandal
  *-------------------------------------------------------
  */
-object RDDTransformationMap {
+object RDDTransformationGroupByKey {
 
-  def createPair(t3: (String, String, Int)): (String, Int) = {
+  def createPair(t3: (String, String, Int)): (String, (String, Int)) = {
     // t3 = (name, city, number)
-    val key = t3._1
-    val value = t3._3
-    (key, value)
-  }
-
-  def createPairCity(t3: (String, String, Int)): (String, (String, String, Int)) = {
-    // t3 = (name, city, number)
-    val key = t3._1
-    val value = t3
-    (key, value)
+    val name = t3._1
+    val city = t3._2
+    val number = t3._3
+    (name, (city, number))
   }
 
   def main(args: Array[String]): Unit = {
@@ -34,15 +27,19 @@ object RDDTransformationMap {
 
     /**
      * ----------------------------------------------------
-     * map() transformation
+     * groupByKey() transformation
      *
-     * source_rdd.map(function) --> target_rdd
+     * source_rdd.groupByKey() --> target_rdd
      *
-     * map() is a 1-to-1 transformation
+     * Group the values for each key in the RDD
+     * into a single sequence. Hash-partitions the
+     * resulting RDD with the existing partitioner/
+     * parallelism level.
      *
-     * map(f, preservesPartitioning=False)[source]
-     * Return a new RDD by applying a function to each
-     * element of this RDD.
+     * Note: If you are grouping in order to perform
+     * an aggregation (such as a sum or average) over
+     * each key, using reduceByKey() or combineByKey()
+     * will provide much better performance.
      *
      * ----------------------------------------------------
      *
@@ -71,7 +68,7 @@ object RDDTransformationMap {
      *  create a (key, value) pair
      *   where
      *        key is the name (first element of tuple)
-     *        value is the last element of tuple
+     *        value is a of tuple of (city, number)
      * ----------------------------------------------
      */
     val rdd2 = rdd.map(createPair)
@@ -81,14 +78,14 @@ object RDDTransformationMap {
 
     /**
      * ----------------------------------------------
-     *  apply a map() transformation to rdd
+     *  apply a groupByKey() transformation to rdd2
      *  create a (key, value) pair
      *   where
      *        key is the name (first element of tuple)
-     *        value is the entire tuple
+     *        value is the Iterable<(city, number)>
      * ----------------------------------------------
      */
-    val rdd3 = rdd.map(createPairCity)
+    val rdd3 = rdd2.groupByKey()
     println("rdd3 = " + rdd3)
     println("rdd3.count() = " + rdd3.count())
     println("rdd3.collect() = " + rdd3.collect().mkString("Array(", ", ", ")"))
