@@ -9,7 +9,7 @@ Kmer counting for a given K and N, where
 K: to find K-mers
 N: to find top-N
 
-Usage: kmer_fasta.py <fasta-file> <K> <N>
+Usage: $SPARK_HOME/bin/spark-submit kmer_fasta.py <fasta-input-path> <K> <N>
 
 FASTA format: https://en.wikipedia.org/wiki/FASTA_format
 
@@ -20,6 +20,8 @@ basevector object. Typical values include 12, 20, 24, 36,
 and 48; kmers of these sizes are referred to as 12-mers, 
 20-mers, and so forth.
  
+NOTE: print() is used for debugging and educational purposes.
+
 @author Mahmoud Parsian
  
 """

@@ -9,7 +9,7 @@ Kmer counting for a given K and N, where
 K: to find K-mers
 N: to find top-N
 
-Usage: kmer_fastq.py <fastq-file> <K> <N>
+Usage: $SPARK_HOME/bin/spark-submit kmer_fastq.py <fastq-input-path> <K> <N>
 
 FASTQ file format: https://en.wikipedia.org/wiki/FASTQ_format
 
@@ -19,6 +19,8 @@ divisible by 4 so that a kmer can fit compactly into a
 basevector object. Typical values include 12, 20, 24, 36, 
 and 48; kmers of these sizes are referred to as 12-mers, 
 20-mers, and so forth.
+
+NOTE: print() is used for debugging and educational purposes.
  
 @author Mahmoud Parsian
  
