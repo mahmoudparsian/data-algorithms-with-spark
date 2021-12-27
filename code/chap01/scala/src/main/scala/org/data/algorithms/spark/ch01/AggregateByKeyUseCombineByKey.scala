@@ -3,7 +3,7 @@ package org.data.algorithms.spark.ch01
 import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
 import org.apache.spark.sql.SparkSession
 
-object CombineByKey extends App{
+object AggregateByKeyUseCombineByKey {
 
 /*  -----------------------------------------------------
    Apply a combineByKey() transformation to an
@@ -26,13 +26,15 @@ object CombineByKey extends App{
   }
   /* end-def
   ==========================================*/
-  //create an instance of SparkSession
-  val spark = SparkSession
-                .builder()
-                .appName("Combine By Key")
-                .master("local[*]")
-                .getOrCreate()
-  /*========================================
+
+  def main(args :  Array[String]) = {
+    //create an instance of SparkSession
+    val spark = SparkSession
+      .builder()
+      .appName("Combine By Key")
+      .master("local[*]")
+      .getOrCreate()
+    /*========================================
    combineByKey() transformation
   
    source_rdd.combineByKey(lambda1, lambda2, lambda3) --> target_rdd
@@ -51,34 +53,34 @@ object CombineByKey extends App{
    Create a list of tuples.
    Each tuple contains name, city, and age.
    Create a RDD from the list above.*/
-  val listOfTuples = List(("alex","Sunnyvale", 25),
-    ("alex","Sunnyvale", 33),
-    ("alex","Sunnyvale", 45),
-    ("alex","Sunnyvale", 63),
-    ("mary", "Ames", 22),
-    ("mary", "Cupertino", 66),
-    ("mary", "Ames", 20),
-    ("bob", "Ames", 26)
-  )
-  val rdd = spark.sparkContext.parallelize(listOfTuples)
-  println("rdd = "+rdd)
-  println("rdd.collect()="+rdd.collect().mkString("Array(", ", ", ")"))
-  println("rdd.count()="+rdd.count())
-  rdd.collect.foreach(println)
+    val listOfTuples = List(("alex", "Sunnyvale", 25),
+      ("alex", "Sunnyvale", 33),
+      ("alex", "Sunnyvale", 45),
+      ("alex", "Sunnyvale", 63),
+      ("mary", "Ames", 22),
+      ("mary", "Cupertino", 66),
+      ("mary", "Ames", 20),
+      ("bob", "Ames", 26)
+    )
+    val rdd = spark.sparkContext.parallelize(listOfTuples)
+    println("rdd = " + rdd)
+    println("rdd.collect()=" + rdd.collect().mkString("Array(", ", ", ")"))
+    println("rdd.count()=" + rdd.count())
+    rdd.collect.foreach(println)
 
-  /* ------------------------------------
+    /* ------------------------------------
    apply a map() transformation to rdd
    create a (key, value) pair
     where
          key is the name (first element of tuple)
          value is a number
     ------------------------------------*/
-  val rdd2 = rdd.map(createPair)
-  println("rdd2 = ", rdd2)
-  println("rdd2.count() = ", rdd2.count())
-  println("rdd2.collect() = ", rdd2.collect().mkString("Array(", ", ", ")"))
+    val rdd2 = rdd.map(createPair)
+    println("rdd2 = ", rdd2)
+    println("rdd2.count() = ", rdd2.count())
+    println("rdd2.collect() = ", rdd2.collect().mkString("Array(", ", ", ")"))
 
- /* ------------------------------------
+    /* ------------------------------------
    apply a combineByKey() transformation to rdd2
    create a (key, value) pair
     where
@@ -91,10 +93,12 @@ object CombineByKey extends App{
    C1 and C2 are a "combined" data structure:
      C1 = (sum1, count1)
      C2 = (sum2, count2)*/
-  val createCountCombiner = (v: Double) => (v, 1)
-  //(alex,(25,1))
-  val sumCount = rdd2.combineByKey[(Int,Int)](v=>(v,1),(C,v)=>(C._1+v,C._2+1),(C1,C2)=> (C1._1+C2._1,C1._2+C2._2))
-  sumCount.collect.foreach(println(_))
-  //Close the underlying SparkContext.
-  spark.close()
+    val createCountCombiner = (v: Double) => (v, 1)
+    //(alex,(25,1))
+    val sumCount = rdd2.combineByKey[(Int, Int)](v => (v, 1), (C, v) => (C._1 + v, C._2 + 1), (C1, C2) => (C1._1 + C2._1, C1._2 + C2._2))
+    sumCount.collect.foreach(println(_))
+    //Close the underlying SparkContext.
+    spark.close()
+
+  }
 }

@@ -1,7 +1,6 @@
 package org.data.algorithms.spark.ch01
 
 import org.apache.spark.sql.SparkSession
-import org.data.algorithms.spark.ch01.AggregateByKey.averages
 
 /**
  *-----------------------------------------------------
