@@ -18,30 +18,30 @@ import scala.sys.exit
 */
 object DNABaseCountVER1 {
 
-  def processFASTARecord(fastaRecord:String) :Map[String,Int] = {
-    var keyValueList = Map[String,Int]()
-    if(fastaRecord.startsWith(">"))
+  def processFASTARecord(fastaRecord: String): Map[String, Int] = {
+    var keyValueList = Map[String, Int]()
+    if (fastaRecord.startsWith(">"))
       keyValueList += ("z" -> 1)
     else {
       var chars = fastaRecord.toLowerCase
-      for(c <- chars)
+      for (c <- chars)
         keyValueList += c.toString -> 1
     }
-    return  keyValueList
+    return keyValueList
   }
 
   def main(args: Array[String]) = {
-    if(args.length !=2) {
-      println("Usage:" + DNABaseCountVER1 + "  <input-path> "  )
+    if (args.length != 2) {
+      println("Usage:" + DNABaseCountVER1 + "  <input-path> ")
       exit(-1)
     }
     //create an instance of SparkSession object
     val spark = SparkSession.builder().appName("DNABaseCountVER1").master("local[*]").getOrCreate()
     println("spark initialised")
     val inputPath = args(1)
-    println("inputPath :"+ inputPath)
+    println("inputPath :" + inputPath)
     val recordsRDD = spark.sparkContext.textFile(inputPath)
-    println("recordsRDD.count() : "+ recordsRDD.count())
+    println("recordsRDD.count() : " + recordsRDD.count())
     val recordsAsList = recordsRDD.collect()
     print("recordsAsList : ", recordsAsList)
     // if you do not have enough RAM, then do the following
@@ -51,7 +51,7 @@ object DNABaseCountVER1 {
     val pairsRDD = recordsRDD.flatMap(processFASTARecord)
     pairsRDD.collect.foreach(println)
 
-    val frequenciesRDD = pairsRDD.reduceByKey((x,y)=> (x+y))
+    val frequenciesRDD = pairsRDD.reduceByKey((x, y) => (x + y))
     println("frequenciesRDD : debug")
     val frequenciesAsList = frequenciesRDD.collect()
     println("frequenciesAsList : " + frequenciesAsList.foreach(println))
