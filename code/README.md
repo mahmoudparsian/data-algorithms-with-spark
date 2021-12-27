@@ -26,8 +26,8 @@ The following directories are bonus chapters:
   
 | Bonus Chapter                | Description                               | 
 |------------------------------|-------------------------------------------|
-| [wordcount](./bonus_chapters/wordcount/)                   | Provided multiple solutions for word count problem using `reduceByKey()` and `groupByKey()` reducers.  |
-| [anagrams](./bonus_chapters/anagrams/)                     | Find words, which are anagrams: provided multiple solutions for anagrams problem using `reduceByKey()`, `groupByKey()`, and `combineByKey()` reducers. |
+| [Word Count](./bonus_chapters/wordcount/)                   | Provided multiple solutions for word count problem using `reduceByKey()` and `groupByKey()` reducers.  |
+| [Anagrams](./bonus_chapters/anagrams/)                     | Find words, which are anagrams: provided multiple solutions for anagrams problem using `reduceByKey()`, `groupByKey()`, and `combineByKey()` reducers. |
 | [Lambda Expressions](./bonus_chapters/lambda_expressions/) | How to use Lambda Expressions in PySpark programs |
 | [TF-IDF](./bonus_chapters/TF-IDF/)                         | Term Frequency - Inverse Document Frequency |
 | [K-mers](./bonus_chapters/k-mers/)                         | K-mers for DNA Sequences                    |
