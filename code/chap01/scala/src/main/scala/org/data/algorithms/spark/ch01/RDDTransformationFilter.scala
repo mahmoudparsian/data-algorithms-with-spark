@@ -53,7 +53,7 @@ object RDDTransformationFilter {
         ("mary", "Cupertino", 66),
         ("jane", "Ames", 20),
         ("bob", "Ames", 26))
-    println("list_of_tuples = " + listOfTuples)
+    println("listOfTuples = " + listOfTuples)
     val rdd = spark.sparkContext.parallelize(listOfTuples)
     println("rdd = " +  rdd)
     println("rdd.count() = " + rdd.count())
