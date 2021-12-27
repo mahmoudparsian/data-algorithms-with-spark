@@ -5,21 +5,21 @@ import org.apache.spark.sql.SparkSession
 
 object AggregateByKeyUseCombineByKey {
 
-/*  -----------------------------------------------------
-   Apply a combineByKey() transformation to an
-   RDD[(key, value)] to find average per key.
-   Input: NONE
-     Create RDD[(key, value)] from a Collection
-  ------------------------------------------------------
-   Input Parameters:
-      NONE
-  -------------------------------------------------------
-   @author Deepak Kumar
-  -------------------------------------------------------
-  =========================================
-  Create a pair of (name, number) from t3
-  t3 = (name, city, number)*/
-  def createPair(t3:(String,String,Int)) : (String,Int) = {
+  /*  -----------------------------------------------------
+     Apply a combineByKey() transformation to an
+     RDD[(key, value)] to find average per key.
+     Input: NONE
+       Create RDD[(key, value)] from a Collection
+    ------------------------------------------------------
+     Input Parameters:
+        NONE
+    -------------------------------------------------------
+     @author Deepak Kumar
+    -------------------------------------------------------
+    =========================================
+    Create a pair of (name, number) from t3
+    t3 = (name, city, number)*/
+  def createPair(t3: (String, String, Int)): (String, Int) = {
     val name = t3._1
     val number = t3._3.intValue()
     (name, number)
@@ -27,7 +27,7 @@ object AggregateByKeyUseCombineByKey {
   /* end-def
   ==========================================*/
 
-  def main(args :  Array[String]) = {
+  def main(args: Array[String]) = {
     //create an instance of SparkSession
     val spark = SparkSession
       .builder()
@@ -69,36 +69,36 @@ object AggregateByKeyUseCombineByKey {
     rdd.collect.foreach(println)
 
     /* ------------------------------------
-   apply a map() transformation to rdd
-   create a (key, value) pair
-    where
-         key is the name (first element of tuple)
-         value is a number
-    ------------------------------------*/
+    apply a map() transformation to rdd
+    create a (key, value) pair
+     where
+          key is the name (first element of tuple)
+          value is a number
+     ------------------------------------*/
     val rdd2 = rdd.map(createPair)
     println("rdd2 = ", rdd2)
     println("rdd2.count() = ", rdd2.count())
     println("rdd2.collect() = ", rdd2.collect().mkString("Array(", ", ", ")"))
 
     /* ------------------------------------
-   apply a combineByKey() transformation to rdd2
-   create a (key, value) pair
-    where
-         key is the name
-         value is the (sum, count)
-  ------------------------------------
-   v : a number for a given (key, v) pair of source RDD
-   C : is a tuple of pair (sum, count), which is
-   also called a "combined" data structure
-   C1 and C2 are a "combined" data structure:
-     C1 = (sum1, count1)
-     C2 = (sum2, count2)*/
+    apply a combineByKey() transformation to rdd2
+    create a (key, value) pair
+     where
+          key is the name
+          value is the (sum, count)
+   ------------------------------------
+    v : a number for a given (key, v) pair of source RDD
+    C : is a tuple of pair (sum, count), which is
+    also called a "combined" data structure
+    C1 and C2 are a "combined" data structure:
+      C1 = (sum1, count1)
+      C2 = (sum2, count2)*/
     val createCountCombiner = (v: Double) => (v, 1)
     //(alex,(25,1))
     val sumCount = rdd2.combineByKey[(Int, Int)](v => (v, 1), (C, v) => (C._1 + v, C._2 + 1), (C1, C2) => (C1._1 + C2._1, C1._2 + C2._2))
     sumCount.collect.foreach(println(_))
-    //Close the underlying SparkContext.
-    spark.close()
+    //done!
+    spark.stop()
 
   }
 }
