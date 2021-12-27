@@ -110,7 +110,7 @@ object RDDTransformationReduceByKey {
     println("rdd4 = " + rdd4)
     println("rdd4.count() = " + rdd4.count())
     println("rdd4.collect() = " + rdd4.collect())
-
+    rdd4.collect.foreach(println _)
     //done!
     spark.stop()
   }
