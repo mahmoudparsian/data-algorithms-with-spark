@@ -37,7 +37,6 @@ object DNABaseCountVER1 {
     }
     //create an instance of SparkSession object
     val spark = SparkSession.builder().appName("DNABaseCountVER1").master("local[*]").getOrCreate()
-    println("spark initialised")
     val inputPath = args(1)
     println("inputPath :" + inputPath)
     val recordsRDD = spark.sparkContext.textFile(inputPath)
