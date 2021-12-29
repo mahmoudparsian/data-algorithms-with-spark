@@ -7,6 +7,14 @@ update_data_in_sh() {
 	echo "./gradlew clean run -PmainClass="$classname >> $filename
 }
 
+script_folder_name=run_spark_applications_scripts 
+
+if [ ! -d $script_folder_name ]
+then
+	mkdir $script_folder_name
+fi
+
+
 for file in `find . -type f -regex ".*\.scala"`
 do
 	filename=$(echo $file | awk -F "/" '{print $NF}' | cut -d "." -f1)
@@ -17,7 +25,7 @@ do
 			{print $i}
 		') 
 	mainClassName=$(echo "$packagename.$filename")
-	shellScriptName=$(echo $(echo $filename | cut -d "." -f1  \
+	shellScriptName=$(echo $script_folder_name/$(echo $filename | cut -d "." -f1  \
 		| sed 's/\([^A-Z]\)\([A-Z0-9]\)/\1_\2/g' \
 		| sed 's/\([A-Z0-9]\)\([A-Z0-9]\)\([^A-Z]\)/\1_\2\3/g' \
 		| tr '[:upper:]' '[:lower:]')".sh")
