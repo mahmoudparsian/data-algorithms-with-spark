@@ -1,12 +1,11 @@
 apply plugin: 'scala'
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+apply plugin: 'application'
 
 ext.scalaClassifier = '2.13'
 ext.scalaVersion = '2.13.7'
+ext.sparkVersion = '3.2.0'
 
-group 'com.spark.algos.data'
+group 'org.data.algorithms.spark.ch01'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -15,7 +14,11 @@ repositories {
 }
 
 dependencies {
-    implementation group: "org.scala-lang", name: "scala-library", version: "2.13.7"
-    implementation group: "org.apache.spark", name: "spark-core_2.13", version: "3.2.0"
-    implementation group: "org.apache.spark", name: "spark-sql_2.13", version: "3.2.0"
+    implementation "org.scala-lang:scala-library:$scalaVersion"
+    implementation "org.apache.spark:spark-core_$scalaClassifier:$sparkVersion"
+    implementation "org.apache.spark:spark-sql_$scalaClassifier:$sparkVersion"
+}
+
+application {
+    mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "NULL"
 }
