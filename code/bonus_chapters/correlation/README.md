@@ -24,7 +24,7 @@ Let selected genes/items/movies be: `G = {g1, g2, g3, g4, ...}`
  
 Then all-vs-all will correlate between the following:
 
-    ````
+    
     (g1, g2)
     (g1, g3)
     (g1, g4)
@@ -32,10 +32,11 @@ Then all-vs-all will correlate between the following:
     (g2, g4)
     (g3, g4)
     ...
-    ````
+    
 
 The goal is to find the following output:
-    ````
+    
+    
     ((g1, g2), (pearson_correlation, spearman_correlation))
     ((g1, g3), (pearson_correlation, spearman_correlation))
     ((g1, g4), (pearson_correlation, spearman_correlation))
@@ -43,7 +44,6 @@ The goal is to find the following output:
     ((g2, g4), (pearson_correlation, spearman_correlation))
     ((g3, g4), (pearson_correlation, spearman_correlation))
     ...
-    ````
 
 
 How to implement efficient correlation algorithms? 
