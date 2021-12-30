@@ -61,28 +61,23 @@ There are many correlation algorithms:
 
      ````
      scipy.stats.pearsonr(x, y)
-     Calculates a Pearson correlation coefficient and the p-value for testing non-correlation.
-     source : https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html
-    ````
+     Calculates a [Pearson correlation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html) coefficient and the p-value for testing non-correlation.
+     
 
 ### Spearman correlation:
 
-     ````
      scipy.stats.spearmanr(a, b=None, axis=0, nan_policy='propagate', alternative='two-sided')
-     Calculate a Spearman correlation coefficient with associated p-value.
-     source: https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html
-     ````   
+     Calculate a [Spearman correlation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html) coefficient with associated p-value.
+     source: 
 
 ### Input Data Format:
 
-    ````
     <gene_id_as_string><,><patient_id_as_string><,><biomarker_value_as_float>
 
     Record Example:
          g37761,patient_1234,1.28
          g22761,patient_1234,0.28
          g37761,patient_4788,1.20
-    ````
 
 -----
 
