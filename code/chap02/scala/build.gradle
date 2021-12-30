@@ -1,5 +1,5 @@
 apply plugin: 'scala'
-
+apply plugin: 'application'
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
@@ -18,4 +18,7 @@ dependencies {
     implementation group: "org.scala-lang", name: "scala-library", version: "2.13.7"
     implementation group: "org.apache.spark", name: "spark-core_2.13", version: "3.2.0"
     implementation group: "org.apache.spark", name: "spark-sql_2.13", version: "3.2.0"
+}
+application {
+    mainClass="org.data.algorithms.spark.ch02.DNSBaseCountVER2"
 }

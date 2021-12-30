@@ -7,23 +7,23 @@ import scala.sys.exit
 
 object DNSBaseCountVER2 {
 
-  def processFASTAAsHashMap(fastaRecord: String) : TraversableOnce[(String,Int)] = {
+  def processFASTAAsHashMap(fastaRecord: String) : List[(String,Int)] = {
     if(fastaRecord.startsWith(">"))
-      return mutable.HashMap[String,Int]("z" -> 1)
+      return List[(String,Int)]("z" -> 1)
     var hashmap = mutable.HashMap[String,Int]()
-    var chars = fastaRecord.toLowerCase
+    val chars = fastaRecord.toLowerCase
+
     for(c<-chars)
-      hashmap+=(c->1)
-    var keyValueList = List.empty
-      for (k <- hashmap)
-        keyValueList += (k._1, k._2)
+      hashmap.put(c.toString,hashmap.getOrElse(c.toString,0)+1)
+    var keyValueList = hashmap.toList
+
 
     return keyValueList
   }
 
   def main(args: Array[String]) = {
     if (args.length != 2) {
-      println("Usage:" + DNABaseCountVER1 + "  <input-path> ")
+      println("Usage:" + DNSBaseCountVER2 + "  <input-path> ")
       exit(-1)
     }
     //create an instance of SparkSession object
@@ -32,6 +32,7 @@ object DNSBaseCountVER2 {
     println("inputPath :" + inputPath)
     val recordsRDD = spark.sparkContext.textFile(inputPath)
     val pairsRDD = recordsRDD.flatMap(processFASTAAsHashMap)
+    pairsRDD.collect().foreach(println)
 
 
   }
