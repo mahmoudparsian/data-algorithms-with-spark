@@ -33,4 +33,11 @@ The following directories are bonus chapters:
 | [K-mers](./bonus_chapters/k-mers/)                         | K-mers for DNA Sequences                    |
 | [Correlation](./bonus_chapters/correlation/)               | All vs. All Correlation |
 
-----
+
+-----
+
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="../images/data_algorithms_with_spark.jpg"
+>
