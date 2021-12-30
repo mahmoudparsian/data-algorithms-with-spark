@@ -54,12 +54,13 @@ The goal is not to generate duplicate pairs `(a, b)` and `(b, a)`,
 but just to generate `(a, b)` if `(a < b)`.
 
 There are many correlation algorithms: 
-    Pearson
-    Spearman
+
+	* Pearson
+	* Spearman
     ...
+    
 ### Pearson correlation:
 
-     ````
      scipy.stats.pearsonr(x, y)
      Calculates a [Pearson correlation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.pearsonr.html) coefficient and the p-value for testing non-correlation.
      
@@ -68,7 +69,6 @@ There are many correlation algorithms:
 
      scipy.stats.spearmanr(a, b=None, axis=0, nan_policy='propagate', alternative='two-sided')
      Calculate a [Spearman correlation](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.spearmanr.html) coefficient with associated p-value.
-     source: 
 
 ### Input Data Format:
 
