@@ -46,7 +46,11 @@ The TF-IDF is accomplished in 5 simple steps:
   Step-3: calculate IDF
   Step-4: prepare for TF-IDF
   Step-5: prepare final output of TF-IDF  as a DataFrame    
-      
+
+NOTE: print() and collect() are used for debugging and educational purposes.
+
+@author: Mahmoud Parsian
+     
 """
 #-----------------------------------------------------
 # full_path = file:/book/code/bonus_chapters/TF-IDF/data/doc1
