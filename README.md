@@ -28,18 +28,12 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
 -----
 
 # Software:
-* [Spark 3.2.0](http://spark.apache.org/downloads.html)
-* [Python 3.7.2](https://www.python.org/downloads/)
-* [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html)
-* [Java 8](https://www.oracle.com/java/technologies/downloads/#java8)
 
 
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
-	
+| Spark    |      Python      |  Scala | Java 
+|----------|:----------------:|-------:|-----------:|
+| [Spark 3.2.0](http://spark.apache.org/downloads.html) |  [Python 3.7.2](https://www.python.org/downloads/) | [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html) | [Java 8](https://www.oracle.com/java/technologies/downloads/#java8) |
+
 -----
 
 # Table of Contents
