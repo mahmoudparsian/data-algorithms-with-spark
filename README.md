@@ -20,8 +20,8 @@
 
 # Chapter Solutions 
 Chapter solutions are provided in [PySpark and Scala](./code/)
-* PySpark solutions are provided by [Mahmoud Parsian](https://github.com/mahmoudparsian/)
-* Scala solutions are provided by [Deepak Kumar](https://github.com/deepakmca05/) and [Biman Mandal](https://github.com/bimanmandal/)
+* [PySpark solutions](./code/) are provided by [Mahmoud Parsian](https://github.com/mahmoudparsian/)
+* [Scala solutions](./code/) are provided by [Deepak Kumar](https://github.com/deepakmca05/) and [Biman Mandal](https://github.com/bimanmandal/)
 	
 -----
 
