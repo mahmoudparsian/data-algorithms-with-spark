@@ -21,4 +21,5 @@ so I added the following bonus chapters.
     <img
         alt="Data Algorithms with Spark"
         src="../images/data_algorithms_with_spark.jpg"
->%
+>
+
