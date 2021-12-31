@@ -20,7 +20,7 @@ basevector object. Typical values include 12, 20, 24, 36,
 and 48; kmers of these sizes are referred to as 12-mers, 
 20-mers, and so forth.
 
-NOTE: print() is used for debugging and educational purposes.
+NOTE: print() and collect() are used for debugging and educational purposes.
  
 @author Mahmoud Parsian
  

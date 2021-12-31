@@ -2,6 +2,12 @@ from __future__ import print_function
 import sys
 from pyspark.sql import SparkSession
 #======================================
+#
+# NOTE: print() and collect() are used for debugging and educational purposes.
+#
+# @author Mahmoud Parsian
+#
+#======================================
 def main():
 
     # create an instance of a SparkSession as spark

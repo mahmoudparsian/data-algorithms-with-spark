@@ -32,7 +32,7 @@ from collections import Counter
  *     and -> null
  *     Detroit -> null
  *
- * NOTE: print() is used for educational purposes.
+ * NOTE: print() and collect() are used for debugging and educational purposes.
  *
  * @author Mahmoud Parsian
  *

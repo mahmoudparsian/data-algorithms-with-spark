@@ -38,9 +38,8 @@ that word.
 
 IDF(w) = log ( N / M)
 
-NOTE: print() is used for debugging and educational purposes.
 
-The TF-IDF is accomplished in 5 simple steps:
+Algorithm: The TF-IDF is accomplished in 5 simple steps:
   Step-1: prepare input
   Step-2: calculate TF
   Step-3: calculate IDF
