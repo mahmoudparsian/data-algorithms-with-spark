@@ -37,13 +37,13 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
 # Table of Contents
 
 | Chapter        |      Title       |
-|----------------|:----------------:|
+|----------------|------------------|
 | Bonus Chapters |[Bonus Chapters (TF-IDF, Correlation, ...)](./code/bonus_chapters/) |
 | Chapter 1      |[Introduction to Data Algorithms](./code/chap01/) |
 | Chapter 2      |[Transformations in Action](./code/chap02/) |
 | Chapter 3      |[Mapper Transformations](./code/chap03/) |
 | Chapter 4      |[Reductions in Spark](./code/chap04/) |
-| Chapter 5      |[] Partitioning Data](./code/chap05/) |
+| Chapter 5      |[Partitioning Data](./code/chap05/) |
 | Chapter 6      |[Graph Algorithms](./code/chap06/) |
 | Chapter 7      |[Interacting with External Data Sources](./code/chap07/) |
 | Chapter 8      |[Ranking Algorithms](./code/chap08/) |
