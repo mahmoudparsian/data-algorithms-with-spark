@@ -38,19 +38,19 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
 
 | Chapter        |      Title       |
 |----------------|------------------|
-| Bonus Chapters |[Bonus Chapters (TF-IDF, Correlation, ...)](./code/bonus_chapters/) |
-| Chapter 1      |[Introduction to Data Algorithms](./code/chap01/) |
-| Chapter 2      |[Transformations in Action](./code/chap02/) |
-| Chapter 3      |[Mapper Transformations](./code/chap03/) |
-| Chapter 4      |[Reductions in Spark](./code/chap04/) |
-| Chapter 5      |[Partitioning Data](./code/chap05/) |
-| Chapter 6      |[Graph Algorithms](./code/chap06/) |
-| Chapter 7      |[Interacting with External Data Sources](./code/chap07/) |
-| Chapter 8      |[Ranking Algorithms](./code/chap08/) |
-| Chapter 9      |[Fundamental Data Design Patterns](./code/chap09/) |
-| Chapter 10     |[Common Data Design Patterns](./code/chap10/) |
-| Chapter 11     |[Join Design Patterns](./code/chap11/) |
-| Chapter 12     |[Feature Engineering in PySpark](./code/chap12/) |
+| Bonus Chapters | [Bonus Chapters (TF-IDF, Correlation, ...)](./code/bonus_chapters/) |
+| Chapter 1      | [Introduction to Data Algorithms](./code/chap01/) |
+| Chapter 2      | [Transformations in Action](./code/chap02/) |
+| Chapter 3      | [Mapper Transformations](./code/chap03/) |
+| Chapter 4      | [Reductions in Spark](./code/chap04/) |
+| Chapter 5      | [Partitioning Data](./code/chap05/) |
+| Chapter 6      | [Graph Algorithms](./code/chap06/) |
+| Chapter 7      | [Interacting with External Data Sources](./code/chap07/) |
+| Chapter 8      | [Ranking Algorithms](./code/chap08/) |
+| Chapter 9      | [Fundamental Data Design Patterns](./code/chap09/) |
+| Chapter 10     | [Common Data Design Patterns](./code/chap10/) |
+| Chapter 11     | [Join Design Patterns](./code/chap11/) |
+| Chapter 12     | [Feature Engineering in PySpark](./code/chap12/) |
 
 
 -----
