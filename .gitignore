@@ -1,6 +1,6 @@
 /code/chap02/scala/.idea/
 .DS_Store
-.idea
+.idea/
 build
 gradle
 .gradle
