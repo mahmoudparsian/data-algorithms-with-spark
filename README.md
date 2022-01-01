@@ -62,3 +62,11 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
         alt="Data Algorithms with Spark"
         src="images/data_algorithms_with_spark.jpg"
 >
+
+------
+
+[//]: # (metadata:)
+[//]: # (Data Algorithms with Spark, Spark, PySpark, Python)
+[//]: # (MapReduce, Distributed Algorithms, mappers, reducers, partitioners)
+[//]: # (Transformations, Actions, RDDs, DataFrames, SQL)
+[//]: # (Data Design Patterns, monoids)
