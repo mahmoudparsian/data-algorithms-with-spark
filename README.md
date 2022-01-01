@@ -4,6 +4,8 @@
 
 * Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
+* [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
+
 * Email: mahmoud.parsian@yahoo.com
 
 * This new book (to be published by O'Reilly) is the 2nd Edition of 
