@@ -4,3 +4,5 @@
 build
 gradle
 .gradle
+.idea
+!gradle-wrapper.jar

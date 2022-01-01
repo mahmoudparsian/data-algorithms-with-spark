@@ -9,7 +9,9 @@ Kmer counting for a given K and N, where
 K: to find K-mers
 N: to find top-N
 
-Usage: kmer.py <fastq-file> <K> <N>
+Usage: $SPARK_HOME/bin/spark-submit kmer_fastq.py <fastq-input-path> <K> <N>
+
+FASTQ file format: https://en.wikipedia.org/wiki/FASTQ_format
 
 A k-mer (or kmer) is a short DNA sequence consisting of 
 a fixed number (K) of bases. The value of k is usually 
@@ -17,6 +19,8 @@ divisible by 4 so that a kmer can fit compactly into a
 basevector object. Typical values include 12, 20, 24, 36, 
 and 48; kmers of these sizes are referred to as 12-mers, 
 20-mers, and so forth.
+
+NOTE: print() and collect() are used for debugging and educational purposes.
  
 @author Mahmoud Parsian
  
@@ -98,7 +102,7 @@ if __name__ == '__main__':
 """
 sample run:
 
-$SPARK_HOME/bin/spark-submit kmer.py sample_1.fastq 4 3
+$SPARK_HOME/bin/spark-submit kmer_fastq.py sample_1.fastq 4 3
 K= 4
 N= 3
 fastq_input_path= sample_1.fastq
