@@ -5,6 +5,35 @@ Lambda functions can also act as anonymous functions where they don’t
 require any name. These are very helpful when we have to perform small 
 tasks with less code.
 
+# Python Example
+
+Python programming language supports the creation of anonymous functions 
+(i.e. functions defined without a name), using a construct called `lambda`.
+
+The general structure of a lambda function is:
+
+ 	lambda <arguments>: <expression>
+ 
+
+Here is a simple python function to double the value of a scalar:
+
+	 def f(x): 
+	   return x*2
+     #end-def
+
+For instance to use this function:
+
+	 print(f(4))
+	 8
+ 
+
+The same function can be written as `lambda` function:
+
+ 	g = lambda x: x*2
+ 
+
+# PySpark Example
+
 ````
 
 # rdd: RDD[(String, Integer)]
