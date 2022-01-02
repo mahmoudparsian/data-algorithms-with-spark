@@ -31,28 +31,36 @@ For instance to use this function:
 
 The same function can be written as `lambda` function:
 
- 	g = lambda x: x*2
- 
+ 	>>> g = lambda x: x*2
+	>>> g
+	<function <lambda> at 0x105668b90>
+	>>> g(10)
+	20
+	
 
 # PySpark Example
 
-````
+You may use lambda expressions or functions in PySpark:
 
-# rdd: RDD[(String, Integer)]
-# x : (String, Integer)
-rdd2 = rdd.filter(lambda x: x[1] > 0)
 
--- OR --
+### PySpark Example using `lambda` 
 
-# x : (String, Integer)
-def filter_function(x):
-    if (x[1] > 0):
-        return True
-    else:
-        return False
-#end-def
+	# rdd: RDD[(String, Integer)]
+	# x : (String, Integer)
+	rdd2 = rdd.filter(lambda x: x[1] > 0)
+	
 
-# rdd: RDD[(String, Integer)]
-rdd2 = rdd.filter(filter_function)
+### PySpark Example using function
 
-````
+	# x : (String, Integer)
+	def filter_function(x):
+		if (x[1] > 0):
+			return True
+		else:
+			return False
+	#end-def
+
+	# rdd: RDD[(String, Integer)]
+	rdd2 = rdd.filter(filter_function)
+
+
