@@ -40,15 +40,20 @@ from pyspark.sql.functions import randn
 from pyspark.sql.functions import percentile_approx
 import statistics
 
+#------------------------------------------------------------
+def create_test_dataframe(spark_session, number_of_keys, number_of_rows):
+    key = (col("id") % number_of_keys).alias("key")
+    value = (randn(41) + key * number_of_keys).alias("value")
+    df = spark_session.range(0, number_of_rows, 1, 1).select(key, value)
+    return df
+#------------------------------------------------------------
 def main():
     # create an instance of SparkSession
     spark = SparkSession.builder.getOrCreate()
 
     # create a DataFrame with 1000,000 rows and two columns: "key" and "value"
     # number of keys will be 10 {0, 1, 2,, ..., 9}
-    key = (col("id") % 10).alias("key")
-    value = (randn(41) + key * 10).alias("value")
-    df = spark.range(0, 1000000, 1, 1).select(key, value)
+    df = create_test_dataframe(spark, 10, 1000000)
     print("df.count()=", df.count())
     df.printSchema()
     df.show(20, truncate=False)
