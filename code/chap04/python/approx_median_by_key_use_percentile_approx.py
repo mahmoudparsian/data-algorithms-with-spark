@@ -60,10 +60,10 @@ def main():
     
     # relative error = 1/10,000,000
     # use approximation
-    median_per_key = df.groupBy("key").agg(percentile_approx("value", 0.5, lit(100000000)).alias("median"))
-    print("median_per_key.count()=", median_per_key.count())
-    median_per_key.printSchema()
-    median_per_key.show(truncate=False)
+    approx_median_per_key = df.groupBy("key").agg(percentile_approx("value", 0.5, lit(100000000)).alias("median"))
+    print("approx_median_per_key.count()=", approx_median_per_key.count())
+    approx_median_per_key.printSchema()
+    approx_median_per_key.show(truncate=False)
     
     # for comparison purposes 
     # use exact meidan
