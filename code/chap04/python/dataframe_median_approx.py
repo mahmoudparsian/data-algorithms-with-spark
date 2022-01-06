@@ -85,7 +85,7 @@ if __name__ == '__main__':
 
 sample run:
 
-$SPARK_HOME/bin/spark-submit approx_median_by_key_use_percentile_approx.py
+$SPARK_HOME/bin/spark-submit dataframe_median_approx.py
 
 df.count()= 1000000
 
