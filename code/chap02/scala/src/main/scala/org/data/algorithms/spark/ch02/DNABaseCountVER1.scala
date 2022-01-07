@@ -23,34 +23,32 @@ object DNABaseCountVER1 {
     if (fastaRecord.startsWith(">"))
       keyValueList += ("z" -> 1)
     else {
-      var chars = fastaRecord.toLowerCase
+      val chars = fastaRecord.toLowerCase
       for (c <- chars)
         keyValueList += c.toString -> 1
     }
-    return keyValueList
+    keyValueList
   }
 
-  def main(args: Array[String]) = {
-    if (args.length != 2) {
-      println("Usage:" + DNABaseCountVER1 + "  <input-path> ")
+  def main(args: Array[String]): Unit = {
+    if (args.length != 1) {
+      println("Input Path is missing")
       exit(-1)
     }
     //create an instance of SparkSession object
     val spark = SparkSession.builder().appName("DNABaseCountVER1").master("local[*]").getOrCreate()
-    val inputPath = args(1)
+    val inputPath = args(0)
     println("inputPath :" + inputPath)
     val recordsRDD = spark.sparkContext.textFile(inputPath)
     println("recordsRDD.count() : " + recordsRDD.count())
     val recordsAsList = recordsRDD.collect()
-    print("recordsAsList : ", recordsAsList)
+    print("recordsAsList : ", recordsAsList.mkString("Array(", ", ", ")"))
     // if you do not have enough RAM, then do the following
-    // MEMORY_AND_DISK = StorageLevel(True, True, False, False, 1)
-    //recordsRDD.persist(StorageLevel(True, True, False, False, 1))
-    //
+    // recordsRdd.persist(StorageLevel.MEMORY_AND_DISK)
     val pairsRDD = recordsRDD.flatMap(processFASTARecord)
-    pairsRDD.collect.foreach(println)
+    pairsRDD.collect().foreach(println)
 
-    val frequenciesRDD = pairsRDD.reduceByKey((x, y) => (x + y))
+    val frequenciesRDD = pairsRDD.reduceByKey((x, y) => x + y)
     println("frequenciesRDD : debug")
     val frequenciesAsList = frequenciesRDD.collect()
     println("frequenciesAsList : " + frequenciesAsList.foreach(println))
