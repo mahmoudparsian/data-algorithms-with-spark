@@ -1,6 +1,6 @@
 # [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-### The goal of this book is to enable writing efficient & simpler code for data algorithms
+#### The goal of this book is to enable writing efficient & simpler code for data algorithms using Spark
 
 * Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
@@ -32,7 +32,7 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
 
 | Spark    |      Python      |  Scala | Java 
 |----------|:----------------:|-------:|-----------:|
-| [Spark 3.2.0](http://spark.apache.org/downloads.html) |  [Python 3.7.2](https://www.python.org/downloads/) | [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html) | [Java 8](https://www.oracle.com/java/technologies/downloads/#java8) |
+| [Apache Spark 3.2.0](http://spark.apache.org/downloads.html) |  [Python 3.7.2](https://www.python.org/downloads/) | [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html) | [Java 8](https://www.oracle.com/java/technologies/downloads/#java8) |
 
 -----
 
@@ -62,3 +62,11 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
         alt="Data Algorithms with Spark"
         src="images/data_algorithms_with_spark.jpg"
 >
+
+------
+
+[//]: # (metadata:)
+[//]: # (Data Algorithms with Spark, Spark, PySpark, Python)
+[//]: # (MapReduce, Distributed Algorithms, mappers, reducers, partitioners)
+[//]: # (Transformations, Actions, RDDs, DataFrames, SQL)
+[//]: # (Data Design Patterns, monoids)
