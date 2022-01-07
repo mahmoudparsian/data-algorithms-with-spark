@@ -1,7 +1,15 @@
 #!/bin/bash
 SECONDS=0
 /bin/date
-#!/bin/bash
+#------------------------------------------------------
+# NOTE: define your input path
+# Before running your Spark program,
+# Download *.fa from this location and place it under
+# the following directory: /book/chap02/data/
+#
+# Download URL:
+#   http://hgdownload.cse.ucsc.edu/goldenpath/hg19/snp137Mask/
+#------------------------------------------------------
 # define your input path
 INPUT_PATH="data/*.fasta"
 
