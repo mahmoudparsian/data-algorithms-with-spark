@@ -4,6 +4,8 @@
 
 * Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
+* [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
+
 * Email: mahmoud.parsian@yahoo.com
 
 * This new book (to be published by O'Reilly) is the 2nd Edition of 
@@ -16,47 +18,41 @@
 
 * Estimated [Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-* Chapter solutions are provided in [PySpark and Scala](./code/)
-	* PySpark solutions are provided by [Mahmoud Parsian](https://github.com/mahmoudparsian/)
-	* Scala solutions are provided by [Deepak Kumar](https://github.com/deepakmca05/)
+-----
 
+# Chapter Solutions 
+Chapter solutions are provided in [PySpark and Scala](./code/)
+* [PySpark solutions](./code/) are provided by [Mahmoud Parsian](https://github.com/mahmoudparsian/)
+* [Scala solutions](./code/) are provided by [Deepak Kumar](https://github.com/deepakmca05/) and [Biman Mandal](https://github.com/bimanmandal/)
+	
 -----
 
 # Software:
-* [Spark 3.2.0](http://spark.apache.org/downloads.html)
-* [Python 3.7.2](https://www.python.org/downloads/)
-* [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html)
-* [Java 8](https://www.oracle.com/java/technologies/downloads/#java8)
-	
+
+
+| Spark    |      Python      |  Scala | Java 
+|----------|:----------------:|-------:|-----------:|
+| [Spark 3.2.0](http://spark.apache.org/downloads.html) |  [Python 3.7.2](https://www.python.org/downloads/) | [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html) | [Java 8](https://www.oracle.com/java/technologies/downloads/#java8) |
+
 -----
 
 # Table of Contents
 
-0. [Bonus Chapters...](./code/bonus_chapters/)
-
-1. [Chapter 1: Introduction to Data Algorithms](./code/chap01/)
-
-2. [Chapter 2: Transformations in Action](./code/chap02/)
-
-3. [Chapter 3: Mapper Transformations](./code/chap03/)
-
-4. [Chapter 4: Reductions in Spark](./code/chap04/)
-
-5. [Chapter 5: Partitioning Data](./code/chap05/)
-
-6. [Chapter 6: Graph Algorithms](./code/chap06/)
-
-7. [Chapter 7: Interacting with External Data Sources](./code/chap07/)
-
-8. [Chapter 8: Ranking Algorithms](./code/chap08/)
-
-9. [Chapter 9: Fundamental Data Design Patterns](./code/chap09/)
-
-10. [Chapter 10: Common Data Design Patterns](./code/chap10/)
-
-11. [Chapter 11: Join Design Patterns](./code/chap11/)
-
-12. [Chapter 12: Feature Engineering in PySpark](./code/chap12/)
+| Chapter        |      Title       |
+|----------------|------------------|
+| Bonus Chapters | [Bonus Chapters (TF-IDF, Correlation, ...)](./code/bonus_chapters/) |
+| Chapter 1      | [Introduction to Data Algorithms](./code/chap01/) |
+| Chapter 2      | [Transformations in Action](./code/chap02/) |
+| Chapter 3      | [Mapper Transformations](./code/chap03/) |
+| Chapter 4      | [Reductions in Spark](./code/chap04/) |
+| Chapter 5      | [Partitioning Data](./code/chap05/) |
+| Chapter 6      | [Graph Algorithms](./code/chap06/) |
+| Chapter 7      | [Interacting with External Data Sources](./code/chap07/) |
+| Chapter 8      | [Ranking Algorithms](./code/chap08/) |
+| Chapter 9      | [Fundamental Data Design Patterns](./code/chap09/) |
+| Chapter 10     | [Common Data Design Patterns](./code/chap10/) |
+| Chapter 11     | [Join Design Patterns](./code/chap11/) |
+| Chapter 12     | [Feature Engineering in PySpark](./code/chap12/) |
 
 
 -----

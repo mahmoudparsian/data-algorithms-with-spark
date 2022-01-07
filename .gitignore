@@ -1,0 +1,8 @@
+/code/chap02/scala/.idea/
+.DS_Store
+.idea/
+build
+gradle
+.gradle
+.idea
+!gradle-wrapper.jar
