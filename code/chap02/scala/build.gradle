@@ -1,0 +1,23 @@
+apply plugin: 'scala'
+apply plugin: 'application'
+
+ext.scalaClassifier = '2.13'
+ext.scalaVersion = '2.13.7'
+
+group 'com.spark.algos.data'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation group: "org.scala-lang", name: "scala-library", version: "2.13.7"
+    implementation group: "org.apache.spark", name: "spark-core_2.13", version: "3.2.0"
+    implementation group: "org.apache.spark", name: "spark-sql_2.13", version: "3.2.0"
+}
+
+application {
+    mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "NULL"
+}

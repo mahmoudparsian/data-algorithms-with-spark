@@ -1,11 +1,11 @@
 # What are [Lambda Functions](./Lambda_Expressions.pdf)?
 
 	Lambda functions = Anonymous functions
-
 A lambda function is a small function containing a single expression. 
 Lambda functions can also act as anonymous functions where they don’t 
 require any name. These are very helpful when we have to perform small 
 tasks with less code.
+
 
 # Python Example
 
@@ -62,5 +62,4 @@ You may use lambda expressions or functions in PySpark:
 
 	# rdd: RDD[(String, Integer)]
 	rdd2 = rdd.filter(filter_function)
-
 

@@ -1,5 +1,7 @@
 .DS_Store
+.idea/
+build
+gradle
 .gradle
 .idea
-build
 !gradle-wrapper.jar
