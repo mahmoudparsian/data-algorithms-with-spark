@@ -16,8 +16,7 @@ object MapPartitionsTransformation1 {
    @author Deepak
   -------------------------------------------------------
   */
-
-  """
+  /*
 Spark's mapPartitions()
 According to Spark API: mapPartitions(func)    transformation is
 similar to map(), but runs separately on each partition (block)
@@ -62,7 +61,7 @@ In this example, we find (N, Z, P) for all given numbers, where
   N : count of all negative numbers
   Z : count of all zero numbers
   P : count of all positive numbers
-"""
+*/
 
   def debugAPartition(iterator: Iterator[String]) = {
     var elements: ListBuffer[String] = ListBuffer()
@@ -132,7 +131,7 @@ In this example, we find (N, Z, P) for all given numbers, where
     val nzpRDD = rdd.mapPartitions(countNZP)
     println(s"nzpRDD = $nzpRDD")
     println(s"nzpRDD.count() = ${nzpRDD.count()}")
-    println(s"nzpRDD.collect() = ${nzpRDD.collect()}")
+    println(s"nzpRDD.collect() = ${nzpRDD.collect().mkString("Array(", ", ", ")")}")
     // x: denotes (N1, Z1, P1)
     // y: denotes (N2, Z2, P2)
     val finalNPZ = nzpRDD.reduce((x, y) => (x._1 + y._1, x._2 + y._2, x._3 + y._3))
