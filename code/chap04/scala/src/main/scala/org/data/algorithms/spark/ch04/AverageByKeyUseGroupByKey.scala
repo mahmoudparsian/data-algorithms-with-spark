@@ -2,7 +2,7 @@ package org.data.algorithms.spark.ch04
 
 import org.apache.spark.sql.SparkSession
 
-object AverageByKeyUseGroupbykey {
+object AverageByKeyUseGroupByKey {
   def createSparkSession: SparkSession = {
     SparkSession.builder()
       .master("local[*]")
