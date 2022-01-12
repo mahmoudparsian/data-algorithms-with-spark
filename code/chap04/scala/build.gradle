@@ -17,6 +17,11 @@ dependencies {
     implementation "org.scala-lang:scala-library:$scalaVersion"
     implementation "org.apache.spark:spark-core_$scalaClassifier:$sparkVersion"
     implementation "org.apache.spark:spark-sql_$scalaClassifier:$sparkVersion"
+    implementation 'org.scalanlp:breeze_2.13:2.0.1-RC2'
+
+
+
+
 }
 
 application {
