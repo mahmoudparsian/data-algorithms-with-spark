@@ -15,10 +15,21 @@ repositories {
 
 dependencies {
     implementation "org.scala-lang:scala-library:$scalaVersion"
+    compile "org.scala-lang:scala-compiler:$scalaVersion"
     implementation "org.apache.spark:spark-core_$scalaClassifier:$sparkVersion"
     implementation "org.apache.spark:spark-sql_$scalaClassifier:$sparkVersion"
+    implementation 'org.scalanlp:breeze_2.13:2.0.1-RC2'
+
 }
 
 application {
     mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "NULL"
+}
+
+// To start the scala repl use the command ./gradlew repl --console plain --no-daemon
+task repl(type:JavaExec) {
+    main = "scala.tools.nsc.MainGenericRunner"
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput System.in
+    args '-usejavacp'
 }
