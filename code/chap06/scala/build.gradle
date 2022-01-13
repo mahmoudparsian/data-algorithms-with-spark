@@ -1,35 +1,30 @@
 apply plugin: 'scala'
 apply plugin: 'application'
 
-ext.scalaClassifier = '2.13'
-ext.scalaVersion = '2.13.7'
+ext.scalaClassifier = '2.12'
+ext.scalaVersion = '2.12.15'
 ext.sparkVersion = '3.2.0'
 
 group 'org.data.algorithms.spark.ch03'
 version '1.0-SNAPSHOT'
 
 repositories {
-    mavenLocal()
+//    mavenLocal()
     mavenCentral()
+    maven {
+        url "https://repos.spark-packages.org"
+    }
 }
 
 dependencies {
     implementation "org.scala-lang:scala-library:$scalaVersion"
-    compile "org.scala-lang:scala-compiler:$scalaVersion"
     implementation "org.apache.spark:spark-core_$scalaClassifier:$sparkVersion"
     implementation "org.apache.spark:spark-sql_$scalaClassifier:$sparkVersion"
-    implementation 'org.scalanlp:breeze_2.13:2.0.1-RC2'
+    implementation "org.apache.spark:spark-graphx_$scalaClassifier:$sparkVersion"
+    implementation 'graphframes:graphframes:0.8.2-spark3.2-s_2.12'
 
 }
 
 application {
     mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "NULL"
-}
-
-// To start the scala repl use the command ./gradlew repl --console plain --no-daemon
-task repl(type:JavaExec) {
-    main = "scala.tools.nsc.MainGenericRunner"
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput System.in
-    args '-usejavacp'
 }
