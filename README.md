@@ -18,7 +18,7 @@
 
 * Estimated [Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-* Contacts:
+* Autor Contact:
 	* [Email](mailto:mahmoud.parsian@yahoo.com)
 	* [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/)
 	* [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/)
