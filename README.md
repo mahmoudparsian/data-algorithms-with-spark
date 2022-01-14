@@ -8,8 +8,6 @@
 
 * [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
 
-* Email: mahmoud.parsian@yahoo.com
-
 * This new book (to be published by O'Reilly) is the 2nd Edition of 
   [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
   (published by [O'Reilly](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/))
@@ -20,9 +18,10 @@
 
 * Estimated [Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-* [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/)
-
-* [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/)
+* Contacts:
+	* [Email](mailto:mahmoud.parsian@yahoo.com)
+	* [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/)
+	* [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/)
 
 -----
 
