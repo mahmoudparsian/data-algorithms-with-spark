@@ -1,8 +1,9 @@
 # Data Design Patterns
 
-		@author: Mahmoud Parsian
-		@email: mahmoud.parsian@yahoo.com
-		@last updated: 1/10/2022
+	author: Mahmoud Parsian
+	email: mahmoud.parsian@yahoo.com
+	affiliation: Senior Architect @Illumina, Adjunct faculty @Santa Clara University
+	last updated: 1/10/2022
 	
 The goal of this paper/chapter is to present 
 Data Design Patterns in an informal way. The
