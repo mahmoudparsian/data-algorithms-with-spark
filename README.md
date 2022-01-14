@@ -43,7 +43,7 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
 
 | Chapter        |      Title       |
 |----------------|------------------|
-| Bonus Chapters | [Bonus Chapters (TF-IDF, Correlation, ...)](./code/bonus_chapters/) |
+| Bonus Chapters | [Bonus Chapters (TF-IDF, Correlation, K-mers, anagrams, ...)](./code/bonus_chapters/) |
 | Chapter 1      | [Introduction to Data Algorithms](./code/chap01/) |
 | Chapter 2      | [Transformations in Action](./code/chap02/) |
 | Chapter 3      | [Mapper Transformations](./code/chap03/) |
