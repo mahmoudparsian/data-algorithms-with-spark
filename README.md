@@ -3,10 +3,10 @@
 #### The goal of this book is to enable writing efficient & simpler code for data algorithms using Spark
 
 
-[![Linkedin](https://i.stack.imgur.com/gVE0j.png) LinkedIn](https://www.linkedin.com/mahmoudparsian/)
+[![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/)
 
 
-[![GitHub](https://i.stack.imgur.com/tskMh.png) GitHub](https://github.com/mahmoudparsian/)
+[![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/)
 
 
 * Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
