@@ -55,7 +55,7 @@ object DatasourceRedisReader {
       .format("org.apache.spark.sql.redis")
       .option("table", "people")
       .option("key.column", "name")
-      .option("inferSchema", true)
+      .option("infer.schema", "true")
       .load()
 
     println("loadedDf = " + loadedDf)
