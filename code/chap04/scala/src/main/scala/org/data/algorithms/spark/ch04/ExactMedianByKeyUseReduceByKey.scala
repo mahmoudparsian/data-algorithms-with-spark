@@ -34,7 +34,7 @@ import org.apache.spark.sql.SparkSession
 object ExactMedianByKeyUseReduceByKey {
   def main(args: Array[String]): Unit = {
     // create an instance of SparkSession
-    val spark = SparkSession.builder.master("local[*]").getOrCreate()
+    val spark = SparkSession.builder().master("local[*]").getOrCreate()
 
     val input = List(("k1", 1), ("k1", 2), ("k1", 3), ("k1", 4), ("k1", 5),
       ("k2", 1), ("k2", 2), ("k2", 6), ("k2", 7), ("k2", 8),

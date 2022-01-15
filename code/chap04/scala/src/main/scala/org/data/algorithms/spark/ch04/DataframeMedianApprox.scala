@@ -53,7 +53,7 @@ object DataframeMedianApprox {
   def main(args: Array[String]): Unit = {
 
     // create an instance of SparkSession
-    val spark = SparkSession.builder.master("local[*]").getOrCreate()
+    val spark = SparkSession.builder().master("local[*]").getOrCreate()
 
     // create a DataFrame with 1000,000 rows and two columns: "key" and "value"
     // number of keys will be 10 {0, 1, 2,, ..., 9}
