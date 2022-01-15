@@ -1,12 +1,12 @@
 # [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-#### The goal of this book is to enable writing efficient & simpler code for data algorithms using Spark
+#### Goal of this book: enable writing efficient & simpler code for data algorithms using Spark
+
+-----
 
 * Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
 * [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
-
-* Email: mahmoud.parsian@yahoo.com
 
 * This new book (to be published by O'Reilly) is the 2nd Edition of 
   [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
@@ -17,6 +17,9 @@
 * This GitHub repository will host all source code and scripts for Data Algorithms with Spark
 
 * Estimated [Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
+
+* Autor Contact: [ [![Email](https://support.microsoft.com/images/Mail-GrayScale.png) Email](mailto:mahmoud.parsian@yahoo.com) ]  [  [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/) ][  [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/) ]
+
 
 -----
 
@@ -40,7 +43,7 @@ Chapter solutions are provided in [PySpark and Scala](./code/)
 
 | Chapter        |      Title       |
 |----------------|------------------|
-| Bonus Chapters | [Bonus Chapters (TF-IDF, Correlation, ...)](./code/bonus_chapters/) |
+| Bonus Chapters | [Bonus Chapters (TF-IDF, Correlation, K-mers, anagrams, ...)](./code/bonus_chapters/) |
 | Chapter 1      | [Introduction to Data Algorithms](./code/chap01/) |
 | Chapter 2      | [Transformations in Action](./code/chap02/) |
 | Chapter 3      | [Mapper Transformations](./code/chap03/) |
