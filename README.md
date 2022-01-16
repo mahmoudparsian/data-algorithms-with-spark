@@ -14,19 +14,21 @@
 
 * The first edition used Java for Spark, but for the new book, I will use PySpark (much simpler and readable)
 	
-* This GitHub repository will host all source code and scripts for Data Algorithms with Spark
-
-* Estimated [Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
+* [Estimated Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
 * Autor Contact: [ [![Email](https://support.microsoft.com/images/Mail-GrayScale.png) Email](mailto:mahmoud.parsian@yahoo.com) ]  [  [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/) ][  [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/) ]
 
 
 -----
 
-# Chapter Solutions 
-Chapter solutions are provided in [PySpark and Scala](./code/)
-* [PySpark solutions](./code/) are provided by [Mahmoud Parsian](https://github.com/mahmoudparsian/)
-* [Scala solutions](./code/) are provided by [Deepak Kumar](https://github.com/deepakmca05/) and [Biman Mandal](https://github.com/bimanmandal/)
+# Github Chapter Solutions 
+
+* This GitHub repository will host all source code and scripts for 
+  [Data Algorithms with Spark]((https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/))
+
+* Chapter solutions are provided in [PySpark and Scala](./code/)
+	* [PySpark solutions](./code/) are provided by [Mahmoud Parsian](https://github.com/mahmoudparsian/)
+	* [Scala solutions](./code/) are provided by [Deepak Kumar](https://github.com/deepakmca05/) and [Biman Mandal](https://github.com/bimanmandal/)
 	
 -----
 
