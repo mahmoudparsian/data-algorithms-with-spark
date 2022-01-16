@@ -19,6 +19,7 @@ dependencies {
     implementation "org.apache.spark:spark-sql_$scalaClassifier:$sparkVersion"
     implementation 'com.redislabs:spark-redis_2.12:3.0.0'
     implementation 'org.elasticsearch:elasticsearch-hadoop:7.16.3'
+    implementation 'org.mongodb.spark:mongo-spark-connector_2.12:3.0.1'
 }
 
 application {
