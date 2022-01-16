@@ -9,8 +9,15 @@
 		Note: this document is in progress...
 	
 The goal of this paper/chapter is to present 
-Data Design Patterns in an informal way. The
-emphasis has been on pragmatism and practicality.
+Data Design Patterns in an informal way. 
+
+The emphasis has been on pragmatism and practicality.
+
+Data Design Patterns formats:
+
+* [PDF version](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/code/chap10/data_design_patterns.pdf)
+* [Marcdown version](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/code/chap10/data_design_patterns.md)
+
 
 Source code for Data Design Patterns are provided in 
 [GitHub](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/chap10/python).
