@@ -4,17 +4,17 @@ import org.apache.spark.sql.SparkSession
 
 /**
  *-----------------------------------------------------
- * Create a DataFrame from a CSV file Without a Header
- * Input: CSV File Without a Header
+ * Create a DataFrame from a CSV file With Header
+ * Input: CSV File With Header
  *------------------------------------------------------
  * Input Parameters:
- *    a CSV file Without a Header
+ *    a CSV file With Header
  *-------------------------------------------------------
  *
  * @author Biman Mandal
  *-------------------------------------------------------
  */
-object DatasourceCSVReaderNoHeader {
+object DatasourceCSVReaderHeader {
 
   def debugFile(fileName: String) =
     println(scala.io.Source.fromFile(fileName).mkString)
@@ -33,30 +33,23 @@ object DatasourceCSVReaderNoHeader {
      * Create a DataFrame from a given input file
      *=====================================
      *
-     * Spark enable us to read CSV files with or without a header.
-     * Here we will read a CSV file without a header and create
-     * a new DataFrame
+     * Spark enable us to read CSV files with a header.
+     * Basically, a header is a CSV string of column names.
      *
-     * The following example reads a CSV file without a
+     * The following example reads a CSV file with a
      * header and create a new DataFrame and infers a
      * schema from the content of columns:
      */
     val df = spark
       .read
       .format("org.apache.spark.sql.execution.datasources.v2.csv.CSVDataSourceV2")
-      .option("header","false")
+      .option("header","true")
       .option("inferSchema", "true")
       .load(inputPath)
+    println("df.count() = " + df.count())
     println("df = " + df.collect().mkString("Array(", ", ", ")"))
     df.show()
     df.printSchema()
-
-
-    // You may rename column names of a DataFrame
-    // change default column names to your desired column names
-    val df2 = df.selectExpr("_c0 as name", "_c1 as city", "_c2 as age")
-    df2.show()
-    df2.printSchema()
 
     // done!
     spark.stop()
