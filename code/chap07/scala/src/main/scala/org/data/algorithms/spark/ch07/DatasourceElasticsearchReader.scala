@@ -2,10 +2,8 @@ package org.data.algorithms.spark.ch07
 
 import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.io.NullWritable
-import org.apache.spark.SparkConf
 import org.apache.spark.sql.SparkSession
 import org.elasticsearch.hadoop.mr.LinkedMapWritable
-import org.elasticsearch.spark._
 
 /**
  *-----------------------------------------------------
@@ -39,8 +37,6 @@ object DatasourceElasticsearchReader {
       .master("local[*]")
       .config("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
       .config("spark.kryo.classesToRegister", "org.apache.hadoop.io.Text")
-      .config("mapred.map.tasks.speculative.execution", "false")
-      .config("mapred.reduce.tasks.speculative.execution", "false")
       .getOrCreate()
 
     /**
