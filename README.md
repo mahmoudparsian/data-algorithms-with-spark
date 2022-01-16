@@ -8,8 +8,8 @@
 
 * [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
 
-* This new book (to be published by O'Reilly) is the 2nd Edition of 
-  [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
+* This [new O'Reilly book](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
+  is the 2nd Edition of [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
   (published by [O'Reilly](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/))
 
 * The first edition used Java for Spark, but for the new book, I will use PySpark (much simpler and readable)
