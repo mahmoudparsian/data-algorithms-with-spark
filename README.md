@@ -21,7 +21,7 @@
 
 -----
 
-# Github Chapter Solutions 
+# [Github Chapter Solutions](./code/)
 
 * This GitHub repository will host all source code and scripts for 
   [Data Algorithms with Spark]((https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/))
