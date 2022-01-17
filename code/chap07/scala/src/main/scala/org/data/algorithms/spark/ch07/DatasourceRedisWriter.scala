@@ -1,6 +1,18 @@
 package org.data.algorithms.spark.ch07
 
 import org.apache.spark.sql.{SaveMode, SparkSession}
+/**
+ *-----------------------------------------------------
+ * Write Content of an Dataframe to Redis
+ * Input: Redis Hostname Redis Port
+ *------------------------------------------------------
+ * Input Parameters:
+ *    Redis Hostname Redis Port
+ *-------------------------------------------------------
+ *
+ * @author Deepak Kumar
+ *-------------------------------------------------------
+ */
 object DatasourceRedisWriter {
   def main(args: Array[String]): Unit = {
     if (args.length != 2) {

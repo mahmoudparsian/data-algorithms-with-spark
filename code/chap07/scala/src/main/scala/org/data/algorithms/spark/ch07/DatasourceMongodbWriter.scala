@@ -1,6 +1,18 @@
 package org.data.algorithms.spark.ch07
 
 import org.apache.spark.sql.SparkSession
+/**
+ *-----------------------------------------------------
+ * Write Content of an Dataframe to MongoDB
+ * Input: MongoDB Collection uri (mongodb://127.0.0.1/test.myCollection)
+ *------------------------------------------------------
+ * Input Parameters:
+ *    MongoDB Collection uri (mongodb://127.0.0.1/test.myCollection)
+ *-------------------------------------------------------
+ *
+ * @author Deepak Kumar
+ *-------------------------------------------------------
+ */
 object DatasourceMongodbWriter {
   def main(args: Array[String]): Unit = {
 

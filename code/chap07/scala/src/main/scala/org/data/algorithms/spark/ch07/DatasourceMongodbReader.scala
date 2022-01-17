@@ -2,6 +2,18 @@ package org.data.algorithms.spark.ch07
 
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.functions.col
+/**
+ *-----------------------------------------------------
+ * Read Content of MongoDB to Dataframe
+ * Input: MongoDB Collection uri (mongodb://127.0.0.1/test.myCollection)
+ *------------------------------------------------------
+ * Input Parameters:
+ *    MongoDB Collection uri (mongodb://127.0.0.1/test.myCollection)
+ *-------------------------------------------------------
+ *
+ * @author Deepak Kumar
+ *-------------------------------------------------------
+ */
 object DatasourceMongodbReader {
   def main(args: Array[String]): Unit = {
 

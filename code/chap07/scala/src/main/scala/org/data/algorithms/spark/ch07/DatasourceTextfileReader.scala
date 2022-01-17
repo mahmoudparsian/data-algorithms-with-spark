@@ -3,7 +3,18 @@ package org.data.algorithms.spark.ch07
 import org.apache.spark.sql.SparkSession
 
 import scala.io.Source
-
+/**
+ *-----------------------------------------------------
+ * Read Content of file to RDD
+ * Input: File Path
+ *------------------------------------------------------
+ * Input Parameters:
+ *    Path
+ *-------------------------------------------------------
+ *
+ * @author Deepak Kumar
+ *-------------------------------------------------------
+ */
 object DatasourceTextfileReader {
 
   def debugFile(inputPath: String) = {

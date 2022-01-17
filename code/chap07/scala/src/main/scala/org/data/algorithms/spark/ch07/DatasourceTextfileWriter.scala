@@ -1,7 +1,18 @@
 package org.data.algorithms.spark.ch07
 
 import org.apache.spark.sql.SparkSession
-
+/**
+ *-----------------------------------------------------
+ * Write Content of RDD to file
+ * Input: File Path
+ *------------------------------------------------------
+ * Input Parameters:
+ *    Path
+ *-------------------------------------------------------
+ *
+ * @author Deepak Kumar
+ *-------------------------------------------------------
+ */
 object DatasourceTextfileWriter {
   def main(args: Array[String]): Unit = {
     if (args.length != 1) {
