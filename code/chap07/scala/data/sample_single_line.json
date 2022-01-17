@@ -1,0 +1,4 @@
+{"name":"alex","id":200,"scores":[1,2],"dict": {"key1": "value11", "key2": "value12"}}
+{"name":"bob","id":300,"scores":[1,2,4,6],"dict": {"key1": "value16"}}
+{"name":"jane","id":400,"scores":[2,4,6],"dict": {"key4": "value41"}}
+{"name":"mary","id":500,"scores":[5,9],"dict": {"key4": "value77", "key3": "value88"}}

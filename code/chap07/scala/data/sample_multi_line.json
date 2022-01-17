@@ -1,0 +1,32 @@
+[
+    {"name":"alex","id":100,"scores":[8,1,2,3],"dict": {"key": "value11"}},
+    {"name":"jane","id":200,"scores":[4,6],"dict": {"key": "value22"}},
+    {
+        "name": "bob",
+        "id": 300,
+        "scores": [
+            3,
+            4,
+            6,
+            9
+        ],
+        "dict": {
+            "key": "value33",
+            "key2": "value44"
+        }
+    },
+    {
+        "name": "bob",
+        "id": 400,
+        "scores": [
+            3,
+            5,
+            6,
+            9
+        ],
+        "dict": {
+            "key": "value55",
+            "key2": "value66"
+        }
+    }
+]

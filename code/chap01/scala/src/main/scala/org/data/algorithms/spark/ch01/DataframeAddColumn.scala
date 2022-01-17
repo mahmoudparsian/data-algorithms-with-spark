@@ -48,7 +48,7 @@ object DataframeAddColumn {
 
     println("triplets = " + triplets)
     import spark.implicits._
-    val df = spark.createDataset(triplets).toDF("name", "city", "age")
+    val df = spark.createDataFrame(triplets).toDF("name", "city", "age")
     println("df.count(): " + df.count())
     df.show()
     df.printSchema()
