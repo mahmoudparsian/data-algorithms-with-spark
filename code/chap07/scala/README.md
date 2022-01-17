@@ -21,6 +21,7 @@ docker exec elasticsearch curl -H "Content-Type: application/json" -XPOST "http:
 docker exec elasticsearch curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/indexname/testindex/testdoc2" -d "{\"key3\": \"some_value3\", \"doc_id\": 300}"
 docker exec elasticsearch curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/indexname/testindex/testdoc3" -d "{\"key4\": \"some_value4\", \"doc_id\": 400}"
 curl -H "Content-Type: application/json" -XPOST "http://localhost:9200/indexname/typename/optionalUniqueId" -d "{ \"field\" : \"value\"}"
-
-
 ```
+
+docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:latest
+docker exec some-mysql mysql -pmy-secret-pw -e "CREATE DATABASE if not exists metadb"

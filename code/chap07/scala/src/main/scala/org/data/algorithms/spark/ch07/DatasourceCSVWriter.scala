@@ -50,8 +50,8 @@ object DatasourceCSVWriter {
      * In the following example, createDataFrame() takes a list of tuples containing
      * names, cities, and ages, and a list of column names:
      */
-    import spark.implicits._
-    val people = spark.createDataset(List(
+    val columnNames = List("name", "city", "age")
+    val people = spark.createDataFrame(List(
       ("Alex", "Ames", 50),
       ("Alex", "Sunnyvale", 51),
       ("Alex", "Stanford", 52),
@@ -61,7 +61,7 @@ object DatasourceCSVWriter {
       ("George", "Cupertino", 60),
       ("Terry", "Sunnyvale", 95),
       ("Betty", "Ames", 78),
-      ("Brian", "Stanford", 77))).toDF("name", "city", "age")
+      ("Brian", "Stanford", 77))).toDF(columnNames: _*)
 
     // Write the people DataFrame to a CSV File
     people
