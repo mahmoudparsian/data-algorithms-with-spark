@@ -19,8 +19,7 @@ object DatasourceTextfileReader {
 
   def debugFile(inputPath: String) = {
     val bufferedSource = Source.fromFile(inputPath)
-    for (line <- bufferedSource)
-      println(line)
+    println(bufferedSource.mkString)
     bufferedSource.close()
   }
 

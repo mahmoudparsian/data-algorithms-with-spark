@@ -33,8 +33,11 @@ object DatasourceCSVWriter {
       })
   }
 
-  def debugFile(fileName: String) =
-    println(scala.io.Source.fromFile(fileName).mkString)
+  def debugFile(fileName: String) = {
+    val bufferedSource = scala.io.Source.fromFile(fileName)
+    println(bufferedSource.mkString)
+    bufferedSource.close()
+  }
 
   def main(args: Array[String]): Unit = {
     // read name of Output CSV File Name

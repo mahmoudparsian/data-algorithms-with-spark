@@ -17,8 +17,11 @@ import org.apache.spark.sql.SparkSession
  */
 object DatasourceJSONReaderSingleLine {
 
-  def debugFile(fileName: String): Unit =
-    println(scala.io.Source.fromFile(fileName).mkString)
+  def debugFile(fileName: String): Unit = {
+    val bufferedSource = scala.io.Source.fromFile(fileName)
+    println(bufferedSource.mkString)
+    bufferedSource.close()
+  }
 
   def main(args: Array[String]): Unit = {
     // create an instance of SparkSession

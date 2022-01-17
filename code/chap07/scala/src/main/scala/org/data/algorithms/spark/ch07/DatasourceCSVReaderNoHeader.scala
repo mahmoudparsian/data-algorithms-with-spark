@@ -16,8 +16,11 @@ import org.apache.spark.sql.SparkSession
  */
 object DatasourceCSVReaderNoHeader {
 
-  def debugFile(fileName: String) =
-    println(scala.io.Source.fromFile(fileName).mkString)
+  def debugFile(fileName: String) = {
+    val bufferedSource = scala.io.Source.fromFile(fileName)
+    println(bufferedSource.mkString)
+    bufferedSource.close()
+  }
 
   def main(args: Array[String]): Unit = {
     // create an instance of SparkSession
