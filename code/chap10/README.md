@@ -1,14 +1,14 @@
-# <p style="text-align: center;">Data Design Patterns</p>
+#  <p align="center">Data Design Patterns</p>		
+### <p align="center">Mahmoud Parsian</p>
 
-### <p style="text-align: center;">Mahmoud Parsian</p>
-<p style="text-align: center;">Ph.D. in Computer Science</p><p style="text-align: center;">Senior Architect @Illumina</p>
-<p style="text-align: center;">Adjunct faculty @Santa Clara University</p>
-<p style="text-align: center;">email: mahmoud.parsian@yahoo.com</p>
-<p style="text-align: center;">last updated: 1/16/2022</p>
-				              
-		
-		Note: this document is in progress...
-	
+<p align="center">Ph.D. in Computer Science</p>
+<p align="center">Senior Architect @Illumina</p>
+<p align="center">Adjunct faculty @Santa Clara University</p>
+<p align="center">email: mahmoud.parsian@yahoo.com</p>
+<p align="center">last updated: 1/16/2022</p>
+<p align="center">Note: this is working document...</p>
+
+## 0. Introduction	
 The goal of this paper/chapter is to present 
 Data Design Patterns in an informal way. 
 
