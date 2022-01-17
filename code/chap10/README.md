@@ -1,10 +1,11 @@
-# Data Design Patterns
+# <p style="text-align: center;">Data Design Patterns</p>
 
-		author: Mahmoud Parsian, Ph.D. in Computer Science
-		affiliations: Senior Architect @Illumina, 
-		              Adjunct faculty @Santa Clara University
-		email: mahmoud.parsian@yahoo.com
-		last updated: 1/16/2022
+### <p style="text-align: center;">Mahmoud Parsian</p>
+<p style="text-align: center;">Ph.D. in Computer Science</p><p style="text-align: center;">Senior Architect @Illumina</p>
+<p style="text-align: center;">Adjunct faculty @Santa Clara University</p>
+<p style="text-align: center;">email: mahmoud.parsian@yahoo.com</p>
+<p style="text-align: center;">last updated: 1/16/2022</p>
+				              
 		
 		Note: this document is in progress...
 	
@@ -36,44 +37,48 @@ Data Design Patterns can be categorized as:
 
 ## 1. Summarization Patterns
 
-Typically, Numerical Summarizations are big part of Summarization 
-Patterns. Numerical summarizations are patterns, which involves 
-calculating aggregate statistical values (minimum, maximum, average, 
-median, standard deviation, ...) over data.  If data has keys (such 
-as department identifier, gene identifiers, or patient identifiers),
-then the goal is to group records by a key field and then you 
-calculate aggregates per group such as minimum, maximum, average, 
-median, or standard deviation.  If data does not have keys, then 
-you compute the summarization over entire data without grouping.  
+Typically, Numerical Summarizations are big part of 
+Summarization Patterns. Numerical summarizations are 
+patterns, which involves calculating aggregate statistical 
+values (minimum, maximum, average, median, standard 
+deviation, ...) over data.  If data has keys (such 
+as department identifier, gene identifiers, or patient 
+identifiers), then the goal is to group records by a 
+key field and then you calculate aggregates per group 
+such as minimum, maximum, average, median, or standard 
+deviation.  If data does not have keys, then you compute 
+the summarization over entire data without grouping.  
 
-The main purpose of summarization patters is to summarize lots
-of data into meaningful data structures such as tuples, lists,
-and dictionaries.
+The main purpose of summarization patters is to summarize 
+lots of data into meaningful data structures such as tuples, 
+lists, and dictionaries.
 
 
-Some of the Numerical Summarizations patterns can be expressed by SQL.
+Some of the Numerical Summarizations patterns can be 
+expressed by SQL. For example, Let `gene_samples` be 
+a table of  `(gene_id, patient_id, biomarker_value)`.  
+Further, assume that we have about `100,000` unique 
+`gen_id`(s), a patient (represented as `patient_id`) 
+may have lots of gene records with an associated 
+`biomarker_value`(s).
 
-For example, Let `gene_samples` be a table of `(gene_id, patient_id, 
-biomarker_value)`.  Further, assume that we have about `100,000` unique 
-`gen_id`(s), a patient (represented as `patient_id`) may have lots of 
-gene records with an associated `biomarker_value`(s).
+This Numerical Summarizations pattern corresponds to 
+using `GROUP BY` in SQL for example:
 
-This Numerical Summarizations pattern corresponds to using `GROUP BY` 
-in SQL for example:
 
-````
-SELECT MIN(biomarker_value), MAX(biomarker_value), COUNT(*) 
-   FROM gene_samples 
-      GROUP BY gene_id;
-````
+	SELECT MIN(biomarker_value), MAX(biomarker_value), COUNT(*) 
+		FROM gene_samples 
+			GROUP BY gene_id;
+
 
 Therefore, in this example, we find a triplet 
 `(min, max, count)` per `gene_id`. 
 
-In Spark, this summarization pattern can be implemented by
-using RDDs and DataFrames. In Spark, `(key, value)` pair RDDs 
-are commonly used to `group by` a key (in our example `gene_id`) 
-in order to  calculate aggregates per group.
+In Spark, this summarization pattern can be implemented 
+by using RDDs and DataFrames. In Spark, `(key, value)` 
+pair RDDs are commonly used to `group by` a key (in our 
+example `gene_id`) in order to  calculate aggregates 
+per group.
 
 
 Let's assume that the input files are CSV file(s)
@@ -81,63 +86,71 @@ and further assume that input records have the
 following format:
 
 	<gene_id><,><patient_id><,><biomarker_value>
-	
+
 
 
 ### RDD Example using groupByKey()
 
-We load data from CSV file(s) and then create an `RDD[(key, value)]`,
-where key is `gene_id` and value is a `biomarker_value`.
-To solve it by the `reduceByKey()`, we first need to map it
+We load data from CSV file(s) and then create an 
+`RDD[(key, value)]`, where key is `gene_id` and value 
+is a `biomarker_value`. To solve it by the 
+`reduceByKey()`, we first need to map it
 to a desired data type of `(min, max, count)`:
 
 	# rdd : RDD[(gene_id, biomarker_value)]
 	mapped = rdd.mapValues(lambda v: (v, v, 1))
-	
+
 Then we can apply `groupByKey()` transformation:
-    
-    # grouped : RDD[(gene_id, Iterable<biomarker_value>)]
+
+	# grouped : RDD[(gene_id, Iterable<biomarker_value>)]
 	grouped = mapped.groupByKey()
 	# calculate min, mx, count for values
 	triplets = grouped.mapValues(
-	  lambda values: (min(values), max(values), len(values)
+	   lambda values: (min(values), max(values), len(values)
 	)
-	
-The `groupByKey()` might give OOM errors if you have too many values per 
-key (`gene_id`) and `groupByKey()` does not use any combiners at all.
-Overall `reduceByKey()` is a better scale-out solution than `groupByKey()`.
+
+The `groupByKey()` might give OOM errors if you have too 
+many values per key (`gene_id`) and `groupByKey()` does 
+not use any combiners at all.  Overall `reduceByKey()` is 
+a better scale-out solution than `groupByKey()`.
 	
 
 ### RDD Example using reduceByKey()
 
-We load data from CSV file(s) and then create an `RDD[(key, value)]`,
-where key is `gene_id` and value is a `biomarker_value`.
-To solve it by the `reduceByKey()`, we first need to map it
+We load data from CSV file(s) and then create an 
+`RDD[(key, value)]`, where key is `gene_id` and 
+value is a `biomarker_value`.  To solve it by the 
+`reduceByKey()`, we first need to map it
 to a desired data type of `(min, max, count)`:
 
 	# rdd : RDD[(gene_id, biomarker_value)]
 	mapped = rdd.mapValues(lambda v: (v, v, 1))
-	
+
 Then we can apply `reduceByKey()` transformation:
-    
-    # x = (min1, max1, count1)
-    # y = (min2, max2, count2)
+
+	# x = (min1, max1, count1)
+	# y = (min2, max2, count2)
 	reduced = mapped.reduceByKey(
-	  lambda x, y: (min(x[0], y[0]), max(x[1], y[1]), x[2]+y[2])
+	   lambda x, y: (min(x[0], y[0]), max(x[1], y[1]), x[2]+y[2])
 	)
 
-Spark's `reduceByKey()` merges the values for each key using an 
-associative and commutative reduce function.
+Spark's `reduceByKey()` merges the values for each key 
+using an associative and commutative reduce function.
 
 ### RDD Example using combineByKey()
 
-We load data from CSV file(s) and then create an `RDD[(key, value)]`,
-where key is `gene_id` and value is a `biomarker_value`.
+We load data from CSV file(s) and then create an 
+`RDD[(key, value)]`, where key is `gene_id` and 
+value is a `biomarker_value`.
 
-`RDD.combineByKey(createCombiner, mergeValue, mergeCombiners)` is a 
-generic function to combine the elements for each key using a custom 
-set of aggregation functions. Turns an `RDD[(K, V)]` into a result of 
-type `RDD[(K, C)]`, for a "combined type" C.
+`RDD.combineByKey(createCombiner, mergeValue, mergeCombiners)` 
+is a  generic function to combine the elements for each key 
+using a custom set of aggregation functions. Turns an 
+`RDD[(K, V)]` into a result of type `RDD[(K, C)]`, for a 
+"combined type" C. Note that depending on your data requirements,
+combined data type can be a simple data type (such as integer, 
+string, ...) or it can be collection (such as set, list, tuple, 
+array, or dictionary) or it can be custom data type. 
 
 Users provide three functions:
 
@@ -167,11 +180,12 @@ After reading input, we can create a DataFrame as:
 	# df : DataFrame[(gene_id, patient_id, biomarker_value)]
 	import pyspark.sql.functions as F
 	result = df.groupBy("gene_id")
-              .agg(F.min("biomarker_value").alias("min"),
-                   F.max("biomarker_value").alias("max"),
-                   F.count("biomarker_value").alias("count")
-                  )
-                 
+		.agg(F.min("biomarker_value").alias("min"),
+			 F.max("biomarker_value").alias("max"),
+			 F.count("biomarker_value").alias("count")
+		)
+
+
 The other alternative solution is to use pure SQL: register 
 your DataFrame as a table, and then fire a SQL query:
 
@@ -184,16 +198,17 @@ your DataFrame as a table, and then fire a SQL query:
 	                       FROM gene_samples 
 	                          GROUP BY gene_id")
 
-Note that your SQL statement will be executed as a series of mappers 
-and reducers behind the Spark engine.
+Note that your SQL statement will be executed as a series of 
+mappers and reducers behind the Spark engine.
 
 ### Data Without Keys - using DataFrames
 
-You might have some numerical data without keys and then you might
-be interested in computing some statistics such as (min, max, count)
-on the entire data. In these situations, we have more than couple 
-of options: we can use `mapPartitions()` transformation or use
-`reduce()` action (depending on the format and nature of input data).
+You might have some numerical data without keys and then you 
+might be interested in computing some statistics such as 
+`(min, max, count)` on the entire data. In these situations, 
+we have more than couple  of options: we can use `mapPartitions()` 
+transformation or use `reduce()` action (depending on the format 
+and nature of input data).
 
 We can use Spark's built in functions to get aggregate statistics. 
 Here's how to get mean and standard deviation.
@@ -206,37 +221,39 @@ Here's how to get mean and standard deviation.
 	# apply desired functions 
 	collected_stats = df.select(
 	    _mean(col('numeric_column_name')).alias('mean'),
-       _stddev(col('numeric_column_name')).alias('stddev')
+	    _stddev(col('numeric_column_name')).alias('stddev')
 	).collect()
 
 	# extract the final results:
 	final_mean = collected_stats[0]['mean']
 	final_stddev = collected_stats[0]['stddev']
 	
+
 ### Data Without Keys - using RDDs
 
-If you have to filter your numeric data and perform other
-calculations before omputing mean and std-dev, then you
-may use `RDD.mapPartitions()` transformations.
-The `RDD.mapPartitions(f)` transformation returns a new RDD 
-by applying a function `f()` to each partition of this RDD.
-Finally, you may `reduce()` the result of  `RDD.mapPartitions(f)` 
-transformation.
+If you have to filter your numeric data and perform 
+other calculations before omputing mean and std-dev, 
+then you may use `RDD.mapPartitions()` transformations.
+The `RDD.mapPartitions(f)` transformation returns a 
+new RDD by applying a function `f()` to each partition 
+of this RDD.  Finally, you may `reduce()` the result of  
+`RDD.mapPartitions(f)` transformation.
 
-To understand `RDD.mapPartitions(f)` transformation, let's assume 
-that your input is a set of files, where each record has a set of
-numbers separated by comma (note that each record may have any 
-number of  numbers: for example one record may have 5 numbers and
+To understand `RDD.mapPartitions(f)` transformation, 
+let's assume that your input is a set of files, where 
+each record has a set of numbers separated by comma 
+(note that each record may have any number of  numbers: 
+for example one record may have 5 numbers and
 another record might have 34 numbers, etc.):
 
 	<number><,><number><,>...<,><number>
-	
+
 Suppose the goal is to find 
 `(min, max, count, num_of_negatives, num_of_positives)`
 for the entire data set. One easy solution is to use  
-`RDD.mapPartitions(f)`, where `f()` is a function which returns
-`(min, max, count, num_of_negatives, num_of_positives)` per
-partition. Once `mapPartitions()` is done, then we can 
+`RDD.mapPartitions(f)`, where `f()` is a function which 
+returns `(min, max, count, num_of_negatives, num_of_positives)` 
+per partition. Once `mapPartitions()` is done, then we can 
 apply the final reducer to find the final
 `(min, max, count, num_of_negatives, num_of_positives)`
 for all partitions.
@@ -253,11 +270,11 @@ for a given partition.
 		neg_count, pos_count = 0, 0
 		# iterate numbers
 		for num in numbers:
-          if num > 0: pos_count += 1
-          if num < 0: neg_count += 1
-       #end-for
-       return (neg_count, pos_count)
-    #end-def
+			if num > 0: pos_count += 1
+			if num < 0: neg_count += 1
+		#end-for
+		return (neg_count, pos_count)
+	#end-def
 
 	def compute_stats(partition):
 		first_time = True
@@ -303,11 +320,12 @@ for all partitions:
 	                      )
 
 
-Spark is so flexiable and powerful: therefore we might 
-find multiple solutions for a given problem. But what is
-the optimal solution? This can be handled by testing 
-your solutions against real data which you might use
-in the production environments. Test, test, and test.
+Spark is so flexiable and powerful: therefore we 
+might find multiple solutions for a given problem. 
+But what is the optimal solution? This can be handled 
+by testing your solutions against real data which you 
+might use in the production environments. Test, test, 
+and test.
 
 ## 2. In-Mapper-Combiner Design Pattern 
 
@@ -332,7 +350,7 @@ Then "sort and shuffle" will prepare the following
 
 	(k1, [v1, v2, v3, v4])
 	(k2, [v5, v6])
-	
+
 For some data applications, it is very possible 
 to emit too many (key, value) pairs, which may 
 create huge network traffic in the cluster. If 
@@ -354,7 +372,7 @@ For this specific algorithm (DNA base count), it is
 possible to combine values for the same key:
 
 	(A, 7), (T, 4), (C, 3), (G, 4)
-	
+
 Combining/merging/reducing 18 `(key, value)` pairs 
 into 4 combined `(key, value)` pairs is called 
 "In-Mapper-Combining": we combined values in the 
@@ -380,7 +398,7 @@ with multiple `(key, value)` as:
 	key k1: (k1, u1), (k1, u2), (k1, u3), ...
 	key k2: (k2, v1), (k2, v2), (k2, v3), ...
 	key k3: (k3, t1), (k3, t2), (k3, t3), ...
-	
+
 Then In-Mapper-Combiner design pattern should combine
 these into the following `(key, value)` pairs:
 
@@ -492,13 +510,15 @@ at most four `(key, value)` pairs as:
 	(T, n2)
 	(C, n3)
 	(G, n4)
-	
+
+
 where 
 	n1: is the total frequency of A's per mapper input
 	n2: is the total frequency of T's per mapper input
 	n3: is the total frequency of C's per mapper input
 	n4: is the total frequency of G's per mapper input
-	
+
+
 To implement In-Mapper-Combiner design pattern, we 
 will use Python's `collections.Counter()` to keep
 track of DNA base letter frequencies. The other option 
@@ -517,7 +537,7 @@ following reducers to find the final DNA base count.
 * Use `reduceByKey()`
 * Use `combineByKey()`
 
-	
+
 #### Pros of Solution 2
 * Much less  `(key, value)` pairs are created 
   compared to Solution 1
@@ -531,7 +551,6 @@ following reducers to find the final DNA base count.
   be an OOM error
 
 
-
 ### Solution 3: Mapping Partitions Algorithm
 This solution uses `RDD.mapPartitions()` transformation
 to solve DNA base count problem. In this solution we will
@@ -541,8 +560,9 @@ emit four `(key, value)` pairs as:
 	(T, p2)
 	(C, p3)
 	(G, p4)
-	
+
 where 
+
 	p1: is the total frequency of A's per single partition
 	p2: is the total frequency of T's per single partition
 	p3: is the total frequency of C's per single partition
@@ -588,27 +608,28 @@ pattern is to drastically reduce the number of
 
 ### Download FASTA Files
 
-1. https://sites.google.com/site/geosymbio/downloads
-2. https://ftp.ncbi.nlm.nih.gov/snp/organisms/human_9606/rs_fasta/
-
+1. [GeoSymbio Downloads](https://sites.google.com/site/geosymbio/downloads)
+2. [NCBI Downloads](https://ftp.ncbi.nlm.nih.gov/snp/organisms/human_9606/rs_fasta/)
 
 
 
 ## 3. Filtering Patterns
 
-Filter patterns are a set of design patterns that enables us
-to filter a set of records (or elements) using different 
-criteria and chaining them in a decoupled way through logical 
-operations. One simple example will be to filter records
-if the salary of that record is less than 20000. Another example
-would be to filter records if the record does not contain 
-a valid URL.  This type of design pattern comes under structural 
-pattern as this pattern combines multiple criteria to obtain 
-single criteria.
+Filter patterns are a set of design patterns that 
+enables us to filter a set of records (or elements) 
+using different criteria and chaining them in a 
+decoupled way through logical operations. One simple 
+example will be to filter records if the salary of that 
+record is less than 20000. Another example would be to 
+filter records if the record does not contain a valid 
+URL.  This type of design pattern comes under structural 
+pattern as this pattern combines multiple criteria to 
+obtain single criteria.
 
 for example, Python offers filtering as:
 
-`filter(function, sequence)`
+	filter(function, sequence)`
+
 where
 
 `function`: function that tests if each element of a sequence true or not.
@@ -629,10 +650,10 @@ Simple example is given below:
 	    else:
 	        return False
 	#end-def  
-  
+
 	# sequence
 	sequence = ['A', 'B', 'T', 'T', 'C', 'G', 'M', 'R', 'A']
-  
+
 	# using filter function
 	# filtered = ['A', 'T', 'T', 'C', 'G', 'A']
 	filtered = filter(is_dna, sequence)
@@ -652,8 +673,8 @@ transformation:
 	# filtered: RDD[(key, value)], where value > 0
 	# e = (key, value)
 	filtered = rdd.filter(lambda e: e[1] > 0)
-	
-	
+
+
 Also, the filter implementation can be done by boolean 
 predicate functions:
 
@@ -748,20 +769,22 @@ Covered in chapter 11 of
 
 ## 6. Meta Patterns
 
-Meta data is about a set of data that describes and gives 
-information about other data. Meta patterns is about "patterns 
-that deal with patterns". The term meta patterns is directly 
-translated to "patterns about patterns." For example in MapReduce 
-paradigm, "job chaining" is a meta pattern, which is piecing 
-together several patterns to solve complex data problems. In 
-MapReduce paradigm, another met pattern is "job merging", which 
-is an optimization for performing several data analytics in the 
-same MapReduce job, effectively executing multiple MapReduce jobs 
-with one job.
+Meta data is about a set of data that describes and 
+gives information about other data. Meta patterns is 
+about "patterns that deal with patterns". The term 
+meta patterns is directly translated to "patterns 
+about patterns." For example in MapReduce paradigm, 
+"job chaining" is a meta pattern, which is piecing 
+together several patterns to solve complex data 
+problems. In MapReduce paradigm, another met pattern 
+is "job merging", which is an optimization for performing 
+several data analytics in the same MapReduce job, 
+effectively executing multiple MapReduce jobs with 
+one job.
 
-Spark is a superset of MapReduce paradiagm and deals with meta 
-patterns in terms of estimators, transformers and pipelines,
-which are discussed here: 
+Spark is a superset of MapReduce paradiagm and deals 
+with meta patterns in terms of estimators, transformers 
+and pipelines, which are discussed here: 
 
 * [ML Pipelines](https://spark.apache.org/docs/latest/ml-pipeline.html)
 * [Want to Build Machine Learning Pipelines?](https://www.analyticsvidhya.com/blog/2019/11/build-machine-learning-pipelines-pyspark/)
