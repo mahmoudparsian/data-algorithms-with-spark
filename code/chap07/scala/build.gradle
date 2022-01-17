@@ -1,11 +1,11 @@
 apply plugin: 'scala'
 apply plugin: 'application'
 
-ext.scalaClassifier = '2.13'
-ext.scalaVersion = '2.13.7'
+ext.scalaClassifier = '2.12'
+ext.scalaVersion = '2.12.15'
 ext.sparkVersion = '3.2.0'
 
-group 'org.data.algorithms.spark.ch04'
+group 'org.data.algorithms.spark.ch07'
 version '1.0-SNAPSHOT'
 
 repositories {
@@ -17,8 +17,10 @@ dependencies {
     implementation "org.scala-lang:scala-library:$scalaVersion"
     implementation "org.apache.spark:spark-core_$scalaClassifier:$sparkVersion"
     implementation "org.apache.spark:spark-sql_$scalaClassifier:$sparkVersion"
-    implementation "org.scalanlp:breeze_$scalaClassifier:2.0.1-RC2"
-
+    implementation 'com.redislabs:spark-redis_2.12:3.0.0'
+    implementation 'org.elasticsearch:elasticsearch-hadoop:7.16.3'
+    implementation 'org.mongodb.spark:mongo-spark-connector_2.12:3.0.1'
+    implementation 'mysql:mysql-connector-java:8.0.27'
 }
 
 application {
