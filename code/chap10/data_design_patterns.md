@@ -1,11 +1,11 @@
-#  <p align="center">Data Design Patterns</p>		
+#  <p align="center">Data Design Patterns</p>
 ### <p align="center">Mahmoud Parsian</p>
 
 <p align="center">Ph.D. in Computer Science</p>
 <p align="center">Senior Architect @Illumina</p>
 <p align="center">Adjunct faculty @Santa Clara University</p>
 <p align="center">email: mahmoud.parsian@yahoo.com</p>
-<p align="center">last updated: 1/16/2022</p>
+<p align="center">last updated: 1/17/2022</p>
 <p align="center">Note: this is working document...</p>
 
 ## 0. Introduction	
@@ -754,13 +754,181 @@ You may also use `DataFrame.where()` function to filter rows:
 	|  e100|Cupertino|   CA|
 	|  e200|Sunnyvale|   CA|
 	+------+---------+-----+	
-	
+
+
 For more examples, you may read
 [PySpark Where Filter Function | Multiple Conditions](https://sparkbyexamples.com/pyspark/pyspark-where-filter/).
 
  
 
 ## 4. Organization Patterns
+The Organizational Patterns deals with reorganizing 
+data to be used by other rendering applications. For
+example, you might have structured data in different 
+formats and different data sources and you might join 
+and merge these data into XML or JSON formats.   The 
+other example will be partition data (so called binning 
+pattern) based on some categories (such as continent, 
+country, ...).
+
+### 4.1 The Structured to Hierarchical Pattern
+The goal of this pattern is to convert structured 
+data (in different formats and from different data 
+sources) into hierarchical (XML or JSON) structure.
+You need to bring all data into a sigle location, 
+so that you can convert it to hierarchical structure.
+In a nutshell, The structured to hierarchical pattern 
+creates new hierarchical records (such as XML, JSON) 
+from data that started in a very different structure 
+(plain records). The main objective of the Structured 
+to Hierarchical Pattern is to transform row-based data 
+to a hierarchical format (such as JSON or XML).
+
+For example, consider blog data commented by many 
+users. A hierarchy will look something like:
+
+		Posts
+			Post-1
+				Comment-11
+				Comment-12
+				Comment-13
+			Post-2
+				Comment-21
+				Comment-22
+				Comment-23
+				Comment-24
+			...
+
+Assume that there are two types of structured data,
+which can be joind to create A hierarchal structure 
+(above).
+
+Data Set 1:
+	
+	<post_id><,><title><,><creator>
+
+Example of Data Set 1 records:
+ 
+	p1,t1,creator1
+	p2,t2,creator2
+	p3,t3,creator3
+	...
+	
+Data Set 2:
+
+	<post_id><,><comment><,><commented_by>
+
+Example of Data Set 2 records: 
+
+	p1,comment-11,commentedby-11
+	p1,comment-12,commentedby-12
+	p1,comment-13,commentedby-13
+	p2,comment-21,commentedby-21
+	p2,comment-22,commentedby-22
+	p2,comment-23,commentedby-23
+	p2,comment-24,commentedby-24
+	...
+
+Therefore, the goal is to join-and merge 
+these 2 data sets so that we can create an 
+XML for a single post such as:
+
+	<post id="p1">
+		<title>t1</title>
+		<creator>creator1</creator>
+		<comments>
+			<comment>comment-11</comment>
+			<comment>comment-12</comment>
+			<comment>comment-13</comment>
+		</comments>
+	</post>
+	<post id="p2">
+		<title>t2</title>
+		<creator>creator2</creator>
+		<comments>
+			<comment>comment-21</comment>
+			<comment>comment-22</comment>
+			<comment>comment-23</comment>
+			<comment>comment-24</comment>
+		</comments>
+	</post>
+	...
+
+I will provide two solutions: RDD-based and 
+DataFrame-based.
+
+#### RDD Solution
+
+Step-1: This solution reads data sets and 
+creates two RDDs with `post_id` as a key:
+
+	posts: RDD[(post_id, (title, creator))]
+	comments: RDD[(post_id, (comment, commented_by))]
+
+Step-2: these two RDDs are joined by common key: `post_id`:
+
+	# joined: RDD[(post_id, ((title, creator),(comment, commented_by)))]
+	joined = posts.join(comments)
+
+Step-3: Apply a reducer:  group by `post_id`:
+
+	# grouped = RDD[(post_id, Iterable<((title, creator),(comment, commented_by))>)]
+	grouped = joined.groupByKey()
+
+Step-4: the final step is iterate `grouped` elements and 
+then create XML or JSON 
+
+	xml_rdd = grouped.map(create_xml)
+	
+	where 
+	
+	# element: (post_id, Iterable<((title, creator),(comment, commented_by))>)
+	def create_xml(element):
+		xml = <perform concatenation of required items and create desired xml>
+		return xml
+	#end-def
+
+Complete example implementation is given as: 
+`structured_to_hierarchical_to_xml_rdd.py`
+
+
+#### DataFrame Solution
+In DataFrame solution, we read data sets 
+and create DataFrames.
+
+    posts = DataFrame(["post_id", "title", "creator"])
+    comments = DataFrame(["post_id", "comment", "commented_by"])
+
+Next, these two Dataframes are joined on common
+key `post_id` and then we select proper columns:
+    
+    joined_and_selected = posts.join(comments, posts.post_id == comments.post_id)\
+        .select(posts.post_id, posts.title, posts.creator, comments.comment)
+
+Next, we group the result by ("post_id", "title", "creator")
+and concatenate `comment` column values.
+
+    grouped = joined_and_selected.groupBy("post_id", "title", "creator")
+      .agg(F.collect_list("comment").alias("comments"))
+
+To create XML, we use a UDF:
+
+    create_xml_udf = F.udf(lambda post_id, title, creator, comments: 
+        create_xml(post_id, title, creator, comments), StringType())
+
+Finally, we apply UDF to proper columns to create XML:
+
+    df = grouped.withColumn("xml", \
+       create_xml_udf(grouped.post_id, grouped.title, grouped.creator, grouped.comments))\
+      .drop("title")\
+      .drop("creator")\
+      .drop("comments")
+
+Complete example implementation is given as: 
+`structured_to_hierarchical_to_xml_dataframe.py`
+
+
+### 4.2 The partitioning and binning patterns
 in progress...
 
 ## 5. Join Patterns
