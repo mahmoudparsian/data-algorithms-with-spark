@@ -24,9 +24,10 @@ This directory contains all of the chapter codes for "Data Algorithms with Spark
 The following directories are bonus chapters:
 
   
-| Bonus Chapter                | Description                               | 
-|------------------------------|-------------------------------------------|
-| [Word Count](./bonus_chapters/wordcount/)                   | Provided multiple solutions for word count problem using `reduceByKey()` and `groupByKey()` reducers.  |
+| Bonus Chapter                                              | Description                               | 
+|------------------------------------------------------------|-------------------------------------------|
+| [Data Design Patterns](./chap10/)                          | Practical Data Design Patterns            |
+| [Word Count](./bonus_chapters/wordcount/)                  | Provided multiple solutions for word count problem using `reduceByKey()` and `groupByKey()` reducers.  |
 | [Anagrams](./bonus_chapters/anagrams/)                     | Find words, which are anagrams: provided multiple solutions for anagrams problem using `reduceByKey()`, `groupByKey()`, and `combineByKey()` reducers. |
 | [Lambda Expressions](./bonus_chapters/lambda_expressions/) | How to use Lambda Expressions in PySpark programs |
 | [TF-IDF](./bonus_chapters/TF-IDF/)                         | Term Frequency - Inverse Document Frequency |
