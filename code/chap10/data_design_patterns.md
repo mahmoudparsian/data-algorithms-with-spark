@@ -929,7 +929,157 @@ Complete example implementation is given as:
 
 
 ### 4.2 The partitioning and binning patterns
-in progress...
+
+Bucketing, binning, and categorization of 
+data are used synonymously in technical 
+papers and blogs. Data binning, also called 
+discrete binning or bucketing, is a data 
+pre-processing technique used to reduce 
+the effects of minor observation errors.
+Binning is a way to group a number of more 
+or less continuous values into a smaller 
+number  of "bins". For example, if you have 
+data about a group of graduated students, 
+with a number of years in education, then 
+you might categorize it as HSDG (12 years), 
+AA (14 years), BS (16 years), MS (18 years), 
+PHD (21 years), MD (22+ years). Therefore, 
+you have created 6 bins: `{HSDG, AA, BS, 
+MS, PHD, MD}`.  After bins are created, then 
+you might use categorial values 
+(HSDG, BS, ...) in your data queries.
+
+Data binning -- also called Discrete 
+binning or bucketing -- is a data 
+pre-processing technique used to reduce 
+the effects of minor observation errors. 
+The original data values which fall into 
+a given small interval, a bin, are replaced 
+by a value representative of that interval, 
+often the central value. For example if a 
+car price value os so scattered, then you 
+may use bucketing instead of actual car 
+prices. 
+
+[Spark's Bucketizer](https://spark.apache.org/docs/latest/ml-features.html#bucketizer)  transforms a column of continuous features to a 
+column of feature buckets, where the buckets 
+are specified by users.
+
+Consider this example: there's no 
+linear relationship between latitude and 
+the housing values, but you may suspect 
+that individual latitudes and housing 
+values are related, but the relationship 
+is not linear. Therefore you might bucketize 
+the latitudes; for example you may create 
+buckets as:
+
+	Bin-1:  32 < lattitude <= 33
+	Bin-2:  33 < lattitude <= 34
+	...
+
+
+Binning technique can be applied on 
+both categorical and numerical data.
+The following examples show both 
+types of binning.
+
+#### Numerical Binning Example:
+
+| value        | Bin |
+| ----------- | ----------- |
+|0-10   | Very Low
+|11-30  | Low       
+|31-70  | Mid       
+|71-90  | High
+|91-100 | Very High
+
+
+#### Categorical Binning Example
+
+| value        | Bin |
+| ----------- | ----------- |
+|India  | Asia
+|China  | Asia 
+|Japan  | Asia      
+|Spain  | Europe      
+|Italy  | Europe       
+|Chile  | South America
+|Brazil | South America
+
+
+
+Binning is used genomics data as well: we
+bucketize human genome chromosomes (1, 2, 3, 
+..., 22, X, Y, MT).  For instance chromosomes 
+1 has 250 million positions, which we may 
+bucketize into 101 buckets as:
+
+
+	for id in (1, 2, 3, ..., 22, X, Y, MT):
+	  chr_position = (chromosome-<id> position)
+	  # chr_position range is from 1 to 250,000,000
+	  bucket = chr_position % 101
+	  # where 
+	  #      0 =< bucket <= 100
+
+
+Bucketing is a most straight forward approach 
+for converting the continuous variables into 
+categorical variable. To understand this,
+let's look at an example below.  In PySpark 
+the task of bucketing can be easily accomplished 
+using the `Bucketizer` class.  
+
+To use the `Bucketizer` class, firstly, we 
+shall accomplish the task of creating bucket 
+borders. Let us define a list of bucket 
+borders as the following example.  Next, 
+let us create a object of the `Bucketizer` 
+class. Then we will apply the `transform` method 
+to our defined Dataframe `dataframe`.
+
+First, Let's create a sample dataframe for 
+demo purpose:
+
+
+	>>> data = [('A', -99.99), ('B', -0.5), ('C', -0.3),
+	...   ('D', 0.0), ('E', 0.7), ('F', 99.99)]
+	>>> column_names =  ["id", "features"]
+	>>> dataframe = spark.createDataFrame(data, column_names)
+	>>> dataframe.show()
+	+---+--------+
+	| id|features|
+	+---+--------+
+	|  A|  -99.99|
+	|  B|    -0.5|
+	|  C|    -0.3|
+	|  D|     0.0|
+	|  E|     0.7|
+	|  F|   99.99|
+	+---+--------+
+
+
+Next, we apply the `Bucketizer` to create buckets:
+
+
+	>>> bucket_borders=[-float("inf"), -0.5, 0.0, 0.5, float("inf")]
+	>>> from pyspark.ml.feature import Bucketizer
+	>>> bucketer = Bucketizer().setSplits(bucket_borders)
+	     .setInputCol("features").setOutputCol("bucket")
+	>>> bucketer.transform(dataframe).show()
+	+---+--------+------+
+	| id|features|bucket|
+	+---+--------+------+
+	|  A|  -99.99|   0.0|
+	|  B|    -0.5|   1.0|
+	|  C|    -0.3|   1.0|
+	|  D|     0.0|   2.0|
+	|  E|     0.7|   3.0|
+	|  F|   99.99|   3.0|
+	+---+--------+------+
+
+
 
 ## 5. Join Patterns
 Covered in chapter 11 of 
