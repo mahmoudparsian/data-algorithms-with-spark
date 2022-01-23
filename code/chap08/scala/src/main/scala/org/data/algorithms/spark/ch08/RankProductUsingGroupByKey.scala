@@ -42,10 +42,10 @@ object RankProductUsingGroupByKey {
     println(s"Input Path ${inputPath}")
     //genes as string records: RDD[String]
     val rawGenes = spark.sparkContext.textFile(inputPath)
-    print(s"Raw Genes ${rawGenes.collect().mkString("[",",","]")}")
+    println(s"Raw Genes ${rawGenes.collect().mkString("[",",","]")}")
     //create RDD[(String, Double)]=RDD[(gene_id, test_expression)]
     val genes = rawGenes.map(createPair)
-    print(s"genes ${genes.collect().mkString("[",",","]")}")
+    println(s"genes ${genes.collect().mkString("[",",","]")}")
 
     //create RDD[(gene_id, Iterable<test_expression>)]
     val genesGrouped = genes.groupByKey()
@@ -88,7 +88,7 @@ object RankProductUsingGroupByKey {
     //add 1 to index
     //ranked :  RDD[(String, Long)]
     val ranked = indexed.map(v=> (v._1._2, v._2+1))
-    print("ranked", ranked.collect().mkString("Array(", ", ", ")"))
+    println("ranked", ranked.collect().mkString("Array(", ", ", ")"))
     return ranked
   }
 
@@ -163,7 +163,32 @@ object RankProductUsingGroupByKey {
     println()
     //Done!
     spark.stop()
-
-
   }
 }
+
+/*
+outputPath data/tmp/rank-product-group-by-key
+K 2
+List(data/sample_input/rp1.txt, data/sample_input/rp2.txt, data/sample_input/rp3.txt)
+Input Path data/sample_input/rp1.txt
+Raw Genes [K_1,30.0,K_2,60.0,K_3,10.0,K_4,80.0]
+genes [(K_1,30.0),(K_2,60.0),(K_3,10.0),(K_4,80.0)]
+Genes Combined Array((K_2,Seq(60.0)), (K_4,Seq(80.0)), (K_1,Seq(30.0)), (K_3,Seq(10.0)))
+Input Path data/sample_input/rp2.txt
+Raw Genes [K_1,90.0,K_2,70.0,K_3,40.0,K_4,50.0]
+genes [(K_1,90.0),(K_2,70.0),(K_3,40.0),(K_4,50.0)]
+Genes Combined Array((K_2,Seq(70.0)), (K_4,Seq(50.0)), (K_1,Seq(90.0)), (K_3,Seq(40.0)))
+Input Path data/sample_input/rp3.txt
+Raw Genes [K_1,4.0,K_2,8.0]
+genes [(K_1,4.0),(K_2,8.0)]
+Genes Combined Array((K_2,Seq(8.0)), (K_1,Seq(4.0)))
+sortedRDD Array((80.0,K_4), (60.0,K_2), (30.0,K_1), (10.0,K_3))
+Indexed [((80.0,K_4),0),((60.0,K_2),1),((30.0,K_1),2),((10.0,K_3),3)]
+(ranked,Array((K_4,1), (K_2,2), (K_1,3), (K_3,4)))
+sortedRDD Array((90.0,K_1), (70.0,K_2), (50.0,K_4), (40.0,K_3))
+Indexed [((90.0,K_1),0),((70.0,K_2),1),((50.0,K_4),2),((40.0,K_3),3)]
+(ranked,Array((K_1,1), (K_2,2), (K_4,3), (K_3,4)))
+sortedRDD Array((8.0,K_2), (4.0,K_1))
+Indexed [((8.0,K_2),0),((4.0,K_1),1)]
+(ranked,Array((K_2,1), (K_1,2)))
+*/

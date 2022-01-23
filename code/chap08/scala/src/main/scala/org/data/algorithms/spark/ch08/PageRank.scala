@@ -75,14 +75,7 @@ object PageRank {
       printRanks(ranks)
       //Calculates URL contributions to the rank of other URLs.
       val contributions = links.join(ranks).flatMap(computeContributions)
-      /*
-      * links.join(ranks) will create elements as:
-      * [
-      *  (u'1', (<pyspark.resultiterable.ResultIterable object at 0x10b5d1950>, 0.9203125)),
-      *  (u'3', (<pyspark.resultiterable.ResultIterable object at 0x10b6ad450>, 0.6334375)),
-      * ...
-      * ]
-       */
+      println()
       //Re-calculates URL ranks based on neighbor contributions.
       ranks = contributions.reduceByKey((x, y) => x + y).mapValues(recalculateRank)
     }
@@ -90,7 +83,41 @@ object PageRank {
     printRanks(ranks)
     //Done.
     spark.stop()
-    }
-
+  }
 
 }
+
+/*
+links : [(url_4,Seq(url_3, url_1)),(url_2,Seq(url_1)),(url_3,Seq(url_2, url_1)),(url_1,Seq(url_4))]
+ranks : [(url_4,1.0),(url_2,1.0),(url_3,1.0),(url_1,1.0)]
+url_1 has 1.00 rank
+url_2 has 1.00 rank
+url_3 has 1.00 rank
+url_4 has 1.00 rank
+
+url_1 has 1.85 rank
+url_2 has 0.58 rank
+url_3 has 0.58 rank
+url_4 has 1.00 rank
+
+url_1 has 1.31 rank
+url_2 has 0.39 rank
+url_3 has 0.58 rank
+url_4 has 1.72 rank
+
+url_1 has 1.46 rank
+url_2 has 0.39 rank
+url_3 has 0.88 rank
+url_4 has 1.26 rank
+
+url_1 has 1.40 rank
+url_2 has 0.52 rank
+url_3 has 0.69 rank
+url_4 has 1.39 rank
+
+url_1 has 1.48 rank
+url_2 has 0.44 rank
+url_3 has 0.74 rank
+url_4 has 1.34 rank
+*/
+
