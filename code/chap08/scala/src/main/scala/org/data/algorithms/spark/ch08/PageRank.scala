@@ -26,19 +26,19 @@ import scala.util.Try
 object PageRank {
 
   def createPair(urls: String):(String,String) = {
-    """Parses a urls pair string into urls pair."""
+    // Parses a urls pair string into urls pair.
     val tokens = urls.split(",")
     val sourceURL = tokens(0)
     val targetURL = tokens(1)
     (sourceURL,targetURL)
   }
 
-  def printRanks(ranks: RDD[(String, Double)]) = {
+  def printRanks(ranks: RDD[(String, Double)]): Unit = {
     ranks.collect().sorted.foreach(x=>println(f"${x._1}%s has ${x._2}%2.2f rank"))
   }
 
-  def computeContributions(urlsRank:(String, (Iterable[String], Double)))= {
-    """Calculates URL contributions to the rank of other URLs."""
+  def computeContributions(urlsRank:(String, (Iterable[String], Double))): Iterable[(String, Double)] = {
+    // Calculates URL contributions to the rank of other URLs.
     val urls = urlsRank._2._1
     val rank = urlsRank._2._2
     val numURLs = urls.size
@@ -46,7 +46,7 @@ object PageRank {
       yield(url,rank/numURLs)
   }
 
-  def recalculateRank(rank:Double) = {
+  def recalculateRank(rank:Double): Double = {
     val newRank = rank * 0.85 + 0.15
     newRank
   }

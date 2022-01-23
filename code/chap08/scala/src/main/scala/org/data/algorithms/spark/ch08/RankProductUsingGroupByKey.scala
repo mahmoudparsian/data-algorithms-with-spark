@@ -109,7 +109,7 @@ object RankProductUsingGroupByKey {
 
     //next calculate ranked products and the number of elements
     val rankedProducts = groupByGene.mapValues(
-      v => (pow(v.product, v.size.toFloat),v.size)
+      v => (pow(v.product.toDouble, v.size.toDouble),v.size)
     )
     return rankedProducts
   }

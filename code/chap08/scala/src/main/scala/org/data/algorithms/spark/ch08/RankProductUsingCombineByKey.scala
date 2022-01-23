@@ -25,7 +25,7 @@ import scala.util.Try
 object RankProductUsingCombineByKey {
 
   def createPair(urls: String):(String,Double) = {
-    """Parses a urls pair string into urls pair."""
+    // Parses a urls pair string into urls pair.
     val tokens = urls.split(",")
     val sourceURL = tokens(0)
     val targetURL = tokens(1).toDouble
