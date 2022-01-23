@@ -1,0 +1,24 @@
+apply plugin: 'scala'
+apply plugin: 'application'
+
+ext.scalaClassifier = '2.13'
+ext.scalaVersion = '2.13.7'
+ext.sparkVersion = '3.2.0'
+
+group 'org.data.algorithms.spark.ch10'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.scala-lang:scala-library:$scalaVersion"
+    implementation "org.apache.spark:spark-core_$scalaClassifier:$sparkVersion"
+    implementation "org.apache.spark:spark-sql_$scalaClassifier:$sparkVersion"
+}
+
+application {
+    mainClass = project.hasProperty("mainClass") ? project.getProperty("mainClass") : "NULL"
+}

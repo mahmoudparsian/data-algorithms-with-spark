@@ -4,4 +4,3 @@ build
 .gradle
 .idea
 !gradle-wrapper.jar
-scala
