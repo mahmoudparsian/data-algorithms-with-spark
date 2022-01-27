@@ -7,7 +7,7 @@ fi
 #If file exists run the spark application
 if test $INPUT_PATH ; then
   start_time=$(date +%s)
-  ./gradlew clean run -PmainClass=org.data.algorithms.spark.ch10.DNABaseCountBasicUsingCombineByKey "--args=$INPUT_PATH"
+  ./gradlew clean run -PmainClass=org.data.algorithms.spark.ch10.DNABaseCountBasicUsingGroupByKey "--args=$INPUT_PATH"
   end_time=$(date +%s)
   # elapsed time with second resolution
   elapsed=$(( end_time - start_time ))

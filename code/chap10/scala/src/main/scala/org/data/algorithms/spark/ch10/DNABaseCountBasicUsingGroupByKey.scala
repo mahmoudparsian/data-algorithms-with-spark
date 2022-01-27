@@ -8,7 +8,7 @@ import scala.collection.mutable.ListBuffer
 /**
  *-----------------------------------------------------
  * This is a DNA-Base-Count in Spark.
- * It uses classic MapReduce with combineByKey()
+ * It uses classic MapReduce with GroupByKey()
  *------------------------------------------------------
  * NOTE: print() and collect() are used for
  *       debugging and educational purposes.
@@ -20,7 +20,7 @@ import scala.collection.mutable.ListBuffer
  * @author Biman Mandal
  *-------------------------------------------------------
  */
-object DNABaseCountBasicUsingCombineByKey {
+object DNABaseCountBasicUsingGroupByKey {
 
   def dropCommentedRecord(fastaRecord: String): Boolean = {
     if (fastaRecord.isBlank) return false
@@ -63,11 +63,7 @@ object DNABaseCountBasicUsingCombineByKey {
     println("pairs.take(3) : " + pairs.take(3).mkString("Array(", ", ", ")"))
 
 
-    val frequencies = pairs.combineByKey[Int](
-      v => v,
-      (C, v) => C+v,
-      (C, D) => C+D
-    )
+    val frequencies = pairs.groupByKey().mapValues(values => values.sum)
     println("frequencies.collect() : " + frequencies.collect().mkString("Array(", ", ", ")"))
 
     spark.stop()
