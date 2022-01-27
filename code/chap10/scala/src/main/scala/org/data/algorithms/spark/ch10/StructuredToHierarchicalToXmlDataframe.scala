@@ -1,6 +1,6 @@
 package org.data.algorithms.spark.ch10
 
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.sql.{SparkSession, functions}
 
 /*-----------------------------------------------------
  * This is an example of  "Structured to Hierarchical" Pattern in PySpark.
@@ -31,19 +31,11 @@ object StructuredToHierarchicalToXmlDataframe {
       		</comments>
     	</post>
   */
-  def createXML(element: (String, Iterable[((String, String), (String, String))])): String = {
-    val postID = element._1
-    val iterables = element._2
-    var FIRST_TIME = true
-    var xmlString = "<post id=\"" + postID + "\">"
-    for(t2 <- iterables){
-      val (title , creator) = (t2._1._1 , t2._1._2)
-      val (comment , commentedBy) = (t2._2._1,t2._2._2)
-      if(FIRST_TIME){
-        xmlString += "<title>" + title + "</title>"
-        xmlString += "<creator>" + creator + "</creator>"
-        FIRST_TIME = false
-      }
+  def createXML(post_id: String, title: String, creator: String, comments: Array[String]): String = {
+    var xmlString = "<post id=\"" + post_id + "\">"
+    xmlString += "<title>" + title + "</title>"
+    xmlString += "<creator>" + creator + "</creator>"
+    for(comment <- comments){
       xmlString += "<comment>" + comment + "</comment>"
     }
     xmlString += "</post>"
@@ -81,16 +73,17 @@ object StructuredToHierarchicalToXmlDataframe {
       select(posts("post_id"),posts("title"),posts("creator"),comments("comment"))
     joinedAndSelected.show(truncate = false)
 
-    val grouped = joinedAndSelected.groupBy("post_id", "title", "creator").agg(functions.("comment").alias("comments"))
+    val grouped = joinedAndSelected.groupBy("post_id", "title", "creator").agg(functions.collect_list("comment").alias("comments"))
+    grouped.show(truncate = false)
 
-    val createXMLUDF =
-    val df =
-    /*val grouped = joined.groupByKey()
-    println(s"grouped.count() : ${grouped.count()}")
-    println(s"grouped.collect() : ${grouped.mapValues(vs => vs.toList).collect().mkString("Array(", ", ", ")")}")
-    val xmlRDD = grouped.map(createXML)
-    println(s"xmlRDD.count() : ${xmlRDD.count()}")
-    println(s"xmlRDD.collect() : ${xmlRDD.collect().mkString("Array(", ", ", ")")}")*/
+    val createXMLUdf = functions.udf((post_id, title, creator, comments) => createXML(post_id, title, creator, comments))
+    val df = grouped.withColumn("xml", createXMLUdf(grouped("post_id"), grouped("title"), grouped("creator"), grouped("comments")))
+      .drop("title")
+      .drop("creator")
+      .drop("comments")
+    df.show(truncate=false)
+
+    spark.stop()
 
   }
 }
