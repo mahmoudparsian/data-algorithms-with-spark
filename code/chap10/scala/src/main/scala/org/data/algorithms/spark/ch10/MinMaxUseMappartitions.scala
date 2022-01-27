@@ -152,8 +152,7 @@ object MinMaxUseMappartitions {
      * for this input sample_numbers.txt
      *
      */
-    val NUM_OF_PARTITIONS = 16
-    val rdd = spark.sparkContext.textFile(inputPath, NUM_OF_PARTITIONS)
+    val rdd = spark.sparkContext.textFile(inputPath)
     println("rdd=" +  rdd)
     println("rdd.count=" +  rdd.count())
     println("rdd.collect()=" +  rdd.collect().mkString("Array(", ", ", ")"))
@@ -189,30 +188,16 @@ object MinMaxUseMappartitions {
 /*
 spark=org.apache.spark.sql.SparkSession@b34832b
 inputPath=data/sample_numbers.txt
-rdd=data/sample_numbers.txt MapPartitionsRDD[1] at textFile at MinMaxForceEmptyPartitions.scala:162
+rdd=data/sample_numbers.txt MapPartitionsRDD[1] at textFile at MinMaxUseMappartitions.scala:155
 rdd.count=11
 rdd.collect()=Array(23,24,22,44,66,77,44,44,555,666, 12,4,555,66,67,68,57,55,56,45,45,45,66,77, 34,35,36,97300,78,79, 120,44,444,445,345,345,555, 11,33,34,35,36,37,47,7777,8888,6666,44,55, 10,11,44,66,77,78,79,80,90,98,99,100,102,103,104,105, 6,7,8,9,10, 8,9,10,12,12, 7777, 222,333,444,555,666,111,112,5,113,114, 5555,4444,24)
-rdd.getNumPartitions()=17
-minMaxCount=MapPartitionsRDD[2] at mapPartitions at MinMaxForceEmptyPartitions.scala:174
-firstRecord=23,24,22,44,66,77,44,44,555,666
-firstRecord=120,44,444,445,345,345,555
-firstRecord=11,33,34,35,36,37,47,7777,8888,6666,44,55
-firstRecord=12,4,555,66,67,68,57,55,56,45,45,45,66,77
-firstRecord=34,35,36,97300,78,79
+rdd.getNumPartitions()=2
+minMaxCount=MapPartitionsRDD[2] at mapPartitions at MinMaxUseMappartitions.scala:167
 firstRecord=10,11,44,66,77,78,79,80,90,98,99,100,102,103,104,105
-firstRecord=6,7,8,9,10
-firstRecord=7777
-firstRecord=5555,4444,24
-minMaxCount.count=17
-firstRecord=120,44,444,445,345,345,555
 firstRecord=23,24,22,44,66,77,44,44,555,666
-firstRecord=12,4,555,66,67,68,57,55,56,45,45,45,66,77
-firstRecord=34,35,36,97300,78,79
-firstRecord=11,33,34,35,36,37,47,7777,8888,6666,44,55
+minMaxCount.count=2
+firstRecord=23,24,22,44,66,77,44,44,555,666
 firstRecord=10,11,44,66,77,78,79,80,90,98,99,100,102,103,104,105
-firstRecord=5555,4444,24
-firstRecord=6,7,8,9,10
-firstRecord=7777
-minMaxCount.collect()=Array((22,666,10), (4,555,14), (1,-1,0), (1,-1,0), (34,97300,6), (44,555,7), (11,8888,12), (1,-1,0), (1,-1,0), (10,105,16), (1,-1,0), (1,-1,0), (6,12,10), (5,7777,11), (1,-1,0), (24,5555,3), (1,-1,0))
+minMaxCount.collect()=Array((4,97300,49), (5,7777,40))
 final: (min, max, count)= (4, 97300, 89)
  */
