@@ -25,16 +25,17 @@ import scala.collection.mutable.ListBuffer
  *<6> Aggregate characters
  *<7> Flatten dictionary into a list of (character, frequency)
  *<8> return the flattened list of (character, frequency)
-
-
- *--------------------------------------------
- * First we define a simple function, which accepts
- * a single input record and then returns a list of
- * (key, value) pairs, where key is a character and
- * value is an aggregated frequency of that character
- * (for the given record)
  */
+
 object InMapperCombinerUsingLocalAggregation {
+  /**
+   *--------------------------------------------
+   * First we define a simple function, which accepts
+   * a single input record and then returns a list of
+   * (key, value) pairs, where key is a character and
+   * value is an aggregated frequency of that character
+   * (for the given record)
+   */
   // <1>
   def immapperCombiner(record: String): Iterator[(String, Int)] = {
     // <2>
