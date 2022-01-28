@@ -45,7 +45,7 @@ object StructuredToHierarchicalToXmlDataframe {
 
   def main(args: Array[String]): Unit = {
     //create an instance of SparkSession object
-    val spark = SparkSession.builder.master("local[*]").getOrCreate()
+    val spark = SparkSession.builder().master("local[*]").getOrCreate()
     val postsData = List(("p1", "t1", "creator1"), ("p2", "t2", "creator2"), ("p3", "t3", "creator3"))
     val commentsData = List(
       ("p1", "comment-11", "by-11"),

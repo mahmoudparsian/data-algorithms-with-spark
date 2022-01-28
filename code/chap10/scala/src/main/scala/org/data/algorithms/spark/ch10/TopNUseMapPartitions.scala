@@ -46,19 +46,19 @@ object TopNUseMapPartitions {
   ==========================================
   */
   def top(partitionIterator: Iterator[(String, Int)], N: Int): Iterator[(String, Int)] = {
-    var sm = mutable.SortedMap.empty[Int, String]
+    val sm = mutable.SortedMap.empty[Int, String]
     for ((key, number) <- partitionIterator) {
       //add an entry of (key, number) at s
       sm += number -> key
       if(sm.size > N)
         {
-          sm = sm - sm.firstKey
+          sm -= sm.firstKey
         }
 
     }
     val pairs = for((k,v) <- sm)
       yield (v,k)
-    return pairs.toList.iterator
+    pairs.toList.iterator
   }
 
   def main(args: Array[String]): Unit = {
@@ -72,10 +72,10 @@ object TopNUseMapPartitions {
       .appName("TopNUseMapPartitions")
       .master("local[*]")
       .getOrCreate()
-    println(s"spark =${spark}")
+    println(s"spark =$spark")
     //Top-N
     val N = Try(args(0).toInt) getOrElse 1
-    println(s"N: ${N}")
+    println(s"N: $N")
     /*
     =====================================
     * Create an RDD from a list of values
@@ -139,7 +139,7 @@ object TopNUseMapPartitions {
     # find final Top-N from all partitions
       #=====================================
     */
-    val finalTopN = top(topN.collect().toIterator, N)
+    val finalTopN = top(topN.collect().iterator, N)
     print(s"final_topN = ${finalTopN.toList.mkString("(",",",")")}")
     //done!
     spark.stop()
