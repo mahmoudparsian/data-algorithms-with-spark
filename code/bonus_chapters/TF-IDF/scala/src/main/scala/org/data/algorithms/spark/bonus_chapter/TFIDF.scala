@@ -1,7 +1,52 @@
 package org.data.algorithms.spark.bonus_chapter
 
 import org.apache.spark.sql.SparkSession
+"""
+TF-IDF is calculated using the term frequency (TF)
+and inverse document frequency (IDF).
 
+TF-IDF(w) = F * log ( N / M)
+
+where
+     w: is a single unique word
+     F: represents the frequency of a word in a document
+     N: total number of documents
+     M: number of documents containing the word w
+
+Computing Term Frequency (TF): TF is the number of times
+a particular word appears in a single document.
+
+Sample data set: contains 4 documents:
+   .../book/code/sampe_chapters/TF-IDF/data/doc1
+   .../book/code/sampe_chapters/TF-IDF/data/doc2
+   .../book/code/sampe_chapters/TF-IDF/data/doc3
+   .../book/code/sampe_chapters/TF-IDF/data/doc4
+
+Therefore, documents are: {doc1, doc2, doc3, doc4}
+So, document IDs are: {doc1, doc2, doc3, doc4}
+
+Computing Inverse Document Frequency (IDF)
+The IDF score indicates the importance of a
+particular word in the whole set of documents.
+For example, if a certain word is appearing in
+every document then the IDF score will be zero for
+that word.
+
+IDF(w) = log ( N / M)
+
+
+Algorithm: The TF-IDF is accomplished in 5 simple steps:
+  Step-1: prepare input
+  Step-2: calculate TF
+  Step-3: calculate IDF
+  Step-4: prepare for TF-IDF
+  Step-5: prepare final output of TF-IDF  as a DataFrame
+
+NOTE: print() and collect() are used for debugging and educational purposes.
+
+@author: Deepak Kumar
+
+"""
 object TFIDF {
 
   def keepDocNameAndClean(tuple2: (String,String)): (String, String) = {
