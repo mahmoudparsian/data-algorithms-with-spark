@@ -45,7 +45,6 @@ Algorithm: The TF-IDF is accomplished in 5 simple steps:
 NOTE: print() and collect() are used for debugging and educational purposes.
 
 @author: Deepak Kumar
-
 """
 object TFIDF {
 
