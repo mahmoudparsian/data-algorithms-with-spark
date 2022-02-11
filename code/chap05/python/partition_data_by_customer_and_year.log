@@ -1,0 +1,79 @@
+export INPUT_PATH="customers.txt"
+export OUTPUT_PATH="/tmp/partition_demo"
+export PROG="partition_data_by_customer_and_year.py"
+export SPARK_HOME=/book/spark-3.2.0
+$SPARK_HOME/bin/spark-submit  $PROG  $INPUT_PATH  $OUTPUT_PATH
+input_path= customers.txt
+output_path= /tmp/partition_demo
+
+df:
++-----------+----+--------------+-----------------+
+|customer_id|year|transaction_id|transaction_value|
++-----------+----+--------------+-----------------+
+|c1         |2019|T0011         |20.67            |
+|c1         |2019|T0012         |12.34            |
+|c1         |2019|T0013         |44.3             |
+|c1         |2018|T0001         |20.67            |
+|c1         |2018|T0002         |12.34            |
+|c1         |2018|T0003         |44.3             |
+|c2         |2019|T0017         |744.3            |
+|c2         |2019|T0018         |820.67           |
+|c2         |2018|T0022         |182.34           |
+|c2         |2018|T0033         |494.3            |
++-----------+----+--------------+-----------------+
+
+df.schema:
+root
+ |-- customer_id: string (nullable = true)
+ |-- year: integer (nullable = true)
+ |-- transaction_id: string (nullable = true)
+ |-- transaction_value: double (nullable = true)
+
+df2:
++--------------+-----------------+-----------+----+
+|transaction_id|transaction_value|customer_id|year|
++--------------+-----------------+-----------+----+
+|T0011         |20.67            |c1         |2019|
+|T0012         |12.34            |c1         |2019|
+|T0013         |44.3             |c1         |2019|
+|T0001         |20.67            |c1         |2018|
+|T0002         |12.34            |c1         |2018|
+|T0003         |44.3             |c1         |2018|
+|T0017         |744.3            |c2         |2019|
+|T0018         |820.67           |c2         |2019|
+|T0022         |182.34           |c2         |2018|
+|T0033         |494.3            |c2         |2018|
++--------------+-----------------+-----------+----+
+
+df2.schema:
+root
+ |-- transaction_id: string (nullable = true)
+ |-- transaction_value: double (nullable = true)
+ |-- customer_id: string (nullable = true)
+ |-- year: integer (nullable = true)
+
+
+$ ls -1R /tmp/partition_demo/
+_SUCCESS
+customer_id=c1
+customer_id=c2
+
+/tmp/partition_demo//customer_id=c1:
+year=2018
+year=2019
+
+/tmp/partition_demo//customer_id=c1/year=2018:
+part-00000-8905097e-a6d3-4cb7-8b40-879073ec51bc.c000.snappy.parquet
+
+/tmp/partition_demo//customer_id=c1/year=2019:
+part-00000-8905097e-a6d3-4cb7-8b40-879073ec51bc.c000.snappy.parquet
+
+/tmp/partition_demo//customer_id=c2:
+year=2018
+year=2019
+
+/tmp/partition_demo//customer_id=c2/year=2018:
+part-00000-8905097e-a6d3-4cb7-8b40-879073ec51bc.c000.snappy.parquet
+
+/tmp/partition_demo//customer_id=c2/year=2019:
+part-00000-8905097e-a6d3-4cb7-8b40-879073ec51bc.c000.snappy.parquet

@@ -1,0 +1,3 @@
+Each record has the following format:
+
+<customer_id><,><year><,><transaction_id><,><transaction_value>
