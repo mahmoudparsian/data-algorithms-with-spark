@@ -66,6 +66,7 @@ object StructuredToHierarchicalToXmlDataframe {
 
     val commentColumns: Seq[String] = Seq("post_id","comment","commented_by")
     val comments = spark.createDataFrame(commentsData).toDF(commentColumns:_*)
+
     println(s"posts.count() : ${posts.count()}")
     posts.show(truncate=false)
 
