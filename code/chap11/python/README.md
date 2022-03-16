@@ -2,7 +2,8 @@
 
 
 |=== 
-|Program |Description
+|Program 
+|Description
 
 |join_in_mapreduce.py
 | Inner Join of 2 tables without using Spark's join()
@@ -24,6 +25,5 @@
 
 |right_join_rdd_spark.py
 | Right Join of 2 RDDs
-
 |===
 
