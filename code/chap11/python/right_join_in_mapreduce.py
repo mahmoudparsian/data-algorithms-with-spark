@@ -3,8 +3,14 @@ Join in MapReduce
 
 @author: Mahmoud Parsian
 
-This is a custom implementation of inner-join
+This is a custom implementation of left-join
 without using Spark's join() functions.
+
+right_join(R, S): R is a left table and S is a right 
+table. The RIGHT JOIN(R, S)  returns all rows from 
+the right table (S), and the matching rows from the 
+left table (R) . The result is NULL from the left 
+side, if there is no match.
 
 
 This section is presented for pedagogical purposes, 
@@ -32,10 +38,12 @@ then we will emit four (key, value) pairs:
 (k, (v2, w1))
 (k, (v2, w2))
 
-Therefore, to perform a natural join between two relations R and S, 
-we need two map functions and one reducer function.
+Therefore, to perform a right join between two relations 
+R and S, we need two map functions and one reducer function.
 
-Map Phase
+Map Phase:
+----------
+
 The map phase has two steps:
 1. Map relation R:
 # key: relation R
@@ -67,7 +75,8 @@ and shuffle phase) will be:
 (k2, "S", s4)
 ...
 
-Reducer Phase
+Reducer Phase:
+--------------
 Before, we write a reducer function, we need to understand 
 the magic of MapReduce, which occurs in the sort and shuffle 
 phase. This is similar to SQL's GROUP BY function; once all 
@@ -102,12 +111,10 @@ reduce(key, values) {
     }
   }
 
-  # check to see if there are common keys
-  # between two tables
-  if (len(list_R) == 0) OR (len(list_S) == 0) {
-    # no common key
-    return
-  }
+  # if there is no S elements: means that key belongs to R
+  if (len(list_S) == 0): return []
+  
+  if (len(list_R) == 0): list_R.append(None)
   
   # len(list_R) > 0 AND len(list_S) > 0
   # perform Cartesian product of list_R and list_S
@@ -118,7 +125,8 @@ reduce(key, values) {
   }
 }
 
-Implementation in PySpark
+Implementation in PySpark:
+--------------------------
 This section shows how to implement the natural join of 
 two datasets (with some common keys) in PySpark without 
 using the join() function. I present this solution to show 
@@ -137,9 +145,9 @@ from pyspark.sql import Row
 #---------------------------------------------------------
 # key: entry[0]: key
 # values: entry[1]: [("T1", t11), ("T1", t12), ..., ("T2", t21), ("T2", t22), ...]
-def cartesian_product(entry):
-  T1 = []
-  T2 = []
+def left_join(entry):
+  T1 = [] # left table
+  T2 = [] # right table
   key = entry[0]
   values = entry[1]
   for tuple in values:
@@ -152,10 +160,11 @@ def cartesian_product(entry):
     #end-if
   #end-for
 
-  # check to see if there are common keys?
-  if (len(T1) == 0) or (len(T2) == 0):
-    # no common key
-    return []
+  # if there is no T2 elements: means that key belongs to T1
+  if (len(T2) == 0): return []
+  
+  if (len(T1) == 0): T1.append(None)
+    
   # assertion: len(T1) > 0 AND len(T2) > 0
   joined_elements = []
   # perform Cartesian product of T1 and T2
@@ -192,13 +201,13 @@ grouped = combined.groupByKey()
 
 # And finally, we find the Cartesian product of the 
 # values of each grouped entry:
-joined = grouped.flatMap(cartesian_product)
+joined = grouped.flatMap(left_join)
 print("joined=", joined.collect())
 
 """
 sample run and output:
 
-$SPARK_HOME/bin/spark-submit join_in_mapreduce.py
+$SPARK_HOME/bin/spark-submit left_join_in_mapreduce.py
 joined= 
 [
  ('b', (100, 300)), 
@@ -210,7 +219,9 @@ joined=
  ('a', (11, 40)), 
  ('a', (11, 50)), 
  ('a', (12, 40)), 
- ('a', (12, 50))
+ ('a', (12, 50)), 
+ ('d', (None, 90))
 ]
+
 
 """
