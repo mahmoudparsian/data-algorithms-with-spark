@@ -1,5 +1,6 @@
 # PySpark Solutions
 
+-------
 
 ## Inner Join
 
@@ -10,6 +11,7 @@
 | [inner_join_in_mapreduce.py](./inner_join_in_mapreduce.py) | Inner Join of 2 tables without using Spark's join() |
 
 
+-------
 
 ## Left Join
 
@@ -19,6 +21,7 @@
 | [left_join_rdd_spark.py](./left_join_rdd_spark.py) | Left Join of 2 RDDs |
 | [left_join_in_mapreduce.py](./left_join_in_mapreduce.py) | Left Join of 2 tables without using Spark's join() |
 
+-------
 
 ## Righ Join
 
