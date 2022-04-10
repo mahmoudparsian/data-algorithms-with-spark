@@ -66,7 +66,7 @@
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
         alt="Data Algorithms with Spark"
-        src="images/Data-Algorithms-with-Spark_mech2.pdf"
+        src="images/Data-Algorithms-with-Spark_mech2.png"
 >
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
