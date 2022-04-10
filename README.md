@@ -16,6 +16,8 @@
 	
 * [Published date: April 8, 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
+* [@OReillyMedia: Data Algorithms with Spark, By @mahmoudparsian](https://twitter.com/OReillyMedia/status/1511796122548903938/)
+
 * Autor Contact: [ [![Email](https://support.microsoft.com/images/Mail-GrayScale.png) Email](mailto:mahmoud.parsian@yahoo.com) ]  [  [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/) ][  [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/) ]
 
 
