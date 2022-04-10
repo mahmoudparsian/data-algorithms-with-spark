@@ -1,13 +1,12 @@
 #!/usr/bin/env python
 #-----------------------------------------------------
 # 1. Read customer.txt 
-# 2. Create a DataFrame with 5 columns: 
+# 2. Create a DataFrame with 4 columns: 
 #    { 
 #      <customer_id>, 
 #      <date>, 
 #      <transaction_id>, 
-#      <item>,
-#      <transaction_value> 
+#      <amount> 
 #    }
 #
 # <date> as day/month/year
@@ -56,18 +55,20 @@ spark = SparkSession.builder.getOrCreate()
 
 # create a DataFrame, note that toDF() returns a 
 # new DataFrame with new specified column names
-# columns = ('customer_id', 'date', 'transaction_id', 'item', 'transaction_value')
-df = spark.read.option("inferSchema", "true")\
-  .csv(input_path)\
-  .toDF('customer_id', 'date', 'transaction_id', 'item', 'transaction_value')
+# columns = ('customer_id', 'date', 'transaction_id', 'amount')
+df = spark.read.csv(input_path)\
+  .toDF('customer_id', 'date', 'transaction_id', 'amount')
 #
+print("df::")
 df.show(truncate=False)
 df.printSchema()
+
 #
 # add 2 new columns: year and month 
 df2 = df.withColumn('year', get_year(df.date))\
         .withColumn('month', get_month(df.date))
 #
+print("df2::")
 df2.show(truncate=False)
 df2.printSchema()
 #
@@ -78,6 +79,7 @@ df2.write.partitionBy('year', 'month')\
 
 # read the partitioned data back to another DataFrame
 df3 = spark.read.parquet(output_path)
+print("df3::")
 df3.show(truncate=False)
 df3.printSchema()
 

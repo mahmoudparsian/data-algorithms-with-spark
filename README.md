@@ -1,6 +1,6 @@
 # [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-#### Goal of this book: enable writing efficient & simpler code for data algorithms using Spark
+#### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
 
 -----
 
@@ -9,12 +9,12 @@
 * [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
 
 * This [new O'Reilly book](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
-  is the 2nd Edition of [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
+  is the successor Edition of [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
   (published by [O'Reilly](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/))
 
-* The first edition used Java for Spark, but for the new book, I will use PySpark (much simpler and readable)
+* This book uses PySpark (much simpler and readable)
 	
-* [Estimated Publication date: April 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
+* [Published date: April 8, 2022](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
 * Autor Contact: [ [![Email](https://support.microsoft.com/images/Mail-GrayScale.png) Email](mailto:mahmoud.parsian@yahoo.com) ]  [  [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/) ][  [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/) ]
 
@@ -61,6 +61,13 @@
 
 
 -----
+
+
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="images/Data-Algorithms-with-Spark_mech2.pdf"
+>
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
