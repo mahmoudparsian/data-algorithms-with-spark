@@ -1,0 +1,65 @@
+Let's review the input data files:
+
+% ls -l /book/code/bonus_chapters/mappartitions/SAMPLE_INPUT_FILES/
+-rw-r--r--  1 mparsian  wheel  26 Apr 15 23:37 file1.txt
+-rw-r--r--  1 mparsian  wheel  30 Apr 15 23:37 file2.txt
+-rw-r--r--  1 mparsian  wheel  18 Apr 15 23:38 file3.txt
+
+% cat /book/code/bonus_chapters/mappartitions/SAMPLE_INPUT_FILES/file1.txt 
+1
+2
+3
+-2
+4
+5
+6
+-1
+8
+9
+3
+2
+
+% cat /book/code/bonus_chapters/mappartitions/SAMPLE_INPUT_FILES/file2.txt
+5
+6
+7
+8
+-1
+-2
+-3
+3
+4
+5
+6
+33
+3
+
+% cat /book/code/bonus_chapters/mappartitions/SAMPLE_INPUT_FILES/file3.txt
+1
+2
+3
+4
+5
+6
+7
+8
+9
+
+
+% ./find_min_max_by_mappartitions.sh
+input_path= /book/code/bonus_chapters/mappartitions/SAMPLE_INPUT_FILES/
+
+spark.version= 3.2.0
+
+rdd.collect()= ['5', '6', '7', '8', '-1', '-2', '-3', '3', '4', '5', '6', '33', '3', '1', '2', '3', '4', '5', '6', '7', '8', '9', '1', '2', '3', '-2', '4', '5', '6', '-1', '8', '9', '3', '2']
+
+rdd.getNumPartitions()= 3
+
+partition elements:  ['1', '2', '3', '-2', '4', '5', '6', '-1', '8', '9', '3', '2']
+partition elements:  ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+partition elements:  ['5', '6', '7', '8', '-1', '-2', '-3', '3', '4', '5', '6', '33', '3']
+
+triplets.count()= 3
+triplets.collect()= [(13, -3, 33), (9, 1, 9), (12, -2, 9)]
+
+final_result (34, -3, 33)
