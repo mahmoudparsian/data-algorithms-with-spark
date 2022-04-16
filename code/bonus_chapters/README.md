@@ -13,6 +13,7 @@ so I added the following bonus chapters online.
 | [TF-IDF](./TF-IDF/)                         | Term Frequency - Inverse Document Frequency |
 | [K-mers](./k-mers/)                         | K-mers for DNA Sequences |
 | [Correlation](./correlation/)               | All vs. All Correlation |
+| [`mapPartitions()` Transformation](./mappartitions/) | `mapPartitions()` Complete Example  |
 
 
 -----
@@ -21,5 +22,6 @@ so I added the following bonus chapters online.
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
         alt="Data Algorithms with Spark"
-        src="../../images/data_algorithms_with_spark.jpg"
+        src="../../images/Data_Algorithms_with_Spark_COVER_9781492082385.png"
+    >
 >
