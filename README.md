@@ -1,14 +1,17 @@
 # [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-#### [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/data-alg-foreword2.pdf)
+## [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/data-alg-foreword2.pdf)
+
+----
+#### Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
 #### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
 
 -----
 
-* Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
-
 * [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
+
+* [Mahmoud Parsian's Author Page @LinkedIn](https://www.linkedin.com/mahmoudparsian/)
 
 * This [new O'Reilly book](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
   is the successor Edition of [Data Algorithms](https://www.oreilly.com/library/view/data-algorithms/9781491906170/) 
