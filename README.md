@@ -1,5 +1,6 @@
 # [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
-* [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/data-alg-foreword2.pdf)
+
+#### [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/data-alg-foreword2.pdf)
 
 #### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
 
