@@ -6,6 +6,8 @@
 
 * Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
+* [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/data-alg-foreword2.pdf)
+
 * [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
 
 * This [new O'Reilly book](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) 
