@@ -5,7 +5,7 @@ Complete [PySpark solutions](./python) are provided.
 According to Spark API: ````mapPartitions(func)```` 
 transformation is similar to ````map()````, but runs 
 separately on each partition (block) of the RDD, so 
-````func```` must be of type ````Iterator<T> => Iterator<U>````
+`func` must be of type `Iterator<T> => Iterator<U>`
 when running on an RDD of type T. Note that `map()` operates
 on each element of an RDD, while `mapPartitions()` operates
 on a single partition (comprised of thousands or millions
@@ -14,7 +14,7 @@ of elements).
 ![](../../mappartitions_image_1.drawio.png)
 
 
-The ````pyspark.RDD.mapPartitions()```` transformation 
+The `pyspark.RDD.mapPartitions()` transformation 
 should be used when you want to extract some condensed 
 (small) information (such as finding the minimum and 
 maximum of numbers) from each partition. For example, 
@@ -37,7 +37,7 @@ The following is a simple example of adding numbers
 per partition:
 
 
-````
+~~~python
 >>> numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 >>> numbers
 [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -64,7 +64,7 @@ elements: 4, 5, 6
 >>> rdd.mapPartitions(adder).collect()
 [6, 34, 15]
 
-````
+~~~
 
 
 # Example-2: Find Minimum and Maximum
@@ -73,7 +73,8 @@ Use ````mapPartitions()```` and find the minimum and maximum from each partition
 
 ![](../../mappartitions_image_2.drawio.png)
 
-To make it a cleaner solution, we define a python function to return the minimum and maximum for a given partition/iteration.
+To make it a cleaner solution, we define a python function to return 
+the minimum and maximum for a given partition/iteration.
 
 ~~~python
 # returns (min, max) per partition
