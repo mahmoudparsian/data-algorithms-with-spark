@@ -59,7 +59,7 @@ elements: 7, 8, 9, 10
 elements: 4, 5, 6
 
 >>> def adder(iterator):
-...     yield sum(iterator)
+...   yield sum(iterator)
 ...
 >>> rdd.mapPartitions(adder).collect()
 [6, 34, 15]
@@ -79,21 +79,22 @@ the minimum and maximum for a given partition/iteration.
 ~~~python
 # returns (min, max) per partition
 def min_max(iterator):
-	firsttime = True
-	local_count = 0
-	#local_min = 0
-	#local_max = 0
-	for x in iterator:
-	    local_count += 1
-		if (firsttime):
-			local_min = x
-			local_max = x
-			firsttime = False
-		else:
-			local_min = min(x, local_min)
-			local_max = max(x, local_max)
-		#end-if
-	return [(local_count, local_min, local_max)]
+  firsttime = True
+  local_count = 0
+  #local_min = 0
+  #local_max = 0
+  for x in iterator:
+    local_count += 1
+    if (firsttime):
+      local_min = x
+      local_max = x
+      firsttime = False
+    else:
+      local_min = min(x, local_min)
+      local_max = max(x, local_max)
+    #end-if
+  #end-for
+  return [(local_count, local_min, local_max)]
 #end-def
 ~~~
 
