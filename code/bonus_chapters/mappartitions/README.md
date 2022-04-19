@@ -11,6 +11,8 @@ on each element of an RDD, while `mapPartitions()` operates
 on a single partition (comprised of thousands or millions
 of elements).
 
+![](../../mappartitions_image_1.drawio.png)
+
 
 The ````pyspark.RDD.mapPartitions()```` transformation 
 should be used when you want to extract some condensed 
@@ -68,6 +70,8 @@ elements: 4, 5, 6
 # Example-2: Find Minimum and Maximum
 
 Use ````mapPartitions()```` and find the minimum and maximum from each partition.
+
+![](../../mappartitions_image_2.drawio.png)
 
 To make it a cleaner solution, we define a python function to return the minimum and maximum for a given partition/iteration.
 
