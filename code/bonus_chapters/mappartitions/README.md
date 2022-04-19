@@ -80,9 +80,11 @@ the minimum and maximum for a given partition/iteration.
 # returns (min, max) per partition
 def min_max(iterator):
 	firsttime = True
-	#local_min = 0;
-	#local_max = 0;
+	local_count = 0
+	#local_min = 0
+	#local_max = 0
 	for x in iterator:
+	    local_count += 1
 		if (firsttime):
 			local_min = x
 			local_max = x
@@ -91,7 +93,7 @@ def min_max(iterator):
 			local_min = min(x, local_min)
 			local_max = max(x, local_max)
 		#end-if
-	return [(local_min, local_max)]
+	return [(local_count, local_min, local_max)]
 #end-def
 ~~~
 
@@ -104,12 +106,15 @@ Now create a source RDD[String] and then apply
 >>> rdd = spark.sparkContext.parallelize(data, 3)
 >>> mapped = rdd.mapPartitions(min_max)
 >>> mapped.collect()
-[(3, 20), (2, 5), (2, 20)]
+[(3, 3, 20), (3, 2, 5), (4, 2, 20)]
 >>> minmax_list = mapped.collect()
->>> minimum = min(minmax_list[0])
+>>> count = min(minmax_list[0])
+>>> count
+10
+>>> minimum = min(minmax_list[1])
 >>> minimum
 3
->>> maximum = max(minmax_list[0])
+>>> maximum = max(minmax_list[2])
 >>> maximum
 20
 ~~~
