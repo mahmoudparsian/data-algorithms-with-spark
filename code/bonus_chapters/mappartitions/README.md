@@ -11,6 +11,21 @@ on each element of an RDD, while `mapPartitions()` operates
 on a single partition (comprised of thousands or millions
 of elements).
 
+In the following Figure, `f()` is a custom function,
+which handles one partition at a time. Note that if
+`source_RDD` has N partitions, then `target_RDD` will
+have N elements.
+
+~~~python
+# partition denotes a "single partition" comprised of many elements
+def f(partition):
+  #...iterate partition (one element at a time)
+  #...and return a value (such as tuple, array, list, dictionary, ...)
+#end-def
+
+target_RDD = source_RDD.mapPartitions(f)
+~~~
+
 ![](./images/mappartitions_image_1.drawio.png)
 
 
