@@ -159,7 +159,17 @@ Note that you may perform final reduction by `RDD.reduce()` as well:
 
 
 NOTE: data  can be huge, but for understanding 
-the `mapPartitions()` we use a very small data set.
+the `mapPartitions()` we used a very small data set.
+
+# Is `RDD.mapPartitions()` Scalable?
+The RDD.mapPartitions() is scalable, since we return a single element
+from each source RDD partition (comprised of many elements). Even if 
+the number of partitions in source RDD is high, still it will not cause a 
+problem. You need to make sure that you custom function is not a bottleneck.
+For example, if source RDD has 100,000 partitions, then the target RDD will
+have 100,000 elements, which is very simple to apply a final reduction to
+the target RDD. Again, make sure that you custom function is simple and 
+efficient.
 
 
 # Questions/Comments
