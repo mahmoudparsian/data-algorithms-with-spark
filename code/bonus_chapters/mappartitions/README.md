@@ -17,10 +17,12 @@ which handles one partition at a time. Note that if
 have N elements.
 
 ~~~python
-# partition denotes a "single partition" comprised of many elements
-def f(partition):
-  #...iterate partition (one element at a time)
-  #...and return a value (such as tuple, array, list, dictionary, ...)
+# Parameter: single_partition denotes a "single partition", 
+# which is comprised of many elements
+def f(single_partition):
+  #...iterate single_partition (one element at a time)
+  #...and return your desired summarized value (such as 
+  #...tuple, array, list, dictionary, ...)
 #end-def
 
 target_RDD = source_RDD.mapPartitions(f)
