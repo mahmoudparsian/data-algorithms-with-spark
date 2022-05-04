@@ -136,7 +136,7 @@ Note that you may perform final reduction by `RDD.reduce()` as well:
 >>> # y = (count2, min2, max2)
 >>> final_min_max = mapped.reduce(lambda x, y: (x[0]+y[0], min(x[1],y[1]), max(x[2],y[2])))
 >>> final_min_max
-(10, 3. 20)
+(10, 3, 20)
 ~~~
 
 
