@@ -77,7 +77,8 @@ To make it a cleaner solution, we define a python function to return
 the minimum and maximum for a given partition/iteration.
 
 ~~~python
-# returns (min, max) per partition
+# returns (count, min, max) per partition
+# iterator represents a single partition (comprised of many elements)
 def min_max(iterator):
   firsttime = True
   local_count = 0
@@ -98,8 +99,7 @@ def min_max(iterator):
 #end-def
 ~~~
 
-Now create a source RDD[String] and then apply 
-`mapPartitions()`:
+Now create a source `RDD[Integer]` and then apply  `mapPartitions()`:
 
 ~~~python
 >>> # spark : SparkSession object
@@ -132,6 +132,7 @@ Note that you may perform final reduction by `RDD.reduce()` as well:
 >>> mapped.collect()
 [(3, 3, 20), (3, 2, 5), (4, 2, 20)]
 >>>
+>>> # perform final reduction
 >>> # x = (count1, min1, max1)
 >>> # y = (count2, min2, max2)
 >>> final_min_max = mapped.reduce(lambda x, y: (x[0]+y[0], min(x[1],y[1]), max(x[2],y[2])))
