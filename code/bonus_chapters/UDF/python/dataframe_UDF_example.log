@@ -1,0 +1,39 @@
+% export SPARK_HOME=/home/mparsian/spark-3.2.0
+% $SPARK_HOME/bin/spark-submit dataframe_UDF_example.py
+
++---+------------+
+|ID |Name        |
++---+------------+
+|100|john jones  |
+|200|tracey smith|
+|300|amy sanders |
+|400|null        |
++---+------------+
+
++---+------------+
+|ID |Name        |
++---+------------+
+|100|John Jones  |
+|200|Tracey Smith|
+|300|Amy Sanders |
+|400|null        |
++---+------------+
+
++---+------------+------------+
+|ID |Name        |Upper Name  |
++---+------------+------------+
+|100|john jones  |JOHN JONES  |
+|200|tracey smith|TRACEY SMITH|
+|300|amy sanders |AMY SANDERS |
+|400|null        |null        |
++---+------------+------------+
+
++---+------------+
+|ID |Name        |
++---+------------+
+|100|John Jones  |
+|200|Tracey Smith|
+|300|Amy Sanders |
+|400|null        |
++---+------------+
+

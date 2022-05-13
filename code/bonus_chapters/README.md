@@ -14,7 +14,7 @@ so I added the following bonus chapters online.
 | [K-mers](./k-mers/)                         | K-mers for DNA Sequences |
 | [Correlation](./correlation/)               | All vs. All Correlation |
 | [`mapPartitions()` Transformation](./mappartitions/) | `mapPartitions()` Complete Example  |
-
+| [`UDF`](./UDF/) | User-Defined Function Example  |
 
 -----
 

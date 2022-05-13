@@ -121,7 +121,9 @@ Now create a source `RDD[Integer]` and then apply  `mapPartitions()`:
 ~~~python
 >>> # spark : SparkSession object
 >>> data = [10, 20, 3, 4, 5, 2, 2, 20, 20, 10]
+>>> # rdd : RDD[integer]
 >>> rdd = spark.sparkContext.parallelize(data, 3)
+>>> # mapped : RDD[(integer, integer, integer)] : RDD[(count, min, max)]
 >>> mapped = rdd.mapPartitions(min_max)
 >>> mapped.collect()
 [(3, 3, 20), (3, 2, 5), (4, 2, 20)]
@@ -144,7 +146,9 @@ Note that you may perform final reduction by `RDD.reduce()` as well:
 ~~~python
 >>> # spark : SparkSession object
 >>> data = [10, 20, 3, 4, 5, 2, 2, 20, 20, 10]
+>>> # rdd : RDD[integer]
 >>> rdd = spark.sparkContext.parallelize(data, 3)
+>>> # mapped : RDD[(integer, integer, integer)] : RDD[(count, min, max)]
 >>> mapped = rdd.mapPartitions(min_max)
 >>> mapped.collect()
 [(3, 3, 20), (3, 2, 5), (4, 2, 20)]
