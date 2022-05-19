@@ -1,0 +1,34 @@
+% ~/spark-3.2.1/bin/spark-submit creating_arrays_in_dataframes.py
+
++--------------+
+|         words|
++--------------+
+|       [hello]|
+|           [x]|
+|            []|
+|[Hello, world]|
+| [I, am, fine]|
++--------------+
+
+root
+ |-- words: array (nullable = true)
+ |    |-- element: string (containsNull = true)
+
++----------------+------------------+---------------+------------+-------------+
+|            name| languagesAtSchool|languagesAtWork|currentState|previousState|
++----------------+------------------+---------------+------------+-------------+
+|    James,,Smith|[Java, Scala, C++]|  [Spark, Java]|          OH|           CA|
+|   Michael,Rose,|[Spark, Java, C++]|  [Spark, Java]|          NY|           NJ|
+|     Mich,Rosen,|                []|             []|          NY|           NJ|
+|Robert,,Williams|      [CSharp, VB]|[Spark, Python]|          UT|           NV|
++----------------+------------------+---------------+------------+-------------+
+
+root
+ |-- name: string (nullable = true)
+ |-- languagesAtSchool: array (nullable = true)
+ |    |-- element: string (containsNull = true)
+ |-- languagesAtWork: array (nullable = true)
+ |    |-- element: string (containsNull = true)
+ |-- currentState: string (nullable = true)
+ |-- previousState: string (nullable = true)
+
