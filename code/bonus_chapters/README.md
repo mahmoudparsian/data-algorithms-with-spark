@@ -15,6 +15,7 @@ so I added the following bonus chapters online.
 | [Correlation](./correlation/)               | All vs. All Correlation |
 | [`mapPartitions()` Transformation](./mappartitions/) | `mapPartitions()` Complete Example  |
 | [`UDF`](./UDF/) | User-Defined Function Example  |
+| [`DataFrames`](./dataframes/) | Examples on Creation and Transformation of DataFrames |
 
 -----
 
