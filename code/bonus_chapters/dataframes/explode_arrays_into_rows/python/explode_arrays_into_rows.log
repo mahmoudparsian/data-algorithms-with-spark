@@ -1,0 +1,36 @@
+/Users/mparsian/spark-3.2.1/bin/spark-submit explode_arrays_into_rows.py
+
+root
+ |-- name: string (nullable = true)
+ |-- age: string (nullable = true)
+ |-- languages: array (nullable = true)
+ |    |-- element: string (containsNull = true)
+
++-----+---+--------------------+
+| name|age|           languages|
++-----+---+--------------------+
+| Rafa| 20|        [SQL, NoSQL]|
+| Alex| 21|    [Ada, SQL, Java]|
+| Jane| 22|[Fortran, Cobol, ...|
+|Maria| 23|                  []|
++-----+---+--------------------+
+
+root
+ |-- name: string (nullable = true)
+ |-- age: string (nullable = true)
+ |-- col: string (nullable = true)
+
++----+---+-------+
+|name|age|    col|
++----+---+-------+
+|Rafa| 20|    SQL|
+|Rafa| 20|  NoSQL|
+|Alex| 21|    Ada|
+|Alex| 21|    SQL|
+|Alex| 21|   Java|
+|Jane| 22|Fortran|
+|Jane| 22|  Cobol|
+|Jane| 22|      R|
+|Jane| 22|    C++|
++----+---+-------+
+
