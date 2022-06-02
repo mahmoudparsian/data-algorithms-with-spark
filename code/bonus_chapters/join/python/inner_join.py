@@ -6,10 +6,12 @@ spark = SparkSession.builder.getOrCreate()
 
 # find inner join(R, S)
 
+# R record format "<key><,><value>"
 # R = spark.sparkContext.textFile("/tmp/R.txt");
 R = spark.sparkContext.textFile(sys.argv[1]);
 R.collect()
 
+# S record format "<key><,><value>"
 # S = spark.sparkContext.textFile("/tmp/S.txt");
 S = spark.sparkContext.textFile(sys.argv[2]);
 S.collect()
