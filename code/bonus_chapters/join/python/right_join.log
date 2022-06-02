@@ -19,7 +19,7 @@ k6,t7
 
 % A="/tmp/A.txt"
 % B="/tmp/B.txt"
-% ~/spark-3.2.1/bin/spark-submit inner_join.py   $A   $B
+% ~/spark-3.2.1/bin/spark-submit right_join.py   $A   $B
 
 rdd_A= 
 [
@@ -44,7 +44,7 @@ rdd_B=
  ('k6', 't7')
  ]
 
-A_joined_B= 
+A_right_joined_B= 
 [
  ('k1', ('v1', 't1')), 
  ('k1', ('v1', 't2')), 
@@ -57,5 +57,7 @@ A_joined_B=
  ('k2', ('v4', 't4')), 
  ('k2', ('v4', 't5')), 
  ('k2', ('v5', 't4')), 
- ('k2', ('v5', 't5'))
+ ('k2', ('v5', 't5')), 
+ ('k5', (None, 't6')),
+ ('k6', (None, 't7'))
 ]
