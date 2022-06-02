@@ -5,7 +5,7 @@ from pyspark.sql.functions import *
 # Pyspark – Split multiple array columns into rows
 #-------------------------------------------------
   
-# creating a sparksession object
+# creating a SparkSession object
 spark=SparkSession.builder.getOrCreate()
   
 # now creating dataframe

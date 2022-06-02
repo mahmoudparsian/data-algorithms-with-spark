@@ -1,6 +1,6 @@
 ## [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
-## [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/data-alg-foreword2.pdf)
+## [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/FOREWORD_by_Dr_Matei_Zaharia.md)
 
 ----
 #### Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
