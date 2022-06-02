@@ -13,6 +13,7 @@ about their performance without having to build a
 distributed system from scratch.
 </div><br>
 
+
 <div style="text-align: justify"> 
 I am therefore very excited to see this new book by 
 Dr. Mahmoud Parsian on data algorithms with Spark. 
@@ -27,8 +28,8 @@ He also explains the workings of the underlying Spark engine
 and how to optimize your algorithms through techniques such
 as controlling data partitioning. This book will be a great
 resource for both readers looking to implement existing 
-algorithms in a scalable fashion and readers who are developing 
-new, custom algorithms using Spark.
+algorithms in a scalable fashion and readers who are 
+developing new, custom algorithms using Spark.
 </div><br>
 
 <div style="text-align: justify"> 
@@ -40,8 +41,10 @@ similar computations. Whether you intend to use these
 algorithms directly or build your own, custom algorithms 
 using Spark, I hope that you enjoy this book as an introduction 
 to the open-source engine, its inner workings, and the modern 
-parallel algorithms that are having such a broad impact across computing.
-</div>
+parallel algorithms that are having such a broad impact 
+across computing.
+</div><br>
+
 
 Matei Zaharia <br>
 Assistant Professor of Computer Science, Stanford <br>
