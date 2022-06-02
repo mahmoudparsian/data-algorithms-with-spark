@@ -16,6 +16,7 @@ so I added the following bonus chapters online.
 | [`mapPartitions()` Transformation](./mappartitions/) | `mapPartitions()` Complete Example  |
 | [`UDF`](./UDF/) | User-Defined Function Example  |
 | [`DataFrames`](./dataframes/) | Examples on Creation and Transformation of DataFrames |
+| [`Join operations`](./join/) | Examples on join of RDDs |
 
 -----
 
