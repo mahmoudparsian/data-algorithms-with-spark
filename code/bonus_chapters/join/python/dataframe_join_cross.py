@@ -3,7 +3,7 @@ import sys
 from pyspark.sql import SparkSession 
 #-----------------------------------------------------
 # Apply a join() 
-# source_df.join(other_df, "right")
+# source_df.join(other_df, "cross")
 #
 # Input: NONE
 #------------------------------------------------------
@@ -13,11 +13,13 @@ from pyspark.sql import SparkSession
 # @author Mahmoud Parsian
 #-------------------------------------------------------
 
+
 #=========================================
 def main():
 
     # create an instance of SparkSession
     spark = SparkSession.builder.getOrCreate()
+
 
     #========================================
     # join(other, on=None, how=None)
@@ -62,12 +64,10 @@ def main():
     #
     triplets2 = [("david", "software"),\
                  ("david", "business"),\
-                 ("terry", "coffee"),\
-                 ("terry", "hardware"),\
                  ("mary", "marketing"),\
                  ("mary", "sales"),\
                  ("jane", "genomics")]
-
+                
     #
     print("triplets2 = ", triplets2)
     df2 = spark.createDataFrame(triplets2, ["name", "dept"])
@@ -79,7 +79,7 @@ def main():
     #-----------------------------------------
     # df.join(df2)
     #-----------------------------------------
-    joined = df.join(df2, df.name == df2.name, 'right')
+    joined = df.join(df2, df.name == df2.name, 'cross')
     joined.show()
     joined.printSchema()  
     
@@ -87,6 +87,7 @@ def main():
     # done!
     spark.stop()
 #end-def
-#==========================================
+#====================================
 if __name__ == '__main__':
     main()
+
