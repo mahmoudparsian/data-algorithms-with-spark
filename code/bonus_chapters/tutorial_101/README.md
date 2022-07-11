@@ -318,14 +318,4 @@ Mahmoud Parsian
         src="../../../images/Data_Algorithms_with_Spark_COVER_9781492082385.png"
 >
 
-<a href="https://www.amazon.com/dp/B07X4B2218/ref=sr_1_2">
-    <img
-        alt="PySpark Algorithms"
-        src="../../../images/pyspark_algorithms2.jpg"
->
 
-<a href="http://shop.oreilly.com/product/0636920033950.do">
-    <img
-        alt="Data Algorithms"
-        src="../../../images/data_algorithms_image.jpg"
->
