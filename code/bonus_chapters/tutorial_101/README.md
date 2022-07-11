@@ -228,7 +228,7 @@ You may create RDDs by:
 
 	>>> 
 
-# Create DataFrame from File
+# Create DataFrame from File With No Header
 
 ## Prepare input file
 
@@ -263,8 +263,32 @@ You may create RDDs by:
 	| fuzzy|     1|female|     4|
 	+------+------+------+------+
 
+# Create DataFrame from File With Header
 
+## Prepare input file
 
+Note that the first record is the header (column names)
+
+	cat /tmp/cats.with.header.csv
+	name,count1,gender,count2
+	cuttie,2,female,6
+	mono,3,male,9
+	fuzzy,1,female,4
+	
+## Create DataFrame from input file
+
+	>>> input_path = '/tmp/cats.with.header.csv'
+	>>> df = spark.read.format("csv").option("header", "true").load(input_path)
+	>>> df.show()
+	+------+------+------+------+
+	|  name|count1|gender|count2|
+	+------+------+------+------+
+	|cuttie|     2|female|     6|
+	|  mono|     3|  male|     9|
+	| fuzzy|     1|female|     4|
+	+------+------+------+------+
+	
+	
 # Questions/Comments
 
 * [View Mahmoud Parsian's profile on LinkedIn](http://www.linkedin.com/in/mahmoudparsian)
