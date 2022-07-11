@@ -36,10 +36,7 @@ Successful execution will give you the PySpark prompt:
 
 
 	~  % ./spark-3.3.0/bin/pyspark
-	Python 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
-	Type "help", "copyright", "credits" or "license" for more information.
-	Setting default log level to "WARN".
-	To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+	Python 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10)
 	Welcome to
 		  ____              __
 		 / __/__  ___ _____/ /__
@@ -166,10 +163,7 @@ You may create RDDs by:
 
 # Create DataFrame from Python Collection
 	%  $SPARK_HOME/bin/pyspark
-	Python 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
-	Type "help", "copyright", "credits" or "license" for more information.
-	Setting default log level to "WARN".
-	To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+	Python 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) 
 	Welcome to
 		  ____              __
 		 / __/__  ___ _____/ /__
@@ -177,7 +171,7 @@ You may create RDDs by:
 	   /__ / .__/\_,_/_/ /_/\_\   version 3.3.0
 		  /_/
 
-	Using Python version 3.10.5 (v3.10.5:f377153967, Jun  6 2022 12:36:10)
+	Using Python version 3.10.5 
 	Spark context Web UI available at http://10.0.0.232:4041
 	Spark context available as 'sc' (master = local[*], app id = local-1657575722231).
 	SparkSession available as 'spark'.
@@ -185,9 +179,21 @@ You may create RDDs by:
 	>>> spark.version
 	'3.3.0'
 	
-	>>> rows = [("alex", 20, 34000), ("alex", 40, 38000),("jane", 29, 78000),("jane", 27, 37000),("ted", 50, 54000),("ted", 66, 99000)]
+	>>> rows = [("alex", 20, 34000), 
+	            ("alex", 40, 38000),
+	            ("jane", 29, 78000),
+	            ("jane", 27, 37000),
+	            ("ted", 50, 54000),
+	            ("ted", 66, 99000)]
 	>>> rows
-	[('alex', 20, 34000), ('alex', 40, 38000), ('jane', 29, 78000), ('jane', 27, 37000), ('ted', 50, 54000), ('ted', 66, 99000)]
+	[
+	 ('alex', 20, 34000), 
+	 ('alex', 40, 38000), 
+	 ('jane', 29, 78000), 
+	 ('jane', 27, 37000), 
+	 ('ted', 50, 54000), 
+	 ('ted', 66, 99000)
+	]
 	
 	>>> df = spark.createDataFrame(rows, ['name', 'age', 'salaray'])
 	>>> df.show()
@@ -211,7 +217,14 @@ You may create RDDs by:
 	>>> df.count()
 	6
 	>>> df.collect()
-	[Row(name='alex', age=20, salaray=34000), Row(name='alex', age=40, salaray=38000), Row(name='jane', age=29, salaray=78000), Row(name='jane', age=27, salaray=37000), Row(name='ted', age=50, salaray=54000), Row(name='ted', age=66, salaray=99000)]
+	[
+	 Row(name='alex', age=20, salaray=34000), 
+	 Row(name='alex', age=40, salaray=38000), 
+	 Row(name='jane', age=29, salaray=78000), 
+	 Row(name='jane', age=27, salaray=37000), 
+	 Row(name='ted', age=50, salaray=54000), 
+	 Row(name='ted', age=66, salaray=99000)
+	]
 
 	>>> 
 
@@ -237,7 +250,10 @@ You may create RDDs by:
 	| fuzzy|  1|female|  4|
 	+------+---+------+---+
 
-	>>> df2 = df.withColumnRenamed('_c0', 'name').withColumnRenamed('_c1', 'count1').withColumnRenamed('_c2', 'gender').withColumnRenamed('_c3', 'count2')
+	>>> df2 = df.withColumnRenamed('_c0', 'name')
+	            .withColumnRenamed('_c1', 'count1')
+	            .withColumnRenamed('_c2', 'gender')
+	            .withColumnRenamed('_c3', 'count2')
 	>>> df2.show()
 	+------+------+------+------+
 	|  name|count1|gender|count2|
