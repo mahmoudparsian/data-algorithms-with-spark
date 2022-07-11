@@ -164,6 +164,91 @@ You may create RDDs by:
 		...
 
 
+# Create DataFrame from Python Collection
+	%  $SPARK_HOME/bin/pyspark
+	Python 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10) [Clang 13.0.0 (clang-1300.0.29.30)] on darwin
+	Type "help", "copyright", "credits" or "license" for more information.
+	Setting default log level to "WARN".
+	To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+	Welcome to
+		  ____              __
+		 / __/__  ___ _____/ /__
+		_\ \/ _ \/ _ `/ __/  '_/
+	   /__ / .__/\_,_/_/ /_/\_\   version 3.3.0
+		  /_/
+
+	Using Python version 3.10.5 (v3.10.5:f377153967, Jun  6 2022 12:36:10)
+	Spark context Web UI available at http://10.0.0.232:4041
+	Spark context available as 'sc' (master = local[*], app id = local-1657575722231).
+	SparkSession available as 'spark'.
+	
+	>>> spark.version
+	'3.3.0'
+	
+	>>> rows = [("alex", 20, 34000), ("alex", 40, 38000),("jane", 29, 78000),("jane", 27, 37000),("ted", 50, 54000),("ted", 66, 99000)]
+	>>> rows
+	[('alex', 20, 34000), ('alex', 40, 38000), ('jane', 29, 78000), ('jane', 27, 37000), ('ted', 50, 54000), ('ted', 66, 99000)]
+	
+	>>> df = spark.createDataFrame(rows, ['name', 'age', 'salaray'])
+	>>> df.show()
+	+----+---+-------+                                                              
+	|name|age|salaray|
+	+----+---+-------+
+	|alex| 20|  34000|
+	|alex| 40|  38000|
+	|jane| 29|  78000|
+	|jane| 27|  37000|
+	| ted| 50|  54000|
+	| ted| 66|  99000|
+	+----+---+-------+
+
+	>>> df.printSchema()
+	root
+	 |-- name: string (nullable = true)
+	 |-- age: long (nullable = true)
+	 |-- salaray: long (nullable = true)
+
+	>>> df.count()
+	6
+	>>> df.collect()
+	[Row(name='alex', age=20, salaray=34000), Row(name='alex', age=40, salaray=38000), Row(name='jane', age=29, salaray=78000), Row(name='jane', age=27, salaray=37000), Row(name='ted', age=50, salaray=54000), Row(name='ted', age=66, salaray=99000)]
+
+	>>> 
+
+# Create DataFrame from File
+
+## Prepare input file
+
+	cat /tmp/cats.no.header.csv
+	cuttie,2,female,6
+	mono,3,male,9
+	fuzzy,1,female,4
+	
+## Create DataFrame from input file
+
+	>>> input_path = '/tmp/cats.no.header.csv'
+	>>> df = spark.read.format("csv").load(input_path)
+	>>> df.show()
+	+------+---+------+---+
+	|   _c0|_c1|   _c2|_c3|
+	+------+---+------+---+
+	|cuttie|  2|female|  6|
+	|  mono|  3|  male|  9|
+	| fuzzy|  1|female|  4|
+	+------+---+------+---+
+
+	>>> df2 = df.withColumnRenamed('_c0', 'name').withColumnRenamed('_c1', 'count1').withColumnRenamed('_c2', 'gender').withColumnRenamed('_c3', 'count2')
+	>>> df2.show()
+	+------+------+------+------+
+	|  name|count1|gender|count2|
+	+------+------+------+------+
+	|cuttie|     2|female|     6|
+	|  mono|     3|  male|     9|
+	| fuzzy|     1|female|     4|
+	+------+------+------+------+
+
+
+
 # Questions/Comments
 
 * [View Mahmoud Parsian's profile on LinkedIn](http://www.linkedin.com/in/mahmoudparsian)
