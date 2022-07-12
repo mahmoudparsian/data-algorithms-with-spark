@@ -3,7 +3,11 @@
 * Spark is a multi-language engine for executing data engineering, 
   data science, and machine learning on single-node machines or clusters.
 
-* PySpark is the Python API for Spark.  
+* PySpark is the Python API for Spark. 
+
+Note:
+
+* Assume that `%` is an operating system command prompt 
 
 # Start PySpark
 
@@ -18,9 +22,8 @@ are going to run PySpark shell in your laptop/macbook,
 then you do not need to start any clauter -- your 
 laptop/macbook as a cluster of a single node:
 
-    export SPARK_HOME=<installed-directory-for-spark>
-	cd $SPARK_HOME
-	./sbin/start-all.sh
+    % export SPARK_HOME=<installed-directory-for-spark>
+	% $SPARK_HOME/sbin/start-all.sh
 
 
 # Invoke  PySpark Shell
@@ -28,14 +31,14 @@ laptop/macbook as a cluster of a single node:
 To start PySpark, execute the following:
 
 
-	cd $SPARK_HOME
-	./bin/pyspark
+    % export SPARK_HOME=<installed-directory-for-spark>
+	% $SPARK_HOME/bin/pyspark
 
 
 Successful execution will give you the PySpark prompt:
 
 
-	~  % ./spark-3.3.0/bin/pyspark
+	% $SPARK_HOME/bin/pyspark
 	Python 3.10.5 (v3.10.5:f377153967, Jun  6 2022, 12:36:10)
 	Welcome to
 		  ____              __
@@ -52,8 +55,9 @@ Successful execution will give you the PySpark prompt:
 
 
 Note that the shell already have created two objects:
-* SparkContext (`sc`) object and you may use it to create RDDs.
-* SparkSession (`spark`) object and you may use it to create DataFrames.
+* `sc` : as parkContext object and you may use it to create RDDs.
+* `spark` : an SparkSession object and you may use it to create DataFrames.
+
 
 # Creating RDDs
 
