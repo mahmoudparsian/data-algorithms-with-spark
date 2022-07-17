@@ -1,7 +1,8 @@
 # Bonus Chapters
 
-I did not want to make the book bulky, 
-so I added the following bonus chapters online.
+	I did not want to make the book 
+	bulky,  so  I  have  added  the 
+	following bonus chapters online.
 
 -----
 
@@ -16,6 +17,7 @@ so I added the following bonus chapters online.
 | [`mapPartitions()` Transformation](./mappartitions/) | `mapPartitions()` Complete Example  |
 | [`UDF`](./UDF/) | User-Defined Function Example  |
 | [`DataFrames`](./dataframes/) | Examples on Creation and Transformation of DataFrames |
+| [`DataFrames Tutorials`](./dataframes/) | DataFrames Tutorials: from collections and CSV text files |
 | [`Join operations`](./join/) | Examples on join of RDDs |
 | [`PySpark Tutorial 101`](./pyspark_tutorial/) | Examples on using PySpark RDDs and DataFrames |
 
