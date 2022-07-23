@@ -24,16 +24,20 @@ This directory contains all of the chapter codes for "Data Algorithms with Spark
 The following directories are bonus chapters:
 
   
-| Bonus Chapter                                              | Description                               | 
-|------------------------------------------------------------|-------------------------------------------|
-| [Data Design Patterns](./chap10/)                          | Practical Data Design Patterns            |
+| Bonus Chapter                               | Description  |
+|---------------------------------------------|--------------|
 | [Word Count](./bonus_chapters/wordcount/)                  | Provided multiple solutions for word count problem using `reduceByKey()` and `groupByKey()` reducers.  |
 | [Anagrams](./bonus_chapters/anagrams/)                     | Find words, which are anagrams: provided multiple solutions for anagrams problem using `reduceByKey()`, `groupByKey()`, and `combineByKey()` reducers. |
-| [Lambda Expressions](./bonus_chapters/lambda_expressions/) | How to use Lambda Expressions in PySpark programs |
+| [Lambda Expressions](./lambda_expressions/) | How to use Lambda Expressions in PySpark programs |
 | [TF-IDF](./bonus_chapters/TF-IDF/)                         | Term Frequency - Inverse Document Frequency |
-| [K-mers](./bonus_chapters/k-mers/)                         | K-mers for DNA Sequences                    |
+| [K-mers](./bonus_chapters/k-mers/)                         | K-mers for DNA Sequences |
 | [Correlation](./bonus_chapters/correlation/)               | All vs. All Correlation |
-
+| [`mapPartitions()` Transformation](./bonus_chapters/mappartitions/) | `mapPartitions()` Complete Example  |
+| [`UDF`](./bonus_chapters/UDF/) | User-Defined Function Example  |
+| [`DataFrames Transformations`](./bonus_chapters/dataframes/) | Examples on Creation and Transformation of DataFrames |
+| [`DataFrames Tutorials`](./bonus_chapters/dataframes/) | DataFrames Tutorials: from collections and CSV text files |
+| [`Join operations`](./bonus_chapters/join/) | Examples on join of RDDs |
+| [`PySpark Tutorial 101`](./bonus_chapters/pyspark_tutorial/) | Examples on using PySpark RDDs and DataFrames |
 
 -----
 
