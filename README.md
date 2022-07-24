@@ -2,7 +2,8 @@
 
 ## [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/FOREWORD_by_Dr_Matei_Zaharia.md)
 
-````
+
+
   "... This  book  will be a  great resource for  both 
   readers looking  to  implement  existing  algorithms 
   in a scalable fashion and readers who are developing 
@@ -10,11 +11,11 @@
 
                                      Dr. Matei Zaharia
                       Original Creator of Apache Spark
-````
+
 
 
 <font size="5">
-````
+
   "... This  book  will be a  great resource for  both 
   readers looking  to  implement  existing  algorithms 
   in a scalable fashion and readers who are developing 
@@ -22,17 +23,17 @@
 
                                      Dr. Matei Zaharia
                       Original Creator of Apache Spark
-````
 </font> 
 
 
-----
+-------
+
 
 #### Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
 #### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
 
------
+--------
 
 * [Mahmoud Parsian's Author Page @Amazon](https://www.amazon.com/author/mahmoudparsian/)
 
@@ -51,7 +52,8 @@
 * Autor Contact: [ [![Email](https://support.microsoft.com/images/Mail-GrayScale.png) Email](mailto:mahmoud.parsian@yahoo.com) ]  [  [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/) ][  [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/) ]
 
 
------
+-------
+
 
 # [Github Chapter Solutions](./code/)
 
