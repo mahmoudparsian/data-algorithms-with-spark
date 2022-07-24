@@ -4,7 +4,7 @@
         src="images/data_algorithms_with_spark_small.jpeg"
 >
 
-## [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
+## [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) by Mahmoud Parsian
 
 ## [Foreword by Dr. Matei Zaharia (Original Creator of Apache Spark)](./images/FOREWORD_by_Dr_Matei_Zaharia.md)
 
