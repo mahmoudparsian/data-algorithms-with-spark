@@ -11,7 +11,23 @@
                                      Dr. Matei Zaharia
                       Original Creator of Apache Spark
 ````
+
+
+<font size="5">
+````
+  "... This  book  will be a  great resource for  both 
+  readers looking  to  implement  existing  algorithms 
+  in a scalable fashion and readers who are developing 
+  new, custom algorithms using Spark. ..."
+
+                                     Dr. Matei Zaharia
+                      Original Creator of Apache Spark
+````
+</font> 
+
+
 ----
+
 #### Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
 #### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
