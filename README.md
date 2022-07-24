@@ -1,4 +1,8 @@
-![Data Algorithms with Spark](./images/data_algorithms_with_spark_small.jpeg)
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="images/data_algorithms_with_spark_small.jpeg"
+>
 
 ## [O'Reilly book: <span style="color:red">Data Algorithms with Spark</span>](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
