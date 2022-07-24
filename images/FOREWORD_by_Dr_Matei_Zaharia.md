@@ -1,6 +1,14 @@
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="./data_algorithms_with_spark_small.jpeg"
+>
+
 # FOREWORD by Dr. Matei Zaharia
 
 ## [Book: Data Algorithms with Spark by Mahmoud Parsian](https://www.amazon.com/Data-Algorithms-Spark-Recipes-Patterns/dp/1492082384/ref=asc_df_1492082384/)
+
+
 
 
 <div style="text-align: justify"> 
