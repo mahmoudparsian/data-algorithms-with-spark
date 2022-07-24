@@ -16,9 +16,9 @@
 
 
 > "... This  book  will be a  great resource for <br>
-> both readers looking  to  implement  existing    <br>
-> algorithms in a scalable fashion and readers who  <br>
-> are developing new, custom algorithms using Spark. ..." <br>
+> both readers looking  to  implement  existing <br>
+> algorithms in a scalable fashion and readers who <br>
+> who are developing new, custom algorithms using Spark. ..." <br>
 >
 > Dr. Matei Zaharia <br>
 > Original Creator of Apache Spark <br>
