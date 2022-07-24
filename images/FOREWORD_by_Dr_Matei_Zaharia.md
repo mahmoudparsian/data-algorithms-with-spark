@@ -55,7 +55,7 @@ across computing.
 </div><br>
 
 
-Matei Zaharia <br>
+[Matei Zaharia](https://cs.stanford.edu/people/matei/) <br>
 Assistant Professor of Computer Science, Stanford <br>
 Chief Technologist, Databricks <br>
 Original Creator of Apache Spark <br>
