@@ -17,7 +17,7 @@
 > who are developing new, custom algorithms  <br>
 > using Spark. ..."
 >
-> Dr. Matei Zaharia <br>
+> [Dr. Matei Zaharia](https://cs.stanford.edu/people/matei/) <br>
 > Original Creator of Apache Spark <br>
 
 -------
