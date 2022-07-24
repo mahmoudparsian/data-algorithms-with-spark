@@ -26,11 +26,11 @@ Original Creator of Apache Spark <br>
 </font> 
 
 
-> "... This  book  will be a  great resource for  both 
-> readers looking  to  implement  existing  algorithms 
+> "... This  book  will be a  great resource for  both <br>
+> readers looking  to  implement  existing  algorithms <br>
 > in a scalable fashion and readers who are developing 
 > new, custom algorithms using Spark. ..."
-
+>
 > Dr. Matei Zaharia
 > Original Creator of Apache Spark
 
