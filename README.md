@@ -4,11 +4,6 @@
         src="images/data_algorithms_with_spark_small.jpeg"
 >
 
-<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
-    <img
-        alt="Data Algorithms with Spark"
-        src="images/data_algorithms_with_spark_amazon.jpg"
->
 
 ## [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) by Mahmoud Parsian
 
