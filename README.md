@@ -14,7 +14,7 @@
 
 
 
-<font size="5">
+<font size="7">
 
 "... This  book  will be a  great resource for  both <br>
 readers looking  to  implement  existing  algorithms <br>
