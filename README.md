@@ -4,10 +4,10 @@
 
 
 
-  "... This  book  will be a  great resource for  both 
-  readers looking  to  implement  existing  algorithms 
-  in a scalable fashion and readers who are developing 
-  new, custom algorithms using Spark. ..."
+	"... This  book  will be a  great resource for  both 
+	readers looking  to  implement  existing  algorithms 
+	in a scalable fashion and readers who are developing 
+	new, custom algorithms using Spark. ..."
 
                                      Dr. Matei Zaharia
                       Original Creator of Apache Spark
@@ -16,10 +16,10 @@
 
 <font size="5">
 
-  "... This  book  will be a  great resource for  both 
-  readers looking  to  implement  existing  algorithms 
-  in a scalable fashion and readers who are developing 
-  new, custom algorithms using Spark. ..."
+	"... This  book  will be a  great resource for  both 
+	readers looking  to  implement  existing  algorithms 
+	in a scalable fashion and readers who are developing 
+	new, custom algorithms using Spark. ..."
 
                                      Dr. Matei Zaharia
                       Original Creator of Apache Spark
