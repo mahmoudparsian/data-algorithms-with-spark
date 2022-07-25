@@ -9,7 +9,7 @@
 -------
 ## Physical Data Partitioning Example
 
-<img src="./data_partitioning.png" height=50 width="50">
+<img src="./data_partitioning.png" height=250 width="350">
 
 	<root-data-dir>/continents/continent=asia/...
 	<root-data-dir>/continents/continent=africa/...
