@@ -254,3 +254,26 @@ than the whole data: this will faster and cheaper.
 `partition_by_one_column_schema.sql`  | Table schema for data partitioned by a single column
 `partition_by_two_columns.py`         | Partition data by two columns
 `partition_by_two_columns_schema.sql` | Table schema for data partitioned by two columns
+
+--------
+
+
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="../../../images/Data-Algorithms-with-Spark_mech2.png"
+>
+
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="../../../images/Data_Algorithms_with_Spark_COVER_9781492082385.png"
+>
+
+------
+
+[//]: # (metadata:)
+[//]: # (Data Algorithms with Spark, Spark, PySpark, Python)
+[//]: # (MapReduce, Distributed Algorithms, mappers, reducers, partitioners)
+[//]: # (Transformations, Actions, RDDs, DataFrames, SQL)
+[//]: # (Data Design Patterns, monoids)
