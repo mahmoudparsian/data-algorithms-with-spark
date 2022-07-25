@@ -87,7 +87,7 @@ Original Creator of Apache Spark <br>
 
 | Chapter        |      Title       |
 |----------------|------------------|
-| Bonus Chapters | [Partitioning, TF-IDF, Correlation, K-mers, anagrams, ...](./code/bonus_chapters/) |
+| Bonus Chapters | [Tutorials, Partitioning, TF-IDF, Correlation, K-mers, anagrams, ...](./code/bonus_chapters/) |
 | Chapter 1      | [Introduction to Data Algorithms](./code/chap01/) |
 | Chapter 2      | [Transformations in Action](./code/chap02/) |
 | Chapter 3      | [Mapper Transformations](./code/chap03/) |
