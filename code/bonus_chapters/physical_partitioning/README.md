@@ -7,6 +7,7 @@
 	Last revised date: July 24, 2022
 
 -------
+## Physical Data Partitioning Example
 
 	<root-data-dir>/continents/continent=asia/...
 	<root-data-dir>/continents/continent=africa/...
