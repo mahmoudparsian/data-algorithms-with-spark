@@ -1,8 +1,32 @@
+<table>
+<tr>
+
+<td>
+
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
-    <img
-        alt="Data Algorithms with Spark"
-        src="../images/data_algorithms_with_spark_small.jpeg"
->
+<img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
+</a>
+
+</td>
+
+<td>
+
+"... This  book  will be a  great resource for <br>
+both readers looking  to  implement  existing <br>
+algorithms in a scalable fashion and readers <br>
+who are developing new, custom algorithms  <br>
+using Spark. ..." <br>
+<br>
+<a href="https://cs.stanford.edu/people/matei/">Dr. Matei Zaharia</a><br>
+Original Creator of Apache Spark <br>
+<br>
+
+</td>
+
+</tr>   
+</table>
+
+
 
 # FOREWORD by Dr. Matei Zaharia
 
