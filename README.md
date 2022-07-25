@@ -1,17 +1,3 @@
-<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
-    <img
-        alt="Data Algorithms with Spark"
-        src="images/data_algorithms_with_spark_small.jpeg"
->
-
-
-## [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) by Mahmoud Parsian
-
-## [Foreword by Dr. Matei Zaharia](./docs/FOREWORD_by_Dr_Matei_Zaharia.md) (Original Creator of Apache Spark)
-
-
-------
-
 
 -------
 
@@ -42,13 +28,15 @@ Original Creator of Apache Spark
 </tr>   
 </table>
 
-
 -------
 
+### [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) by Mahmoud Parsian
 
-#### Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
+### [Foreword by Dr. Matei Zaharia](./docs/FOREWORD_by_Dr_Matei_Zaharia.md) (Original Creator of Apache Spark)
 
-#### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
+### Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
+
+### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
 
 --------
 
