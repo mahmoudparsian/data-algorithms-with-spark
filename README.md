@@ -12,14 +12,6 @@
 
 ------
 
-> "... This  book  will be a  great resource for <br>
-> both readers looking  to  implement  existing <br>
-> algorithms in a scalable fashion and readers <br>
-> who are developing new, custom algorithms  <br>
-> using Spark. ..."
->
-> [Dr. Matei Zaharia](https://cs.stanford.edu/people/matei/) <br>
-> Original Creator of Apache Spark <br>
 
 -------
 
@@ -27,7 +19,11 @@
 <tr>
 
 <td>
-  <img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
+
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+<img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
+</a>
+
 </td>
 
 <td>
