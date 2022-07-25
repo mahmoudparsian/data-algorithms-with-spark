@@ -19,7 +19,10 @@ who are developing new, custom algorithms  <br>
 using Spark. ..." <br>
 <br>
 <a href="https://cs.stanford.edu/people/matei/">Dr. Matei Zaharia</a><br>
-Original Creator of Apache Spark
+Original Creator of Apache Spark <br>
+<br>
+<a href="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/docs/FOREWORD_by_Dr_Matei_Zaharia.md">FOREWORD by Dr. Matei Zaharia</a><br>
+
 
 </td>
 
