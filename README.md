@@ -1,6 +1,4 @@
 
--------
-
 <table>
 <tr>
 
@@ -60,7 +58,7 @@ Original Creator of Apache Spark
 -------
 
 
-# [Github Chapter Solutions](./code/)
+## [Github Chapter Solutions](./code/)
 
 * This GitHub repository will host all source code and scripts for 
   [Data Algorithms with Spark]((https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/))
@@ -71,7 +69,7 @@ Original Creator of Apache Spark
 	
 -----
 
-# Software:
+## Software:
 
 
 | Spark    |      Python      |  Scala | Java 
@@ -80,7 +78,7 @@ Original Creator of Apache Spark
 
 -----
 
-# Table of Contents
+## Table of Contents
 
 | Chapter        |      Title       |
 |----------------|------------------|
