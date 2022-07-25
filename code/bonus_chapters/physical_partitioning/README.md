@@ -228,11 +228,11 @@ than the whole data: this will faster and cheaper.
 
 ## Directory Listing
 
- filename                          | Description
---------------------------------   | -------------
-`README.md`                        | This file you are reading
-`continents_countries_temp.csv`    | Sample data in CSV format
-`partition_one_column.py`          | Partition data by a single column
-`partition_one_column_schema.sql`  | Table schema for data partitioned by a single column
-`partition_two_columns.py`         | Partition data by two columns
-`partition_two_columns_schema.sql` | Table schema for data partitioned by two columns
+ Filename                             | Description
+------------------------------------- | -------------
+`README.md`                           | This file you are reading
+`continents_countries_temp.csv`       | Sample data in CSV format
+`partition_by_one_column.py`          | Partition data by a single column
+`partition_by_one_column_schema.sql`  | Table schema for data partitioned by a single column
+`partition_by_two_columns.py`         | Partition data by two columns
+`partition_by_two_columns_schema.sql` | Table schema for data partitioned by two columns
