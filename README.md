@@ -25,11 +25,13 @@
 
 <table>
 <tr>
-    <td>
-    <img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
-    </td>
 
-    <td>
+<td>
+  <img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
+</td>
+
+<td>
+
 "... This  book  will be a  great resource for <br>
 both readers looking  to  implement  existing <br>
 algorithms in a scalable fashion and readers <br>
@@ -38,7 +40,8 @@ using Spark. ..." <br>
 <br>
 <a href="https://cs.stanford.edu/people/matei/">Dr. Matei Zaharia</a><br>
 Original Creator of Apache Spark
-    </td>
+
+</td>
 
 </tr>   
 </table>
