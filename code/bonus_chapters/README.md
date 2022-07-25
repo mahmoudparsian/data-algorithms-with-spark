@@ -19,7 +19,7 @@
 | [`DataFrames Tutorials`](./dataframes/) | DataFrames Tutorials: from collections and CSV text files |
 | [`Join operations`](./join/) | Examples on join of RDDs |
 | [`PySpark Tutorial 101`](./pyspark_tutorial/) | Examples on using PySpark RDDs and DataFrames |
-
+| [Physical Data Partitioning](./physical_partitioning/README.md) | Tutorial of Physical Data Partitioning |
 -----
 
 
