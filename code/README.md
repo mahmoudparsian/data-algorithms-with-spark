@@ -63,6 +63,7 @@ The following directories are bonus chapters:
 | [`DataFrames Tutorials`](./bonus_chapters/dataframes/) | DataFrames Tutorials: from collections and CSV text files |
 | [`Join operations`](./bonus_chapters/join/) | Examples on join of RDDs |
 | [`PySpark Tutorial 101`](./bonus_chapters/pyspark_tutorial/) | Examples on using PySpark RDDs and DataFrames |
+| [Physical Data Partitioning](./physical_partitioning/README.md) | Tutorial of Physical Data Partitioning |
 
 -----
 
