@@ -92,9 +92,6 @@ Example of some data records are provided:
 	... 
 
 
-Sample data is given [here](./continents_countries_temp.csv).
-
-
 It is very easy to create a Spark DataFrame from this 
 data and then partition it by (`continent`), (`continent`, 
 `country`), or  (`continent`, `country`, `city`). For 
@@ -138,6 +135,14 @@ Guide](https://docs.aws.amazon.com/athena/latest/ug/athena-ug.pdf).
 Amazon Athena, Google BigQuery, and Snowflake use this 
 simple data partitioning technique to analyze slice of 
 a data rather than whole data.
+
+## Sample Input
+
+Sample data is given [here](./continents_countries_temp.csv).
+
+Our sample data has the following format:
+
+		<continent><,><country><,><city><,><temperature>
 
 
 ## Physical Partitioning in PySpark
