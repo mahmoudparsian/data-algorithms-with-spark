@@ -307,15 +307,22 @@ than scanning the whole data: this will faster and cheaper.
 ------------------------------------- | -------------
 `README.md`                           | This file you are reading
 `continents_countries_temp.csv`       | Sample data in CSV format
-                                      |        
 `partition_by_one_column.py`          | Partition data by a single column
 `partition_by_one_column_schema.sql`  | Table schema for data partitioned by a single column
-                                      |        
 `partition_by_two_columns.py`         | Partition data by two columns
 `partition_by_two_columns_schema.sql` | Table schema for data partitioned by two columns
 
 --------
 
+## References
+
+1. [Top 10 Performance Tuning Tips for Amazon Athena](https://aws.amazon.com/blogs/big-data/top-10-performance-tuning-tips-for-amazon-athena/)  
+
+2. [Data Algorithms with Spark, Chapter 5](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
+
+3. [Partitioning on Disk with `partitionBy`](https://mungingdata.com/apache-spark/partitionby/)
+
+--------
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
