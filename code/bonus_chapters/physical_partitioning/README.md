@@ -12,15 +12,11 @@
 <tr>
 
 <td>
-
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
-<img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
-</a>
-
+<img src="https://learning.oreilly.com/library/cover/9781492082378/250w/"></a>
 </td>
 
 <td>
-
 "... This  book  will be a  great resource for <br>
 both readers looking  to  implement  existing <br>
 algorithms in a scalable fashion and readers <br>
@@ -31,13 +27,10 @@ using Spark. ..." <br>
 Original Creator of Apache Spark <br>
 <br>
 <a href="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/docs/FOREWORD_by_Dr_Matei_Zaharia.md">FOREWORD by Dr. Matei Zaharia</a><br>
-
-
 </td>
 
 </tr>   
 </table>
-
 
 
 --------
@@ -123,8 +116,8 @@ For example, sample SQL query will be:
 	SELECT avg(temperature) 
 		FROM <table-name-defined-by-you>
 			WHERE continent = 'NorthAmerica' AND
-			      country = 'Canada'
-			      
+				country = 'Canada'
+			
 This SQL query will analze only one directory (rather
 than all directories):
 
@@ -157,28 +150,29 @@ format.
 To partition data by your desired column(s), we need the
 perform the following steps:
 
-Step-1. Create a DataFrame (denoted by `df`) as `n` columns:
+**Step-1**. Create a DataFrame (denoted by `df`) as `n` columns
+(where `n > 0`):
 
 		DataFrame(C_1, C_2, C_3, ..., C_n)
-		
+
 Sample code to create your DataFrame and denote it as `df`:
 
-	# create an instance of a SparkSession object
-	from pyspark.sql import SparkSession
-	spark = SparkSession.builder.getOrCreate()
+	# create an instance of a SparkSession object 
+	from pyspark.sql import SparkSession 
+	spark = SparkSession.builder.getOrCreate() 
+ 
+	# define your input in S3 
+	input_path= 's3://mybucket/INPUT/continents_countries_temp.csv’ 
+ 
+	# create a DataFrame from your input path 
+	df = spark.read.format("csv")\ 
+		.option("header","true")\ 
+		.option("inferSchema", "true")\ 
+		.load(input_path) 
 
-	# define your input in S3
-	input_path= 's3://mybucket/INPUT/continents_countries_temp.csv’
 
-	# create a DataFrame from your input path
-	df = spark.read.format("csv")\
-    .option("header","true")\
-    .option("inferSchema", "true")\
-    .load(input_path)
-
-
-Step-2: Assume that `C_i` is your partitioned column name 
-(where `i` in `{1, 2, ..., n}`
+**Step-2**: Assume that `C_i` is your partitioned column 
+name (where `i` in `{1, 2, ..., n}`
 
 This means that your intention is to use the following 
 in your SQL query (note that `<table-name-defined-by-you>`
@@ -187,70 +181,92 @@ will point to the `output_path` defined below):
 		SELECT ...
 			FROM <table-name-defined-by-you>
 				WHERE C_i = 'some-desired-value'
-			
-Step-3: Define the root directory (or your output path) for
+
+Note that the above SQL query will only analyze one 
+partitioned data directory (listed below): this is 
+how we **analyze slice of a data rather than the whole data**:
+
+		<root-output-path-directory>/C_i=some-desired-value/...
+
+
+**Step-3**: Define the root directory (or your output path) for
 your partitioned data:
 
 		output_path = "s3://<bucket-name>/<directory-name>/"
 		
-Step-4: Partition and save your DataFrame (denoted by `df`):
+**Step-4**: Partition and save your DataFrame (denoted by `df`): 
+
 General code snippet is given below:
 
-	# define output path in S3
+	# define output path in S3 
 	output_path = "s3://<bucket-name>/<directory-name>/"
+ 
+	# partition by C_i and save into output path 
+	df.repartition("C_i")\ 
+		.write.mode("append")\ 
+		.partitionBy("C_i")\ 
+		.parquet(output_path)
 
-	# partition by C_i and save into output path
-	df.repartition("C_i")\
-      .write.mode("append")\
-      .partitionBy("C_i")\
-      .parquet(output_path)
-      
+
 A complete example using our temperature data is given 
 below (here it is assumed that we want to partition data
 by `continent`)
 
-	# define output path in S3
-	output_path = "s3://mybucket/OUTPUT/continents/"
-
-	# partition by continent and save into S3
+	# define output path in S3 
+	output_path = "s3://mybucket/OUTPUT/continents/" 
+ 
+	# partition by continent and save into S3 
 	df.repartition("continent")\
 	  .write.mode("append")\
 	  .partitionBy("continent")\
 	  .parquet(output_path)
-	  
-	# NOTE: There will be a separate folder under `output_path` per continent
+	   
+	# NOTE: 
+	#     There will be a separate folder 
+	#     under `output_path` per continent 
+	# END-NOTE
 
-For our temperature data, the created folders and data will be as:
+For our temperature data, the created folders and data 
+will be as (note that since I used `repartition("continent")`
+then there will be one Parquet file per continent):
 
 	
-	s3://mybucket/OUTPUT/continents/continent=NorthAmerica/part1.parquet
-	s3://mybucket/OUTPUT/continents/continent=SouthAmerica/part1.parquet
-	s3://mybucket/OUTPUT/continents/continent=Asia/part1.parquet
-	...
+	s3://mybucket/OUTPUT/continents/continent=asia/part1.parquet
+	s3://mybucket/OUTPUT/continents/continent=africa/part1.parquet
+	s3://mybucket/OUTPUT/continents/continent=europe/part1.parquet
+	s3://mybucket/OUTPUT/continents/continent=oceania/part1.parquet
+	s3://mybucket/OUTPUT/continents/continent=antarctica/part1.parquet
+	s3://mybucket/OUTPUT/continents/continent=north_america/part1.parquet
+	s3://mybucket/OUTPUT/continents/continent=south_america/part1.parquet
+	
 	
 
 ## Creating Table Schema
 
-Now that we have successfully partitioned our data, it is 
-time to create a table which points to our output path 
-(partitioned saved data)(here we have assumed that the 
-`continent` is the partitioned column):
+Now that we have successfully partitioned our data, 
+it is time to create a table which points to our 
+output path (partitioned saved data)(here we have 
+assumed that the  `continent` is the partitioned 
+column):
 
-	CREATE EXTERNAL TABLE `continents`(
-  		`country` string,
-  		`city` string,
-  		`temperature` integer
+	CREATE EXTERNAL TABLE `continents`( 
+	   `country` string, 
+	   `city` string, 
+	   `temperature` integer 
+	) 
+	PARTITIONED BY ( 
+	   `continent` string 
 	)
-	PARTITIONED BY (
-  		`continent` string
-	)
-	STORED AS PARQUET
-	LOCATION ‘s3://mybucket/OUTPUT/continents/’
-	tblproperties ("parquet.compress"="SNAPPY");
+	STORED AS PARQUET 
+	LOCATION ‘s3://mybucket/OUTPUT/continents/’ 
+	tblproperties ("parquet.compress"="SNAPPY"); 
+	
 
 ## Loading Partitions
 
-To load partitons, we need to excute the following command:
+In Amazon Athena, to load partitons (so that the table
+will know what partitions are available), we need to 
+excute the following command:
 
 General format
 
@@ -262,13 +278,14 @@ Example:
 	
 The `MSCK REPAIR TABLE` command will load all partitions 
 for the `continents` table (without executing this command,
-your SQL queries will return null/empty results).
+your SQL queries will return null/empty results). 
+ 
+MSCK = metastore consistency check 
 
-MSCK = metastore consistency check
 
 ## Query your data by SQL
 Now, we can use SQL queries to access data pointed by our
-`output_path`:
+`output_path` and enabled by the `continents` table:
 
 	SELECT avg(temprature)
 		FROM continents
@@ -276,7 +293,7 @@ Now, we can use SQL queries to access data pointed by our
 			
 Partitioning enable us to analyze/scan slice of data (denoted by
 `s3://mybucket/OUTPUT/continents/continent=Asia/...`) rather
-than the whole data: this will faster and cheaper.
+than scanning the whole data: this will faster and cheaper.
 
 
 ## Directory Listing
