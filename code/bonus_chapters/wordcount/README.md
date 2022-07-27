@@ -7,10 +7,12 @@ in a set of documents/files.
   problem using 
 	* `groupByKey()` transformation/reducer
 	* `reduceByKey()` transformation/reducer
-	
-* You may add `filter()` to remove undesired words
 
-* To have a desired final word count as 
+* **BEFORE reduction filter**: 
+  You may add `filter()` to remove undesired words
+
+* **AFTER reduction filter**:
+  To have a desired final word count as 
   `(word, frequency)`, you may add `filter()` 
   to remove elements where `frequency < N `, 
   where `N` (as an integer) is your threshold
