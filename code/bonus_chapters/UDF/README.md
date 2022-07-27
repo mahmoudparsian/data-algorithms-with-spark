@@ -4,15 +4,46 @@
      @author: Mahmoud Parsian
               Ph.D. in Computer Science
               email: mahmoud.parsian@yahoo.com
-	   
+              
+	Last updated: July 27, 2022
 
-This short article shows how to use Python user-defined functions in PySpark applications. To use a UDF, we need to do some basic tasks:
+----------
 
-1. create a UDF in Python
-2. register UDF
-3. use UDF in Spark SQL.
+<table>
+<tr>
+<td>
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+<img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
+</a>
+</td>
+<td>
+"... This  book  will be a  great resource for <br>
+both readers looking  to  implement  existing <br>
+algorithms in a scalable fashion and readers <br>
+who are developing new, custom algorithms  <br>
+using Spark. ..." <br>
+<br>
+<a href="https://cs.stanford.edu/people/matei/">Dr. Matei Zaharia</a><br>
+Original Creator of Apache Spark <br>
+<br>
+<a href="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/docs/FOREWORD_by_Dr_Matei_Zaharia.md">FOREWORD by Dr. Matei Zaharia</a><br>
+</td>
+</tr>   
+</table>
 
-## 1. Define a UDF IN Python
+-----------
+
+## Introduction
+
+This short article shows how to use Python 
+user-defined functions in PySpark applications. 
+To use a UDF, we need to do some basic tasks:
+
+1. Create a UDF (user-defined-function) in Python
+2. Register UDF
+3. Use UDF in Spark SQL
+
+## 1. Define a UDF in Python
 
 Consider a function which triples its input:
 
