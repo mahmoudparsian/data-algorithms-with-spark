@@ -4,10 +4,31 @@
 	Author: Mahmoud Parsian
 	
 	Date: July 17, 2022
-
+-------------------
+<table>
+<tr>
+<td>
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+<img src="https://learning.oreilly.com/library/cover/9781492082378/250w/">
+</a>
+</td>
+<td>
+"... This  book  will be a  great resource for <br>
+both readers looking  to  implement  existing <br>
+algorithms in a scalable fashion and readers <br>
+who are developing new, custom algorithms  <br>
+using Spark. ..." <br>
+<br>
+<a href="https://cs.stanford.edu/people/matei/">Dr. Matei Zaharia</a><br>
+Original Creator of Apache Spark <br>
+<br>
+<a href="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/docs/FOREWORD_by_Dr_Matei_Zaharia.md">FOREWORD by Dr. Matei Zaharia</a><br>
+</td>
+</tr>   
+</table>
 ---------------------------
 
-Tutorial Description:
+# Tutorial Description:
 
     This is a basic Tutorial on Spark 
     DataFrames using PySpark. It shows
