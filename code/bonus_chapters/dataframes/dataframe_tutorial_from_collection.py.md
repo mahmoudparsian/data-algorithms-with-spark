@@ -4,7 +4,9 @@
 	Author: Mahmoud Parsian
 	
 	Date: July 17, 2022
+
 ---------------
+
 <table>
 <tr>
 <td>
@@ -26,9 +28,10 @@ Original Creator of Apache Spark <br>
 </td>
 </tr>   
 </table>
----------------------------
 
-Tutorial Description:
+----------------------
+
+# Tutorial Description:
 
     This is a basic Tutorial on Spark 
     DataFrames using PySpark. It shows
