@@ -4,7 +4,9 @@
 	Author: Mahmoud Parsian
 	
 	Date: July 17, 2022
+	
 -------------------
+
 <table>
 <tr>
 <td>
@@ -26,6 +28,7 @@ Original Creator of Apache Spark <br>
 </td>
 </tr>   
 </table>
+
 ---------------------------
 
 # Tutorial Description:
@@ -34,6 +37,7 @@ Original Creator of Apache Spark <br>
     DataFrames using PySpark. It shows
     how to create Spark DataFrames from
     CSV text files.
+    
     
 ---------------------------
 
