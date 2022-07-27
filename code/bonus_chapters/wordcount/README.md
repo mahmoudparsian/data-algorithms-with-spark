@@ -1,22 +1,5 @@
 # Word Count
 
-* Word count finds out the frequency of each word
-in a set of documents/files.
-
-* Complete set of solutions are given for Word Count 
-  problem using 
-	* `groupByKey()` transformation/reducer
-	* `reduceByKey()` transformation/reducer
-
-* **BEFORE reduction filter**: 
-  You may add `filter()` to remove undesired words
-
-* **AFTER reduction filter**:
-  To have a desired final word count as 
-  `(word, frequency)`, you may add `filter()` 
-  to remove elements where `frequency < N `, 
-  where `N` (as an integer) is your threshold
-  
 --------
 
 <table>
@@ -43,10 +26,37 @@ Original Creator of Apache Spark <br>
 </tr>   
 </table>
 
+---------
+## Introduction to Word Count
 
+* Word count finds out the frequency of each word
+in a set of documents/files. The goal is to create
+a dictionary of `(key, value)` pairs, where `key`
+is a word (as a String), and `value` is an Integer
+denoting the frequency of a given key/word.
+
+* Complete set of solutions are given for Word Count 
+  problem using 
+	* `groupByKey()` transformation/reducer
+	* `reduceByKey()` transformation/reducer
+
+* **BEFORE reduction filter**: 
+  You may add `filter()` to remove undesired words
+  (this can be done after tokenizing records)
+
+* **AFTER reduction filter**:
+  To have a desired final word count as 
+  `(word, frequency)`, you may add `filter()` 
+  to remove elements where `frequency < N `, 
+  where `N` (as an integer) is your threshold.
+  This can be done after reduction.
+  
 --------
+## Word Count in MapReduce
 
-# References
+![Word Count in Picture](./word_count_with_mapreduce.png)
+
+## References
 
 [1. Word count from Wiki](https://en.wikipedia.org/wiki/Word_count)
 
