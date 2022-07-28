@@ -1,0 +1,19 @@
+% export SPARK_HOME=<your-installed-spark-directory>
+% $SPARK_HOME/bin/spark-submit word_count_by_dataframe_shorthand.py data/foxdata.txt
+
+input_path= data/foxdata.txt
+
+final_word_count:
++------+-----+
+|word  |count|
++------+-----+
+|jumped|3    |
+|fox   |3    |
+|red   |2    |
+|high  |2    |
++------+-----+
+
+root
+ |-- word: string (nullable = false)
+ |-- count: long (nullable = false)
+

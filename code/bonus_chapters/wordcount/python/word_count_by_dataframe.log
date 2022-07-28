@@ -1,0 +1,98 @@
+% export SPARK_HOME=<your-installed-spark-directory>
+% $SPARK_HOME/bin/spark-submit word_count_by_dataframe.py data/foxdata.txt
+
+input_path= data/foxdata.txt
+
+df:
++-----------------------------------+
+|words                              |
++-----------------------------------+
+|[a, red, fox, jumped, of, high]    |
+|[fox, jumped, over, a, high, fence]|
+|[red, of, fox, jumped]             |
++-----------------------------------+
+
+root
+ |-- words: array (nullable = true)
+ |    |-- element: string (containsNull = false)
+
+
+words:
++------+
+|word  |
++------+
+|a     |
+|red   |
+|fox   |
+|jumped|
+|of    |
+|high  |
+|fox   |
+|jumped|
+|over  |
+|a     |
+|high  |
+|fence |
+|red   |
+|of    |
+|fox   |
+|jumped|
++------+
+
+root
+ |-- word: string (nullable = false)
+
+
+filtered_words:
++------+
+|word  |
++------+
+|red   |
+|fox   |
+|jumped|
+|high  |
+|fox   |
+|jumped|
+|over  |
+|high  |
+|fence |
+|red   |
+|fox   |
+|jumped|
++------+
+
+root
+ |-- word: string (nullable = false)
+
+
+word_count:
++------+-----+
+|word  |count|
++------+-----+
+|jumped|3    |
+|fox   |3    |
+|red   |2    |
+|high  |2    |
+|over  |1    |
+|fence |1    |
++------+-----+
+
+root
+ |-- word: string (nullable = false)
+ |-- count: long (nullable = false)
+
+
+final_word_count:
++------+-----+
+|word  |count|
++------+-----+
+|jumped|3    |
+|fox   |3    |
+|red   |2    |
+|high  |2    |
++------+-----+
+
+root
+ |-- word: string (nullable = false)
+ |-- count: long (nullable = false)
+
