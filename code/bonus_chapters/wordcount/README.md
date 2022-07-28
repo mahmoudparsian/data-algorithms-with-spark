@@ -35,11 +35,10 @@ a dictionary of `(key, value)` pairs, where `key`
 is a word (as a String), and `value` is an Integer
 denoting the frequency of a given key/word.
 
-* Complete set of solutions are given for Word Count 
-  problem using 
-	* [PySpark DataFrames](./python/)
-	* [PySpark RDD: `groupByKey()` transformation/reducer](./python/)
-	* [PySpark RDD: `reduceByKey()` transformation/reducer](./python/)
+* Complete set of solutions are given for Word Count problem using 
+	* [Word Count in PySpark DataFrames](./python/)
+	* [Word Count in PySpark RDD: `groupByKey()`](./python/)
+	* [Word Count in PySpark RDD: `reduceByKey()`](./python/)
 
 * **BEFORE reduction filter**: 
   You may add `filter()` to remove undesired words
