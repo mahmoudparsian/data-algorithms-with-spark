@@ -37,8 +37,9 @@ denoting the frequency of a given key/word.
 
 * Complete set of solutions are given for Word Count 
   problem using 
-	* `groupByKey()` transformation/reducer
-	* `reduceByKey()` transformation/reducer
+	* [PySpark DataFrames](./python/)
+	* [PySpark RDD: `groupByKey()` transformation/reducer](./python/)
+	* [PySpark RDD: `reduceByKey()` transformation/reducer](./python/)
 
 * **BEFORE reduction filter**: 
   You may add `filter()` to remove undesired words
@@ -52,9 +53,20 @@ denoting the frequency of a given key/word.
   This can be done after reduction.
   
 --------
+
 ## Word Count in MapReduce
 
 ![Word Count in Picture](./word_count_with_mapreduce.png)
+
+---------
+
+## [Word Count in PySpark RDDs](./python/)
+
+--------
+
+## [Word Count in PySpark DataFrames](./python/)
+
+-------
 
 ## References
 
