@@ -25,7 +25,7 @@ Original Creator of Apache Spark <br>
 
 -------
 
-### [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) by Mahmoud Parsian
+### [Data Algorithms with Spark](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/) by [Mahmoud Parsian](https://www.linkedin.com/mahmoudparsian/)
 
 ### [Foreword by Dr. Matei Zaharia](./docs/FOREWORD_by_Dr_Matei_Zaharia.md) (Original Creator of Apache Spark)
 
@@ -79,7 +79,8 @@ Original Creator of Apache Spark <br>
 
 | Chapter        |      Title       |
 |----------------|------------------|
-| Bonus Chapters | [Tutorials, Partitioning, TF-IDF, Correlation, K-mers, anagrams, ...](./code/bonus_chapters/) |
+| Bonus Chapters | [Tutorials: RDDs and DataFrames](./code/bonus_chapters/) |
+|                | [Partitioning, TF-IDF, Correlation, K-mers, anagrams, ...](./code/bonus_chapters/) |
 | Chapter 1      | [Introduction to Data Algorithms](./code/chap01/) |
 | Chapter 2      | [Transformations in Action](./code/chap02/) |
 | Chapter 3      | [Mapper Transformations](./code/chap03/) |
