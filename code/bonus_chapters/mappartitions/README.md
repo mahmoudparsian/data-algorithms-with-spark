@@ -124,16 +124,16 @@ the minimum and maximum for a given partition/iteration.
 # returns (count, min, max) per partition
 # iterator represents a single partition (comprised of many elements)
 def min_max(iterator):
-  firsttime = True
+  first_time = True
   local_count = 0
   #local_min = 0
   #local_max = 0
   for x in iterator:
     local_count += 1
-    if (firsttime):
+    if (first_time):
       local_min = x
       local_max = x
-      firsttime = False
+      first_time = False
     else:
       local_min = min(x, local_min)
       local_max = max(x, local_max)
