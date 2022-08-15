@@ -46,11 +46,13 @@ We read input and create `source_rdd` as
 The we apply our custom function (called `custom_function`)
 to every single partition:
 
-	# custom_function(partition) returns  
-	# (count, minimum, maximum) for a given partition
-	# triplets : RDD[(integer, integer, integer)] = 
-	#            RDD[(count, minimum, maximum)]
-	triplets = source_rdd.mapPartitions(custom_function)
+~~~python
+# custom_function(partition) returns  
+# (count, minimum, maximum) for a given partition
+# triplets : RDD[(integer, integer, integer)] = 
+#            RDD[(count, minimum, maximum)]
+triplets = source_rdd.mapPartitions(custom_function)
+~~~
 	
 Finally we do one final reduction on `triplets` RDD:
 
