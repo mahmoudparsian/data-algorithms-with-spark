@@ -46,9 +46,9 @@ is the heart of many recommendation systems and it is
 also an important attribute for data analysis. 
 
 The top 10 pattern retrieves/finds a relatively small 
-number of top `N` (where `N > 0`) records, according to 
-a ranking scheme in your data set, no matter how large 
-the data.
+number of top `N` (where `N > 0`, `N = 5, 10, 20, ...`) 
+records, according to a ranking scheme in your data set, 
+no matter how large the data.
 
 This design pattern requires a comparator function ability 
 between two records. That is, we must be able to compare 
