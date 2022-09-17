@@ -73,17 +73,18 @@ function is `">"`, greater than):
 where `Count_1 > Count_2 > ... > Count_10`.
 
 		
-How do we implement this summarization pattern? 
+How do we implement this data summarization pattern? 
 This pattern utilizes both the mapper (to form a 
 desired  `(key, value)` pairs), the filter (to drop 
 non-desired records), the reducer (to find the 
 aggregated counts), and sorter (to find final 
-top 10 list). The mappers will find their local
-top K, then all of the individual top K sets 
-will compete for the final top K in the reducer.
+`top 10` list). Let `N > 0`, the mappers will find 
+their local `top N`, then all of the individual 
+`top N` sets will compete for the final `top N` in 
+the reducer.
 
 
-To understand top N, I am going to discuss a very 
+To understand `top N`, I am going to discuss a very 
 simple problem. Consider the following data format
 (for sake of simplicity, we are assuming that there 
 are no `null` values -- `null` values can be removed
@@ -170,10 +171,10 @@ Two solutions are provided using Spark's DataFrames:
 
 Multiple solutions are provided by using RDDs:
 
-1. Grouping movie IDs by using RDD.groupByKey()
-2. Grouping movie IDs by using RDD.reduceByKey()
-3. Grouping movie IDs by using RDD.combineByKey()
-4. Grouping movie IDs by using RDD.takeOrdered()
+1. Grouping movie IDs by using `RDD.groupByKey()`
+2. Grouping movie IDs by using `RDD.reduceByKey()`
+3. Grouping movie IDs by using `RDD.combineByKey()`
+4. Grouping movie IDs by using `RDD.takeOrdered()`
 
 
 
