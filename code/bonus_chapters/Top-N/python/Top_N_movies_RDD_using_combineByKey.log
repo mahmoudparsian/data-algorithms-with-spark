@@ -1,0 +1,27 @@
+ % source Top_N_movies_RDD_using_groupByKey.sh
+begin=Fri Sep 16 11:12:49 PDT 2022
+N= 10
+ratings= /Users/mparsian/Downloads/ml-25m/ratings_no_header.csv
+movies= /Users/mparsian/Downloads/ml-25m/movies.csv
+rating_threshold= 0.0
+
+rdd.take(5)= ['1,296,5.0,1147880044', '1,306,3.5,1147868817', '1,307,5.0,1147868828', '1,665,5.0,1147878820', '1,899,3.5,1147868510']
+pairs.take(5)= [('306', '1'), ('307', '1'), ('665', '1'), ('899', '1'), ('1088', '1')]
+filtered.take(5)= [('306', '1'), ('307', '1'), ('665', '1'), ('899', '1'), ('1088', '1')]
+grouped.take(5)= [('3448', 12164), ('5269', 1079), ('6539', 37227), ('7318', 4330), ('260', 68717)]
+topN_movies= [('356', 81491), ('318', 81482), ('296', 79671), ('593', 74127), ('2571', 72674), ('260', 68717), ('480', 64144), ('527', 60411), ('110', 59184), ('2959', 58773)]
+   movieId  ...                                       genres
+0        1  ...  Adventure|Animation|Children|Comedy|Fantasy
+1        2  ...                   Adventure|Children|Fantasy
+2        3  ...                               Comedy|Romance
+3        4  ...                         Comedy|Drama|Romance
+4        5  ...                                       Comedy
+
+[5 rows x 3 columns]
+movies column names:
+movieId
+title
+genres
+topN_with_names= [('356', 81491, 'Forrest Gump (1994)'), ('318', 81482, 'Shawshank Redemption, The (1994)'), ('296', 79671, 'Pulp Fiction (1994)'), ('593', 74127, 'Silence of the Lambs, The (1991)'), ('2571', 72674, 'Matrix, The (1999)'), ('260', 68717, 'Star Wars: Episode IV - A New Hope (1977)'), ('480', 64144, 'Jurassic Park (1993)'), ('527', 60411, "Schindler's List (1993)"), ('110', 59184, 'Braveheart (1995)'), ('2959', 58773, 'Fight Club (1999)')]
+end=Fri Sep 16 11:13:15 PDT 2022
+elapsed time: 26 seconds to complete this task.
