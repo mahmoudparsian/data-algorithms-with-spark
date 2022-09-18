@@ -215,7 +215,7 @@ pairs is to use `RDD.takeOrdered(N)`, where N denotes Top-N.
 
 ## 8. References
 
-1. [mapreduce example to find top n records in a sample data](https://timepasstechies.com/mapreduce-topn/)
+1. [MapReduce example to find top n records in a sample data](https://timepasstechies.com/mapreduce-topn/)
 
 2. [MapReduce Design Patterns by Donald Miner and Adam Shook](https://www.oreilly.com/library/view/mapreduce-design-patterns/9781449341954/)
 
@@ -229,3 +229,5 @@ pairs is to use `RDD.takeOrdered(N)`, where N denotes Top-N.
 ## 9. Acknowledgements
 I would like to say big thank you to my student: Krishna Sai Tejaswini Kambhampati
 (KKambhampati@scu.edu), who has contributed to Top-N programs in PySpark.
+
+## 10. [Comments are welcome!](email:mparsian@yahoo.com)
