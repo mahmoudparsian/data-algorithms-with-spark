@@ -230,4 +230,6 @@ pairs is to use `RDD.takeOrdered(N)`, where N denotes Top-N.
 I would like to say big thank you to my student: Krishna Sai Tejaswini Kambhampati
 (KKambhampati@scu.edu), who has contributed to Top-N programs in PySpark.
 
-## 10. [Comments are welcome!](email:mparsian@yahoo.com)
+
+## 10. Comments are welcome!
+* Autor Contact: [ [![Email](https://support.microsoft.com/images/Mail-GrayScale.png) Email](mailto:mahmoud.parsian@yahoo.com) ]  [  [![Linkedin](https://i.stack.imgur.com/gVE0j.png) Mahmoud Parsian @LinkedIn](https://www.linkedin.com/mahmoudparsian/) ][  [![GitHub](https://i.stack.imgur.com/tskMh.png) Mahmoud Parsian @GitHub](https://github.com/mahmoudparsian/) ]
