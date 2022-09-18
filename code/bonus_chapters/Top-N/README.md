@@ -199,8 +199,21 @@ processed by a mapper parallelly so we find top 10 records
 where we find the actual top 10 records from the file 
 movies.txt. 
 
+## 7. Top-10 Without a Key
 
-## 7. References
+If your `RDD` (representation of your data) do not have 
+a `(key, value)` pairs, then a simple solution will be 
+to use `RDD.mapPartitions()` transformation. Let `P > 0` 
+be the number of partitions of your source `RDD`, then 
+`RDD.mapPartitions()` will find a local Top-10 for each
+ partition. Therefore, if your source `RDD` has billions 
+ of elements, then your target RDD will have exactly
+`P` elements. Finally, use `RDD.reduce()` to find the final 
+Top-10.  Another solution for an `RDD` without `(key, value)`
+pairs is to use `RDD.takeOrdered(N)`, where N denotes Top-N.
+
+
+## 8. References
 
 1. [mapreduce example to find top n records in a sample data](https://timepasstechies.com/mapreduce-topn/)
 
@@ -213,6 +226,6 @@ movies.txt.
 5. [Map Reduce for Top N Items](https://stackoverflow.com/questions/67085393/map-reduce-for-top-n-items)
 
 
-## 8. Acknowledgements
+## 9. Acknowledgements
 I would like to say big thank you to my student: Krishna Sai Tejaswini Kambhampati
 (KKambhampati@scu.edu), who has contributed to Top-N programs in PySpark.
