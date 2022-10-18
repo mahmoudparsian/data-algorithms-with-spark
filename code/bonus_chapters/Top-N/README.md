@@ -205,7 +205,9 @@ If your `RDD` (representation of your data) do not
 have a `(key, value)` pairs, then there are at least 
 two possible solutions:
 
-### 7.1
+
+### 7.1 Using `RDD.mapPartitions()`
+
 A simple solution will be to use `RDD.mapPartitions()` 
 transformation. Let `P > 0` be the number of partitions 
 of your source `RDD`, then `RDD.mapPartitions()` will 
@@ -237,7 +239,9 @@ def custom_reducer(v1, v2):
 final_top_10 = rdd2.reduce(custome_reducer)
 ~~~
 
-### 7.2
+
+### 7.2 Using `RDD.takeOrdered(N)`
+
 Another solution for an `RDD` without `(key, value)`
 pairs is to use `RDD.takeOrdered(N)`, where `N` 
 denotes Top-N. Note that `RDD.takeOrdered(N)` can 
