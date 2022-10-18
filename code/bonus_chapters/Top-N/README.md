@@ -169,7 +169,7 @@ Two solutions are provided using Spark's DataFrames:
 
 ## 5. Solution in Spark RDD
 
-Multiple solutions are provided by using RDDs:
+[Multiple solutions](./python/) are provided by using RDDs:
 
 1. Grouping movie IDs by using `RDD.groupByKey()`
 2. Grouping movie IDs by using `RDD.reduceByKey()`
