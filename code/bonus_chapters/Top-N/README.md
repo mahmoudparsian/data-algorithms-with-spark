@@ -201,16 +201,47 @@ movies.txt.
 
 ## 7. Top-10 Without a Key
 
-If your `RDD` (representation of your data) do not have 
-a `(key, value)` pairs, then a simple solution will be 
-to use `RDD.mapPartitions()` transformation. Let `P > 0` 
-be the number of partitions of your source `RDD`, then 
-`RDD.mapPartitions()` will find a local Top-10 for each
- partition. Therefore, if your source `RDD` has billions 
- of elements, then your target RDD will have exactly
-`P` elements. Finally, use `RDD.reduce()` to find the final 
-Top-10.  Another solution for an `RDD` without `(key, value)`
-pairs is to use `RDD.takeOrdered(N)`, where N denotes Top-N.
+If your `RDD` (representation of your data) do not 
+have a `(key, value)` pairs, then there are at least 
+two possible solutions:
+
+### 7.1
+A simple solution will be to use `RDD.mapPartitions()` 
+transformation. Let `P > 0` be the number of partitions 
+of your source `RDD`, then `RDD.mapPartitions()` will 
+find a local Top-10 for each partition. Therefore, if 
+your source `RDD` has billions of elements, then your 
+target RDD will have exactly `P` elements. Finally, 
+use `RDD.reduce()` to find the final Top-10 from all 
+partitioned Top-10's. General code will be 
+
+~~~python
+def custome_top_10(partition):
+  # iterate partition and create a 
+  # single data structure as V (as top-10)
+  return [V]
+#end-def
+
+# rdd: source RDD[T] with P partitions
+# rdd2 will have exacltly P elements as V_1, V_2, ..., V_P
+rdd2 = rdd.mapPartitions(custome_top_10)
+
+# apply a final RDD.reduce() to rdd2:
+def custom_reducer(v1, v2):
+  # reduce/merge v1, v2 into a v (as a single top-10)
+  # v1: a top-10 from a partition
+  # v2: a top-10 from a partition
+  return v
+#end-def
+
+final_top_10 = rdd2.reduce(custome_reducer)
+~~~
+
+### 7.2
+Another solution for an `RDD` without `(key, value)`
+pairs is to use `RDD.takeOrdered(N)`, where `N` 
+denotes Top-N. Note that `RDD.takeOrdered(N)` can 
+be used with `(key, value)` pairs  as well.
 
 
 ## 8. References
