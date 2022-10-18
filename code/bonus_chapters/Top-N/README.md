@@ -186,18 +186,21 @@ Solutions in MapReduce are given in the following books:
 
 * [Data Algorithms by Mahmoud Parsian](https://www.oreilly.com/library/view/data-algorithms/9781491906170/)
 
-Solutions in MapReduce use the `TreeMap` data structure. 
-Here, the idea is to use mappers to find local top 10 
-records, as there can be many mappers running parallelly 
-on different blocks of data of input file(s). And then 
-all these local top 10 records will be aggregated at 
-reducer where we find top 10 global records for the file.
-For example: assume that our input file(s) (400 GB) is 
-divided into 40 blocks of 10 GB each and each block is 
-processed by a mapper parallelly so we find top 10 records 
-(local) for that block. Then this data moves to the reducer 
-where we find the actual top 10 records from the file 
-movies.txt. 
+Solutions in MapReduce use the Java's `TreeMap` data 
+structure (you may use Python's dictionary libraries 
+to achieve this functionality). Here, the idea is to 
+use mappers to find local top 10 records, as there can 
+be many mappers running parallelly on different blocks 
+of data of input file(s). And then all these local top 
+10 records will be aggregated at reducer where we find 
+final top 10 global records for the file.
+
+For example: assume that our input file(s) (400 GB) 
+is divided into 40 blocks of 10 GB each and each block 
+is processed by a mapper parallelly so we find top 10 
+records (local) for that block. Then this data moves 
+to the reducer where we find the actual top 10 records 
+from the file movies.txt. 
 
 ## 7. Top-10 Without a Key
 
