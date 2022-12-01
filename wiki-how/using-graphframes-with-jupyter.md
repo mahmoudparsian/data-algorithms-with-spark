@@ -37,16 +37,17 @@ This is my script for invoking Jupyter and then using GraphFrames successfully:
 ##  Script to use GraphFrames inside Jupyter
 
 You should update the paths accordingly
-	# 1. define your environment variables
-	export PATH=/home/mparsian/Library/Python/3.9/bin:$PATH
-	export SPARK_HOME="/home/mparsian/spark-3.3.1"
-	export PATH=$SPARK_HOME/bin:$PATH
-	export PYSPARK_PYTHON="/Library/Frameworks/Python.framework/Versions/3.9/bin/python3"
-	export PYSPARK_DRIVER_PYTHON=jupyter
-	export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
-	export GF_PKG="graphframes:graphframes:0.8.2-spark3.2-s_2.12"
-	# 2. launch jupyter/pyspark
-	$SPARK_HOME/bin/pyspark --packages ${GF_PKG}
+
+		# 1. define your environment variables
+		export PATH=/home/mparsian/Library/Python/3.9/bin:$PATH
+		export SPARK_HOME="/home/mparsian/spark-3.3.1"
+		export PATH=$SPARK_HOME/bin:$PATH
+		export PYSPARK_PYTHON="/Library/Frameworks/Python.framework/Versions/3.9/bin/python3"
+		export PYSPARK_DRIVER_PYTHON=jupyter
+		export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+		export GF_PKG="graphframes:graphframes:0.8.2-spark3.2-s_2.12"
+		# 2. launch jupyter/pyspark
+		$SPARK_HOME/bin/pyspark --packages ${GF_PKG}
 
 -------
 
