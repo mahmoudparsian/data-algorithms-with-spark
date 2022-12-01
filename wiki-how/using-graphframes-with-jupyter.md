@@ -32,7 +32,10 @@ This is how I did it: to use GraphFrames in Jupyter:
 This is my script for invoking Jupyter and then using GraphFrames successfully:
 (update the script accordingly)
 
-##  Script to use GraphFrames inside Jupyter:
+------
+
+##  Script to use GraphFrames inside Jupyter
+
 You should update the paths accordingly
 	# 1. define your environment variables
 	export PATH=/home/mparsian/Library/Python/3.9/bin:$PATH
@@ -45,4 +48,7 @@ You should update the paths accordingly
 	# 2. launch jupyter/pyspark
 	$SPARK_HOME/bin/pyspark --packages ${GF_PKG}
 
+-------
+
+## Jupyter demo
 ![Jupyter demo](./using-graphframes-with-jupyter.demo.png)
