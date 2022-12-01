@@ -45,3 +45,4 @@ You should update the paths accordingly
 	# 2. launch jupyter/pyspark
 	$SPARK_HOME/bin/pyspark --packages ${GF_PKG}
 
+![Jupyter demo](./using-graphframes-with-jupyter.demo.png)
