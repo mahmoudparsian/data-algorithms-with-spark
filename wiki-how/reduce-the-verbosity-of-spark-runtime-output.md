@@ -1,3 +1,5 @@
+# Reduce the Verbosity of Spark Runtime Output
+
 When using PySpark, you may find the logging statements 
 that get printed in the shell are distracting (it prints
 out lots of debugging information).
@@ -23,4 +25,5 @@ Then lower (change) the log level so that we only show `WARN`
 		rootLogger.level = warn
 
 
-After your changes, when you re-open the shell, you should see less output.
+After your changes, when you re-open the shell, you should see 
+less verbosity/output.
