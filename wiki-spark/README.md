@@ -1,9 +1,9 @@
-# Wiki-How
+# Wiki-Spark
 
-![wiki-how](./wiki.jpeg)
+![wiki-spark](./wiki.jpeg)
 
 
-Welcome to Wiki-How, where it will host a series of how-to's by using PySpark.
+Welcome to Wiki-Spark, where it will host a series of how-to's by using PySpark.
 
 
 1. [How to use GraphFrames from Jupyter/PySpark](./using-graphframes-with-jupyter.md)
