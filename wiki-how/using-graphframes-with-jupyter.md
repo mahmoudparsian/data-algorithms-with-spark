@@ -13,15 +13,15 @@ That is why I am posting this wiki-how to address the problem.
 
 This is how I did it: to use GraphFrames in Jupyter:
 
-1. Make sure that the numpy package is installed
+1. Make sure that the `numpy` package is installed
    properly on the specific version of python which
    you are using for PySpark,
    
 2. You might have multiple copies/versions of Python,
-   but make sure, you select the Python, in which numpy
-   has been installed properly
+   but make sure, you select the Python, in which `numpy`
+   package has been installed properly,
    
-3. To make sure you are doing okay, make sure that in
+3. To make sure you are doing okay, make sure that inside
    Jupyter, you can run the following (two imports)
    successfully (without any error):
 
@@ -34,7 +34,7 @@ This is my script for invoking Jupyter and then using GraphFrames successfully:
 
 ##  Script to use GraphFrames inside Jupyter:
 You should update the paths accordingly
-
+	# 1. define your environment variables
 	export PATH=/home/mparsian/Library/Python/3.9/bin:$PATH
 	export SPARK_HOME="/home/mparsian/spark-3.3.1"
 	export PATH=$SPARK_HOME/bin:$PATH
@@ -42,5 +42,6 @@ You should update the paths accordingly
 	export PYSPARK_DRIVER_PYTHON=jupyter
 	export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
 	export GF_PKG="graphframes:graphframes:0.8.2-spark3.2-s_2.12"
+	# 2. launch jupyter/pyspark
 	$SPARK_HOME/bin/pyspark --packages ${GF_PKG}
 
