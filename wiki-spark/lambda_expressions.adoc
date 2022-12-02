@@ -4,7 +4,8 @@
 :toc:
 
 * Author: Mahmoud Parsian
-* Last updated: December 19, 2021
+* Last updated: December 1, 2022
+
 
 == Introduction
 
@@ -23,6 +24,21 @@ In PySpark, you may use Lambda expressions (as a
 replacement for anonymous functions -- a function
 without a name), when you want to run a function
 once and don't need to save it for future reuse.
+
+== Why do you need a UDF?
+
+* UDF’s are used to extend the functions of the framework 
+Re-use these UDF on multiple DataFrame’s. 
+
+* For example, you wanted to convert every first letter 
+of a word in a name string to a capital case; PySpark 
+built-in features don’t have this function hence you 
+can create it a UDF and reuse this as needed on many 
+Data Frames. 
+
+* UDF’s are once created they can be re-used on several 
+DataFrame’s and SQL expressions.
+
 
 == Python and Lambda Expressions
 
@@ -319,3 +335,181 @@ Now, we use the define Python function:
 >>> results.collect()
 [10, 4, 9, 14, 15, 16, 17]
 ----
+
+
+== Example 4: UDF Example with Annotation
+
+In this section, I provide detailed examples on
+how to create and use a UDF in PySpark.
+
+1. Create a DataFrame
+2. Create a Python Function
+3. Test your Python Function
+4. Convert a Python function to PySpark UDF
+5. Using UDF with DataFrame “select”
+6. Using UDF with DataFrame “addColumn”
+7. Registering PySpark UDF & use it on SQL
+8. Creating UDF using annotation
+
+
+### 1 Create a DataFrame
+DataFrames can be created from collections, RDDs, files, and many other data sources.
+
+[source, python]
+----
+from pyspark.sql import SparkSession
+spark = SparkSession.builder.getOrCreate()
+column_names = ["ID", "Name"]
+my_data = [("100", "john jones"),
+           ("200", "tracey smith"),
+           ("300", "amy sanders")]
+df = spark.createDataFrame(data=my_data,schema=column_names)
+df.show(truncate=False)
++-----+------------+
+|ID   |Name        |
++-----+------------+
+|100  |john jones  |
+|200  |tracey smith|
+|300  |amy sanders |
++-----+------------+
+
+----
+
+
+### 2 Create a Python Function
+
+The first step in creating a UDF is creating a Python function.  The convertCase() function takes a string parameter and converts the first letter of every word to capital letter. UDF’s take parameters of your choice and returns a value.
+
+[source, python]
+----
+def convert_case(name):
+  result_string = ""
+  arr = name.split(" ")
+  for x in arr:
+    result_string +=  x[0:1].upper() + x[1:len(x)] + " "
+  #end-for
+  return result_string.strip()
+#end-def 
+----
+
+### 3 Test created Python function
+
+[source, python]
+----
+>>> def convert_case(name):
+...   result_string = ""
+...   arr = name.split(" ")
+...   for x in arr:
+...     result_string +=  x[0:1].upper() + x[1:len(x)] + " "
+...   #end-for
+...   return result_string.strip()
+... #end-def
+...
+>>> convert_case("alex smith")
+'Alex Smith'
+>>> convert_case("alex jr smith")
+'Alex Jr Smith'
+>>>
+----
+
+### 4 Convert a Python function to UDF
+
+[source, python]
+----
+# Converting a Python function to UDF 
+from pyspark.sql.functions import udf
+from pyspark.sql.types import StringType
+# return type is StringType()
+convert_case_udf = udf(
+   lambda p: convert_case(p), 
+   StringType()
+)
+----
+
+
+### 5 Using UDF with DataFrame `select()` function
+
+Now you can use `convert_case_udf()` on a DataFrame column:
+
+[source, python]
+----
+from pyspark.sql.functions import col 
+df.select(col("ID"), \
+    convert_case_udf(col("Name")).alias("FullName") ) \
+   .show(truncate=False)
++-----+------------+
+|ID   |FullName    |
++-----+------------+
+|100  |John Jones  |
+|200  |Tracey Smith|
+|300  |Amy Sanders |
++-----+------------+
+----
+
+### 6 Using UDF with DataFrame `addColumn()` function
+
+[source, python]
+----
+df.withColumn("FullName", converted_case_udf(col("Name"))) \
+  .show(truncate=False)
++-----+--------------+-------------+
+|ID   | Name         |FullName     |
++-----+--------------+-------------+
+|100  | john jones   | John Jones  |
+|200  | tracey smith | Tracey Smith|
+|300  | Amy Sanders  | Amy Sanders |
++-----+--------------+-------------+
+----
+
+### 7 Registering PySpark UDF & use it on SQL
+
+
+In order to use convert_case() function on PySpark 
+SQL, you need to register the function with PySpark 
+by using `spark.udf.register()`.
+
+[source, python]
+----
+spark.udf.register("convert_UDF", convert_case, StringType())
+df.createOrReplaceTempView("MY_TABLE")
+spark.sql("select ID, convert_UDF(Name) as Name from MY_TABLE")
+     .show(truncate=False)
++-----+------------+
+|ID   |Name        |
++-----+------------+
+|100  |John Jones  |
+|200  |Tracey Smith|
+|300  |Amy Sanders |
++-----+------------+
+----
+
+
+### 8 Creating UDF using annotation
+
+There are many ways to create a UDF.
+You may use Spark's annotation (`@udf`) 
+to create a UDF.
+
+[source, python]
+----
+# import required libraries
+from pyspark.sql.types import StringType
+from pyspark.sql.functions import udf
+
+# use annotation to create a UDF
+@udf(returnType=StringType()) 
+def upper_case(str):
+  return str.upper()
+
+df.withColumn(”UpperName", upper_case(col("Name"))) 
+.show(truncate=False)
++-----+--------------+--------------+
+|ID   | Name         |UpperName     |
++-----+--------------+--------------+
+|100  | john jones   | JOHN JONES   |
+|200  | tracey smith | TRACEY SMITH |
+|300  | Amy Sanders  | AMY SANDERS  |
++-----+--------------+--------------+
+----
+
+
