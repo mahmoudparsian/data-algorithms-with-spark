@@ -16,6 +16,7 @@ how-to's and tutorials by using PySpark.
 4. [First Steps With PySpark and Big Data Processing](https://realpython.com/pyspark-intro/)
 5. [PySpark Tutorial: Getting Started with PySpark](https://www.datacamp.com/tutorial/pyspark-tutorial-getting-started-with-pyspark)
 6. [Introduction to PySpark](https://annefou.github.io/pyspark/03-pyspark_context/)
+7. [Beginners Guide to PySpark](https://towardsdatascience.com/beginners-guide-to-pyspark-bbe3b553b79f)
 
 -----
 
@@ -24,6 +25,7 @@ how-to's and tutorials by using PySpark.
 1. [Spark RDDs Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/pyspark_tutorial)
 2. [Spark DataFrames Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/dataframes)
 3. [Introduction to PySpark](https://medium.com/the-researchers-guide/introduction-to-pyspark-a61f7217398e)
+4. [PySpark – Create DataFrame with Examples](https://sparkbyexamples.com/pyspark/different-ways-to-create-dataframe-in-pyspark/)
 
 -----
 
@@ -69,4 +71,9 @@ how-to's and tutorials by using PySpark.
 ------
 
 ## Misc
-1. [How to reduce the verbosity of Spark runtime output](./docs/reduce-the-verbosity-of-spark-runtime-output.md)
+
+1. [PySpark repartition() vs coalesce()](https://sparkbyexamples.com/pyspark/pyspark-repartition-vs-coalesce/)
+2. [How to reduce the verbosity of Spark runtime output](./docs/reduce-the-verbosity-of-spark-runtime-output.md)
+3. [PySpark Broadcast Variables](https://sparkbyexamples.com/pyspark/pyspark-broadcast-variables/)
+
+-----
