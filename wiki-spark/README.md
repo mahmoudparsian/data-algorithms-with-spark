@@ -1,6 +1,6 @@
 # Wiki-Spark
 
-![wiki-spark](./wiki.jpeg)
+![wiki-spark](./docs/wiki.jpeg)
 
 
 Welcome to Wiki-Spark, where it will host a series of 
