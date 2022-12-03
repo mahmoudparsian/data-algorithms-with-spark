@@ -23,9 +23,10 @@ how-to's and tutorials by using PySpark.
 ## Spark RDDs and DataFrames
 
 1. [Spark RDDs Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/pyspark_tutorial)
-2. [Spark DataFrames Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/dataframes)
-3. [Introduction to PySpark](https://medium.com/the-researchers-guide/introduction-to-pyspark-a61f7217398e)
-4. [PySpark – Create DataFrame with Examples](https://sparkbyexamples.com/pyspark/different-ways-to-create-dataframe-in-pyspark/)
+2. [PySpark RDD Tutorial, Learn with Examples](https://sparkbyexamples.com/pyspark-rdd)
+3. [Spark DataFrames Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/dataframes)
+4. [Introduction to PySpark](https://medium.com/the-researchers-guide/introduction-to-pyspark-a61f7217398e)
+5. [PySpark – Create DataFrame with Examples](https://sparkbyexamples.com/pyspark/different-ways-to-create-dataframe-in-pyspark/)
 
 -----
 
@@ -49,6 +50,7 @@ how-to's and tutorials by using PySpark.
 2. [Introducing GraphFrames](https://www.databricks.com/blog/2016/03/03/introducing-graphframes.html)
 3. [How to use GraphFrames from Jupyter and PySpark](./docs//using-graphframes-with-jupyter.md)
 4. [GraphFrames in Jupyter: a practical guide](https://towardsdatascience.com/graphframes-in-jupyter-a-practical-guide-9b3b346cebc5)
+5. [Install PySpark in Jupyter on Mac using Homebrew](https://sparkbyexamples.com/pyspark/install-pyspark-in-jupyter-on-mac-using-homebrew/)
 
 -----
 
@@ -57,6 +59,7 @@ how-to's and tutorials by using PySpark.
 1. [How to write and use UDFs in Spark](./docs/how-to-use-UDF-in-spark.md)
 2. [How to Write Spark UDF in Python?](https://www.geeksforgeeks.org/how-to-write-spark-udf-user-defined-functions-in-python/)
 3. [PySpark UDF](https://www.javatpoint.com/pyspark-udf)
+4. [PySpark UDF (User Defined Function)](https://sparkbyexamples.com/pyspark/pyspark-udf-user-defined-function/)
 
 -----
 
@@ -76,5 +79,6 @@ how-to's and tutorials by using PySpark.
 1. [PySpark repartition() vs coalesce()](https://sparkbyexamples.com/pyspark/pyspark-repartition-vs-coalesce/)
 2. [How to reduce the verbosity of Spark runtime output](./docs/reduce-the-verbosity-of-spark-runtime-output.md)
 3. [PySpark Broadcast Variables](https://sparkbyexamples.com/pyspark/pyspark-broadcast-variables/)
+4. [PySpark Accumulator with Example](https://sparkbyexamples.com/pyspark/pyspark-accumulator-with-example/)
 
 -----
