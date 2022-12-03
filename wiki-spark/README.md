@@ -33,9 +33,10 @@ how-to's and tutorials by using PySpark.
 
 -----
 
-## Using UDF in PySpark
+## Using UDF (User Defined Functions) in PySpark
 
 1. [How to use UDF in Spark](./how-to-use-UDF-in-spark.md)
+2. [How to Write Spark UDF in Python?](https://www.geeksforgeeks.org/how-to-write-spark-udf-user-defined-functions-in-python/)
 
 -----
 
