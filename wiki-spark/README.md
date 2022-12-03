@@ -19,10 +19,11 @@ how-to's and tutorials by using PySpark.
 
 -----
 
-# Spark RDDs and DataFrames
+## Spark RDDs and DataFrames
 
 1. [Spark RDDs Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/pyspark_tutorial)
 2. [Spark DataFrames Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/dataframes)
+3. [Introduction to PySpark](https://medium.com/the-researchers-guide/introduction-to-pyspark-a61f7217398e)
 
 -----
 
