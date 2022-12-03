@@ -19,12 +19,20 @@ how-to's and tutorials by using PySpark.
 
 -----
 
+# Spark RDDs and DataFrames
+
+1. [Spark RDDs Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/pyspark_tutorial)
+2. [Spark DataFrames Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/dataframes)
+
+-----
+
 ## Basic and Simple Algorithms
 
 1. [How to do Word Count in PySpark](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/wordcount/)
 2. [Finding Anagrams](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/anagrams/python)
 
 -----
+
 ## PySpark in Jupyter
 
 1. [How to set up PySpark for your Jupyter notebook](https://opensource.com/article/18/11/pyspark-jupyter-notebook)
