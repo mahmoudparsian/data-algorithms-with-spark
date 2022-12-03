@@ -63,10 +63,14 @@ how-to's and tutorials by using PySpark.
 ## Lambda Expressions
 
 1. [How to Use Python Lambda Functions](https://realpython.com/python-lambda/)
+
 2. [How to use Lambda Expressions](./docs/lambda_expressions_basics.md)
+
 3. Lambda Expressions Tutorial
 	* [Lambda Expressions Tutorial (PDF format)](./docs/lambda_expressions.pdf)
 	* [Lambda Expressions Tutorial (AsciiDoc format)](./docs/lambda_expressions.adoc)
+
+4. [Python Lambda Examples](https://www.w3schools.com/python/python_lambda.asp)
 
 ------
 
