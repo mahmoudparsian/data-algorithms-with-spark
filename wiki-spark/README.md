@@ -30,13 +30,15 @@ how-to's and tutorials by using PySpark.
 1. [GarphFrames Overview](https://graphframes.github.io/graphframes/docs/_site/index.html)
 2. [Introducing GraphFrames](https://www.databricks.com/blog/2016/03/03/introducing-graphframes.html)
 3. [How to use GraphFrames from Jupyter and PySpark](./using-graphframes-with-jupyter.md)
+4. [GraphFrames in Jupyter: a practical guide](https://towardsdatascience.com/graphframes-in-jupyter-a-practical-guide-9b3b346cebc5)
 
 -----
 
 ## Using UDF (User Defined Functions) in PySpark
 
-1. [How to use UDF in Spark](./how-to-use-UDF-in-spark.md)
+1. [How to write and use UDFs in Spark](./how-to-use-UDF-in-spark.md)
 2. [How to Write Spark UDF in Python?](https://www.geeksforgeeks.org/how-to-write-spark-udf-user-defined-functions-in-python/)
+3. [PySpark UDF](https://www.javatpoint.com/pyspark-udf)
 
 -----
 
