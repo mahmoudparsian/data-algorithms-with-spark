@@ -15,6 +15,7 @@ how-to's and tutorials by using PySpark.
 3. [Learning Spark (book), 2nd Edition](https://pages.databricks.com/rs/094-YMS-629/images/LearningSpark2.0.pdf)
 4. [First Steps With PySpark and Big Data Processing](https://realpython.com/pyspark-intro/)
 5. [PySpark Tutorial: Getting Started with PySpark](https://www.datacamp.com/tutorial/pyspark-tutorial-getting-started-with-pyspark)
+6. [Introduction to PySpark](https://annefou.github.io/pyspark/03-pyspark_context/)
 
 -----
 
@@ -22,6 +23,12 @@ how-to's and tutorials by using PySpark.
 
 1. [How to do Word Count in PySpark](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/wordcount/)
 2. [Finding Anagrams](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/anagrams/python)
+
+-----
+## PySpark in Jupyter
+
+1. [How to set up PySpark for your Jupyter notebook](https://opensource.com/article/18/11/pyspark-jupyter-notebook)
+2. [How to install PySpark and Jupyter Notebook in 3 Minutes](https://www.sicara.fr/blog-technique/2017-05-02-get-started-pyspark-jupyter-notebook-3-minutes)
 
 -----
 
@@ -44,8 +51,9 @@ how-to's and tutorials by using PySpark.
 
 ## Lambda Expressions
 
-1. [How to use Lambda Expressions](./lambda_expressions_basics.md)
-2. Lambda Expressions Tutorial
+1. [How to Use Python Lambda Functions](https://realpython.com/python-lambda/)
+2. [How to use Lambda Expressions](./lambda_expressions_basics.md)
+3. Lambda Expressions Tutorial
 	* [Lambda Expressions Tutorial (PDF format)](./lambda_expressions.pdf)
 	* [Lambda Expressions Tutorial (AsciiDoc format)](./lambda_expressions.adoc)
 
