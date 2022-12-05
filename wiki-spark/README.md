@@ -37,6 +37,13 @@ how-to's and tutorials by using PySpark.
 
 -----
 
+## Data Design Patterns
+
+1. [Summarization design patterns -- mapPartitions()](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/mappartitions)
+2. [Join Patterns -- inner, left, right](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/join/)
+
+-----
+
 ## PySpark in Jupyter
 
 1. [How to set up PySpark for your Jupyter notebook](https://opensource.com/article/18/11/pyspark-jupyter-notebook)
