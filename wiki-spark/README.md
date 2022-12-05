@@ -34,6 +34,7 @@ how-to's and tutorials by using PySpark.
 
 1. [How to do Word Count in PySpark](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/wordcount/)
 2. [Finding Anagrams](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/anagrams/python)
+3. [Finding K-mers](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/k-mers)
 
 -----
 
@@ -41,6 +42,7 @@ how-to's and tutorials by using PySpark.
 
 1. [Summarization design patterns -- mapPartitions()](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/mappartitions)
 2. [Join Patterns -- inner, left, right](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/join/)
+3. [Top-10 Design Patterns](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/Top-N/)
 
 -----
 
