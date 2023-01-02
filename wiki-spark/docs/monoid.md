@@ -6,19 +6,20 @@
 	Last updated: 1/1/2023
 	
 In this article, I will define a **monoid** 
-and how it can help us to write better and 
-correct reducers in MapReduce and Spark 
-environments.  In abstract algebra, a 
-branch of mathematics, a monoid is a set 
+and show that how it can help us to write 
+better and correct reducers in MapReduce 
+and Spark environments.  In abstract algebra
+(study of algebraic structures), a branch of 
+mathematics, a **monoid** is a set 
 equipped with an associative binary 
 operation and an identity element
 (will be discussed shortly).
 
-Understanding monoids can 
-help us to write  semantically  correct 
-reducers (`reduce()` and `combine()` in 
-MapReduce and `reduceByKey()` transformation
-in Spark). Before defining what a monoid 
+Understanding monoids can help us to 
+write  semantically  correct reducers 
+in MapReduce (`reduce()` and `combine()`)
+and Spark (`reduceByKey()` transformation). 
+Before defining what a monoid 
 is, I will present some of the basic 
 properties of binary functions.
 
