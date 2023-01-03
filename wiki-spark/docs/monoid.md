@@ -255,6 +255,17 @@ Now, let's calculate average:
 	                              ===> CORRECT AVERAGE
 	
 
+## Monoids and Programming Languages
+
+Monoids have found some use in functional programming 
+languages such as Haskell and Scala, where they are used 
+to generalize over data types in which values can be "combined" 
+(by some operation ) and which include an "empty" value 
+(the identity element).
+
+Examples:
+* [Monoids in Haskell, an Introduction](https://gist.github.com/cscalfani/b0a263cf1d33d5d75ca746d81dac95c5#file-monoidsinhaskellanintroductions-md)
+* [Functional Programming in Scala, Monoids](https://livebook.manning.com/book/functional-programming-in-scala/chapter-10/)
 
 ## References
 
