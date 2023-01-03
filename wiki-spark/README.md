@@ -83,12 +83,17 @@ how-to's and tutorials by using PySpark.
 
 ------
 
+## Monoid: Design Principle
+
+1. [What is a Monoid?](./docs/monoid.md)
+
+------
+
 ## Misc
 
 1. [PySpark repartition() vs coalesce()](https://sparkbyexamples.com/pyspark/pyspark-repartition-vs-coalesce/)
 2. [How to reduce the verbosity of Spark runtime output](./docs/reduce-the-verbosity-of-spark-runtime-output.md)
 3. [PySpark Broadcast Variables](https://sparkbyexamples.com/pyspark/pyspark-broadcast-variables/)
 4. [PySpark Accumulator with Example](https://sparkbyexamples.com/pyspark/pyspark-accumulator-with-example/)
-5. [What is a Monoid?](./docs/monoid.md)
 
 -----
