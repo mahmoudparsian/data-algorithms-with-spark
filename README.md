@@ -79,7 +79,11 @@ Original Creator of Apache Spark <br>
 
 | Chapter        |      Title       |
 |----------------|------------------|
-| Bonus <br> Chapters | <ul><li>[Tutorials: RDDs and DataFrames](./code/bonus_chapters/)</li><li>[Top-N, UDF, Partitioning, TF-IDF, Correlation](./code/bonus_chapters/)</li><li>[Correlation, K-mers, anagrams, wordcount, ...](./code/bonus_chapters/)</li></ul>  |
+| Bonus <br> Chapters | <ul><li>[Tutorials: RDDs and DataFrames](./code/bonus_chapters/)</li>
+                            <li>[Top-N, UDF, Partitioning, TF-IDF, Correlation](./code/bonus_chapters/)</li>
+                            <li>[Correlation, K-mers, anagrams, wordcount, ...](./code/bonus_chapters/)</li>
+                            <li>[Glossary of big data, MapReduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/blob/master/slides/glossary/README.md)</li>
+                        </ul>  |
 | Chapter 1      | [Introduction to Data Algorithms](./code/chap01/) |
 | Chapter 2      | [Transformations in Action](./code/chap02/) |
 | Chapter 3      | [Mapper Transformations](./code/chap03/) |
