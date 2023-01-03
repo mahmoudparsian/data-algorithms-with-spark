@@ -263,6 +263,14 @@ from the combiners. According to the Spark documentation:
 `RDD.reduceByKey()`merges the values for each key using an 
 **associative** and **commutative** reduce function.
 
+Therefore, given an `RDD` of  `(key, value)`:
+
+	# rdd: RDD[(key, value)]
+	reduced = rdd.reduceByKey(lambda x, y: f(x, y))
+	
+we must make sure that function `f()` is
+an **associative** and **commutative** reduce function.
+
 ## Monoids and Programming Languages
 
 Monoids have found some use in functional programming 
