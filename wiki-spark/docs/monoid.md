@@ -155,7 +155,7 @@ costly, local aggregation is one important principle to designing
 efficient algorithms. This short paper represents an attempt to 
 more clearly articulate this design principle in terms of monoids, 
 which generalizes the use of combiners and the in-mapper combining 
-pattern.
+pattern."
 
 For example, in Spark (using PySpark), in a distributed computing
 environment, we can not write the following 
@@ -254,18 +254,29 @@ Now, let's calculate average:
 	                              = 2.0
 	                              ===> CORRECT AVERAGE
 	
+## Monoids and Spark
+In using `pyspark.RDD.reduceByKey()` transformation, 
+you need to make sure that your RDD  (as your data set)
+and the binary operation (applied to values of the same key)
+forms a monoid, otherwise you might get incorrect result
+from the combiners. According to the Spark documentation:
+`RDD.reduceByKey()`merges the values for each key using an 
+**associative** and **commutative** reduce function.
 
 ## Monoids and Programming Languages
 
 Monoids have found some use in functional programming 
-languages such as Haskell and Scala, where they are used 
-to generalize over data types in which values can be "combined" 
-(by some operation ) and which include an "empty" value 
-(the identity element).
+languages such as Haskell and Scala, where they are 
+used to generalize over data types in which values can 
+be "combined" (by some operation ) and which include an 
+"empty" value (so called the identity element).
 
 Examples:
+
 * [Monoids in Haskell, an Introduction](https://gist.github.com/cscalfani/b0a263cf1d33d5d75ca746d81dac95c5#file-monoidsinhaskellanintroductions-md)
+
 * [Functional Programming in Scala, Monoids](https://livebook.manning.com/book/functional-programming-in-scala/chapter-10/)
+
 
 ## References
 
