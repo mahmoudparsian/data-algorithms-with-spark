@@ -85,7 +85,7 @@ how-to's and tutorials by using PySpark.
 
 ## Monoid: Design Principle
 
-1. [What is a Monoid?](./docs/monoid.md)
+1. [What is a Monoid?](./docs/monoid/README.md)
 
 ------
 

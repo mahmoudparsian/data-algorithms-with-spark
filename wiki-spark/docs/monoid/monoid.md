@@ -1,4 +1,4 @@
-# Monoid
+# Monoid: Design Principle
 
 ![](./monoid_math.png)
 
