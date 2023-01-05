@@ -4,6 +4,8 @@
 
 	Author: Mahmoud Parsian
 	Last updated: 1/1/2023
+
+## 1. Introduction
 	
 In this article, I will define a **monoid** 
 and show that how it can help us to write 
@@ -25,7 +27,7 @@ properties of binary functions.
 
 
 
-## What is an Associative Law
+## 2. What is an Associative Law
 An associative operation:
 
 		f: X x X -> X
@@ -58,7 +60,7 @@ While average operation is not an associative function.
        	       1.75 != 2.25
 
 
-## What is a Commutative Law
+## 3. What is a Commutative Law
 A commutative function `f` is a function that takes multiple 
 inputs from a set X and produces an output that does not 
 depend on the ordering of the inputs. For example, the binary 
@@ -72,7 +74,7 @@ While, - (subtraction) is not an commutative function because
 		2 - 4 != 4 - 2
 		   -2 != 2
 		
-## Semigroup
+## 4. Semigroup
 
 A semigroup is a set `S` together with a binary operation `f`:
 
@@ -91,7 +93,7 @@ this becomes a monoid.)
 infinity included, this becomes a monoid.)
 
 
-## Monoid
+## 5. Monoid
 
 Monoids are algebraic structures. 
 A monoid M is a triplet `(X, f, i)`, where 
@@ -121,7 +123,7 @@ semigroup with a certain element called an **identity element**
 
 
 	
-### Monoid Examples
+### 6. Monoid Examples
 
 #### Example-1
 Let X denotes non-negative integer numbers. 
@@ -148,7 +150,7 @@ Then M(X, `AVG`, `0`) is not a monoid, since `AVG` (an averge function) is not a
 
 
  
-## Monoids as a Design Principle for Efficient MapReduce Algorithms
+## 7. Monoids as a Design Principle for Efficient MapReduce Algorithms
 According to [Jimmy Lin](https://arxiv.org/abs/1304.7544): "it is 
 well known that since the sort/shuffle stage in MapReduce is 
 costly, local aggregation is one important principle to designing 
@@ -213,7 +215,7 @@ Finally, `avg_per_key` RDD will produce the final value per key:
 `(A, 2)`.
  
  
-## What Does it Mean that "Average of Average is Not an Average"
+## 8. What Does it Mean that "Average of Average is Not an Average"
 
 In distributed computing environments (such as MapReduce, 
 Hadoop, Spark, ...) correctness of algorithms are very
@@ -254,7 +256,7 @@ Now, let's calculate average:
 	                              = 2.0
 	                              ===> CORRECT AVERAGE
 	
-## Monoids and Spark
+## 9. Monoids and Spark
 In using `pyspark.RDD.reduceByKey()` transformation, 
 you need to make sure that your RDD  (as your data set)
 and the binary operation (applied to values of the same key)
@@ -271,7 +273,7 @@ Therefore, given an `RDD` of  `(key, value)`:
 we must make sure that function `f()` is
 an **associative** and **commutative** reduce function.
 
-## Monoids and Programming Languages
+## 10. Monoids and Programming Languages
 
 Monoids have found some use in functional programming 
 languages such as Haskell and Scala, where they are 
@@ -286,7 +288,7 @@ Examples:
 * [Functional Programming in Scala, Monoids](https://livebook.manning.com/book/functional-programming-in-scala/chapter-10/)
 
 
-## References
+## 11. References
 
 1. [Data Algorithms with Spark by Mahmoud Parsian](https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/)
 
