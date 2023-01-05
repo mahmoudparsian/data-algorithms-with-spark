@@ -296,4 +296,12 @@ Examples:
 
 4. [Data-Intensive Text Processing with MapReduce by Jimmy Lin and Chris Dyer](https://lintool.github.io/MapReduceAlgorithms/ed1n/MapReduce-algorithms.pdf)
 
+5. [Why Spark can’t foldLeft: Monoids and Associativity by Parker Gordon](https://parkergordon.io/2017/04/03/why-spark-cant-foldleft/)
 
+6. [Monoids and Semigroups in Scala](https://www.baeldung.com/scala/monoids-semigroups)
+
+7. [Monoidal sparks](https://byorgey.wordpress.com/2018/10/01/monoidal-sparks/)
+
+8. [Semigroups and Monoids in Scala](https://blog.rockthejvm.com/semigroups-and-monoids-in-scala/)
+
+9. [Understanding Monoids using real life examples](https://shashankbaravani.medium.com/understanding-monoids-using-real-life-examples-6ec3cb349f2f)
