@@ -42,14 +42,16 @@ Original Creator of Apache Spark <br>
 
 ## Word Count using Spark RDDs
 
-Solutions are provided by using reduceByKey()
-and groupByKey() reducers. In general, solution
-by using reduceByKey() is a scale-out solution
-than using groupByKey().
+Solutions are provided by using `reduceByKey()`
+, `groupByKey()`, and `combineByKey()` reducers. 
+In general, solution by using `reduceByKey()` and
+`combineByKey()` are  scale-out solutions
+than using `groupByKey()`.
+
 
 	wordcount_by_groupbykey.py
 	wordcount_by_groupbykey.sh
-		
+	
 	wordcount_by_groupbykey_shorthand.py
 	wordcount_by_groupbykey_shorthand.sh
 	
@@ -58,10 +60,10 @@ than using groupByKey().
 	
 	wordcount_by_reducebykey.py
 	wordcount_by_reducebykey.sh
-		
+	
 	wordcount_by_reducebykey_shorthand.py
 	wordcount_by_reducebykey_shorthand.sh
-		
+	
 	wordcount_by_reducebykey_with_filter.py
 	wordcount_by_reducebykey_with_filter.sh
 
