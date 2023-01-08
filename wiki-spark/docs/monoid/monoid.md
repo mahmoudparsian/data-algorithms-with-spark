@@ -126,11 +126,15 @@ semigroup with a certain element called an **identity element**
 ### 6. Monoid Examples
 
 #### Example-1
-Let X denotes non-negative integer numbers. 
 
-Then M(X, `+`, `0`) is a monoid.
+1. Let `X` denotes non-negative integer numbers. 
+Then `M(X, +, 0)` is a monoid since `+` (an addition) 
+is an associative function.
 
-Then M(X, `*`, `1`) is a monoid.
+2. Let `X` denotes non-negative integer numbers. 
+Then `M(X, *, 1)` is a monoid since `*` (a multiplicaton) 
+is an associative function.
+
 
 #### Example-2
 Let S denote a set of strings including an empty string (`""`) 
@@ -141,12 +145,18 @@ Then M(S, `||`, `""`) is a monoid.
 
 ### No Monoid Examples
 
-Then M(X, `-`, `0`) is not a monoid, since binary subtraction is not an associative function.
+1. Let `X` be a set of non-negative integers.
+Then `M(X, -, 0)` is not a monoid, 
+since binary subtraction is not an associative function.
 
-Then M(X, `/`, `1`) is not a monoid, since binary division is not an associative function.
+2. Let `X` be a set of non-negative integers.
+Then `M(X, /, 1)` is not a monoid, 
+since binary division is not an associative function.
 
-
-Then M(X, `AVG`, `0`) is not a monoid, since `AVG` (an averge function) is not an associative function.
+3. Let, `AVG(a, b)` be a function which returns an 
+average of `a` and `b`, then `M(X, AVG, 0)` is 
+not a monoid,  since `AVG` (an averge function) 
+is not an associative function.
 
 
  
@@ -298,18 +308,20 @@ Examples:
 
 4. [Data-Intensive Text Processing with MapReduce by Jimmy Lin and Chris Dyer](https://lintool.github.io/MapReduceAlgorithms/ed1n/MapReduce-algorithms.pdf)
 
-5. [Why Spark can’t foldLeft: Monoids and Associativity by Parker Gordon](https://parkergordon.io/2017/04/03/why-spark-cant-foldleft/)
+5. [Semigroups, Monoids, and Groups](https://faculty.etsu.edu/gardnerr/5410/notes/I-1.pdf)
 
-6. [Monoids and Semigroups in Scala](https://www.baeldung.com/scala/monoids-semigroups)
+6. [Why Spark can’t foldLeft: Monoids and Associativity by Parker Gordon](https://parkergordon.io/2017/04/03/why-spark-cant-foldleft/)
 
-7. [Monoidal sparks](https://byorgey.wordpress.com/2018/10/01/monoidal-sparks/)
+7. [Monoids and Semigroups in Scala](https://www.baeldung.com/scala/monoids-semigroups)
 
-8. [Semigroups and Monoids in Scala](https://blog.rockthejvm.com/semigroups-and-monoids-in-scala/)
+8. [Monoidal sparks](https://byorgey.wordpress.com/2018/10/01/monoidal-sparks/)
 
-9. [Understanding Monoids using real life examples](https://shashankbaravani.medium.com/understanding-monoids-using-real-life-examples-6ec3cb349f2f)
+9. [Semigroups and Monoids in Scala](https://blog.rockthejvm.com/semigroups-and-monoids-in-scala/)
 
-10. [A Monad is just a Monoid…](https://michelestieven.medium.com/a-monad-is-just-a-monoid-a02bd2524f66)
+10. [Understanding Monoids using real life examples](https://shashankbaravani.medium.com/understanding-monoids-using-real-life-examples-6ec3cb349f2f)
 
-11. [Builder as a Monoid by Mark Seemann](https://blog.ploeh.dk/2020/02/17/builder-as-a-monoid/)
+11. [A Monad is just a Monoid…](https://michelestieven.medium.com/a-monad-is-just-a-monoid-a02bd2524f66)
 
-12. [Monoids in Practice](https://fsharpforfunandprofit.com/posts/monoids-part2/)
+12. [Builder as a Monoid by Mark Seemann](https://blog.ploeh.dk/2020/02/17/builder-as-a-monoid/)
+
+13. [Monoids in Practice](https://fsharpforfunandprofit.com/posts/monoids-part2/)
