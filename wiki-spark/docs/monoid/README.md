@@ -295,7 +295,7 @@ Now, let's calculate average:
 	                              = 6 / 3
 	                              = 2.0
 	                              ===> CORRECT AVERAGE
-	
+
 ## 9. Monoids and Spark
 In using `pyspark.RDD.reduceByKey()` transformation, 
 you need to make sure that your RDD  (as your data set)
@@ -309,7 +309,7 @@ Therefore, given an `RDD` of  `(key, value)`:
 
 	# rdd: RDD[(key, value)]
 	reduced = rdd.reduceByKey(lambda x, y: f(x, y))
-	
+
 we must make sure that function `f()` is
 an **associative** and **commutative** reduce function.
 

@@ -8,6 +8,10 @@ how-to's and tutorials by using PySpark.
 
 -----
 
+## [Glossary of Big Data, Mapreduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/tree/master/slides/glossary/)
+
+-----
+
 ## Introduction to Spark and PySpark
 
 1. [Apache Spark in a Nutshell](https://www.linkedin.com/pulse/apache-spark-nutshell-brian-uri-/)
