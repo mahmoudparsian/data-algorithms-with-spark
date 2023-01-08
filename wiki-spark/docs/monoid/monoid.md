@@ -307,3 +307,9 @@ Examples:
 8. [Semigroups and Monoids in Scala](https://blog.rockthejvm.com/semigroups-and-monoids-in-scala/)
 
 9. [Understanding Monoids using real life examples](https://shashankbaravani.medium.com/understanding-monoids-using-real-life-examples-6ec3cb349f2f)
+
+10. [A Monad is just a Monoid…](https://michelestieven.medium.com/a-monad-is-just-a-monoid-a02bd2524f66)
+
+11. [Builder as a Monoid by Mark Seemann](https://blog.ploeh.dk/2020/02/17/builder-as-a-monoid/)
+
+12. [Monoids in Practice](https://fsharpforfunandprofit.com/posts/monoids-part2/)
