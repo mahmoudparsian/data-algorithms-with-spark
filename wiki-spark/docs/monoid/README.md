@@ -6,7 +6,7 @@
 	Last updated: 1/1/2023
 
 ## 1. Introduction
-	
+
 In this article, I will define a **monoid** 
 and show that how it can help us to write 
 better and correct reducers in MapReduce 
@@ -31,7 +31,7 @@ properties of binary functions.
 An associative operation:
 
 		f: X x X -> X
-		
+
 is a binary operation such that for all `a, b, c` in `X`:
 
 		f(a, f(b, c)) = f(f(a, b), c)
@@ -39,18 +39,18 @@ is a binary operation such that for all `a, b, c` in `X`:
 For example, + (addition) is an associative function because 
 
 		(a + (b + c)) = ((a + b) + c)
-		
+
 
 For example, * (multiplication) is an associative function because 
 
 		(a * (b * c)) = ((a * b) * c)
-		
+
 While, - (subtraction) is not an associative function because
 
 		(4 - (6 - 3) != ((4 - 6) - 3)
 		     (4 - 3) != (-2 - 3)
 		           1 != -5
-		
+
 While average operation is not an associative function.
 
 	FACT: avg(1, 2, 3) = 2
@@ -68,12 +68,12 @@ operation `+` is commutative, because `2 + 5 = 5 + 2`.
 Function `f` is commutative if the following property holds:
 
 		f(a, b) = f(b, a)
-		
+
 While, - (subtraction) is not an commutative function because
-		
+
 		2 - 4 != 4 - 2
 		   -2 != 2
-		
+
 ## 4. Semigroup
 
 A semigroup is a set `S` together with a binary operation `f`:
@@ -100,7 +100,7 @@ A monoid M is a triplet `(X, f, i)`, where
 
 * `X` is a set
 * `f` is an associative binary operator
-* `i` is an identity element in `X`
+* `i` is an identity element in `X` and it is **unique** 
 
 The monoid axioms (which govern the behavior of `f`) are as follows.
 
@@ -108,7 +108,7 @@ The monoid axioms (which govern the behavior of `f`) are as follows.
 2. (Associativity) For all a, b, c in X:
 
 		f(a, f(b, c)) = f(f(a, b), c)
-		
+
 3. (Identity) There is an `i` (called an **identity element**) 
    in `X` such that, for all `a` in `X`:
 
@@ -122,7 +122,7 @@ semigroup with a certain element called an **identity element**
 	f(a, i) = f(i, a) = a
 
 
-	
+
 ### 6. Monoid Examples
 
 #### Example-1
