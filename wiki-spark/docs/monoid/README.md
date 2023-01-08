@@ -222,10 +222,23 @@ Then `sum_count_per_key` RDD will hold:
 	Partition-1        Partition-2
 	(A, (3, 2))         (A, (3, 1))
 
-Finally, `avg_per_key` RDD will produce the final value per key:
-`(A, 2)`.
- 
- 
+Finally, `avg_per_key` RDD will produce the final 
+value per key: `(A, 2)`.
+
+Note that a set of  tuple of two values `(sum, count)` 
+forms a monoid and its identity element is `(0, 0)`: 
+here is the proof:
+
+* Associativity:
+
+		((s1, c1) + (s2, c2)) + (s3, c3) = (s1+s2+s3, c1+c2+c3)
+		(s1, c1) + ((s2, c2) + (s3, c3)) = (s1+s2+s3, c1+c2+c3)
+
+* Identity:
+		(s, c) + (0, 0) = (s, c)
+		(0, 0) + (s, v) = (s, c)
+		
+		 
 ## 8. What Does it Mean that "Average of Average is Not an Average"
 
 In distributed computing environments (such as MapReduce, 
