@@ -132,15 +132,16 @@ Then `M(X, +, 0)` is a monoid since `+` (an addition)
 is an associative function.
 
 2. Let `X` denotes non-negative integer numbers. 
-Then `M(X, *, 1)` is a monoid since `*` (a multiplicaton) 
+Then `M(X, *, 1)` is a monoid since `*` (a multiplication) 
 is an associative function.
 
 
 #### Example-2
+
 Let S denote a set of strings including an empty string (`""`) 
 of length zero, and `||` denote a concatenation operator,
 
-Then M(S, `||`, `""`) is a monoid.
+Then `M(S, ||, "")` is a monoid.
 
 
 ### No Monoid Examples
