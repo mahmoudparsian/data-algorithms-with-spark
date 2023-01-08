@@ -36,43 +36,55 @@ is a binary operation such that for all `a, b, c` in `X`:
 
 		f(a, f(b, c)) = f(f(a, b), c)
 
-For example, + (addition) is an associative function because 
+For example, `+` (addition) is an associative function because 
 
 		(a + (b + c)) = ((a + b) + c)
 
 
-For example, * (multiplication) is an associative function because 
+For example, `*` (multiplication) is an associative function because 
 
 		(a * (b * c)) = ((a * b) * c)
 
-While, - (subtraction) is not an associative function because
+While, `-` (subtraction) is not an associative function because
 
 		(4 - (6 - 3) != ((4 - 6) - 3)
 		     (4 - 3) != (-2 - 3)
 		           1 != -5
 
-While average operation is not an associative function.
+While average operation (denoted by `avg`) is not an associative function.
 
 	FACT: avg(1, 2, 3) = 2
 	
-	avg(1, avg(2, 3)) != avg(avg(1, 2), 3)
-       	avg(1, 2.5) != avg(1.5, 3)
-       	       1.75 != 2.25
+    avg(1, avg(2, 3)) != avg(avg(1, 2), 3)
+          avg(1, 2.5) != avg(1.5, 3)
+                 1.75 != 2.25
 
 
 ## 3. What is a Commutative Law
-A commutative function `f` is a function that takes multiple 
-inputs from a set X and produces an output that does not 
-depend on the ordering of the inputs. For example, the binary 
-operation `+` is commutative, because `2 + 5 = 5 + 2`.
+A commutative function `f` is a function that takes 
+multiple inputs from a set `X` and produces an output 
+that does not depend on the ordering of the inputs. 
+
+For example, the binary operation `+` is commutative, 
+because `2 + 5 = 5 + 2 = 7`.
+
+For example, the binary operation `*` is commutative, 
+because `2 * 5 = 5 * 2 = 10`.
+
 Function `f` is commutative if the following property holds:
 
-		f(a, b) = f(b, a)
+    f(a, b) = f(b, a)
 
-While, - (subtraction) is not an commutative function because
+While, `-` (subtraction) is not an commutative function because
 
-		2 - 4 != 4 - 2
-		   -2 != 2
+    2 - 4 != 4 - 2
+       -2 != 2
+
+While, `/` (division) is not an commutative function because
+
+     2 / 4 != 4 / 2
+       0.5 != 2
+
 
 ## 4. Semigroup
 
