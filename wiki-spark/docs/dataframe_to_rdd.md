@@ -3,6 +3,19 @@
 There are times that you might want to 
 convert a **DataFrame to an RDD**.
 
+## RDD and DataFrame
+
+* Spark's DataFrame (full name as: `pyspark.sql.DataFrame`)
+is an immutable and distributed collection of data grouped 
+into named columns.
+
+* Spark's RDD (full name as: `pyspark.RDD`)
+is a Resilient Distributed Dataset (`RDD`), 
+the basic abstraction in Spark. RDD represents an 
+immutable, partitioned collection of elements that 
+can be operated on in parallel.
+
+## DataFrame to RDD Conversion
 
 To convert a `DataFrame` to an `RDD`, you just need to
 call `DataFrame.rdd`.
