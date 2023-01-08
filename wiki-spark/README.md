@@ -27,6 +27,7 @@ how-to's and tutorials by using PySpark.
 3. [Spark DataFrames Tutorial](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/dataframes)
 4. [Introduction to PySpark](https://medium.com/the-researchers-guide/introduction-to-pyspark-a61f7217398e)
 5. [PySpark – Create DataFrame with Examples](https://sparkbyexamples.com/pyspark/different-ways-to-create-dataframe-in-pyspark/)
+6. [RDD to DataFrame & DataFrame to RDD](./docs/rdd_to_dataframe.md)
 
 -----
 
