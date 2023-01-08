@@ -1,10 +1,7 @@
-# RDD to DataFrame & DataFrame to RDD
+# RDD to DataFrame 
 
 There are times that you might want to 
-convert an **RDD to a DataFrame** and 
-a **DataFrame to an RDD**.
-
-## RDD to DataFrame
+convert an **RDD to a DataFrame**.
 
 To map an `RDD` to a `DataFrame`, you need to convert
 every element of your source `RDD` to a `pyspark.sql.Row`
@@ -47,29 +44,3 @@ object.
 	|rose| 30|
 	+----+---+
 
-
-## DataFrame to RDD
-To convert a `DataFrame` to an `RDD`, you just need to
-call `DataFrame.rdd`.
-
-	>>> spark.version
-	'3.3.1'
-	>>> records = [("alex", 10), ("jane", 20), ("rose", 30)]
-	>>> df = spark.createDataFrame(records, ["name", "age"])
-	>>> df.show()
-	+----+---+
-	|name|age|
-	+----+---+
-	|alex| 10|
-	|jane| 20|
-	|rose| 30|
-	+----+---+
-	
-	>>># Convert a DataFrame to an RDD
-	>>> rdd = df.rdd
-	>>> rdd.collect()
-	[
-	 Row(name='alex', age=10), 
-	 Row(name='jane', age=20), 
-	 Row(name='rose', age=30)
-	]
