@@ -235,10 +235,11 @@ here is the proof:
 		(s1, c1) + ((s2, c2) + (s3, c3)) = (s1+s2+s3, c1+c2+c3)
 
 * Identity:
+
 		(s, c) + (0, 0) = (s, c)
 		(0, 0) + (s, v) = (s, c)
-		
-		 
+
+ 
 ## 8. What Does it Mean that "Average of Average is Not an Average"
 
 In distributed computing environments (such as MapReduce, 
