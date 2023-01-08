@@ -104,23 +104,26 @@ A monoid M is a triplet `(X, f, i)`, where
 
 The monoid axioms (which govern the behavior of `f`) are as follows.
 
-1. (Closure) For all a, b in X,  f(a, b) and f(b, a) is also in X.
-2. (Associativity) For all a, b, c in X:
+1. (Closure) For all `a, b in X`,  `f(a, b)` 
+   and `f(b, a)` is also in `X`.
+
+2. (Associativity) For all `a, b, c in X`:
 
 		f(a, f(b, c)) = f(f(a, b), c)
 
-3. (Identity) There is an `i` (called an **identity element**) 
-   in `X` such that, for all `a` in `X`:
+3. (Identity) There is an `i` (called an **identity element**,
+   which is unique)  in `X` such that, for all `a` in `X`:
 
-		f(a, i) = f(i, a) = a
+		f(a, i) = a
+		f(i, a) = a
 
 There is an alternative way to define a monoid: a monoid is a 
-semigroup with a certain element called an **identity element**
-(denoted by `i`) that satisfies the following equations for all 
+***semigroup** with a certain element called an **identity element**
+(denoted by `i`) that satisfies the following two equations for all 
 `a` in `X`:
 
-	f(a, i) = f(i, a) = a
-
+		f(a, i) = a
+		f(i, a) = a
 
 
 ### 6. Monoid Examples
