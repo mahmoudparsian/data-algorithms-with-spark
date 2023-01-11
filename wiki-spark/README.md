@@ -8,7 +8,7 @@ how-to's and tutorials by using PySpark.
         alt="Data Algorithms with Spark"
         src="./docs/wiki.jpeg"
         width="550" 
-        height="600"
+        height="300"
 >
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
