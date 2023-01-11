@@ -1,7 +1,17 @@
 # Wiki-Spark
 
-![wiki-spark](./docs/wiki.jpeg)
+![wiki-spark]()
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="./docs/wiki.jpeg"
+>
 
+<a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
+    <img
+        alt="Data Algorithms with Spark"
+        src="../images/data_algorithms_with_spark_knowledge_is_power.jpeg"
+>
 
 Welcome to Wiki-Spark, where it will host a series of 
 how-to's and tutorials by using PySpark.
