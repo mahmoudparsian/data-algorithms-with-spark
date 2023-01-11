@@ -7,12 +7,16 @@ how-to's and tutorials by using PySpark.
     <img
         alt="Data Algorithms with Spark"
         src="./docs/wiki.jpeg"
+        width="550" 
+        height="600"
 >
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
         alt="Data Algorithms with Spark"
         src="../images/data_algorithms_with_spark_knowledge_is_power.jpeg"
+        width="550" 
+        height="600"
 >
 
 
