@@ -64,7 +64,7 @@ The following directories are bonus chapters:
 | [`Join operations`](./bonus_chapters/join/) | Examples on join of RDDs |
 | [`PySpark Tutorial 101`](./bonus_chapters/pyspark_tutorial/) | Examples on using PySpark RDDs and DataFrames |
 | [Physical Data Partitioning](./bonus_chapters/physical_partitioning/README.md) | Tutorial of Physical Data Partitioning |
-
+| [Monoid: Design Principle](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/wiki-spark/docs/monoid/README.md) | Monoid: Design Principle |
 -----
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
