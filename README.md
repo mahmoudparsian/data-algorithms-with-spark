@@ -80,7 +80,7 @@ Original Creator of Apache Spark <br>
 | Chapter               |      Title       |
 |-----------------------|------------------|
 | <mark>Glossary</mark> | [Glossary of big data, MapReduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/blob/master/slides/glossary/README.md)  |
-| Bonus <br> Chapters   | <ul><li>[Tutorials: RDDs and DataFrames](./code/bonus_chapters/)</li><li>[Top-N, UDF, Partitioning, TF-IDF, Correlation](./code/bonus_chapters/)</li><li>[Correlation, K-mers, anagrams, wordcount, ...](./code/bonus_chapters/)</li><li>[Monoid: Design Principle](./wiki-spark/docs/monoid/README.md)</li></ul>  |
+| Bonus <br> Chapters   | <ul><li>[Word Count by RDD and DataFrame](./code/bonus_chapters/wordcount/python/README.md)</li><li>[Tutorials: RDDs and DataFrames](./code/bonus_chapters/)</li><li>[Top-N, UDF, Partitioning, TF-IDF, Correlation](./code/bonus_chapters/)</li><li>[Correlation, K-mers, anagrams, ...](./code/bonus_chapters/)</li><li>[Monoid: Design Principle](./wiki-spark/docs/monoid/README.md)</li></ul>  |
 | Chapter 1             | [Introduction to Data Algorithms](./code/chap01/) |
 | Chapter 2             | [Transformations in Action](./code/chap02/) |
 | Chapter 3             | [Mapper Transformations](./code/chap03/) |
