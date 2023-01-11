@@ -58,13 +58,14 @@ The following directories are bonus chapters:
 | [K-mers](./bonus_chapters/k-mers/)                         | K-mers for DNA Sequences |
 | [Correlation](./bonus_chapters/correlation/)               | All vs. All Correlation |
 | [`mapPartitions()` Transformation](./bonus_chapters/mappartitions/) | `mapPartitions()` Complete Example  |
-| [`UDF`](./bonus_chapters/UDF/) | User-Defined Function Example  |
-| [`DataFrames Transformations`](./bonus_chapters/dataframes/) | Examples on Creation and Transformation of DataFrames |
-| [`DataFrames Tutorials`](./bonus_chapters/dataframes/) | DataFrames Tutorials: from collections and CSV text files |
-| [`Join operations`](./bonus_chapters/join/) | Examples on join of RDDs |
-| [`PySpark Tutorial 101`](./bonus_chapters/pyspark_tutorial/) | Examples on using PySpark RDDs and DataFrames |
+| [UDF](./bonus_chapters/UDF/) | User-Defined Function Example  |
+| [DataFrames Transformations](./bonus_chapters/dataframes/) | Examples on Creation and Transformation of DataFrames |
+| [DataFrames Tutorials](./bonus_chapters/dataframes/) | DataFrames Tutorials: from collections and CSV text files |
+| [Join Operations](./bonus_chapters/join/) | Examples on join of RDDs |
+| [PySpark Tutorial 101](./bonus_chapters/pyspark_tutorial/) | Examples on using PySpark RDDs and DataFrames |
 | [Physical Data Partitioning](./bonus_chapters/physical_partitioning/README.md) | Tutorial of Physical Data Partitioning |
-| [Monoid: Design Principle](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/wiki-spark/docs/monoid/README.md) | Monoid: Design Principle |
+| [Monoid: Design Principle](https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/wiki-spark/docs/monoid/README.md) | Monoid as a Design Principle |
+
 -----
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
