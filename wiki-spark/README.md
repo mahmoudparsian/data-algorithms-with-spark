@@ -7,7 +7,7 @@ how-to's and tutorials by using PySpark.
     <img
         alt="Data Algorithms with Spark"
         src="./docs/wiki.jpeg"
-        width="550" 
+        width="650" 
         height="300"
 >
 
@@ -15,8 +15,8 @@ how-to's and tutorials by using PySpark.
     <img
         alt="Data Algorithms with Spark"
         src="../images/data_algorithms_with_spark_knowledge_is_power.jpeg"
-        width="550" 
-        height="600"
+        width="650" 
+        height="400"
 >
 
 
