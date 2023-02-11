@@ -62,8 +62,8 @@ of how-to's and tutorials by using PySpark.
 1. [How to do Word Count in PySpark](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/wordcount/)
 2. [Finding Anagrams](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/anagrams/python)
 3. [Finding K-mers](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/k-mers)
-4. [Remove Duplicates in PySpark -- RDD](./docs/duplicate_removal_rdd.md)
-5. [Remove Duplicates in PySpark -- DataFrame](./docs/duplicate_removal_dataframe.md)
+4. [Duplicate Removal in PySpark RDDs](./docs/duplicate_removal_rdd.md)
+5. [Duplicate Removal in PySpark DataFrames](./docs/duplicate_removal_dataframe.md)
 
 -----
 
