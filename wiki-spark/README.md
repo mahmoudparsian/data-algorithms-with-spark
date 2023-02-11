@@ -1,7 +1,6 @@
 # Wiki-Spark
 
-Welcome to Wiki-Spark, where it will host a series
-of how-to's and tutorials by using PySpark.
+#### Welcome to Wiki-Spark, where it will host a series of how-to's and tutorials by using PySpark.
 
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
@@ -24,7 +23,7 @@ of how-to's and tutorials by using PySpark.
 
 -----
 
-## [Glossary of Big Data, Mapreduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/tree/master/slides/glossary/README.md)
+## [Glossary of Big Data, Mapreduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/tree/master/slides/glossary/glossary_of_big_data_and_mapreduce.md)
 
 -----
 
