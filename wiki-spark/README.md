@@ -1,7 +1,8 @@
 # Wiki-Spark
 
-Welcome to Wiki-Spark, where it will host a series of 
-how-to's and tutorials by using PySpark.
+Welcome to Wiki-Spark, where it will host a series
+of how-to's and tutorials by using PySpark.
+
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
@@ -10,6 +11,7 @@ how-to's and tutorials by using PySpark.
         width="650" 
         height="300"
 >
+
 
 <a href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">
     <img
@@ -20,24 +22,28 @@ how-to's and tutorials by using PySpark.
 >
 
 
+-----
+
+## [Glossary of Big Data, Mapreduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/tree/master/slides/glossary/README.md)
 
 -----
 
-## [Glossary of Big Data, Mapreduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/tree/master/slides/glossary/)
-
------
-
-## Introduction to Spark and PySpark
+## Introduction to Spark
 
 1. [Apache Spark in a Nutshell](https://www.linkedin.com/pulse/apache-spark-nutshell-brian-uri-/)
 2. [A Gentle Introduction to Apache Spark](https://pages.databricks.com/rs/094-YMS-629/images/A-Gentle-Introduction-to-Apache-Spark.pdf)
 3. [Learning Spark (book), 2nd Edition](https://pages.databricks.com/rs/094-YMS-629/images/LearningSpark2.0.pdf)
-4. [First Steps With PySpark and Big Data Processing](https://realpython.com/pyspark-intro/)
-5. [PySpark Tutorial: Getting Started with PySpark](https://www.datacamp.com/tutorial/pyspark-tutorial-getting-started-with-pyspark)
-6. [Introduction to PySpark](https://annefou.github.io/pyspark/03-pyspark_context/)
-7. [Beginners Guide to PySpark](https://towardsdatascience.com/beginners-guide-to-pyspark-bbe3b553b79f)
 
 -----
+
+## Introduction to PySpark
+
+1. [First Steps With PySpark and Big Data Processing](https://realpython.com/pyspark-intro/)
+2. [PySpark Tutorial: Getting Started with PySpark](https://www.datacamp.com/tutorial/pyspark-tutorial-getting-started-with-pyspark)
+3. [Introduction to PySpark](https://annefou.github.io/pyspark/03-pyspark_context/)
+4. [Beginners Guide to PySpark](https://towardsdatascience.com/beginners-guide-to-pyspark-bbe3b553b79f)
+
+------
 
 ## Spark RDDs and DataFrames
 
@@ -56,6 +62,8 @@ how-to's and tutorials by using PySpark.
 1. [How to do Word Count in PySpark](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/wordcount/)
 2. [Finding Anagrams](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/anagrams/python)
 3. [Finding K-mers](https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/bonus_chapters/k-mers)
+4. [Remove Duplicates in PySpark -- RDD](./docs/duplicate_removal_rdd.md)
+5. [Remove Duplicates in PySpark -- DataFrame](./docs/duplicate_removal_dataframe.md)
 
 -----
 
