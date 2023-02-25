@@ -5,7 +5,7 @@
               Ph.D. in Computer Science
               email: mahmoud.parsian@yahoo.com
               
-	Last updated: July 27, 2022
+	Last updated: 2/25/2023
 
 ----------
 
@@ -33,7 +33,7 @@ Original Creator of Apache Spark <br>
 
 -----------
 
-## Introduction
+## 1. Introduction
 
 This short article shows how to use Python 
 user-defined functions in PySpark applications. 
@@ -43,7 +43,18 @@ To use a UDF, we need to do some basic tasks:
 2. Register UDF
 3. Use UDF in Spark SQL
 
-## 1. Define a UDF in Python
+
+## 2. What is a UDF?
+User-Defined Functions (UDFs) are user-programmable 
+functions that act on one row. Spark UDF (a.k.a User 
+Defined Function) is the useful feature of Spark SQL 
+& DataFrame which extends the Spark built in 
+capabilities. UDF’s are used to extend the functions 
+of the Spark framework and re-use this function on 
+several DataFrame. 
+
+
+## 3. Define a UDF in Python
 
 Consider a function which triples its input:
 
@@ -54,7 +65,7 @@ def tripled(n):
 #end-def
 ~~~
 
-## 2. Register UDF
+## 4. Register UDF
 
 To register a UDF, we can use `SparkSession.udf.register()`.
 The `register()` function takes 3 parameters:
@@ -117,7 +128,7 @@ root
 +----+---+-------+
 ~~~
 
-## 3. Use UDF in SQL Query
+## 5. Use UDF in SQL Query
 
 ~~~python
 >>> df.createOrReplaceTempView("people")
