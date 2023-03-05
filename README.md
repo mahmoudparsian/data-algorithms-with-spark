@@ -100,7 +100,7 @@ Original Creator of Apache Spark <br>
 
 | Bonus Chapter                     | Title / Description  |
 |-----------------------------------|----------------------|
-| Glossary                          | [Glossary of big data, MapReduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/blob/master/slides/glossary/glossary_of_big_data_and_mapreduce.md)  |
+| Glossary                          | [Glossary of Big Data, MapReduce, Spark](https://github.com/mahmoudparsian/big-data-mapreduce-course/blob/master/slides/glossary/glossary_of_big_data_and_mapreduce.md)  |
 | Word Count                        | [Solutions for Word Count using RDDs and DataFrames](./code/bonus_chapters/wordcount/)  |
 | Anagrams                          | [Find words, which are anagrams](./code/bonus_chapters/anagrams/) |
 | Lambda Expressions                | [Using Lambda Expressions in PySpark programs](./code/bonus_chapters/lambda_expressions/) |
@@ -143,3 +143,10 @@ Original Creator of Apache Spark <br>
 [//]: # (MapReduce, Distributed Algorithms, mappers, reducers, partitioners)
 [//]: # (Transformations, Actions, RDDs, DataFrames, SQL)
 [//]: # (Data Design Patterns, monoids)
+[//]: # (RDD map transformations: map(), flatMap(), mapPartitions())
+[//]: # (RDD reducers: groupByKey(), reduceByKey(), combineByKey())
+[//]: # (RDD Tutorial)
+[//]: # (DataFrame Tutorial)
+[//]: # (Join operations)
+[//]: # (RDD reducers)
+[//]: # (DataFrames creation, manipulation, and transformations)
