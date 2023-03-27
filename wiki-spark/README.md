@@ -53,6 +53,8 @@
 5. [PySpark – Create DataFrame with Examples](https://sparkbyexamples.com/pyspark/different-ways-to-create-dataframe-in-pyspark/)
 6. [Conversion: RDD to DataFrame](./docs/rdd_to_dataframe.md)
 7. [Conversion: DataFrame to RDD](./docs/dataframe_to_rdd.md)
+8. [`flatMap()` for RDD: `RDD.flatMap()`](./docs/flatmap_transformation.md)
+9. [`flatMap()` for DataFrame: `explode()`](./docs/explode_function.md)
 
 -----
 
