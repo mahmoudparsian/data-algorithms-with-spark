@@ -6,12 +6,17 @@ Uses the default column name `col` for elements in
 the array and `key` and `value` for elements in the 
 map unless specified otherwise.
 
-In the following example note that the rows/entries 
+
+![](./spark-explode.png)
+
+
+In the following example note that the 
+following rows/entries 
 
 	(name = "dave", languages = [])
 	(name = "ted", languages = [])
 
-is dropped from the result of the `explode()` function
+are dropped from the result of the `explode()` function
 since `languages` is an empty list.
 
 

@@ -4,6 +4,10 @@ The `RDD.flatMap(f)` returns a new RDD by first applying
 a function `f()` to all elements of this RDD, and then 
 flattening the results.
 
+
+![](./spark-flatmap.png)
+
+
 In the following example note that the empty elements are 
 dropped. 
 
