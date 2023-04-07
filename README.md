@@ -141,18 +141,16 @@ Original Creator of Apache Spark <br>
 
 ------
 
-<!---      metadata 1         -->
-<!---      metadata 2         -->
 
-[//]: # (metadata:)
-[//]: # (Data Algorithms with Spark, Spark, PySpark, Python)
-[//]: # (MapReduce, Distributed Algorithms, mappers, reducers, partitioners)
-[//]: # (Transformations, Actions, RDDs, DataFrames, SQL)
-[//]: # (Data Design Patterns, monoids)
-[//]: # (RDD map transformations: map(), flatMap(), mapPartitions())
-[//]: # (RDD reducers: groupByKey(), reduceByKey(), combineByKey())
-[//]: # (RDD Tutorial)
-[//]: # (DataFrame Tutorial)
-[//]: # (Join operations)
-[//]: # (RDD reducers)
-[//]: # (DataFrames creation, manipulation, and transformations)
+<!---      metadata         -->
+<!---   Data Algorithms with Spark, Spark, PySpark, Python -->
+<!---   MapReduce, Distributed Algorithms, mappers, reducers, partitioners -->
+<!---   Transformations, Actions, RDDs, DataFrames, SQL -->
+<!---   Data Design Patterns, monoids -->
+<!---   RDD map transformations: map(), flatMap(), mapPartitions() -->
+<!---   RDD reducers: groupByKey(), reduceByKey(), combineByKey() -->
+<!---   RDD Tutorial -->
+<!---   DataFrame Tutorial -->
+<!---   Join operations -->
+<!---   RDD reducers -->
+<!---   DataFrames creation, manipulation, and transformations -->
