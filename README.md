@@ -141,6 +141,8 @@ Original Creator of Apache Spark <br>
 
 ------
 
+<!---      metadata 1         -->
+<!---      metadata 2         -->
 
 [//]: # (metadata:)
 [//]: # (Data Algorithms with Spark, Spark, PySpark, Python)
