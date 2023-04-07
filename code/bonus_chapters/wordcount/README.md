@@ -29,11 +29,18 @@ Original Creator of Apache Spark <br>
 ---------
 ## Introduction to Word Count
 
-* Word count finds out the frequency of each word
-in a set of documents/files. The goal is to create
-a dictionary of `(key, value)` pairs, where `key`
-is a word (as a String), and `value` is an Integer
-denoting the frequency of a given key/word.
+* Word Count is a simple and easy to understand 
+  algorithm which can be easily implemented as 
+  a MapReduce/Spark application. Given a set of 
+  text documents, the program counts the number 
+  of occurrences of each word.
+
+* Word count finds out the frequency of each 
+  word in a set of documents/files. The goal 
+  is to create a dictionary of `(key, value)` 
+  pairs, where `key` is a word (as a String), 
+  and `value` is an Integer denoting the 
+  frequency of a given key/word.
 
 * Complete set of solutions are given for Word Count problem using 
 	* [Word Count in PySpark DataFrames](./python/)
