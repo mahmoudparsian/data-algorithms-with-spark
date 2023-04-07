@@ -149,8 +149,11 @@ Original Creator of Apache Spark <br>
 <!---   Data Design Patterns, monoids -->
 <!---   RDD map transformations: map(), flatMap(), mapPartitions() -->
 <!---   RDD reducers: groupByKey(), reduceByKey(), combineByKey() -->
+<!---   RDD actions: reduce(), collect()  -->
 <!---   RDD Tutorial -->
 <!---   DataFrame Tutorial -->
 <!---   Join operations -->
 <!---   RDD reducers -->
 <!---   DataFrames creation, manipulation, and transformations -->
+
+-------
