@@ -70,10 +70,11 @@ Original Creator of Apache Spark <br>
 
 ## Software:
 
+All programs are tested with the following software:
 
 | Spark    |      Python      |  Scala | Java 
 |----------|:----------------:|-------:|-----------:|
-| [Apache Spark 3.2.0](http://spark.apache.org/downloads.html) |  [Python 3.7.2](https://www.python.org/downloads/) | [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html) | [Java 8](https://www.oracle.com/java/technologies/downloads/#java8) |
+| [Apache Spark 3.4.0](http://spark.apache.org/downloads.html) |  [Python 3.10.5](https://www.python.org/downloads/) | [Scala 2.13](https://https://www.scala-lang.org/download/scala2.html) | [Java 11](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html) |
 
 -----
 
