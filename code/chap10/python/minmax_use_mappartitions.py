@@ -11,13 +11,14 @@ from pyspark.sql import SparkSession
 # and then we find (final_min, final_max, final_count) 
 # for all partitions.
 # 
-# input ---- partitioned ---->  partition-1, partition-2, ...
+# input ---- N partitioned ---->  partition-1, partition-2, ... partition_N
 # 
-# partition-1 => local1 = (local_min1, local_max1, local_count1)
-# partition-2 => local2 = (local_min2, local_max2, local_count2)
+# partition-1 => local_1 = (local_min_1, local_max_1, local_count_1)
+# partition-2 => local_2 = (local_min_2, local_max_2, local_count_2)
 # ...
+# partition-N => local_N = (local_min_N, local_max_N, local_count_N)
 #
-# final_min_max = minmax(local1, local2, ...)
+# final_min_max = minmax(local_1, local_2, ..., local_N)
 #
 #------------------------------------------------------
 # Input Parameters:
@@ -92,9 +93,10 @@ def minmax(partition_iterator):
 # and filter out (1, -1, 0) tuples. Note that we
 # created (1, -1, 0) from empty partitions
 # min_max_count_list = [
-#                       (min1, max1, count1), 
-#                       (min2, max2, count2), 
+#                       (min_1, max_1, count_1), 
+#                       (min_2, max_2, count_2), 
 #                       ...
+#                       (min_N, max_N, count_N)
 #                      ]
 #
 def find_min_max_count(min_max_count_list):
@@ -143,6 +145,7 @@ def main():
     #=====================================
     # read input and apply mapPartitions()
     #=====================================
+    # rdd: RDD[String]
     rdd = spark.sparkContext.textFile(input_path)
     print("rdd=",  rdd)
     print("rdd.count=",  rdd.count())
@@ -151,7 +154,13 @@ def main():
     #
     #=====================================
     # find (min, max, count) per partition
-    #=====================================     
+    # custom function is minmax
+    #=====================================
+    # min_max_count: RDD[(min, max, count)]  
+    # min_max_count: [(min_1, max_1, count_1), 
+    #                 (min_2, max_2, count_2), 
+    #                 ..., 
+    #                 (min_N, max_N, count_N)]  
     min_max_count = rdd.mapPartitions(minmax)
     #
     print("min_max_count=",  min_max_count)
