@@ -31,7 +31,7 @@ Original Creator of Apache Spark <br>
 
 ### Author: [Mahmoud Parsian](https://www.linkedin.com/in/mahmoudparsian/) 
 
-### Goal of this book: enable writing efficient & simpler PySpark code for data algorithms using Spark
+### [Goal of this book: Data Algorithms with Spark](./docs/goal_of_book.md)
 
 ### [Story of this book: Data Algorithms with Spark](./docs/story_of_book.md)
 
