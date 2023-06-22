@@ -23,19 +23,22 @@ Original Creator of Apache Spark <br>
 </tr>   
 </table>
 
-
+## Story...
 I am going to tell you a story about this book: 
 over 26 years ago, I bought a book (Java in a 
 Nutshell) from O'Reilly and I liked it very much 
 due to its simplicity and quality of content. Then 
 I said to myself: "***I wish I can publish with O'Reilly 
 one day***". Now, my dream is fulfilled with publishing 
-two books with O'Reilly (which I am very proud of). My 
-last book is very special to me: since the 
+two books with O'Reilly (which I am very proud of). 
+
+## Thank you...
+My last book is very special to me: since the 
 [FOREWORD](./docs/FOREWORD_by_Dr_Matei_Zaharia.md) 
 is written by an outstanding and caring person, 
 brilliant software engineer, Professor, and CTO: 
 Dr. Matei Zaharia, who created Spark. I have been 
-actively using Spark (simple but powerful) for solving genomics 
-problems for the past 10 years. Big thank you to Dr. Matei 
-Zaharia for writing FOREWORD for my book.
+actively using Spark (simple but powerful) for 
+solving genomics problems for the past 12 years. 
+Big thank you to Dr. Matei Zaharia for writing 
+FOREWORD for my book.
