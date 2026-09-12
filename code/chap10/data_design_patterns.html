@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.11" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Data Design Patterns</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <style>
+    body {
+      font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #24292e;
+      background: #ffffff;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 600;
+      margin-top: 1.6em;
+      margin-bottom: 0.6em;
+    }
+    h1 { font-size: 2em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; }
+    h2 { font-size: 1.5em; border-bottom: 1px solid #eaecef; padding-bottom: 0.3em; margin-top: 2em; }
+    h3 { font-size: 1.25em; }
+    h4 { font-size: 1.05em; }
+    p, ul, ol { margin-top: 0; margin-bottom: 1em; }
+    a { color: #0969da; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code {
+      font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+      background: rgba(175,184,193,0.2);
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #f6f8fa;
+      border-radius: 6px;
+      padding: 14px;
+      overflow-x: auto;
+      line-height: 1.45;
+    }
+    pre code { background: transparent; padding: 0; font-size: 0.88em; }
+    blockquote {
+      border-left: 4px solid #d0d7de;
+      color: #57606a;
+      padding: 0 1em;
+      margin-left: 0;
+    }
+    table {
+      border-collapse: collapse;
+      margin-bottom: 1em;
+      width: auto;
+    }
+    th, td {
+      border: 1px solid #d0d7de;
+      padding: 6px 13px;
+    }
+    th { background: #f6f8fa; font-weight: 600; }
+    tr:nth-child(2n) { background: #f6f8fa; }
+    hr { border: 0; border-top: 1px solid #eaecef; margin: 2em 0; }
+    img { max-width: 100%; }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #0d1117; color: #c9d1d9; }
+      h1, h2 { border-bottom-color: #21262d; }
+      a { color: #58a6ff; }
+      code { background: rgba(110,118,129,0.4); }
+      pre { background: #161b22; }
+      blockquote { border-left-color: #30363d; color: #8b949e; }
+      th, td { border-color: #30363d; }
+      th, tr:nth-child(2n) { background: #161b22; }
+      hr { border-top-color: #21262d; }
+    }
+  </style>
+</head>
+<body>
+<h1 align="center">
+Data Design Patterns
+</h1>
+<h3 align="center">
+Mahmoud Parsian
+</h3>
+<p align="center">
+Ph.D. in Computer Science
+</p>
+<p align="center">
+Assistant Teaching Professor <span class="citation"
+data-cites="Santa">@Santa</span> Clara University
+</p>
+<p align="center">
+email: mahmoud.parsian@yahoo.com
+</p>
+<p align="center">
+last updated: 9/11/2026
+</p>
+<h2 id="0-introduction">0. Introduction</h2>
+<p>The goal of this paper/chapter is to present Data Design Patterns in
+an informal way.</p>
+<p>The emphasis has been on pragmatism and practicality.</p>
+<p>Data Design Patterns formats:</p>
+<ul>
+<li><a
+href="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/code/chap10/data_design_patterns.pdf">PDF
+version</a></li>
+<li><a
+href="https://github.com/mahmoudparsian/data-algorithms-with-spark/blob/master/code/chap10/data_design_patterns.md">Markdown
+version</a></li>
+</ul>
+<p>Source code for Data Design Patterns is provided on <a
+href="https://github.com/mahmoudparsian/data-algorithms-with-spark/tree/master/code/chap10/python">GitHub</a>.</p>
+<p>Data Design Patterns can be categorized as:</p>
+<ul>
+<li><a href="#1-summarization-patterns">1. Summarization
+Patterns</a></li>
+<li><a href="#2-in-mapper-combiner-design-pattern">2. In-Mapper-Combiner
+Pattern</a></li>
+<li><a href="#3-filtering-patterns">3. Filtering Patterns</a></li>
+<li><a href="#4-organization-patterns">4. Organization Patterns</a></li>
+<li><a href="#5-join-patterns">5. Join Patterns</a></li>
+<li><a href="#6-meta-patterns">6. Meta Patterns</a></li>
+<li><a href="#7-inputoutput-patterns">7. Input/Output Patterns</a></li>
+<li><a href="#8-references">8. References</a></li>
+</ul>
+<h2 id="1-summarization-patterns">1. Summarization Patterns</h2>
+<p>Numerical summarizations are a big part of Summarization Patterns.
+Numerical summarizations are patterns that involve calculating aggregate
+statistical values (minimum, maximum, average, median, standard
+deviation, …) over data. If the data has keys (such as a department
+identifier, gene identifier, or patient identifier), then the goal is to
+group records by a key field and then calculate aggregates per group
+such as minimum, maximum, average, median, or standard deviation. If the
+data does not have keys, then you compute the summarization over the
+entire data set without grouping.</p>
+<p>The main purpose of summarization patterns is to summarize lots of
+data into meaningful data structures such as tuples, lists, and
+dictionaries.</p>
+<p>Some Numerical Summarization patterns can be expressed directly in
+SQL. For example, let <code>gene_samples</code> be a table of
+<code>(gene_id, patient_id, biomarker_value)</code>. Further, assume
+that we have about <code>100,000</code> unique <code>gene_id</code>(s),
+and that a patient (represented as <code>patient_id</code>) may have
+many gene records, each with an associated
+<code>biomarker_value</code>.</p>
+<p>This Numerical Summarization pattern corresponds to using
+<code>GROUP BY</code> in SQL, for example:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">MIN</span>(biomarker_value), <span class="fu">MAX</span>(biomarker_value), <span class="fu">COUNT</span>(<span class="op">*</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> gene_samples</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="kw">GROUP</span> <span class="kw">BY</span> gene_id;</span></code></pre></div>
+<p>Therefore, in this example, we find a triplet
+<code>(min, max, count)</code> per <code>gene_id</code>.</p>
+<p>In Spark, this summarization pattern can be implemented by using RDDs
+and DataFrames. In Spark, <code>(key, value)</code> pair RDDs are
+commonly used to <code>group by</code> a key (in our example
+<code>gene_id</code>) in order to calculate aggregates per group.</p>
+<p>Let’s assume that the input files are CSV file(s) and further assume
+that input records have the following format:</p>
+<pre><code>&lt;gene_id&gt;&lt;,&gt;&lt;patient_id&gt;&lt;,&gt;&lt;biomarker_value&gt;</code></pre>
+<h3 id="rdd-example-using-groupbykey">RDD Example using
+groupByKey()</h3>
+<p>We load data from CSV file(s) and then create an
+<code>RDD[(key, value)]</code>, where key is <code>gene_id</code> and
+value is a <code>biomarker_value</code>. To solve it with
+<code>groupByKey()</code>, we first need to map it to a
+<code>(min, max, count)</code> triplet per value:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rdd : RDD[(gene_id, biomarker_value)]</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>mapped <span class="op">=</span> rdd.mapValues(<span class="kw">lambda</span> v: (v, v, <span class="dv">1</span>))</span></code></pre></div>
+<p>Then we can apply the <code>groupByKey()</code> transformation:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grouped : RDD[(gene_id, Iterable&lt;biomarker_value&gt;)]</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>grouped <span class="op">=</span> mapped.groupByKey()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate min, max, count for values</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>triplets <span class="op">=</span> grouped.mapValues(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> values: (<span class="bu">min</span>(values), <span class="bu">max</span>(values), <span class="bu">len</span>(values))</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p><code>groupByKey()</code> might cause OOM errors if you have too many
+values per key (<code>gene_id</code>), since <code>groupByKey()</code>
+does not use any combiners at all. Overall, <code>reduceByKey()</code>
+is a better scale-out solution than <code>groupByKey()</code>.</p>
+<h3 id="rdd-example-using-reducebykey">RDD Example using
+reduceByKey()</h3>
+<p>We load data from CSV file(s) and then create an
+<code>RDD[(key, value)]</code>, where key is <code>gene_id</code> and
+value is a <code>biomarker_value</code>. To solve it with
+<code>reduceByKey()</code>, we first need to map it to a
+<code>(min, max, count)</code> triplet:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rdd : RDD[(gene_id, biomarker_value)]</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mapped <span class="op">=</span> rdd.mapValues(<span class="kw">lambda</span> v: (v, v, <span class="dv">1</span>))</span></code></pre></div>
+<p>Then we can apply the <code>reduceByKey()</code> transformation:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># x = (min1, max1, count1)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># y = (min2, max2, count2)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>reduced <span class="op">=</span> mapped.reduceByKey(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x, y: (<span class="bu">min</span>(x[<span class="dv">0</span>], y[<span class="dv">0</span>]), <span class="bu">max</span>(x[<span class="dv">1</span>], y[<span class="dv">1</span>]), x[<span class="dv">2</span>] <span class="op">+</span> y[<span class="dv">2</span>])</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Spark’s <code>reduceByKey()</code> merges the values for each key
+using an associative and commutative reduce function.</p>
+<h3 id="rdd-example-using-combinebykey">RDD Example using
+combineByKey()</h3>
+<p>We load data from CSV file(s) and then create an
+<code>RDD[(key, value)]</code>, where key is <code>gene_id</code> and
+value is a <code>biomarker_value</code>.</p>
+<p><code>RDD.combineByKey(createCombiner, mergeValue, mergeCombiners)</code>
+is a generic function to combine the elements for each key using a
+custom set of aggregation functions. It turns an
+<code>RDD[(K, V)]</code> into a result of type <code>RDD[(K, C)]</code>,
+for a “combined type” <code>C</code>. Note that, depending on your data
+requirements, the combined data type can be a simple data type (such as
+integer, string, …), a collection (such as set, list, tuple, array, or
+dictionary), or a custom data type.</p>
+<p>Users provide three functions:</p>
+<pre><code>1. createCombiner:
+   turns a V into a C (e.g., creates a one-element list)
+2. mergeValue:
+   merges a V into a C (e.g., adds it to the end of a list)
+3. mergeCombiners:
+   combines two C&#39;s into a single one (e.g., merges the lists)</code></pre>
+<p>Here is the solution using <code>combineByKey()</code>:</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rdd : RDD[(gene_id, biomarker_value)]</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>combined <span class="op">=</span> rdd.combineByKey(</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> v: (v, v, <span class="dv">1</span>),</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> C, v: (<span class="bu">min</span>(C[<span class="dv">0</span>], v), <span class="bu">max</span>(C[<span class="dv">1</span>], v), C[<span class="dv">2</span>] <span class="op">+</span> <span class="dv">1</span>),</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> C, D: (<span class="bu">min</span>(C[<span class="dv">0</span>], D[<span class="dv">0</span>]), <span class="bu">max</span>(C[<span class="dv">1</span>], D[<span class="dv">1</span>]), C[<span class="dv">2</span>] <span class="op">+</span> D[<span class="dv">2</span>])</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<h3 id="dataframe-example">DataFrame Example</h3>
+<p>After reading the input, we can create a DataFrame as:
+<code>DataFrame[(gene_id, patient_id, biomarker_value)]</code>.</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># df : DataFrame[(gene_id, patient_id, biomarker_value)]</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyspark.sql.functions <span class="im">as</span> F</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> df.groupBy(<span class="st">&quot;gene_id&quot;</span>) <span class="op">\</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    .agg(F.<span class="bu">min</span>(<span class="st">&quot;biomarker_value&quot;</span>).alias(<span class="st">&quot;min&quot;</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>         F.<span class="bu">max</span>(<span class="st">&quot;biomarker_value&quot;</span>).alias(<span class="st">&quot;max&quot;</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>         F.count(<span class="st">&quot;biomarker_value&quot;</span>).alias(<span class="st">&quot;count&quot;</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    )</span></code></pre></div>
+<p>An alternative solution is to use pure SQL: register your DataFrame
+as a temporary view, and then run a SQL query:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># register DataFrame as a temporary view named gene_samples</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>df.createOrReplaceTempView(<span class="st">&quot;gene_samples&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># find the result by SQL query:</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">&quot;&quot;&quot;SELECT MIN(biomarker_value),</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">                   MAX(biomarker_value),</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">                   COUNT(*)</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">              FROM gene_samples</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="st">                 GROUP BY gene_id&quot;&quot;&quot;</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> spark.sql(query)</span></code></pre></div>
+<p>Note that your SQL statement will be executed as a series of mappers
+and reducers behind the scenes by the Spark engine.</p>
+<h3 id="data-without-keys---using-dataframes">Data Without Keys - using
+DataFrames</h3>
+<p>You might have some numerical data without keys, and be interested in
+computing statistics such as <code>(min, max, count)</code> over the
+entire data set. In these situations, you have more than one option: you
+can use the <code>mapPartitions()</code> transformation or the
+<code>reduce()</code> action (depending on the format and nature of the
+input data), or simply use Spark’s built-in aggregate functions.</p>
+<p>Here’s how to get the mean and standard deviation using Spark’s
+built-in functions:</p>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import required functions</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> mean <span class="im">as</span> _mean</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyspark.sql.functions <span class="im">import</span> stddev <span class="im">as</span> _stddev</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># apply desired functions</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>collected_stats <span class="op">=</span> df.select(</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    _mean(col(<span class="st">&#39;numeric_column_name&#39;</span>)).alias(<span class="st">&#39;mean&#39;</span>),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    _stddev(col(<span class="st">&#39;numeric_column_name&#39;</span>)).alias(<span class="st">&#39;stddev&#39;</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>).collect()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co"># extract the final results:</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>final_mean <span class="op">=</span> collected_stats[<span class="dv">0</span>][<span class="st">&#39;mean&#39;</span>]</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>final_stddev <span class="op">=</span> collected_stats[<span class="dv">0</span>][<span class="st">&#39;stddev&#39;</span>]</span></code></pre></div>
+<h3 id="data-without-keys---using-rdds">Data Without Keys - using
+RDDs</h3>
+<p>If you have to filter your numeric data and perform other
+calculations before computing the mean and std-dev, then you may use the
+<code>RDD.mapPartitions()</code> transformation. The
+<code>RDD.mapPartitions(f)</code> transformation returns a new RDD by
+applying a function <code>f()</code> to each partition of this RDD.
+Finally, you may <code>reduce()</code> the result of the
+<code>RDD.mapPartitions(f)</code> transformation.</p>
+<p>To understand the <code>RDD.mapPartitions(f)</code> transformation,
+let’s assume that the input is a set of files, where each record has a
+set of numbers separated by commas (note that each record may have any
+number of numbers: for example, one record may have 5 numbers and
+another record might have 34 numbers, etc.):</p>
+<pre><code>&lt;number&gt;&lt;,&gt;&lt;number&gt;&lt;,&gt;...&lt;,&gt;&lt;number&gt;</code></pre>
+<p>Suppose the goal is to find
+<code>(min, max, count, num_of_negatives, num_of_positives)</code> for
+the entire data set. One easy solution is to use
+<code>RDD.mapPartitions(f)</code>, where <code>f()</code> is a function
+that returns
+<code>(min, max, count, num_of_negatives, num_of_positives)</code> per
+partition. Once <code>mapPartitions()</code> is done, we can apply a
+final reducer to find the overall
+<code>(min, max, count, num_of_negatives, num_of_positives)</code>
+across all partitions.</p>
+<p>Let <code>rdd</code> denote <code>RDD[String]</code>, which
+represents all input records.</p>
+<p>First, we define a helper function <code>count_neg_pos()</code>,
+which accepts a list of numbers and returns the count of negative and
+positive numbers:</p>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> count_neg_pos(numbers):</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    neg_count, pos_count <span class="op">=</span> <span class="dv">0</span>, <span class="dv">0</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># iterate numbers</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> num <span class="kw">in</span> numbers:</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> num <span class="op">&gt;</span> <span class="dv">0</span>: pos_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> num <span class="op">&lt;</span> <span class="dv">0</span>: neg_count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">#end-for</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> (neg_count, pos_count)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co">#end-def</span></span></code></pre></div>
+<p>Next, we define our custom function <code>compute_stats()</code>,
+which accepts a partition (an iterator of records) and returns
+<code>(min, max, count, num_of_negatives, num_of_positives)</code> for
+that partition:</p>
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_stats(partition):</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    first_time <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> e <span class="kw">in</span> partition:</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        numbers <span class="op">=</span> [<span class="bu">int</span>(x) <span class="cf">for</span> x <span class="kw">in</span> e.split(<span class="st">&#39;,&#39;</span>) <span class="cf">if</span> x]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        neg_pos <span class="op">=</span> count_neg_pos(numbers)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="co">#</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> first_time:</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>            _min <span class="op">=</span> <span class="bu">min</span>(numbers)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>            _max <span class="op">=</span> <span class="bu">max</span>(numbers)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>            _count <span class="op">=</span> <span class="bu">len</span>(numbers)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>            _neg <span class="op">=</span> neg_pos[<span class="dv">0</span>]</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>            _pos <span class="op">=</span> neg_pos[<span class="dv">1</span>]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>            first_time <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>            <span class="co"># it is not the first time:</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>            _min <span class="op">=</span> <span class="bu">min</span>(_min, <span class="bu">min</span>(numbers))</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>            _max <span class="op">=</span> <span class="bu">max</span>(_max, <span class="bu">max</span>(numbers))</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>            _count <span class="op">+=</span> <span class="bu">len</span>(numbers)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>            _neg <span class="op">+=</span> neg_pos[<span class="dv">0</span>]</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>            _pos <span class="op">+=</span> neg_pos[<span class="dv">1</span>]</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">#end-if</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="co">#end-for</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [(_min, _max, _count, _neg, _pos)]</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a><span class="co">#end-def</span></span></code></pre></div>
+<p>After defining the <code>compute_stats(partition)</code> function, we
+can now apply the <code>mapPartitions()</code> transformation:</p>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>mapped <span class="op">=</span> rdd.mapPartitions(compute_stats)</span></code></pre></div>
+<p>Now <code>mapped</code> is an
+<code>RDD[(int, int, int, int, int)]</code>.</p>
+<p>Next, we can apply a final reducer to find the overall
+<code>(min, max, count, num_of_negatives, num_of_positives)</code>
+across all partitions:</p>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>tuple5 <span class="op">=</span> mapped.<span class="bu">reduce</span>(<span class="kw">lambda</span> x, y: (<span class="bu">min</span>(x[<span class="dv">0</span>], y[<span class="dv">0</span>]),</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>                                      <span class="bu">max</span>(x[<span class="dv">1</span>], y[<span class="dv">1</span>]),</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                                      x[<span class="dv">2</span>] <span class="op">+</span> y[<span class="dv">2</span>],</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                                      x[<span class="dv">3</span>] <span class="op">+</span> y[<span class="dv">3</span>],</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                                      x[<span class="dv">4</span>] <span class="op">+</span> y[<span class="dv">4</span>])</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                       )</span></code></pre></div>
+<p>Spark is so flexible and powerful that we might find multiple
+solutions for a given problem. But which is the optimal solution? This
+can be settled by testing your solutions against real data, similar to
+what you might use in production. Test, test, and test.</p>
+<h2 id="2-in-mapper-combiner-design-pattern">2. In-Mapper-Combiner
+Design Pattern</h2>
+<p>In this section, I will discuss the In-Mapper-Combiner design pattern
+and show some examples of using it.</p>
+<p>In a typical MapReduce paradigm, mappers emit
+<code>(key, value)</code> pairs and once all mappers are done, the “sort
+and shuffle” phase prepares input (from the mappers’ output) for
+reducers in the form of <code>(key, Iterable&lt;value&gt;)</code>.
+Finally, reducers consume these pairs and create the final
+<code>(key, aggregated-value)</code>. For example, if mappers have
+emitted the following <code>(key, value)</code> pairs:</p>
+<pre><code>(k1, v1), (k1, v2), (k1, v3), (k1, v4),
+(k2, v5), (k2, v6)</code></pre>
+<p>Then “sort and shuffle” will prepare the following
+<code>(key, value)</code> pairs to be consumed by reducers:</p>
+<pre><code>(k1, [v1, v2, v3, v4])
+(k2, [v5, v6])</code></pre>
+<p>For some data applications, it is very possible to emit too many
+<code>(key, value)</code> pairs, which may create huge network traffic
+in the cluster. If a mapper creates the same key multiple times (with
+different values) for the input partition, then for some aggregation
+algorithms it is possible to aggregate/combine these
+<code>(key, value)</code> pairs and emit fewer of them. The simplest
+case is counting DNA bases (count A’s, T’s, C’s, G’s). In a typical
+MapReduce paradigm, for a DNA string of “AAAATTTCCCGGAAATGG”, a mapper
+will create the following <code>(key, value)</code> pairs:</p>
+<pre><code>(A, 1), (A, 1), (A, 1), (A, 1), (T, 1), (T, 1), (T, 1),
+(C, 1), (C, 1), (C, 1), (G, 1), (G, 1), (A, 1), (A, 1),
+(A, 1), (T, 1), (G, 1), (G, 1)</code></pre>
+<p>For this specific algorithm (DNA base count), it is possible to
+combine values for the same key:</p>
+<pre><code>(A, 7), (T, 4), (C, 3), (G, 4)</code></pre>
+<p>Combining/merging/reducing 18 <code>(key, value)</code> pairs into 4
+combined <code>(key, value)</code> pairs is called
+“In-Mapper-Combining”: we combine values during mapper processing. The
+advantage is that we emit/create far fewer <code>(key, value)</code>
+pairs, which eases the cluster’s network traffic. The In-Mapper-Combiner
+emits <code>(A, 7)</code> instead of seven pairs of <code>(A, 1)</code>,
+and so on. The In-Mapper-Combiner design pattern was introduced to
+address an issue with the MapReduce programming paradigm: limiting the
+number of <code>(key, value)</code> pairs generated by mappers.</p>
+<p>When do you need the In-Mapper-Combiner design pattern? When your
+mapper generates too many <code>(key, value)</code> pairs and you have a
+chance to combine these pairs into a smaller number of
+<code>(key, value)</code> pairs, then you may use the In-Mapper-Combiner
+design pattern.</p>
+<p>Informally, say that your mapper has created 3 keys with multiple
+<code>(key, value)</code> pairs as:</p>
+<pre><code>key k1: (k1, u1), (k1, u2), (k1, u3), ...
+key k2: (k2, v1), (k2, v2), (k2, v3), ...
+key k3: (k3, t1), (k3, t2), (k3, t3), ...</code></pre>
+<p>Then the In-Mapper-Combiner design pattern should combine these into
+the following <code>(key, value)</code> pairs:</p>
+<pre><code>(k1, combiner_function([u1, u2, u3, ...]))
+(k2, combiner_function([v1, v2, v3, ...]))
+(k3, combiner_function([t1, t2, t3, ...]))</code></pre>
+<p>Where <code>combiner_function([a1, a2, a3, ...])</code> is a custom
+function that combines/reduces <code>[a1, a2, a3, ...]</code> into a
+single value.</p>
+<p>Applying the In-Mapper-Combiner design pattern may result in a more
+efficient algorithm implementation from a performance point of view (for
+example, reducing time complexity). The <code>combiner_function()</code>
+must guarantee that it is a semantic-preserving function, meaning that
+the semantics/correctness of the algorithm (with and without
+In-Mapper-Combiner) for mappers must not change at all. The
+In-Mapper-Combiner design pattern can substantially reduce both the
+number and the size of the <code>(key, value)</code> pairs that need to
+be shuffled from the mappers to the reducers.</p>
+<h3 id="example-dna-base-count-problem">Example: DNA Base Count
+Problem</h3>
+<p>What is DNA Base Counting? The four bases in a DNA molecule are
+adenine (A), cytosine (C), guanine (G), and thymine (T). So a DNA string
+is comprised of the 4 base letters <code>{A, T, C, G}</code>. DNA Base
+Count finds the frequency of these base letters for a given set of DNA
+strings.</p>
+<h3 id="input-format-fasta">Input Format: FASTA</h3>
+<p>There are multiple text formats for representing DNA. FASTA is a
+text-based format for representing DNA data. The FASTA file format is a
+widely used format for specifying biosequence information. A sequence in
+FASTA format begins with a single description line, followed by one or
+more lines of sequence data.</p>
+<p>Therefore, a FASTA file has two kinds of records:</p>
+<ul>
+<li>records that begin with <code>&gt;</code>, which is a description
+line (should be ignored for DNA base count)</li>
+<li>records that do not begin with <code>&gt;</code>, which is a DNA
+string</li>
+</ul>
+<p>We will ignore the description records and focus only on DNA
+strings.</p>
+<p><a
+href="https://earray.chem.agilent.com/earray/helppages/index.htm#download_probes.htm">Example</a>
+of two FASTA-formatted sequences in a file:</p>
+<pre><code>&gt;NM_012514 Rattus norvegicus breast cancer 1 (Brca1), mRNA
+CGCTGGTGCAACTCGAAGACCTATCTCCTTCCCGGGGGGGCTTCTCCGGCATTTAGGCCT
+CGGCGTTTGGAAGTACGGAGGTTTTTCTCGGAAGAAAGTTCACTGGAAGTGGAAGAAATG
+GATTTATCTGCTGTTCGAATTCAAGAAGTACAAAATGTCCTTCATGCTATGCAGAAAATC
+TTGGAGTGTCCAATCTGTTTGGAACTGATCAAAGAACCGGTTTCCACACAGTGCGACCAC
+ATATTTTGCAAATTTTGTATGCTGAAACTCCTTAACCAGAAGAAAGGACCTTCCCAGTGT
+CCTTTGTGTAAGAATGAGATAACCAAAAGGAGCCTACAAGGAAGTGCAAGG
+&gt;NM_012515
+TGTGGATCTTTCCAGAACAGCAGTTGCAATCACTATGTCTCAATCCTGGGTACCCGCCGT
+GGGCCTCACTCTGGTGCCCAGCCTGGGGGGCTTCATGGGAGCCTACTTTGTGCGTGGTGA
+GGGCCTCCGCTGGTATGCTAGCTTGCAGAAACCCTCCTGGCATCCGCCTCGCTGGACACT
+CGCTCCCATCTGGGGCACACTGTATTCGGCCATGGGGTATGGCTCCTACATAATCTGGAA
+AGAGCTGGGAGGTTTCACAGAGGAGGCTATGGTTCCCTTGGGTCTCTACACTGGTCAGCT</code></pre>
+<p>Note that for all three solutions, we will drop description records
+(those beginning with the <code>&gt;</code> symbol) by using the
+<code>RDD.filter()</code> transformation.</p>
+<h3 id="solution-1-classic-mapreduce-algorithm">Solution 1: Classic
+MapReduce Algorithm</h3>
+<p>In the canonical example of DNA base counting, a
+<code>(key, value)</code> pair is emitted for every DNA base letter
+found, where the key is a DNA base letter in <code>{A, T, C, G}</code>
+and the value is 1 (a frequency of one). This solution creates too many
+<code>(key, value)</code> pairs. After mapping is done, we have several
+options for reducing these <code>(key, value)</code> pairs:</p>
+<ul>
+<li>Use <code>groupByKey()</code></li>
+<li>Use <code>reduceByKey()</code></li>
+<li>Use <code>combineByKey()</code></li>
+</ul>
+<h4 id="pros-of-solution-1">Pros of Solution 1</h4>
+<ul>
+<li>Simple solution, which works</li>
+<li>Mappers are fast; no need for combining counters</li>
+</ul>
+<h4 id="cons-of-solution-1">Cons of Solution 1</h4>
+<ul>
+<li>Too many <code>(key, value)</code> pairs are created</li>
+<li>Might cause cluster network traffic</li>
+</ul>
+<h3 id="solution-2-in-mapper-combiner-algorithm">Solution 2:
+In-Mapper-Combiner Algorithm</h3>
+<p>In this solution, we will use the In-Mapper-Combiner design pattern,
+and per DNA string we will emit at most four <code>(key, value)</code>
+pairs:</p>
+<pre><code>(A, n1)
+(T, n2)
+(C, n3)
+(G, n4)</code></pre>
+<p>where</p>
+<pre><code>n1: is the total frequency of A&#39;s per mapper input
+n2: is the total frequency of T&#39;s per mapper input
+n3: is the total frequency of C&#39;s per mapper input
+n4: is the total frequency of G&#39;s per mapper input</code></pre>
+<p>To implement the In-Mapper-Combiner design pattern, we will use
+Python’s <code>collections.Counter()</code> to keep track of DNA base
+letter frequencies. The other option is to use four variables
+(initialized to zero) and increment them as we iterate/scan the DNA
+string. Since the number of keys is very small (4 of them), it is easier
+to use 4 variables for counting; otherwise (when you have many keys) you
+should use a <code>collections.Counter()</code> to keep track of the
+frequency of each key.</p>
+<p>Similar to Solution 1, we may apply any of the following reducers to
+find the final DNA base count:</p>
+<ul>
+<li>Use <code>groupByKey()</code></li>
+<li>Use <code>reduceByKey()</code></li>
+<li>Use <code>combineByKey()</code></li>
+</ul>
+<h4 id="pros-of-solution-2">Pros of Solution 2</h4>
+<ul>
+<li>Far fewer <code>(key, value)</code> pairs are created compared to
+Solution 1</li>
+<li>The In-Mapper-Combiner design pattern is applied</li>
+<li>Will not cause cluster network traffic, since there are not too many
+<code>(key, value)</code> pairs</li>
+</ul>
+<h4 id="cons-of-solution-2">Cons of Solution 2</h4>
+<ul>
+<li>A dictionary is created per mapper; if we have too many mappers
+running concurrently, there might be an OOM error</li>
+</ul>
+<h3 id="solution-3-mapping-partitions-algorithm">Solution 3: Mapping
+Partitions Algorithm</h3>
+<p>This solution uses the <code>RDD.mapPartitions()</code>
+transformation to solve the DNA base count problem. In this solution we
+will emit four <code>(key, value)</code> pairs:</p>
+<pre><code>(A, p1)
+(T, p2)
+(C, p3)
+(G, p4)</code></pre>
+<p>where</p>
+<pre><code>p1: is the total frequency of A&#39;s per single partition
+p2: is the total frequency of T&#39;s per single partition
+p3: is the total frequency of C&#39;s per single partition
+p4: is the total frequency of G&#39;s per single partition</code></pre>
+<p>Note that a single partition may have thousands or millions of FASTA
+records. For this solution, we will create a single
+<code>collections.Counter()</code> per partition (rather than per RDD
+element).</p>
+<h4 id="pros-of-solution-3">Pros of Solution 3</h4>
+<ul>
+<li>Far fewer <code>(key, value)</code> pairs are created compared to
+Solutions 1 and 2</li>
+<li>The Map Partitions design pattern is applied</li>
+<li>Will not cause cluster network traffic, since there are not too many
+<code>(key, value)</code> pairs</li>
+<li>A single dictionary is created per partition. Since the number of
+partitions can be in the hundreds or thousands, this is not a problem at
+all</li>
+<li>This is the most scaled-out solution: basically, we summarize DNA
+base counting per partition: from each partition, we emit at most four
+<code>(key, value)</code> pairs</li>
+</ul>
+<h4 id="cons-of-solution-3">Cons of Solution 3</h4>
+<ul>
+<li>None</li>
+</ul>
+<h3 id="summary-and-conclusion">Summary and conclusion</h3>
+<p>The In-Mapper-Combiner design pattern is one method for summarizing
+the output of mappers, and hence for possibly improving the speed of
+your MapReduce job by reducing the number of intermediary
+<code>(key, value)</code> pairs emitted from mappers to reducers. As
+noted, there are several ways to implement the In-Mapper-Combiner design
+pattern, depending on your mappers’ input and expected output. One
+immediate benefit of the In-Mapper-Combiner design pattern is that it
+drastically reduces the number of <code>(key, value)</code> pairs
+emitted from mappers to reducers.</p>
+<h3 id="download-fasta-files">Download FASTA Files</h3>
+<ol type="1">
+<li><a
+href="https://sites.google.com/site/geosymbio/downloads">GeoSymbio
+Downloads</a></li>
+<li><a
+href="https://ftp.ncbi.nlm.nih.gov/snp/organisms/human_9606/rs_fasta/">NCBI
+Downloads</a></li>
+</ol>
+<h2 id="3-filtering-patterns">3. Filtering Patterns</h2>
+<p>Filter patterns are a set of design patterns that enable us to filter
+a set of records (or elements) using different criteria, and to chain
+them in a decoupled way through logical operations. One simple example
+is to filter out records if the salary of that record is less than
+20,000. Another example is to filter out records that do not contain a
+valid URL. This type of design pattern falls under the structural
+pattern category, since it combines multiple criteria to obtain a single
+criterion.</p>
+<p>For example, Python offers filtering as:</p>
+<div class="sourceCode" id="cb28"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">filter</span>(function, sequence)</span></code></pre></div>
+<p>where</p>
+<ul>
+<li><code>function</code>: a function that tests whether each element of
+a sequence is true or not.</li>
+<li><code>sequence</code>: the sequence to be filtered; it can be a set,
+list, tuple, or any iterable container.</li>
+</ul>
+<p>Returns: an iterator that has already been filtered.</p>
+<p>A simple example is given below:</p>
+<div class="sourceCode" id="cb29"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># function that filters DNA letters</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_dna(variable):</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>    dna_letters <span class="op">=</span> [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;G&#39;</span>]</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> variable <span class="kw">in</span> dna_letters:</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#end-def</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="co"># sequence</span></span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>sequence <span class="op">=</span> [<span class="st">&#39;A&#39;</span>, <span class="st">&#39;B&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;T&#39;</span>, <span class="st">&#39;C&#39;</span>, <span class="st">&#39;G&#39;</span>, <span class="st">&#39;M&#39;</span>, <span class="st">&#39;R&#39;</span>, <span class="st">&#39;A&#39;</span>]</span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="co"># using filter function</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="co"># filtered = [&#39;A&#39;, &#39;T&#39;, &#39;T&#39;, &#39;C&#39;, &#39;G&#39;, &#39;A&#39;]</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> <span class="bu">filter</span>(is_dna, sequence)</span></code></pre></div>
+<p>PySpark offers filtering at large scale for both RDDs and
+DataFrames.</p>
+<h3 id="filter-using-rdd">Filter using RDD</h3>
+<p>Let <code>rdd</code> be an <code>RDD[(String, Integer)]</code>.
+Assume the goal is to keep <code>(key, value)</code> pairs if and only
+if the value is greater than 0. This is pretty straightforward to
+accomplish in PySpark by using the <code>RDD.filter()</code>
+transformation:</p>
+<div class="sourceCode" id="cb30"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># rdd: RDD[(String, Integer)]</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># filtered: RDD[(key, value)], where value &gt; 0</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co"># e = (key, value)</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> rdd.<span class="bu">filter</span>(<span class="kw">lambda</span> e: e[<span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>)</span></code></pre></div>
+<p>The filter can also be implemented with a named boolean predicate
+function:</p>
+<div class="sourceCode" id="cb31"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> greater_than_zero(e):</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># e = (key, value)</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> e[<span class="dv">1</span>] <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="co">#end-def</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="co"># filtered: RDD[(key, value)], where value &gt; 0</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> rdd.<span class="bu">filter</span>(greater_than_zero)</span></code></pre></div>
+<h3 id="filter-using-dataframe">Filter using DataFrame</h3>
+<p>Filtering records using a DataFrame can be accomplished with
+<code>DataFrame.filter()</code>, or you may use
+<code>DataFrame.where()</code>.</p>
+<p>Consider <code>df</code> as a
+<code>DataFrame[(emp_id, city, state)]</code>.</p>
+<p>Then you may use the following filtering patterns:</p>
+<div class="sourceCode" id="cb32"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># SparkSession available as &#39;spark&#39;.</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> tuples3 <span class="op">=</span> [(<span class="st">&#39;e100&#39;</span>, <span class="st">&#39;Cupertino&#39;</span>, <span class="st">&#39;CA&#39;</span>), (<span class="st">&#39;e200&#39;</span>, <span class="st">&#39;Sunnyvale&#39;</span>, <span class="st">&#39;CA&#39;</span>),</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>               (<span class="st">&#39;e300&#39;</span>, <span class="st">&#39;Troy&#39;</span>, <span class="st">&#39;MI&#39;</span>), (<span class="st">&#39;e400&#39;</span>, <span class="st">&#39;Detroit&#39;</span>, <span class="st">&#39;MI&#39;</span>)]</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df <span class="op">=</span> spark.createDataFrame(tuples3, [<span class="st">&#39;emp_id&#39;</span>, <span class="st">&#39;city&#39;</span>, <span class="st">&#39;state&#39;</span>])</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df.show()</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>emp_id<span class="op">|</span>     city<span class="op">|</span>state<span class="op">|</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  e100<span class="op">|</span>Cupertino<span class="op">|</span>   CA<span class="op">|</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  e200<span class="op">|</span>Sunnyvale<span class="op">|</span>   CA<span class="op">|</span></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  e300<span class="op">|</span>     Troy<span class="op">|</span>   MI<span class="op">|</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  e400<span class="op">|</span>  Detroit<span class="op">|</span>   MI<span class="op">|</span></span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df.<span class="bu">filter</span>(df.state <span class="op">!=</span> <span class="st">&quot;CA&quot;</span>).show(truncate<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="op">+------+-------+-----+</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>emp_id<span class="op">|</span>city   <span class="op">|</span>state<span class="op">|</span></span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a><span class="op">+------+-------+-----+</span></span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>e300  <span class="op">|</span>Troy   <span class="op">|</span>MI   <span class="op">|</span></span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>e400  <span class="op">|</span>Detroit<span class="op">|</span>MI   <span class="op">|</span></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="op">+------+-------+-----+</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-23"><a href="#cb32-23" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df.<span class="bu">filter</span>(df.state <span class="op">==</span> <span class="st">&quot;CA&quot;</span>).show(truncate<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb32-24"><a href="#cb32-24" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb32-25"><a href="#cb32-25" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>emp_id<span class="op">|</span>city     <span class="op">|</span>state<span class="op">|</span></span>
+<span id="cb32-26"><a href="#cb32-26" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb32-27"><a href="#cb32-27" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>e100  <span class="op">|</span>Cupertino<span class="op">|</span>CA   <span class="op">|</span></span>
+<span id="cb32-28"><a href="#cb32-28" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>e200  <span class="op">|</span>Sunnyvale<span class="op">|</span>CA   <span class="op">|</span></span>
+<span id="cb32-29"><a href="#cb32-29" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb32-30"><a href="#cb32-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-31"><a href="#cb32-31" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pyspark.sql.functions <span class="im">import</span> col</span>
+<span id="cb32-32"><a href="#cb32-32" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df.<span class="bu">filter</span>(col(<span class="st">&quot;state&quot;</span>) <span class="op">==</span> <span class="st">&quot;MA&quot;</span>).show(truncate<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb32-33"><a href="#cb32-33" aria-hidden="true" tabindex="-1"></a><span class="op">+------+----+-----+</span></span>
+<span id="cb32-34"><a href="#cb32-34" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>emp_id<span class="op">|</span>city<span class="op">|</span>state<span class="op">|</span></span>
+<span id="cb32-35"><a href="#cb32-35" aria-hidden="true" tabindex="-1"></a><span class="op">+------+----+-----+</span></span>
+<span id="cb32-36"><a href="#cb32-36" aria-hidden="true" tabindex="-1"></a><span class="op">+------+----+-----+</span></span>
+<span id="cb32-37"><a href="#cb32-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-38"><a href="#cb32-38" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df.<span class="bu">filter</span>(col(<span class="st">&quot;state&quot;</span>) <span class="op">==</span> <span class="st">&quot;MI&quot;</span>).show(truncate<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb32-39"><a href="#cb32-39" aria-hidden="true" tabindex="-1"></a><span class="op">+------+-------+-----+</span></span>
+<span id="cb32-40"><a href="#cb32-40" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>emp_id<span class="op">|</span>city   <span class="op">|</span>state<span class="op">|</span></span>
+<span id="cb32-41"><a href="#cb32-41" aria-hidden="true" tabindex="-1"></a><span class="op">+------+-------+-----+</span></span>
+<span id="cb32-42"><a href="#cb32-42" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>e300  <span class="op">|</span>Troy   <span class="op">|</span>MI   <span class="op">|</span></span>
+<span id="cb32-43"><a href="#cb32-43" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>e400  <span class="op">|</span>Detroit<span class="op">|</span>MI   <span class="op">|</span></span>
+<span id="cb32-44"><a href="#cb32-44" aria-hidden="true" tabindex="-1"></a><span class="op">+------+-------+-----+</span></span></code></pre></div>
+<p>You may also use the <code>DataFrame.where()</code> function to
+filter rows:</p>
+<div class="sourceCode" id="cb33"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> df.where(df.state <span class="op">==</span> <span class="st">&#39;CA&#39;</span>).show()</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>emp_id<span class="op">|</span>     city<span class="op">|</span>state<span class="op">|</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  e100<span class="op">|</span>Cupertino<span class="op">|</span>   CA<span class="op">|</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  e200<span class="op">|</span>Sunnyvale<span class="op">|</span>   CA<span class="op">|</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="op">+------+---------+-----+</span></span></code></pre></div>
+<p>For more examples, you may read <a
+href="https://sparkbyexamples.com/pyspark/pyspark-where-filter/">PySpark
+Where Filter Function | Multiple Conditions</a>.</p>
+<h2 id="4-organization-patterns">4. Organization Patterns</h2>
+<p>Organization Patterns deal with reorganizing data for use by other
+rendering applications. For example, you might have structured data in
+different formats and from different data sources, and you might join
+and merge that data into XML or JSON formats. Another example is
+partitioning data (the so-called binning pattern) based on some
+categorization (such as continent, country, …).</p>
+<h3 id="41-the-structured-to-hierarchical-pattern">4.1 The
+Structured-to-Hierarchical Pattern</h3>
+<p>The goal of this pattern is to convert structured data (in different
+formats and from different data sources) into a hierarchical (XML or
+JSON) structure. You need to bring all the data into a single location
+so that you can convert it into a hierarchical structure. In a nutshell,
+the Structured-to-Hierarchical pattern creates new hierarchical records
+(such as XML or JSON) from data that started out in a very different
+structure (flat/plain records). The main objective of the Structured-
+to-Hierarchical pattern is to transform row-based data into a
+hierarchical format (such as JSON or XML).</p>
+<p>For example, consider blog data with comments from many users. A
+hierarchy will look something like:</p>
+<pre><code>Posts
+    Post-1
+        Comment-11
+        Comment-12
+        Comment-13
+    Post-2
+        Comment-21
+        Comment-22
+        Comment-23
+        Comment-24
+    ...</code></pre>
+<p>Assume that there are two types of structured data, which can be
+joined to create the hierarchical structure shown above.</p>
+<p>Data Set 1:</p>
+<pre><code>&lt;post_id&gt;&lt;,&gt;&lt;title&gt;&lt;,&gt;&lt;creator&gt;</code></pre>
+<p>Example of Data Set 1 records:</p>
+<pre><code>p1,t1,creator1
+p2,t2,creator2
+p3,t3,creator3
+...</code></pre>
+<p>Data Set 2:</p>
+<pre><code>&lt;post_id&gt;&lt;,&gt;&lt;comment&gt;&lt;,&gt;&lt;commented_by&gt;</code></pre>
+<p>Example of Data Set 2 records:</p>
+<pre><code>p1,comment-11,commentedby-11
+p1,comment-12,commentedby-12
+p1,comment-13,commentedby-13
+p2,comment-21,commentedby-21
+p2,comment-22,commentedby-22
+p2,comment-23,commentedby-23
+p2,comment-24,commentedby-24
+...</code></pre>
+<p>Therefore, the goal is to join and merge these two data sets so that
+we can create an XML document for a single post, such as:</p>
+<div class="sourceCode" id="cb39"><pre
+class="sourceCode xml"><code class="sourceCode xml"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">post</span> <span class="ot">id=</span><span class="st">&quot;p1&quot;</span>&gt;</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">title</span>&gt;t1&lt;/<span class="kw">title</span>&gt;</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">creator</span>&gt;creator1&lt;/<span class="kw">creator</span>&gt;</span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">comments</span>&gt;</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">comment</span>&gt;comment-11&lt;/<span class="kw">comment</span>&gt;</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">comment</span>&gt;comment-12&lt;/<span class="kw">comment</span>&gt;</span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">comment</span>&gt;comment-13&lt;/<span class="kw">comment</span>&gt;</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">comments</span>&gt;</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">post</span>&gt;</span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">post</span> <span class="ot">id=</span><span class="st">&quot;p2&quot;</span>&gt;</span>
+<span id="cb39-11"><a href="#cb39-11" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">title</span>&gt;t2&lt;/<span class="kw">title</span>&gt;</span>
+<span id="cb39-12"><a href="#cb39-12" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">creator</span>&gt;creator2&lt;/<span class="kw">creator</span>&gt;</span>
+<span id="cb39-13"><a href="#cb39-13" aria-hidden="true" tabindex="-1"></a>    &lt;<span class="kw">comments</span>&gt;</span>
+<span id="cb39-14"><a href="#cb39-14" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">comment</span>&gt;comment-21&lt;/<span class="kw">comment</span>&gt;</span>
+<span id="cb39-15"><a href="#cb39-15" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">comment</span>&gt;comment-22&lt;/<span class="kw">comment</span>&gt;</span>
+<span id="cb39-16"><a href="#cb39-16" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">comment</span>&gt;comment-23&lt;/<span class="kw">comment</span>&gt;</span>
+<span id="cb39-17"><a href="#cb39-17" aria-hidden="true" tabindex="-1"></a>        &lt;<span class="kw">comment</span>&gt;comment-24&lt;/<span class="kw">comment</span>&gt;</span>
+<span id="cb39-18"><a href="#cb39-18" aria-hidden="true" tabindex="-1"></a>    &lt;/<span class="kw">comments</span>&gt;</span>
+<span id="cb39-19"><a href="#cb39-19" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">post</span>&gt;</span>
+<span id="cb39-20"><a href="#cb39-20" aria-hidden="true" tabindex="-1"></a>...</span></code></pre></div>
+<p>I will provide two solutions: RDD-based and DataFrame-based.</p>
+<h4 id="rdd-solution">RDD Solution</h4>
+<p>Step 1: This solution reads the data sets and creates two RDDs keyed
+by <code>post_id</code>:</p>
+<div class="sourceCode" id="cb40"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>posts: RDD[(post_id, (title, creator))]</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>comments: RDD[(post_id, (comment, commented_by))]</span></code></pre></div>
+<p>Step 2: These two RDDs are joined by the common key
+<code>post_id</code>:</p>
+<div class="sourceCode" id="cb41"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># joined: RDD[(post_id, ((title, creator), (comment, commented_by)))]</span></span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>joined <span class="op">=</span> posts.join(comments)</span></code></pre></div>
+<p>Step 3: Apply a reducer: group by <code>post_id</code>:</p>
+<div class="sourceCode" id="cb42"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grouped = RDD[(post_id, Iterable&lt;((title, creator), (comment, commented_by))&gt;)]</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>grouped <span class="op">=</span> joined.groupByKey()</span></code></pre></div>
+<p>Step 4: The final step is to iterate over the <code>grouped</code>
+elements and create the XML (or JSON):</p>
+<div class="sourceCode" id="cb43"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>xml_rdd <span class="op">=</span> grouped.<span class="bu">map</span>(create_xml)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="co"># where</span></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co"># element: (post_id, Iterable&lt;((title, creator), (comment, commented_by))&gt;)</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_xml(element):</span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a>    xml <span class="op">=</span> ...  <span class="co"># perform concatenation of required items and build the desired XML</span></span>
+<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> xml</span>
+<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co">#end-def</span></span></code></pre></div>
+<p>A complete example implementation is given in:
+<code>structured_to_hierarchical_to_xml_rdd.py</code></p>
+<h4 id="dataframe-solution">DataFrame Solution</h4>
+<p>In the DataFrame solution, we read the data sets and create
+DataFrames:</p>
+<div class="sourceCode" id="cb44"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>posts <span class="op">=</span> spark.createDataFrame(posts_data, [<span class="st">&quot;post_id&quot;</span>, <span class="st">&quot;title&quot;</span>, <span class="st">&quot;creator&quot;</span>])</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>comments <span class="op">=</span> spark.createDataFrame(comments_data, [<span class="st">&quot;post_id&quot;</span>, <span class="st">&quot;comment&quot;</span>, <span class="st">&quot;commented_by&quot;</span>])</span></code></pre></div>
+<p>Next, these two DataFrames are joined on the common key
+<code>post_id</code>, and then we select the required columns:</p>
+<div class="sourceCode" id="cb45"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>joined_and_selected <span class="op">=</span> posts.join(comments, posts.post_id <span class="op">==</span> comments.post_id) <span class="op">\</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>    .select(posts.post_id, posts.title, posts.creator, comments.comment)</span></code></pre></div>
+<p>Next, we group the result by
+<code>("post_id", "title", "creator")</code> and collect the
+<code>comment</code> column values into a list:</p>
+<div class="sourceCode" id="cb46"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>grouped <span class="op">=</span> joined_and_selected.groupBy(<span class="st">&quot;post_id&quot;</span>, <span class="st">&quot;title&quot;</span>, <span class="st">&quot;creator&quot;</span>) <span class="op">\</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    .agg(F.collect_list(<span class="st">&quot;comment&quot;</span>).alias(<span class="st">&quot;comments&quot;</span>))</span></code></pre></div>
+<p>To create the XML, we use a UDF:</p>
+<div class="sourceCode" id="cb47"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>create_xml_udf <span class="op">=</span> F.udf(</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> post_id, title, creator, comments:</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>        create_xml(post_id, title, creator, comments),</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a>    StringType()</span>
+<span id="cb47-5"><a href="#cb47-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>Finally, we apply the UDF to the proper columns to create the
+XML:</p>
+<div class="sourceCode" id="cb48"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> grouped.withColumn(</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;xml&quot;</span>,</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>        create_xml_udf(grouped.post_id, grouped.title, grouped.creator, grouped.comments)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    ) <span class="op">\</span></span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    .drop(<span class="st">&quot;title&quot;</span>) <span class="op">\</span></span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    .drop(<span class="st">&quot;creator&quot;</span>) <span class="op">\</span></span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>    .drop(<span class="st">&quot;comments&quot;</span>)</span></code></pre></div>
+<p>A complete example implementation is given in:
+<code>structured_to_hierarchical_to_xml_dataframe.py</code></p>
+<h3 id="42-the-partitioning-and-binning-pattern">4.2 The Partitioning
+and Binning Pattern</h3>
+<p>Bucketing, binning, and categorization of data are used synonymously
+in technical papers and blogs. Data binning, also called discrete
+binning or bucketing, is a data pre-processing technique used to reduce
+the effects of minor observation errors. Binning is a way to group a
+number of more- or-less continuous values into a smaller number of
+“bins.” For example, if you have data about a group of graduated
+students, with a number of years of education, then you might categorize
+it as HSDG (12 years), AA (14 years), BS (16 years), MS (18 years), PhD
+(21 years), or MD (22+ years). This creates 6 bins:
+<code>{HSDG, AA, BS, MS, PhD, MD}</code>. Once the bins are created, you
+can use categorical values (HSDG, BS, …) in your data queries.</p>
+<p>The original data values that fall into a given small interval — a
+bin — are replaced by a value representative of that interval, often the
+central value. For example, if a car’s price is highly scattered, you
+may use bucketing instead of the actual car prices.</p>
+<p><a
+href="https://spark.apache.org/docs/latest/ml-features.html#bucketizer">Spark’s
+Bucketizer</a> transforms a column of continuous features into a column
+of feature buckets, where the buckets are specified by the user.</p>
+<p>Consider this example: there is no linear relationship between
+latitude and housing values, but individual latitudes and housing values
+may still be related, even though the relationship is not linear.
+Therefore, you might bucketize the latitudes; for example, you may
+create buckets such as:</p>
+<pre><code>Bin-1:  32 &lt; latitude &lt;= 33
+Bin-2:  33 &lt; latitude &lt;= 34
+...</code></pre>
+<p>The binning technique can be applied to both categorical and
+numerical data. The following examples show both types of binning.</p>
+<h4 id="numerical-binning-example">Numerical Binning Example:</h4>
+<table>
+<thead>
+<tr>
+<th>value</th>
+<th>Bin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0-10</td>
+<td>Very Low</td>
+</tr>
+<tr>
+<td>11-30</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>31-70</td>
+<td>Mid</td>
+</tr>
+<tr>
+<td>71-90</td>
+<td>High</td>
+</tr>
+<tr>
+<td>91-100</td>
+<td>Very High</td>
+</tr>
+</tbody>
+</table>
+<h4 id="categorical-binning-example">Categorical Binning Example</h4>
+<table>
+<thead>
+<tr>
+<th>value</th>
+<th>Bin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>India</td>
+<td>Asia</td>
+</tr>
+<tr>
+<td>China</td>
+<td>Asia</td>
+</tr>
+<tr>
+<td>Japan</td>
+<td>Asia</td>
+</tr>
+<tr>
+<td>Spain</td>
+<td>Europe</td>
+</tr>
+<tr>
+<td>Italy</td>
+<td>Europe</td>
+</tr>
+<tr>
+<td>Chile</td>
+<td>South America</td>
+</tr>
+<tr>
+<td>Brazil</td>
+<td>South America</td>
+</tr>
+</tbody>
+</table>
+<p>Binning is also used in genomics: we bucketize human genome
+chromosomes (1, 2, 3, …, 22, X, Y, MT). For instance, chromosome 1 has
+250 million positions, which we may bucketize into 101 buckets as:</p>
+<div class="sourceCode" id="cb50"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> <span class="bu">id</span> <span class="kw">in</span> (<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, ..., <span class="dv">22</span>, <span class="st">&#39;X&#39;</span>, <span class="st">&#39;Y&#39;</span>, <span class="st">&#39;MT&#39;</span>):</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>    chr_position <span class="op">=</span> ...  <span class="co"># chromosome-&lt;id&gt; position</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># chr_position range is from 1 to 250,000,000</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    bucket <span class="op">=</span> chr_position <span class="op">%</span> <span class="dv">101</span></span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># where</span></span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">#      0 &lt;= bucket &lt;= 100</span></span></code></pre></div>
+<p>Bucketing is the most straightforward approach for converting
+continuous variables into categorical variables. To understand this,
+let’s look at an example below. In PySpark, the task of bucketing can be
+easily accomplished using the <code>Bucketizer</code> class.</p>
+<p>To use the <code>Bucketizer</code> class, we first need to define the
+bucket borders. Let’s define a list of bucket borders, as in the example
+below. Next, we create an object of the <code>Bucketizer</code> class,
+and then apply its <code>transform()</code> method to our DataFrame
+<code>dataframe</code>.</p>
+<p>First, let’s create a sample DataFrame for demo purposes:</p>
+<div class="sourceCode" id="cb51"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> data <span class="op">=</span> [(<span class="st">&#39;A&#39;</span>, <span class="op">-</span><span class="fl">99.99</span>), (<span class="st">&#39;B&#39;</span>, <span class="op">-</span><span class="fl">0.5</span>), (<span class="st">&#39;C&#39;</span>, <span class="op">-</span><span class="fl">0.3</span>),</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>...   (<span class="st">&#39;D&#39;</span>, <span class="fl">0.0</span>), (<span class="st">&#39;E&#39;</span>, <span class="fl">0.7</span>), (<span class="st">&#39;F&#39;</span>, <span class="fl">99.99</span>)]</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> column_names <span class="op">=</span> [<span class="st">&quot;id&quot;</span>, <span class="st">&quot;features&quot;</span>]</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> dataframe <span class="op">=</span> spark.createDataFrame(data, column_names)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> dataframe.show()</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="op">+---+--------+</span></span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> <span class="bu">id</span><span class="op">|</span>features<span class="op">|</span></span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="op">+---+--------+</span></span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  A<span class="op">|</span>  <span class="op">-</span><span class="fl">99.99</span><span class="op">|</span></span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  B<span class="op">|</span>    <span class="op">-</span><span class="fl">0.5</span><span class="op">|</span></span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  C<span class="op">|</span>    <span class="op">-</span><span class="fl">0.3</span><span class="op">|</span></span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  D<span class="op">|</span>     <span class="fl">0.0</span><span class="op">|</span></span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  E<span class="op">|</span>     <span class="fl">0.7</span><span class="op">|</span></span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  F<span class="op">|</span>   <span class="fl">99.99</span><span class="op">|</span></span>
+<span id="cb51-15"><a href="#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="op">+---+--------+</span></span></code></pre></div>
+<p>Next, we apply the <code>Bucketizer</code> to create buckets:</p>
+<div class="sourceCode" id="cb52"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> bucket_borders <span class="op">=</span> [<span class="op">-</span><span class="bu">float</span>(<span class="st">&quot;inf&quot;</span>), <span class="op">-</span><span class="fl">0.5</span>, <span class="fl">0.0</span>, <span class="fl">0.5</span>, <span class="bu">float</span>(<span class="st">&quot;inf&quot;</span>)]</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> <span class="im">from</span> pyspark.ml.feature <span class="im">import</span> Bucketizer</span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> bucketer <span class="op">=</span> Bucketizer().setSplits(bucket_borders) <span class="op">\</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a>...     .setInputCol(<span class="st">&quot;features&quot;</span>).setOutputCol(<span class="st">&quot;bucket&quot;</span>)</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> bucketer.transform(dataframe).show()</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a><span class="op">+---+--------+------+</span></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="op">|</span> <span class="bu">id</span><span class="op">|</span>features<span class="op">|</span>bucket<span class="op">|</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a><span class="op">+---+--------+------+</span></span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  A<span class="op">|</span>  <span class="op">-</span><span class="fl">99.99</span><span class="op">|</span>   <span class="fl">0.0</span><span class="op">|</span></span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  B<span class="op">|</span>    <span class="op">-</span><span class="fl">0.5</span><span class="op">|</span>   <span class="fl">1.0</span><span class="op">|</span></span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  C<span class="op">|</span>    <span class="op">-</span><span class="fl">0.3</span><span class="op">|</span>   <span class="fl">1.0</span><span class="op">|</span></span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  D<span class="op">|</span>     <span class="fl">0.0</span><span class="op">|</span>   <span class="fl">2.0</span><span class="op">|</span></span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  E<span class="op">|</span>     <span class="fl">0.7</span><span class="op">|</span>   <span class="fl">3.0</span><span class="op">|</span></span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a><span class="op">|</span>  F<span class="op">|</span>   <span class="fl">99.99</span><span class="op">|</span>   <span class="fl">3.0</span><span class="op">|</span></span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a><span class="op">+---+--------+------+</span></span></code></pre></div>
+<h2 id="5-join-patterns">5. Join Patterns</h2>
+<p>Join patterns combine records from two (or more) data sets that share
+a common key, such as <code>post_id</code> in Section 4.1 or
+<code>gene_id</code> in Section 1. In Spark, the most common physical
+join strategies are:</p>
+<ul>
+<li><strong>Shuffle hash join</strong> — both sides are
+shuffled/partitioned by the join key, and a hash join is performed per
+partition. This is the default strategy for large-to-large joins.</li>
+<li><strong>Sort-merge join</strong> — both sides are shuffled and
+sorted by the join key, then merged. Spark’s default for large-to-large
+equi-joins.</li>
+<li><strong>Broadcast hash join</strong> — the smaller data set is
+broadcast to every executor, avoiding a shuffle of the larger data set
+entirely. Ideal when one side of the join is small enough to fit in
+memory (see <code>spark.sql.autoBroadcastJoinThreshold</code>).</li>
+</ul>
+<p>Choosing the right join strategy (and avoiding data skew on the join
+key) is critical for performance at scale. Join Patterns are covered in
+depth in Chapter 11 of <a
+href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">Data
+Algorithms with Spark</a>.</p>
+<h2 id="6-meta-patterns">6. Meta Patterns</h2>
+<p>Metadata is data that describes and gives information about other
+data. Meta Patterns are about “patterns that deal with patterns.” For
+example, in the MapReduce paradigm, “job chaining” is a meta pattern
+that pieces together several patterns to solve complex data problems.
+Another meta pattern is “job merging,” an optimization for performing
+several data analytics tasks within the same MapReduce job — effectively
+executing multiple MapReduce jobs as a single job.</p>
+<p>Spark is a superset of the MapReduce paradigm and deals with meta
+patterns in terms of estimators, transformers, and pipelines, which are
+discussed here:</p>
+<ul>
+<li><a href="https://spark.apache.org/docs/latest/ml-pipeline.html">ML
+Pipelines</a></li>
+<li><a
+href="https://www.analyticsvidhya.com/blog/2019/11/build-machine-learning-pipelines-pyspark/">Want
+to Build Machine Learning Pipelines?</a></li>
+</ul>
+<h2 id="7-inputoutput-patterns">7. Input/Output Patterns</h2>
+<p>Input/Output Patterns address how data enters and leaves a Spark job:
+which file formats to read and write, how to control the number and size
+of output files, and how to organize output so downstream jobs can
+consume it efficiently.</p>
+<h3 id="71-input-patterns">7.1 Input Patterns</h3>
+<p>Spark can read data from many structured and semi-structured formats
+— text, CSV, JSON, Parquet, ORC, Avro, and JDBC sources, among others —
+using <code>spark.read.&lt;format&gt;(...)</code> or
+<code>sc.textFile(...)</code> for plain text/RDDs. A few practical
+considerations:</p>
+<ul>
+<li><strong>Splittable vs. non-splittable input.</strong> Plain text and
+formats compressed with a splittable codec (such as <code>bzip2</code>)
+can be divided into many partitions and processed in parallel. Some
+compression codecs (such as plain <code>gzip</code>) are <em>not</em>
+splittable, meaning a single compressed file is read entirely by a
+single task — this can create a performance bottleneck when a handful of
+large <code>.gz</code> files dominate the input.</li>
+<li><strong>Schema-on-read vs. explicit schema.</strong> Formats such as
+JSON and CSV support automatic schema inference
+(<code>spark.read.option("inferSchema", "true")</code>), which is
+convenient but requires an extra pass over the data and can misinfer
+types. For production jobs, prefer supplying an explicit
+<code>StructType</code> schema — it is faster and more predictable.</li>
+<li><strong>Columnar formats for repeated analytics.</strong> When the
+same data set will be scanned repeatedly, columnar formats such as
+Parquet or ORC are strongly preferred over row-based formats such as CSV
+or JSON: they support column pruning, predicate pushdown, and efficient
+compression, all of which can dramatically reduce I/O.</li>
+<li><strong>Small-files problem on read.</strong> Reading a directory
+with a very large number of small files creates one task per file (or
+per small group of files), causing excessive scheduling overhead.
+Consider <code>spark.sql.files.maxPartitionBytes</code> and
+<code>spark.sql.files.openCostInBytes</code> to coalesce small files
+into fewer, larger read tasks.</li>
+</ul>
+<h3 id="72-output-patterns">7.2 Output Patterns</h3>
+<ul>
+<li><strong>Partitioned output.</strong>
+<code>DataFrameWriter.partitionBy(*cols)</code> writes data into a
+directory hierarchy keyed by one or more columns (e.g.,
+<code>/output/year=2026/month=09/...</code>). This lets downstream
+readers prune entire directories via partition filters instead of
+scanning the full data set. Choose partition columns with a reasonable
+number of distinct values — over-partitioning (for example, on a
+high-cardinality column) produces the small-files problem described
+above.</li>
+<li><strong>Controlling the number of output files.</strong> The number
+of output files per partition equals the number of RDD/DataFrame
+partitions at write time. Use <code>coalesce(n)</code> to reduce the
+number of partitions without a full shuffle, or
+<code>repartition(n)</code> (or <code>repartition(n, *cols)</code>) when
+you need an even, shuffled redistribution — for example, before writing
+with <code>partitionBy()</code>, to avoid one tiny file per
+task/partition combination.</li>
+<li><strong>Choosing an output format.</strong> Prefer Parquet (or ORC)
+for data that will be consumed by other Spark/SQL jobs — they are
+compact, splittable, and schema-aware. Reserve CSV/JSON output for
+interoperability with external, non-Spark consumers.</li>
+<li><strong>Idempotent writes.</strong> Use
+<code>mode("overwrite")</code> or <code>mode("append")</code>
+deliberately, and prefer writing to a new, temporary output path and
+then atomically renaming/swapping it into place, rather than overwriting
+a directory that a downstream job might be reading concurrently.</li>
+</ul>
+<h2 id="8-references">8. References</h2>
+<ol type="1">
+<li><p><a href="https://sparkbyexamples.com/pyspark-tutorial/">Spark
+with Python (PySpark) Tutorial For Beginners</a></p></li>
+<li><p><a
+href="https://www.oreilly.com/library/view/data-algorithms-with/9781492082378/">Data
+Algorithms with Spark, author: Mahmoud Parsian</a></p></li>
+<li><p><a
+href="https://github.com/mahmoudparsian/pyspark-algorithms">PySpark
+Algorithms, author: Mahmoud Parsian</a></p></li>
+<li><p><a href="https://spark.apache.org/docs/latest/api/python/">Apache
+PySpark Documentation</a></p></li>
+<li><p><a
+href="https://github.com/mahmoudparsian/pyspark-tutorial">PySpark
+Tutorial, author: Mahmoud Parsian</a></p></li>
+<li><p><a
+href="https://lintool.github.io/MapReduceAlgorithms/ed1n/MapReduce-algorithms.pdf">J.
+Lin and C. Dyer. Data-Intensive Text Processing with
+MapReduce</a></p></li>
+</ol>
+</body>
+</html>
