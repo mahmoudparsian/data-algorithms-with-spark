@@ -14,7 +14,7 @@
 > implement existing algorithms in a scalable fashion and readers who
 > are developing new, custom algorithms using Spark. ..."
 >
-> — [Dr. Matei Zaharia](https://cs.stanford.edu/people/matei/), Original Creator of Apache Spark
+> — [Dr. Matei Zaharia](https://people.eecs.berkeley.edu/~matei/), Original Creator of Apache Spark
 
 [Read the full Foreword by Dr. Matei Zaharia](./docs/FOREWORD_by_Dr_Matei_Zaharia.md)
 
